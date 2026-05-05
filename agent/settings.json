@@ -1,0 +1,5 @@
+{
+  "defaultProvider": "llamacpp",
+  "defaultModel": "qwen3.6-27b",
+  "hideThinkingBlock": true
+}

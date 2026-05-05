@@ -1,0 +1,91 @@
+{
+  "providers": {
+    "llamacpp": {
+      "baseUrl": "http://192.168.3.226:8080/v1",
+      "api": "openai-completions",
+      "apiKey": "dummy",
+      "models": [
+        {
+          "id": "eousphoros/kappa-20b-131k",
+          "name": "kappa-20b-131k",
+          "input": ["text", "image"],
+          "reasoning": true,
+          "contextWindow": 56536,
+          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
+        },
+        {
+          "id": "google/gemma-4-26b-a4b",
+          "name": "Gemma 4 26b",
+          "input": ["text", "image"],
+          "reasoning": true,
+          "contextWindow": 56000,
+          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
+        },
+        {
+          "id": "google/gemma-4-31b",
+          "name": "Gemma 4 31b",
+          "input": ["text", "image"],
+          "reasoning": true,
+          "contextWindow": 56000,
+          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
+        },
+        {
+          "id": "qwen3-coder-next",
+          "name": "Qwen 3 Coder Next",
+          "input": ["text"],
+          "reasoning": true,
+          "contextWindow": 56000,
+          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
+        },
+        {
+          "id": "qwen3.5-122b-a10b",
+          "name": "Qwen 3.5 122B A10B",
+          "input": ["text", "image"],
+          "reasoning": true,
+          "contextWindow": 65536,
+          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
+        },
+        {
+          "id": "qwen3.6-27b",
+          "name": "Qwen 3.6 27B",
+          "input": ["text", "image"],
+          "reasoning": true,
+          "contextWindow": 262144,
+          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
+        },
+        {
+          "id": "qwen3.6-35b-a3b",
+          "name": "Qwen 3.6 35B A3B",
+          "input": ["text", "image"],
+          "reasoning": true,
+          "contextWindow": 262144,
+          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
+        },
+        {
+          "id": "nvidia-nemotron-3-nano-omni-30b-a3b-reasoning",
+          "name": "Nvidia Nemotron 3 Nano",
+          "input": ["text", "image"],
+          "reasoning": true,
+          "contextWindow": 1000000,
+          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
+        },
+        {
+          "id": "unsloth/nvidia-nemotron-3-super-120b-a12b",
+          "name": "Nvidia Nemotron 3 Super",
+          "input": ["text"],
+          "reasoning": true,
+          "contextWindow": 1000000,
+          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
+        },
+        {
+          "id": "glm-4.7-flash",
+          "name": "GLM 4.7 Flash",
+          "input": ["text"],
+          "reasoning": true,
+          "contextWindow": 56000,
+          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
+        }
+      ]
+    }
+  }
+}
