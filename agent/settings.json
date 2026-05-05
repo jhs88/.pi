@@ -1,5 +1,6 @@
 {
+  "lastChangelogVersion": "0.72.1",
   "defaultProvider": "llamacpp",
   "defaultModel": "qwen3.6-27b",
-  "hideThinkingBlock": true
+  "hideThinkingBlock": false
 }
