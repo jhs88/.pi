@@ -48,3 +48,5 @@ Brief explanation of how the pieces connect.
 Which file to look at first and why.
 
 Be thorough but concise. Include actual code snippets, not descriptions of what the code does.
+
+**Compression rule:** Your output will likely be passed to another agent via {previous}. Write dense, compressed findings — drop filler words, articles, and pleasantries. Use fragments and abbreviations (DB/auth/config) where clear. Every token saved reduces cost for the next agent in the chain.
