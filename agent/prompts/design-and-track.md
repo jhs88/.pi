@@ -2,23 +2,28 @@
 description: Design, prototype, then break into tracked issues. Use when building a feature that needs to be tracked in the issue tracker.
 ---
 
-Execute as a **chain** of 4 steps:
+Execute using **handoff files** between steps — human approves issue breakdown before publishing:
 
-1. **designer** — Grill requirements, produce design spec
-2. **prototyper** — Validate the design with a throwaway prototype
-3. **integrator** — Fold prototype into production or delete
-4. **to-issues skill** — Break validated work into vertical slice issues
+1. **designer** → handoff file (design spec)
+2. Human reviews, appends clarifications
+3. **prototyper** → reads design handoff, builds prototype, writes findings to new handoff
+4. Human reviews prototype handoff, appends verdict
+5. **integrator** → reads final handoff, folds into production or deletes
+6. Human approves issue breakdown draft
+7. **to-issues skill** — publishes approved vertical slice issues
 
 ```
 subagent chain:
   - agent: designer
-    task: {{user_goal}} — Grill requirements, produce design spec. Output handoff notes for prototyper.
+    task: {{user_goal}} — Synthesize requirements into a design spec. Use handoff skill to save findings. Return ONLY the handoff file path.
   - agent: prototyper
-    task: Review design spec from {previous}. Build prototype to validate it. Output findings and verdict with handoff notes for integrator.
+    task: Read design spec from handoff file: {previous}. Build prototype to validate it. Output findings and verdict with handoff notes for integrator. Use handoff skill to save findings. Return ONLY the handoff file path.
   - agent: integrator
-    task: Review prototype findings from {previous}. Fold into production or delete. Use handoff skill. Return handoff document path.
+    task: Read prototype findings from handoff file: {previous}. Fold into production or delete. Draft issue breakdown in final handoff. Return handoff document path.
 ```
 
-**Then** use the `to-issues` skill to break the validated work into vertical slice issues on the issue tracker. Pass the integrator's output as context.
+**Between each step:** Main agent shows you the handoff file path. Review it, append decisions to the file, then continue chain.
+
+**After integrator:** Review issue breakdown draft → approve/edit → use `to-issues` skill to publish approved issues.
 
 **Output:** Handoff document path + list of created issue numbers.

@@ -75,7 +75,7 @@ npx skills@latest add mattpocock/skills
 
 | Command | Chain |
 |-------------------------------|---------------------------------------------|
-| `/design-and-track` | designer → prototyper → integrator → to-issues |
+| `/design-and-track` | designer → human review → prototyper → human review → integrator → approve issues → to-issues |
 | `/design-with-handoffs` | designer → human review → prototyper → human review → integrator |
 | `/design-prototype-integrate` | designer → prototyper → integrator (no auto-tracking) |
 
@@ -83,13 +83,13 @@ npx skills@latest add mattpocock/skills
 
 | Command | Chain |
 |-------------------------------|--------------------------------------------------|
-| `/full-initiative` | designer → to-prd → prototyper → update PRD → to-issues |
+| `/full-initiative` | designer → human review → publish PRD → prototyper → human review → update PRD → to-issues |
 
 **Tracking: ADR Only**
 
 | Command | Chain |
 |----------------------------------|---------------------------------------------|
-| `/architecture-deepening` | scout → architect → integrator |
+| `/architecture-deepening` | scout → human review → architect → pick candidate → integrator → ADR |
 
 **Legacy Workflows:**
 

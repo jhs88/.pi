@@ -2,20 +2,24 @@
 description: Find and execute architectural improvements. Use when refactoring shallow modules, improving testability, or increasing AI-navigability.
 ---
 
-Execute as a **chain** of 3 agents:
+Execute using **handoff files** between steps — human picks which candidate to implement:
 
-1. **scout** — Explore codebase, find shallow modules and friction points
-2. **architect** — Identify deepening opportunities, present candidates for human review
-3. **integrator** — Implement the chosen deepening, document with handoff
+1. **scout** → handoff file (findings)
+2. Human reviews handoff, appends notes on what matters most
+3. **architect** → reads updated handoff, writes candidates to new handoff
+4. Human reviews candidates, appends choice (e.g., "pick #2")
+5. **integrator** → reads final handoff, implements chosen refactor
 
 ```
 subagent chain:
   - agent: scout
-    task: {{area_to_explore}} — Explore this area of the codebase. Look for shallow modules, tightly-coupled code, untested areas. Output compressed findings.
+    task: {{area_to_explore}} — Explore this area. Look for shallow modules, tightly-coupled code, untested areas. Use handoff skill to save findings. Return ONLY the handoff file path.
   - agent: architect
-    task: Review scout findings from {previous}. Identify deepening opportunities. Present candidates to user (Files, Problem, Solution, Benefits). Wait for user to pick one. Output the chosen candidate details.
+    task: Read scout findings from handoff file: {previous}. Identify deepening opportunities (Files, Problem, Solution, Benefits). Use handoff skill to save candidates. Return ONLY the handoff file path.
   - agent: integrator
-    task: Review the chosen deepening opportunity from {previous}. Implement the refactor. Use handoff skill to document changes. Update CONTEXT.md or create ADR if needed.
+    task: Read architect candidates from handoff file: {previous}. Human has appended their choice. Implement the chosen refactor. Use handoff skill for final summary. Update CONTEXT.md or create ADR if needed. Return handoff file path.
 ```
 
-**Output:** Handoff document path and summary of architectural changes made.
+**Between each step:** Main agent shows you the handoff file path. Review it, append your decision to the file, then continue chain.
+
+**Output:** Final handoff document path with architectural changes and ADR (if created).
