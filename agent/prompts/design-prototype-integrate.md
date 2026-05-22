@@ -2,9 +2,9 @@
 description: Full design-to-integration workflow. Use when building a new feature from scratch or validating a major design decision.
 ---
 
-Execute this as a **chain** of 3 agents:
+**YOU ARE THE ORCHESTRATOR.** Do NOT do this work yourself. Delegate every step to subagents using the `subagent` tool with `chain` parameter.
 
-1. **designer** — Grill user on requirements, produce design spec
+1. **designer** — Synthesize requirements, produce design spec
 2. **prototyper** — Build throwaway prototype to validate the design
 3. **integrator** — Fold prototype into production or delete, create handoff doc
 

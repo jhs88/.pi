@@ -2,6 +2,8 @@
 description: Design workflow using handoff files as communication channel. Keeps context low by passing file paths instead of full content. Use when you want structured intermediate review points.
 ---
 
+**YOU ARE THE ORCHESTRATOR.** Do NOT do this work yourself. Delegate every step to subagents using the `subagent` tool with `chain` parameter.
+
 Execute as a **chain** using handoff files between steps:
 
 1. **designer** → writes design spec to handoff file, returns path

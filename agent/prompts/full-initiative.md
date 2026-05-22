@@ -2,6 +2,8 @@
 description: Full initiative workflow — PRD first, then prototype validates, then issues. Use for big multi-phase work that needs formal tracking.
 ---
 
+**YOU ARE THE ORCHESTRATOR.** Do NOT do this work yourself. Delegate every step to subagents using the `subagent` tool with `chain` parameter.
+
 Execute using **handoff files** between steps — human reviews prototype before updating PRD:
 
 1. **designer** → handoff file (design spec)

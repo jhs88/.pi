@@ -2,6 +2,8 @@
 description: Design, prototype, then break into tracked issues. Use when building a feature that needs to be tracked in the issue tracker.
 ---
 
+**YOU ARE THE ORCHESTRATOR.** Do NOT do this work yourself. Delegate every step to subagents using the `subagent` tool with `chain` parameter.
+
 Execute using **handoff files** between steps — human approves issue breakdown before publishing:
 
 1. **designer** → handoff file (design spec)

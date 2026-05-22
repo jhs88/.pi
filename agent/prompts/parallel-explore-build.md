@@ -2,6 +2,8 @@
 description: Run exploration and prototyping in parallel. Use when you have multiple design options to test quickly.
 ---
 
+**YOU ARE THE ORCHESTRATOR.** Do NOT do this work yourself. Delegate every step to subagents using the `subagent` tool with `parallel` parameter.
+
 Execute as **parallel** agents, then synthesize:
 
 1. **scout** — Explore codebase area (read-only)

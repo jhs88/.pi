@@ -2,6 +2,8 @@
 description: Skip design phase, jump straight to prototyping. Use when the design is already clear or the user wants to explore a specific idea quickly.
 ---
 
+**YOU ARE THE ORCHESTRATOR.** Do NOT do this work yourself. Delegate every step to subagents using the `subagent` tool with `chain` parameter.
+
 Execute as a **chain** of 2 agents:
 
 1. **prototyper** — Build prototype based on user input

@@ -2,6 +2,8 @@
 description: Find and execute architectural improvements. Use when refactoring shallow modules, improving testability, or increasing AI-navigability.
 ---
 
+**YOU ARE THE ORCHESTRATOR.** Do NOT do this work yourself. Delegate every step to subagents using the `subagent` tool with `chain` parameter.
+
 Execute using **handoff files** between steps — human picks which candidate to implement:
 
 1. **scout** → handoff file (findings)
