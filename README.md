@@ -2,6 +2,31 @@
 
 pi-mono stuff I've found useful
 
+## Design Philosophy
+
+This project aims for maximum flexibility in how work gets planned, built, and documented. The architecture follows one core insight:
+
+> **Agents = primitives that do one thing.** Don't hard-wire PRD/issues into them.
+> **Prompts = composition layer** that decides the flow based on situation.
+
+### Why this matters
+
+- **Agents stay focused** — a prototyper builds prototypes, it doesn't decide whether to create issues or ADRs
+- **Workflows adapt** — the same agents compose differently depending on context (quick experiment vs. full initiative)
+- **Documentation happens as work happens** — not bolted on after, not forced upfront
+- **Tracking is explicit** — handoff files for ephemeral work, issues/PRDs for tracked work, ADRs for decisions
+
+### Tracking Levels
+
+| Level | When to use | Artifact |
+|-------|-------------|----------|
+| Handoff only | Quick experiments, throwaway exploration | Temp file |
+| Issues | Features with clear scope | Issue tracker |
+| PRD + Issues | Big initiatives, multi-phase work | Issue tracker (parent + children) |
+| ADR | Architectural decisions worth preserving | `docs/adr/` |
+
+The workflow prompt decides which level applies. Agents output structured findings — the composition layer decides what to track.
+
 ## extensions
 
 They are pulled directly from the examples in `pi-mono` repo.
