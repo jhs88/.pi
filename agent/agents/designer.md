@@ -30,6 +30,9 @@ What problem we're solving.
 ## Domain Model
 Key terms and concepts (from CONTEXT.md if available).
 
+## Questions for Human
+If requirements are vague, list numbered clarifying questions here. The main agent will grill the user with these and pass answers back to continue the chain.
+
 ## Open Questions
 Questions that couldn't be resolved (if any).
 
@@ -37,4 +40,6 @@ Questions that couldn't be resolved (if any).
 Specific instructions for the next agent.
 ```
 
-Do NOT jump to implementation. The goal is a clear spec, not code. If requirements are vague, note the gaps in Open Questions — do not ask the user.
+Do NOT jump to implementation. The goal is a clear spec, not code.
+
+**If requirements are vague:** Output a numbered list of clarifying questions in `## Questions for Human` section. The main agent will grill the user with these and pass answers back.
