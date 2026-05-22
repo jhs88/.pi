@@ -39,14 +39,14 @@ npx skills@latest add mattpocock/skills
 
 ## Custom Agents
 
-### 9 Agents (~/.pi/agent/agents/) — all on qwen3.6-35b-a3b
+### 9 Agents (~/.pi/agent/agents/) — all on qwen3.6-35b-a3b-mtp
 
-**Core Workflow (3 agents at a time due to hardware constraints):**
+**Core Workflow (max 3 running simultaneously due to hardware):**
 
 | Agent | What it does |
 |-------|--------------------------------------------------|
 | scout | Codebase recon → structured findings |
-| designer | Grill requirements → design spec |
+| designer | Synthesize requirements → design spec (+ questions for human) |
 | prototyper | Build throwaway prototypes to validate |
 | integrator | Fold prototype into production or delete |
 
@@ -150,3 +150,7 @@ Workflows pass data between agents via `{previous}`:
 3. **Agent 3** receives `{previous}`, makes decisions, uses `handoff` skill to create summary
 
 **Handoff documents** are created with the `handoff` skill and saved to temp paths. Pass these paths to future sessions to continue work.
+
+### Questions for Human Pattern
+
+Subagents can't interact directly. If a subagent needs clarification, it outputs `## Questions for Human` in its result. The main agent grills you with those questions, then passes answers back to continue the chain.
