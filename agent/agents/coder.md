@@ -1,6 +1,6 @@
 ---
 name: coder
-description: Legacy general-purpose task executor. Use for ad-hoc coding tasks that don't fit the designer→prototyper→integrator workflow. For new work, prefer the prototype workflow.
+description: General-purpose task executor. Use for ad-hoc coding tasks that don't fit the designer→prototyper→integrator workflow. For new work, prefer the prototype workflow.
 tools: read, grep, find, ls, write, edit, bash
 model: qwen3.6-35b-a3b
 ---
