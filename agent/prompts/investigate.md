@@ -1,9 +1,17 @@
 ---
-description: Scout finds relevant code, then diagnose analyzes it for bugs or issues
+description: Scout finds relevant code, then diagnose analyzes it for bugs or issues. Use when debugging or investigating problems.
 ---
-Use the subagent tool with the chain parameter to execute this workflow:
+Execute as a **chain** of 2 agents:
 
-1. First, use the "scout" agent to find all code relevant to: $@
-2. Then, use the "diagnose" agent to analyze the findings from the previous step (use {previous} placeholder) and produce ranked hypotheses about the issue
+1. **scout** — Find all code relevant to the issue
+2. **diagnose** — Analyze findings and produce ranked hypotheses
 
-Execute this as a chain, passing output between steps via {previous}.
+```
+subagent chain:
+  - agent: scout
+    task: Find all code relevant to: {{issue_description}}
+  - agent: diagnose
+    task: Analyze the scout findings from {previous} and produce ranked hypotheses about the issue.
+```
+
+**Output:** Ranked list of hypotheses with confidence levels and suggested next steps.

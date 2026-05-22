@@ -46,28 +46,28 @@ npx skills@latest add mattpocock/skills
 
 ## Custom Prompts
 
-### 4 Workflow Prompts (~/.pi/agent/prompts/) — chain multiple agents
+### 6 Workflow Prompts (~/.pi/agent/prompts/) — chain multiple agents
 
 **Core Workflow:**
 
-| Command | Chain |
-|-----------------------------------|----------------------------------------|
-| `/design-prototype-integrate` | designer → prototyper → integrator |
-| `/quick-prototype` | prototyper → integrator |
+| Command | Chain | Use Case |
+|-----------------------------------|----------------------------------------|--------------------------|
+| `/design-prototype-integrate` | designer → prototyper → integrator | Full feature from scratch |
+| `/quick-prototype` | prototyper → integrator | Fast design validation |
 
 **Architecture & Exploration:**
 
-| Command | Chain |
-|----------------------------------|---------------------------------------------|
-| `/architecture-deepening` | scout → architect → integrator |
-| `/parallel-explore-build` | scout + 2× prototyper (parallel) |
+| Command | Chain | Use Case |
+|----------------------------------|---------------------------------------------|--------------------------|
+| `/architecture-deepening` | scout → architect → integrator | Refactor shallow modules |
+| `/parallel-explore-build` | scout + 2× prototyper (parallel) | Test multiple options |
 
 **Legacy Workflows:**
 
-| Command | Chain |
-|---------------------------|---------------------------|
-| `/investigate <query>` | scout → diagnose |
-| `/review <query>` | scout → code-reviewer |
+| Command | Chain | Use Case |
+|---------------------------|---------------------------|--------------------------|
+| `/investigate <query>` | scout → diagnose | Debugging/bug investigation |
+| `/review <query>` | scout → code-reviewer | PR/code quality review |
 
 ## How it all works together
 
