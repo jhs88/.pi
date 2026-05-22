@@ -4,28 +4,19 @@ pi-mono stuff I've found useful
 
 ## Design Philosophy
 
-This project aims for maximum flexibility in how work gets planned, built, and documented. The architecture follows one core insight:
-
-> **Agents = primitives that do one thing.** Don't hard-wire PRD/issues into them.
-> **Prompts = composition layer** that decides the flow based on situation.
-
-### Why this matters
-
-- **Agents stay focused** — a prototyper builds prototypes, it doesn't decide whether to create issues or ADRs
-- **Workflows adapt** — the same agents compose differently depending on context (quick experiment vs. full initiative)
-- **Documentation happens as work happens** — not bolted on after, not forced upfront
-- **Tracking is explicit** — handoff files for ephemeral work, issues/PRDs for tracked work, ADRs for decisions
+> **Agents = primitives.** Do one thing. Don't hard-wire PRD/issues into them.
+> **Prompts = composition.** Decide flow and tracking based on situation.
 
 ### Tracking Levels
 
-| Level | When to use | Artifact |
-|-------|-------------|----------|
-| Handoff only | Quick experiments, throwaway exploration | Temp file |
-| Issues | Features with clear scope | Issue tracker |
-| PRD + Issues | Big initiatives, multi-phase work | Issue tracker (parent + children) |
-| ADR | Architectural decisions worth preserving | `docs/adr/` |
+| Level | Artifact |
+|-------|----------|
+| Handoff only | Temp file (quick experiments) |
+| Issues | Issue tracker (features with scope) |
+| PRD + Issues | Issue tracker parent + children (big initiatives) |
+| ADR | `docs/adr/` (architectural decisions) |
 
-The workflow prompt decides which level applies. Agents output structured findings — the composition layer decides what to track.
+The workflow prompt decides which level applies.
 
 ## extensions
 
@@ -71,28 +62,40 @@ npx skills@latest add mattpocock/skills
 
 ## Custom Prompts
 
-### 6 Workflow Prompts (~/.pi/agent/prompts/) — chain multiple agents
+### 8 Workflow Prompts (~/.pi/agent/prompts/) — chain multiple agents
 
-**Core Workflow:**
+**Tracking: Handoff Only**
 
-| Command | Chain | Use Case |
-|-----------------------------------|----------------------------------------|--------------------------|
-| `/design-prototype-integrate` | designer → prototyper → integrator | Full feature from scratch |
-| `/quick-prototype` | prototyper → integrator | Fast design validation |
+| Command | Chain |
+|---------------------------|---------------------------|
+| `/quick-prototype` | prototyper → integrator |
+| `/parallel-explore-build` | scout + 2× prototyper (parallel) |
 
-**Architecture & Exploration:**
+**Tracking: Issues**
 
-| Command | Chain | Use Case |
-|----------------------------------|---------------------------------------------|--------------------------|
-| `/architecture-deepening` | scout → architect → integrator | Refactor shallow modules |
-| `/parallel-explore-build` | scout + 2× prototyper (parallel) | Test multiple options |
+| Command | Chain |
+|-------------------------------|---------------------------------------------|
+| `/design-and-track` | designer → prototyper → integrator → to-issues |
+| `/design-prototype-integrate` | designer → prototyper → integrator (no auto-tracking) |
+
+**Tracking: PRD + Issues**
+
+| Command | Chain |
+|-------------------------------|--------------------------------------------------|
+| `/full-initiative` | designer → to-prd → prototyper → update PRD → to-issues |
+
+**Tracking: ADR Only**
+
+| Command | Chain |
+|----------------------------------|---------------------------------------------|
+| `/architecture-deepening` | scout → architect → integrator |
 
 **Legacy Workflows:**
 
-| Command | Chain | Use Case |
-|---------------------------|---------------------------|--------------------------|
-| `/investigate <query>` | scout → diagnose | Debugging/bug investigation |
-| `/review <query>` | scout → code-reviewer | PR/code quality review |
+| Command | Chain |
+|---------------------------|---------------------------|
+| `/investigate <query>` | scout → diagnose |
+| `/review <query>` | scout → code-reviewer |
 
 ## How it all works together
 
