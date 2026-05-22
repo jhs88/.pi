@@ -1,6 +1,12 @@
 {
-  "lastChangelogVersion": "0.72.1",
+  "lastChangelogVersion": "0.75.4",
   "defaultProvider": "llamacpp",
-  "defaultModel": "qwen3.6-27b",
-  "hideThinkingBlock": false
+  "defaultModel": "qwen3.6-27b-mtp",
+  "hideThinkingBlock": false,
+  "defaultThinkingLevel": "high",
+  "theme": "dracula",
+  "quietStartup": true,
+  "steeringMode": "one-at-a-time",
+  "followUpMode": "one-at-a-time",
+  "enableInstallTelemetry": true
 }
