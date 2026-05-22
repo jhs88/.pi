@@ -62,7 +62,7 @@ npx skills@latest add mattpocock/skills
 
 ## Custom Prompts
 
-### 8 Workflow Prompts (~/.pi/agent/prompts/) — chain multiple agents
+### 9 Workflow Prompts (~/.pi/agent/prompts/) — chain multiple agents
 
 **Tracking: Handoff Only**
 
@@ -76,6 +76,7 @@ npx skills@latest add mattpocock/skills
 | Command | Chain |
 |-------------------------------|---------------------------------------------|
 | `/design-and-track` | designer → prototyper → integrator → to-issues |
+| `/design-with-handoffs` | designer → human review → prototyper → human review → integrator |
 | `/design-prototype-integrate` | designer → prototyper → integrator (no auto-tracking) |
 
 **Tracking: PRD + Issues**
@@ -149,8 +150,20 @@ Workflows pass data between agents via `{previous}`:
 2. **Agent 2** receives `{previous}` as context, adds its own layer
 3. **Agent 3** receives `{previous}`, makes decisions, uses `handoff` skill to create summary
 
-**Handoff documents** are created with the `handoff` skill and saved to temp paths. Pass these paths to future sessions to continue work.
+**Handoff documents** are created with the `handoff` skill and saved to temp paths (`/tmp/handoff-XXXX.md`). Pass these paths to future sessions to continue work.
 
 ### Questions for Human Pattern
 
 Subagents can't interact directly. If a subagent needs clarification, it outputs `## Questions for Human` in its result. The main agent grills you with those questions, then passes answers back to continue the chain.
+
+### Handoff File as Communication Channel
+
+Handoff files act as **write-once, read-when-needed** communication between main and subagents:
+
+1. Subagent writes findings → returns file path only (not content)
+2. Main agent holds path in context (keeps tokens low)
+3. Human reviews handoff on demand when needed
+4. Human appends decisions to the same file
+5. Next subagent reads updated handoff file
+
+This avoids stuffing giant summaries into `{previous}` that aren't needed until later.
