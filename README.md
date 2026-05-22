@@ -62,7 +62,7 @@ npx skills@latest add mattpocock/skills
 
 ## Custom Prompts
 
-### 9 Workflow Prompts (~/.pi/agent/prompts/) — chain multiple agents
+### 7 Workflow Prompts (~/.pi/agent/prompts/) — chain multiple agents
 
 **Tracking: Handoff Only**
 
@@ -91,12 +91,14 @@ npx skills@latest add mattpocock/skills
 |----------------------------------|---------------------------------------------|
 | `/architecture-deepening` | scout → human review → architect → pick candidate → integrator → ADR |
 
-**Legacy Workflows:**
+**On-Demand Composition:**
 
-| Command | Chain |
-|---------------------------|---------------------------|
-| `/investigate <query>` | scout → diagnose |
-| `/review <query>` | scout → code-reviewer |
+Simple 2-step chains compose directly in chat — no prompt needed:
+
+```
+scout finds the auth code → diagnose analyzes it
+scout finds changed files → code-reviewer reviews them
+```
 
 ## How it all works together
 
