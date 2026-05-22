@@ -4,8 +4,8 @@ pi-mono stuff I've found useful
 
 ## Design Philosophy
 
-> **Agents = primitives.** Do one thing. Don't hard-wire PRD/issues into them.
-> **Prompts = composition.** Decide flow and tracking based on situation.
+- **Agents = primitives.** Do one thing. Don't hard-wire PRD/issues into them.
+- **Prompts = composition.** Decide flow and tracking based on situation.
 
 ### Tracking Levels
 
