@@ -27,31 +27,22 @@ npx skills@latest add mattpocock/skills
 
 **Core Workflow (3 agents at a time due to hardware constraints):**
 
-┌───────────────┬──────────────────────────────────────────┐
-│ Agent │ What it does │
-├───────────────┼──────────────────────────────────────────┤
-│ scout │ Codebase recon → structured findings │
-├───────────────┼──────────────────────────────────────────┤
-│ designer │ Grill requirements → design spec │
-├───────────────┼──────────────────────────────────────────┤
-│ prototyper │ Build throwaway prototypes to validate │
-├───────────────┼──────────────────────────────────────────┤
-│ integrator │ Fold prototype into production or delete │
-└───────────────┴──────────────────────────────────────────┘
+| Agent | What it does |
+|-------|--------------------------------------------------|
+| scout | Codebase recon → structured findings |
+| designer | Grill requirements → design spec |
+| prototyper | Build throwaway prototypes to validate |
+| integrator | Fold prototype into production or delete |
 
 **Specialized Agents:**
 
-┌───────────────┬──────────────────────────────────────────┐
-│ diagnose │ Bug diagnosis with ranked hypotheses │
-├───────────────┼──────────────────────────────────────────┤
-│ triage │ Classify issues into category + state │
-├───────────────┼──────────────────────────────────────────┤
-│ code-reviewer │ Quality/security/maintainability review │
-├───────────────┼──────────────────────────────────────────┤
-│ coder │ Legacy general-purpose task executor │
-├───────────────┼──────────────────────────────────────────┤
-│ meta-agent │ Create new agents/skills │
-└───────────────┴──────────────────────────────────────────┘
+| Agent | What it does |
+|-------|--------------------------------------------------|
+| diagnose | Bug diagnosis with ranked hypotheses |
+| triage | Classify issues into category + state |
+| code-reviewer | Quality/security/maintainability review |
+| coder | Legacy general-purpose task executor |
+| meta-agent | Create new agents/skills |
 
 ## Custom Prompts
 
@@ -59,29 +50,24 @@ npx skills@latest add mattpocock/skills
 
 **Core Workflow:**
 
-┌──────────────────────────────┬─────────────────────────────┐
-│ Command │ Chain │
-├──────────────────────────────┼─────────────────────────────┤
-│ /design-prototype-integrate │ designer → prototyper → integrator │
-├──────────────────────────────┼─────────────────────────────┤
-│ /quick-prototype │ prototyper → integrator │
-└──────────────────────────────┴─────────────────────────────┘
+| Command | Chain |
+|-----------------------------------|----------------------------------------|
+| `/design-prototype-integrate` | designer → prototyper → integrator |
+| `/quick-prototype` | prototyper → integrator |
 
 **Architecture & Exploration:**
 
-┌──────────────────────────────┬─────────────────────────────┐
-│ /architecture-deepening │ scout → architect → integrator │
-├──────────────────────────────┼─────────────────────────────┤
-│ /parallel-explore-build │ scout + 2× prototyper (parallel) │
-└──────────────────────────────┴─────────────────────────────┘
+| Command | Chain |
+|----------------------------------|---------------------------------------------|
+| `/architecture-deepening` | scout → architect → integrator |
+| `/parallel-explore-build` | scout + 2× prototyper (parallel) |
 
 **Legacy Workflows:**
 
-┌──────────────────────────────┬─────────────────────────────┐
-│ /investigate <query> │ scout → diagnose │
-├──────────────────────────────┼─────────────────────────────┤
-│ /review <query> │ scout → code-reviewer │
-└──────────────────────────────┴─────────────────────────────┘
+| Command | Chain |
+|---------------------------|---------------------------|
+| `/investigate <query>` | scout → diagnose |
+| `/review <query>` | scout → code-reviewer |
 
 ## How it all works together
 
