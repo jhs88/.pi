@@ -5,7 +5,7 @@ description: Find and execute architectural improvements. Use when refactoring s
 Execute as a **chain** of 3 agents:
 
 1. **scout** — Explore codebase, find shallow modules and friction points
-2. **architect** — Identify deepening opportunities, grill user on which to pursue
+2. **architect** — Identify deepening opportunities, present candidates for human review
 3. **integrator** — Implement the chosen deepening, document with handoff
 
 ```
