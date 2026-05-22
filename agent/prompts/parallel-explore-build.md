@@ -1,0 +1,23 @@
+---
+description: Run exploration and prototyping in parallel. Use when you have multiple design options to test quickly.
+---
+
+Execute as **parallel** agents, then synthesize:
+
+1. **scout** — Explore codebase area (read-only)
+2. **prototyper** — Build prototype for Option A
+3. **prototyper** — Build prototype for Option B (different task)
+
+```
+subagent parallel:
+  - agent: scout
+    task: {{area_to_explore}} — Explore this area. Output compressed findings on current architecture and friction points.
+  - agent: prototyper
+    task: {{option_a_description}} — Build a prototype for this approach. Output findings and verdict.
+  - agent: prototyper
+    task: {{option_b_description}} — Build a prototype for this alternative approach. Output findings and verdict.
+```
+
+**Then** use a human or integrator to compare the parallel results and decide which direction to take.
+
+**Output:** Comparison of options with recommendations.

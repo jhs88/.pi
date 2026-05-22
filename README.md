@@ -23,62 +23,116 @@ npx skills@latest add mattpocock/skills
 
 ## Custom Agents
 
-### 7 Agents (~/.pi/agent/agents/) — all on qwen3.6-35b-a3b
+### 9 Agents (~/.pi/agent/agents/) — all on qwen3.6-35b-a3b
+
+**Core Workflow (3 agents at a time due to hardware constraints):**
 
 ┌───────────────┬──────────────────────────────────────────┐
 │ Agent │ What it does │
 ├───────────────┼──────────────────────────────────────────┤
 │ scout │ Codebase recon → structured findings │
 ├───────────────┼──────────────────────────────────────────┤
-│ triage │ Classify issues into category + state │
+│ designer │ Grill requirements → design spec │
 ├───────────────┼──────────────────────────────────────────┤
-│ doc-writer │ PRDs, tickets, docs from context │
+│ prototyper │ Build throwaway prototypes to validate │
 ├───────────────┼──────────────────────────────────────────┤
-│ test-writer │ TDD red-green-refactor tests │
-├───────────────┼──────────────────────────────────────────┤
+│ integrator │ Fold prototype into production or delete │
+└───────────────┴──────────────────────────────────────────┘
+
+**Specialized Agents:**
+
+┌───────────────┬──────────────────────────────────────────┐
 │ diagnose │ Bug diagnosis with ranked hypotheses │
+├───────────────┼──────────────────────────────────────────┤
+│ triage │ Classify issues into category + state │
 ├───────────────┼──────────────────────────────────────────┤
 │ code-reviewer │ Quality/security/maintainability review │
 ├───────────────┼──────────────────────────────────────────┤
-│ architect │ Find refactoring/deepening opportunities │
+│ coder │ Legacy general-purpose task executor │
 ├───────────────┼──────────────────────────────────────────┤
-│ explainer │ High-level explanation of code areas │
+│ meta-agent │ Create new agents/skills │
 └───────────────┴──────────────────────────────────────────┘
 
 ## Custom Prompts
 
-### 6 Workflow Prompts (~/.pi/agent/prompts/) — chain multiple agents
+### 4 Workflow Prompts (~/.pi/agent/prompts/) — chain multiple agents
+
+**Core Workflow:**
 
 ┌──────────────────────────────┬─────────────────────────────┐
 │ Command │ Chain │
 ├──────────────────────────────┼─────────────────────────────┤
-│ /scout-and-plan <query> │ scout → doc-writer │
+│ /design-prototype-integrate │ designer → prototyper → integrator │
 ├──────────────────────────────┼─────────────────────────────┤
+│ /quick-prototype │ prototyper → integrator │
+└──────────────────────────────┴─────────────────────────────┘
+
+**Architecture & Exploration:**
+
+┌──────────────────────────────┬─────────────────────────────┐
+│ /architecture-deepening │ scout → architect → integrator │
+├──────────────────────────────┼─────────────────────────────┤
+│ /parallel-explore-build │ scout + 2× prototyper (parallel) │
+└──────────────────────────────┴─────────────────────────────┘
+
+**Legacy Workflows:**
+
+┌──────────────────────────────┬─────────────────────────────┐
 │ /investigate <query> │ scout → diagnose │
 ├──────────────────────────────┼─────────────────────────────┤
 │ /review <query> │ scout → code-reviewer │
-├──────────────────────────────┼─────────────────────────────┤
-│ /explore-and-explain <query> │ scout → explainer │
-├──────────────────────────────┼─────────────────────────────┤
-│ /architect-review <query> │ scout → architect │
-├──────────────────────────────┼─────────────────────────────┤
-│ /test-and-review <query> │ test-writer → code-reviewer │
 └──────────────────────────────┴─────────────────────────────┘
 
 ## How it all works together
 
 ### Quick single agent
 
-│ "Use triage to classify this bug report: 'app crashes on login'"
+```
+"Use triage to classify this bug report: 'app crashes on login'"
+```
 
-### Workflow command
+### Full workflow - design to production
 
-│ /investigate the auth module is leaking memory
+```
+/design-prototype-integrate "Build a caching layer for the API"
+```
+
+### Quick prototype - skip design phase
+
+```
+/quick-prototype "Try using Redis vs in-memory cache"
+```
+
+### Architecture review
+
+```
+/architecture-deepening "src/api/routes"
+```
+
+### Parallel exploration - test multiple options
+
+```
+/parallel-explore-build "Compare GraphQL vs REST for this feature"
+```
 
 ### Manual chain (full control)
 
-│ Use a chain: scout finds the payment code → diagnose analyzes it → doc-writer creates a PRD for fixes
+```
+Use a chain: scout finds the payment code → diagnose analyzes it → integrator implements fixes
+```
 
 ### Parallel (independent tasks)
 
-│ Run 3 agents in parallel: scout on auth, scout on payments, triage on this bug report
+```
+Run 3 agents in parallel: scout on auth, scout on payments, triage on this bug report
+```
+
+## Agent Handoff Pattern
+
+Workflows pass data between agents via `{previous}`:
+
+1. **Agent 1** produces structured output (design spec, prototype findings, etc.)
+2. **Agent 2** receives `{previous}` as context, adds its own layer
+3. **Agent 3** receives `{previous}`, makes decisions, uses `handoff` skill to create summary
+
+**Handoff documents** are created with the `handoff` skill and saved to temp paths. Pass these paths to future sessions to continue work.
