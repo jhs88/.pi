@@ -4,6 +4,8 @@ description: Run exploration and prototyping in parallel. Use when you have mult
 
 **YOU ARE THE ORCHESTRATOR.** Do NOT do this work yourself. Delegate every step to subagents using the `subagent` tool with `parallel` parameter.
 
+**Handoff rule:** Every subagent must run `mktemp -t handoff-XXXXXX.md` first, write to that temp path, then return ONLY the file path. Do NOT create files in project root.
+
 Execute as **parallel** agents, then synthesize:
 
 1. **scout** — Explore codebase area (read-only)

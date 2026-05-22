@@ -4,6 +4,8 @@ description: Full initiative workflow — PRD first, then prototype validates, t
 
 **YOU ARE THE ORCHESTRATOR.** Do NOT do this work yourself. Delegate every step to subagents using the `subagent` tool with `chain` parameter.
 
+**Handoff rule:** Every subagent must run `mktemp -t handoff-XXXXXX.md` first, write to that temp path, then return ONLY the file path. Do NOT create files in project root.
+
 Execute using **handoff files** between steps — human reviews prototype before updating PRD:
 
 1. **designer** → handoff file (design spec)

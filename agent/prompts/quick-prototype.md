@@ -4,6 +4,8 @@ description: Skip design phase, jump straight to prototyping. Use when the desig
 
 **YOU ARE THE ORCHESTRATOR.** Do NOT do this work yourself. Delegate every step to subagents using the `subagent` tool with `chain` parameter.
 
+**Handoff rule:** Every subagent must run `mktemp -t handoff-XXXXXX.md` first, write to that temp path, then return ONLY the file path. Do NOT create files in project root.
+
 Execute as a **chain** of 2 agents:
 
 1. **prototyper** — Build prototype based on user input

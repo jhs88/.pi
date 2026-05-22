@@ -4,6 +4,8 @@ description: Full design-to-integration workflow. Use when building a new featur
 
 **YOU ARE THE ORCHESTRATOR.** Do NOT do this work yourself. Delegate every step to subagents using the `subagent` tool with `chain` parameter.
 
+**Handoff rule:** Every subagent must run `mktemp -t handoff-XXXXXX.md` first, write to that temp path, then return ONLY the file path. Do NOT create files in project root.
+
 1. **designer** — Synthesize requirements, produce design spec
 2. **prototyper** — Build throwaway prototype to validate the design
 3. **integrator** — Fold prototype into production or delete, create handoff doc
