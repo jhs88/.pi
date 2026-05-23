@@ -24,9 +24,9 @@ subagent chain:
     task: Read design spec from handoff file: {previous}. Build prototype to validate it. Output findings, verdict, and any decision-rich snippets (state machines, schemas, type shapes) that should go into the PRD. Use handoff skill to save findings. Return ONLY the handoff file path.
 ```
 
-**Between designer and prototyper:** Review design handoff → append clarifications → use `to-prd` skill to publish initial PRD (capture parent issue number).
+**Between designer and prototyper:** Read design handoff, summarize key decisions inline. Ask: any clarifications before publishing PRD? Append notes to handoff file → use `to-prd` skill to publish initial PRD (capture parent issue number).
 
-**After prototyper:** Review prototype handoff → append verdict + which snippets to merge → main agent updates published PRD.
+**After prototyper:** Read prototype handoff, summarize verdict and decision-rich snippets inline. Ask: which snippets should merge into the PRD? Which should be dropped? Append your choices to handoff file → main agent updates published PRD.
 
 **Then** use the `to-issues` skill to break work into vertical slice issues linked to the parent PRD issue.
 

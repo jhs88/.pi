@@ -24,6 +24,10 @@ subagent chain:
     task: Read deepening candidates from handoff file: {previous}. Human has appended their choice. Implement the chosen refactor. Use handoff skill for final summary. Update CONTEXT.md or create ADR if needed. Return handoff file path.
 ```
 
-**Between each step:** Main agent shows you the handoff file path. Review it, append your decision to the file, then continue chain.
+**Between each step:** Read the handoff file, summarize key findings inline (don't just dump the path). Present questions/decisions clearly. Wait for user input before continuing.
+
+**After Step 1 (scout):** Summarize top findings. Ask: what matters most? Any constraints or areas to skip? Append your notes to the handoff file, then continue chain.
+
+**After Step 2 (scout candidates):** Present numbered candidates with Files/Problem/Solution/Benefits. Ask: which candidate should we implement? Append your choice to the handoff file, then continue chain.
 
 **Output:** Final handoff document path with architectural changes and ADR (if created).

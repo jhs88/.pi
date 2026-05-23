@@ -19,4 +19,6 @@ subagent chain:
     task: Review prototype findings from {previous}. Fold into production code or delete prototype. Use handoff skill to create summary. Return the handoff document path.
 ```
 
+**After prototyper:** Read the handoff file, summarize verdict inline (go/no-go, what worked/didn't). Ask: fold into production or delete? Then continue chain to integrator.
+
 **Output:** Final handoff document path and verdict on the design.

@@ -22,6 +22,6 @@ subagent parallel:
     task: {{option_b_description}} — Build a prototype for this alternative approach. Output findings and verdict.
 ```
 
-**Then** use a human or integrator to compare the parallel results and decide which direction to take.
+**After parallel run:** Read all handoff files. Present a side-by-side comparison inline (don't just list paths). Summarize: what each option did well, where each struggled, key tradeoffs. Ask: which direction should we take? Then either continue chain to integrator or present recommendation.
 
-**Output:** Comparison of options with recommendations.
+**Output:** Side-by-side comparison table + user decision + next steps.

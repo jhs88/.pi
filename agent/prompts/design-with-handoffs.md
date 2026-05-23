@@ -24,6 +24,10 @@ subagent chain:
     task: Read prototype findings from handoff file: {previous}. Fold into production or delete. Use handoff skill for final summary. Return handoff file path.
 ```
 
-**Between each step:** Main agent shows you the handoff file path. Review it, append decisions/questions to the file, then continue chain with updated file.
+**Between each step:** Read the handoff file, summarize key findings inline (don't just dump the path). Present questions/decisions clearly. Wait for user input before continuing.
+
+**After designer:** Summarize design spec and open questions. Ask: does this match your intent? Append clarifications to handoff file, then continue chain.
+
+**After prototyper:** Summarize verdict (go/no-go), what worked/didn't. Ask: proceed with integration or iterate? Append decision to handoff file, then continue chain.
 
 **Output:** Final handoff document path with complete decision trail.
