@@ -6,6 +6,8 @@ description: Design, prototype, then break into tracked issues. Use when buildin
 
 **Handoff rule:** Every subagent must run `mktemp -t handoff-XXXXXX.md` first, write to that temp path, then return ONLY the file path. Do NOT create files in project root.
 
+**Active participation:** Present findings concisely (3-5 bullets max). Ask ONE clear question at a time. Don't dump massive summaries.
+
 Execute using **handoff files** between steps — human approves issue breakdown before publishing:
 
 1. **designer** → handoff file (design spec)

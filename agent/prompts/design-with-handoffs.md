@@ -6,6 +6,8 @@ description: Design workflow using handoff files as communication channel. Keeps
 
 **Handoff rule:** Every subagent must run `mktemp -t handoff-XXXXXX.md` first, write to that temp path, then return ONLY the file path. Do NOT create files in project root.
 
+**Active participation:** Present findings concisely (3-5 bullets max). Ask ONE clear question at a time. Don't dump massive summaries.
+
 Execute as a **chain** using handoff files between steps:
 
 1. **designer** → writes design spec to handoff file, returns path

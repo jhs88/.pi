@@ -170,7 +170,7 @@ Handoff files act as **write-once, read-when-needed** communication between main
 
 This avoids stuffing giant summaries into `{previous}` that aren't needed until later.
 
-### Context Hygiene (from Matt Pocock's /handoff lessons)
+### Context Hygiene (from Matt Pocock's lessons)
 
 | Principle | Why |
 |-----------|-----|
@@ -179,6 +179,26 @@ This avoids stuffing giant summaries into `{previous}` that aren't needed until 
 | Include purpose + suggested skills | Next agent knows how to behave immediately |
 | Close the loop | Prototype findings flow back to inform planning/PRDs |
 | Don't duplicate artifacts | Reference existing issues/docs by path, don't re-copy them |
+
+### Grilling Best Practices
+
+| Do | Don't |
+|----|-------|
+| Lead the conversation — keep agent on track | Sit passively and answer 200 questions |
+| Save decisions to PRD/handoff BEFORE clearing context | Clear context first, lose valuable decisions |
+| Break large scopes into sub-scopes before grilling | Grill at massive scope (hits ~120k "dumb zone") |
+| Use low-fidelity questions for conversation | Try to grill high-fidelity questions (use prototype instead) |
+
+### Question Fidelity
+
+| Low-Fidelity (grillable via chat) | High-Fidelity (needs prototype) |
+|----------------------------------|--------------------------------|
+| URL routing choices | UI "feel" and layout |
+| API contract shape | Complex form interactions |
+| Module boundaries | State machine edge cases |
+| Naming conventions | Animation timing/flow |
+
+**Rule:** If you can't explain the answer in 2 sentences, it's high-fidelity → use `/cross-agent-prototype`.
 
 ### When to Chain vs Start Fresh
 
