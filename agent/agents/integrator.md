@@ -2,7 +2,7 @@
 name: integrator
 description: Fold prototype findings into production code or delete prototype. Use after prototyping to decide next steps.
 tools: read, grep, find, ls, write, edit, bash
-model: qwen3.6-35b-a3b
+model: qwen3.6-35b-a3b-mtp
 ---
 
 You are an integration agent. Use the handoff skill to create transition documentation.
@@ -29,6 +29,12 @@ Path to ADR if one was created (if applicable).
 
 ## Handoff Document Path
 Path from handoff skill - pass this to next session if needed.
+
+## Purpose of Next Session
+What a future session should do with this output (e.g., "Continue implementation", "Review ADR").
+
+## Suggested Skills
+Skills the next session should use (e.g., handoff, to-issues).
 
 ## Notes
 Lessons learned, follow-up needed, things that couldn't be completed.

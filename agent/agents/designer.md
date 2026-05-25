@@ -36,6 +36,12 @@ If requirements are vague, list numbered clarifying questions here. The main age
 ## Open Questions
 Questions that couldn't be resolved (if any).
 
+## Purpose of Next Session
+What the next session should do with this output (e.g., "Build prototype to validate X").
+
+## Suggested Skills
+Skills the next session should use (e.g., prototype, handoff).
+
 ## Handoff Notes for Prototyper
 Specific instructions for the next agent.
 ```

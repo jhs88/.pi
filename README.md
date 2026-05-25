@@ -62,7 +62,7 @@ npx skills@latest add mattpocock/skills
 
 ## Custom Prompts
 
-### 7 Workflow Prompts (~/.pi/agent/prompts/) — chain multiple agents
+### 8 Workflow Prompts (~/.pi/agent/prompts/) — chain multiple agents
 
 **Tracking: Handoff Only**
 
@@ -85,11 +85,11 @@ npx skills@latest add mattpocock/skills
 |-------------------------------|--------------------------------------------------|
 | `/full-initiative` | designer → human review → publish PRD → prototyper → human review → update PRD → to-issues |
 
-**Tracking: ADR Only**
+**Cross-Agent (spans sessions)**
 
 | Command | Chain |
-|----------------------------------|---------------------------------------------|
-| `/architecture-deepening` | scout → human review → architect → pick candidate → integrator → ADR |
+|-------------------------------|--------------------------------------------------|
+| `/cross-agent-prototype` | Grill session → prototype session → return learnings to grill session |
 
 **On-Demand Composition:**
 
@@ -169,3 +169,21 @@ Handoff files act as **write-once, read-when-needed** communication between main
 5. Next subagent reads updated handoff file
 
 This avoids stuffing giant summaries into `{previous}` that aren't needed until later.
+
+### Context Hygiene (from Matt Pocock's /handoff lessons)
+
+| Principle | Why |
+|-----------|-----|
+| Keep sessions pure | Models degrade with irrelevant tokens ("dumb zone") |
+| Handoffs are disposable | Save to `/tmp`, not codebase — bridges, not docs |
+| Include purpose + suggested skills | Next agent knows how to behave immediately |
+| Close the loop | Prototype findings flow back to inform planning/PRDs |
+| Don't duplicate artifacts | Reference existing issues/docs by path, don't re-copy them |
+
+### When to Chain vs Start Fresh
+
+| Use chain | Use fresh session |
+|-----------|-------------------|
+| 2-3 steps max | Long workflows (>3 steps) |
+| Context stays relevant | Different domain/task |
+| No human review needed | Need human decision point |
