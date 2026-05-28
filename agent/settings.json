@@ -1,12 +1,15 @@
 {
-  "lastChangelogVersion": "0.75.4",
+  "lastChangelogVersion": "0.76.0",
   "defaultProvider": "llamacpp",
-  "defaultModel": "qwen3.6-27b-mtp",
+  "defaultModel": "qwen3.6-27b",
   "hideThinkingBlock": false,
   "defaultThinkingLevel": "high",
   "theme": "dracula",
   "quietStartup": true,
   "steeringMode": "one-at-a-time",
   "followUpMode": "one-at-a-time",
-  "enableInstallTelemetry": true
+  "enableInstallTelemetry": true,
+  "packages": [
+    "npm:pi-mcp-adapter"
+  ]
 }
