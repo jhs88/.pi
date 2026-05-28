@@ -37,6 +37,55 @@ npx skills@latest add mattpocock/skills
 
 [A Philosophy of Software Design](https://milkov.tech/assets/psd.pdf) - Book related to his skills
 
+## Code Navigation Strategy
+
+**Primary principle: minimize context consumption.** Read outlines first, then targeted sections. Be surgical.
+
+Inspired by [markerikson/opencode-config-example](https://github.com/markerikson/opencode-config-example/blob/main/config/AGENTS.md).
+
+### Tool Hierarchy
+
+| Need | Tool | Approach |
+|------|------|----------|
+| Directory overview | `grepika_toc` | Tree structure of a directory |
+| Find code (NL/regex) | `grepika_search` | Natural language or regex search across indexed codebase |
+| File structure | `grepika_outline` → `grepika_get` with line range | Outline first, then read the section you need |
+| Symbol definitions | `tilth_tilth_search` | Definition-first symbol lookup |
+| What calls X? | `tilth_tilth_search kind:callers` | Caller tracing |
+| Blast-radius before changes | `tilth_tilth_deps` | Dependency impact (via mcp gateway) |
+| Cached file reads | `cachebro_read_file` / `cachebro_read_files` | Fast re-reads, skips unchanged content |
+
+### Quick Decision Flow
+
+- **"Show me the project structure"** → `grepika_toc`
+- **"Find files about X topic"** → `grepika_search` (NL search)
+- **"Where is Y defined?"** → `tilth_tilth_search` (structural)
+- **"What calls Z?"** → `tilth_tilth_search` with callers
+- **"Read this file section"** → `grepika_outline` → `grepika_get` with line range
+- **Config/JSON/small files** → `cachebro_read_file`
+- **Regex/text pattern** → `grepika_search` (grep mode)
+
+### Tool Visibility (context hygiene)
+
+To prevent context pollution, only core navigation tools are exposed as **direct tools** in `mcp.json`. The rest are available via the `mcp()` gateway call but don't appear in the default tool list.
+
+| Direct (always visible) | Gateway-only (available on demand) |
+|------------------------|-----------------------------------|
+| `grepika_toc` | `grepika_context`, `refs`, `stats` |
+| `grepika_outline` | `grepika_index`, `diff`, `add_workspace` |
+| `grepika_search` | |
+| `grepika_get` | |
+| `tilth_tilth_search` | `tilth_tilth_files`, `deps` |
+| `tilth_tilth_read` | `tilth_tilth_diff`, `edit` |
+
+### Workflow Pattern
+
+1. **Orient** — `grepika_toc` on the target directory
+2. **Find** — `grepika_search` or `tilth_tilth_search` to locate symbols/files
+3. **Outline** — `grepika_outline` or `tilth_tilth_read` to see structure
+4. **Read surgically** — `grepika_get` with line range, or `cachebro_read_file`
+5. **Verify** — re-read changed sections, run tests
+
 ## Custom Agents
 
 ### 9 Agents (~/.pi/agent/agents/) — all on qwen3.6-35b-a3b-mtp
@@ -63,6 +112,8 @@ npx skills@latest add mattpocock/skills
 ## Custom Prompts
 
 ### 8 Workflow Prompts (~/.pi/agent/prompts/) — chain multiple agents
+
+Arguments you type after the command become positional variables (`$1`, `$2`...) inside the template. See `argument-hint` in each prompt's frontmatter for expected inputs.
 
 **Tracking: Handoff Only**
 
@@ -112,6 +163,7 @@ scout finds changed files → code-reviewer reviews them
 
 ```
 /design-prototype-integrate "Build a caching layer for the API"
+# → argument becomes $1 inside the template
 ```
 
 ### Quick prototype - skip design phase
@@ -126,10 +178,11 @@ scout finds changed files → code-reviewer reviews them
 /architecture-deepening "src/api/routes"
 ```
 
-### Parallel exploration - test multiple options
+### Parallel exploration - 3 arguments for 3 agents
 
 ```
-/parallel-explore-build "Compare GraphQL vs REST for this feature"
+/parallel-explore-build "auth module" "switch to GraphQL" "keep REST but add tRPC"
+# → $1 = area, $2 = option A, $3 = option B
 ```
 
 ### Manual chain (full control)
