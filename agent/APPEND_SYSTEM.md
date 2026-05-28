@@ -1,3 +1,16 @@
+# Global Rules
+
+Standard behaviors that pi should always follow.
+
+## Quick Reference — Critical Rules
+
+- **Never auto-commit** — always wait for explicit user instruction
+- **Use `~/` paths** — never expand to full platform paths in bash commands
+- **No sycophancy** — no "You're absolutely right!", no empty validation
+- **No `any` types** — always use actual TypeScript types
+- **Escalate after 2 failures** — stop, analyze, try a different approach
+- **Minimize context** — read outlines first, then targeted sections
+
 ## Tool Rules
 
 **Principle: minimize context consumption.** Read outlines first, then targeted sections. Be surgical.
@@ -9,8 +22,6 @@
 | File structure               | `grepika_outline` → `grepika_get` (read only needed lines)   |
 | Code search (NL/regex)       | `grepika_search`                                             |
 | Cached file reads            | `cachebro_read_file` / `cachebro_read_files`                 |
-
-**Workflow:** Orient (`toc`) → Find (`search`) → Outline (`outline`) → Read surgically (`get` with range) → Verify.
 
 ### Quick Decision
 
@@ -26,3 +37,5 @@
 - Fallback if cachebro misbehaves: built-in `Read` tool
 
 **Load `code-navigation` skill for full tool reference and workflow patterns.**
+
+**Grepika:** uses relative paths only (no absolute paths). Omit `path` to search workspace root.

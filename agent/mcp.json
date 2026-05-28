@@ -16,7 +16,9 @@
       "args": [
         "-y",
         "@agentika/grepika",
-        "--mcp"
+        "--mcp",
+        "--root",
+        "."
       ],
       "command": "npx",
       "directTools": [
@@ -36,8 +38,7 @@
       "command": "npx",
       "directTools": [
         "tilth_search",
-        "tilth_read",
-        "tilth_edit"
+        "tilth_read"
       ]
     }
   }

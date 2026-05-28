@@ -162,7 +162,7 @@ To prevent context pollution, only core navigation tools are exposed as **direct
 | Direct (always visible) | Gateway-only (available on demand) |
 |------------------------|-----------------------------------|
 | `grepika_toc` | `grepika_context`, `refs`, `stats` |
-| `grepika_outline` | `grepika_index`, `diff`, `add_workspace` |
+| `grepika_outline` | `grepika_diff` |
 | `grepika_search` | |
 | `grepika_get` | |
 | `tilth_tilth_search` | `tilth_tilth_files`, `deps` |

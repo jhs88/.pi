@@ -1,3 +1,8 @@
+---
+name: code-navigation
+description: Full tool reference for codebase navigation. Use when you need detailed guidance on grepika/tilth/cachebro usage, blast-radius checks, or workflow patterns
+---
+
 # Code Navigation & File Reading
 
 Full tool reference for navigating codebases. APPEND_SYSTEM.md has the quick-reference table; this skill provides detailed usage, workflows, and edge cases.
@@ -9,7 +14,7 @@ Use grepika first for all code exploration and reading.
 ### Direct Tools (always visible)
 
 - `grepika_toc` — directory tree overview
-- `grepika_search` — find code patterns (regex or natural language). **Requires index** — run `mcp({ server: "grepika", tool: "index" })` first if results are empty/stale.
+- `grepika_search` — find code patterns (regex or natural language). Auto-indexed via `--root` in mcp.json.
 - `grepika_outline` — extract file structure (functions, classes, types). **Always do this before reading code.**
 - `grepika_get` with `start_line`/`end_line` — read targeted sections. Use outline results to pick exact line ranges. **Never omit line range on large files.**
 
@@ -17,7 +22,6 @@ Use grepika first for all code exploration and reading.
 
 - `mcp({ server: "grepika", tool: "context" })` — see surrounding code at a search match location
 - `mcp({ server: "grepika", tool: "refs" })` — find all references to a symbol/identifier
-- `mcp({ server: "grepika", tool: "index" })` — rebuild search index. Use `force=true` for full rebuild.
 
 ### Core Workflow
 
@@ -58,18 +62,18 @@ When you need to know _where something is defined_ or _what calls what_, prefer 
 
 ## Decision Flowchart
 
-| Question                          | Tool                       | Why                             |
-| --------------------------------- | -------------------------- | ------------------------------- |
-| "Find files about X topic"        | grepika search             | NL relevance ranking            |
-| "Where is Y defined?"             | tilth search               | Definition-first structural     |
-| "What calls Z?"                   | tilth search (callers)     | Tree-sitter structural matching |
-| Regex/text pattern match          | `grepika_search` (grep mode)  | Fast text search                |
+| Question                          | Tool                                     | Why                             |
+| --------------------------------- | ---------------------------------------- | ------------------------------- |
+| "Find files about X topic"        | grepika search                           | NL relevance ranking            |
+| "Where is Y defined?"             | tilth search                             | Definition-first structural     |
+| "What calls Z?"                   | tilth search (callers)                   | Tree-sitter structural matching |
+| Regex/text pattern match          | `grepika_search` (grep mode)             | Fast text search                |
 | "What would break if I change X?" | `mcp({ server: "tilth", tool: "deps" })` | Blast-radius analysis           |
 
 ## Anti-Patterns
 
 - **Reading entire large files** — always outline first, then targeted get
-- **Using grepika search without index** — results will be empty. Run `grepika_index` first.
+
 - **Omitting line ranges on grepika_get** — wastes context on large files
 - **Using grep/text search when you need definitions** — will find usages, imports, comments. Use tilth for definitions.
 - **Reading code files with cachebro** — cachebro is for config/JSON/small non-code files. Use grepika/tilth for code.

@@ -1,7 +1,7 @@
 {
   "lastChangelogVersion": "0.76.0",
   "defaultProvider": "llamacpp",
-  "defaultModel": "qwen3.6-27b",
+  "defaultModel": "qwen3.6-27b-mtp",
   "hideThinkingBlock": false,
   "defaultThinkingLevel": "high",
   "theme": "dracula",
