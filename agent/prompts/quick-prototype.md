@@ -1,5 +1,6 @@
 ---
-description: Skip design phase, jump straight to prototyping. Use when the design is already clear or the user wants to explore a specific idea quickly.
+description: Skip design, jump straight to prototyping
+argument-hint: "<idea>"
 ---
 
 **YOU ARE THE ORCHESTRATOR.** Do NOT do this work yourself. Delegate every step to subagents using the `subagent` tool with `chain` parameter.
@@ -16,7 +17,7 @@ Execute as a **chain** of 2 agents:
 ```
 subagent chain:
   - agent: prototyper
-    task: {{user_goal}} — Build a prototype to explore this. Decide if it's a logic prototype (terminal app) or UI prototype (multiple variants) based on the question. Output handoff notes for the integrator.
+    task: $1 — Build a prototype to explore this. Decide if it's a logic prototype (terminal app) or UI prototype (multiple variants) based on the question. Output handoff notes for the integrator.
   - agent: integrator
     task: Review prototype findings from {previous}. Fold into production code or delete prototype. Use handoff skill to create summary. Return the handoff document path.
 ```

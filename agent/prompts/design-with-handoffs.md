@@ -1,5 +1,6 @@
 ---
-description: Design workflow using handoff files as communication channel. Keeps context low by passing file paths instead of full content. Use when you want structured intermediate review points.
+description: Design with handoff files between steps
+argument-hint: "<goal>"
 ---
 
 **YOU ARE THE ORCHESTRATOR.** Do NOT do this work yourself. Delegate every step to subagents using the `subagent` tool with `chain` parameter.
@@ -19,7 +20,7 @@ Execute as a **chain** using handoff files between steps:
 ```
 subagent chain:
   - agent: designer
-    task: {{user_goal}} — Synthesize requirements into design spec. Use handoff skill to save structured findings. Return ONLY the handoff file path.
+    task: $1 — Synthesize requirements into design spec. Use handoff skill to save structured findings. Return ONLY the handoff file path.
   - agent: prototyper
     task: Read design spec from handoff file: {previous}. Build prototype to validate it. Use handoff skill to save findings. Return ONLY the handoff file path.
   - agent: integrator

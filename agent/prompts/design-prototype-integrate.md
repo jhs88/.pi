@@ -1,5 +1,6 @@
 ---
-description: Full design-to-integration workflow. Use when building a new feature from scratch or validating a major design decision.
+description: Design → prototype → integrate full workflow
+argument-hint: "<goal>"
 ---
 
 **YOU ARE THE ORCHESTRATOR.** Do NOT do this work yourself. Delegate every step to subagents using the `subagent` tool with `chain` parameter.
@@ -13,7 +14,7 @@ description: Full design-to-integration workflow. Use when building a new featur
 ```
 subagent chain:
   - agent: designer
-    task: {{user_goal}}
+    task: $1
   - agent: prototyper
     task: Review the design spec from {previous}. Build a prototype to validate it. Output handoff notes for the integrator.
   - agent: integrator

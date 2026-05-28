@@ -1,5 +1,6 @@
 ---
-description: Find and execute architectural improvements. Use when refactoring shallow modules, improving testability, or increasing AI-navigability.
+description: Find and execute architectural improvements
+argument-hint: "<area>"
 ---
 
 **YOU ARE THE ORCHESTRATOR.** Do NOT do this work yourself. Delegate every step to subagents using the `subagent` tool with `chain` parameter.
@@ -19,7 +20,7 @@ Execute using **handoff files** between steps — human picks which candidate to
 ```
 subagent chain:
   - agent: scout
-    task: {{area_to_explore}} — Explore this area. Look for shallow modules, tightly-coupled code, untested areas. Use handoff skill to save findings. Return ONLY the handoff file path.
+    task: $1 — Explore this area. Look for shallow modules, tightly-coupled code, untested areas. Use handoff skill to save findings. Return ONLY the handoff file path.
   - agent: scout
     task: Read initial findings from handoff file: {previous}. Now identify deepening opportunities — shallow modules, tightly-coupled code, untested areas. For each candidate note: Files, Problem, Solution, Benefits. Use handoff skill to save candidates. Return ONLY the handoff file path.
   - agent: integrator

@@ -1,5 +1,6 @@
 ---
-description: Grill in one session, prototype in another, pass validated learnings back. Use when planning reveals technical questions that need code validation before finalizing specs.
+description: Grill → prototype → close the loop across sessions
+argument-hint: "<handoff-path>"
 ---
 
 **YOU ARE THE ORCHESTRATOR.** Do NOT do this work yourself. Delegate to subagents using the `subagent` tool.
@@ -22,7 +23,7 @@ Start fresh with the handoff file path. Use prototyper to validate:
 ```
 subagent chain:
   - agent: prototyper
-    task: Read prototype request from handoff file: {{handoff_path}}. Build minimal prototype to answer the technical question. Output verdict + validated snippets (state machines, schemas, type shapes) that encode decisions more precisely than prose. Use handoff skill to create RETURN document at mktemp -t handoff-return-XXXXXX.md. Return ONLY the return handoff path.
+    task: Read prototype request from handoff file: $1. Build minimal prototype to answer the technical question. Output verdict + validated snippets (state machines, schemas, type shapes) that encode decisions more precisely than prose. Use handoff skill to create RETURN document at mktemp -t handoff-return-XXXXXX.md. Return ONLY the return handoff path.
 ```
 
 ## Session 3: Close the Loop (back to original session)

@@ -1,5 +1,6 @@
 ---
-description: Full initiative workflow — PRD first, then prototype validates, then issues. Use for big multi-phase work that needs formal tracking.
+description: PRD → prototype → issues full workflow
+argument-hint: "<goal>"
 ---
 
 **YOU ARE THE ORCHESTRATOR.** Do NOT do this work yourself. Delegate every step to subagents using the `subagent` tool with `chain` parameter.
@@ -21,7 +22,7 @@ Execute using **handoff files** between steps — human reviews prototype before
 ```
 subagent chain:
   - agent: designer
-    task: {{user_goal}} — Synthesize requirements into a design spec with extensive user stories and implementation decisions. Use handoff skill to save findings. Return ONLY the handoff file path.
+    task: $1 — Synthesize requirements into a design spec with extensive user stories and implementation decisions. Use handoff skill to save findings. Return ONLY the handoff file path.
   - agent: prototyper
     task: Read design spec from handoff file: {previous}. Build prototype to validate it. Output findings, verdict, and any decision-rich snippets (state machines, schemas, type shapes) that should go into the PRD. Use handoff skill to save findings. Return ONLY the handoff file path.
 ```

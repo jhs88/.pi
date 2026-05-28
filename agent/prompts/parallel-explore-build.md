@@ -1,5 +1,6 @@
 ---
-description: Run exploration and prototyping in parallel. Use when you have multiple design options to test quickly.
+description: Explore + prototype options in parallel
+argument-hint: "<area> <option-A> <option-B>"
 ---
 
 **YOU ARE THE ORCHESTRATOR.** Do NOT do this work yourself. Delegate every step to subagents using the `subagent` tool with `parallel` parameter.
@@ -15,11 +16,11 @@ Execute as **parallel** agents, then synthesize:
 ```
 subagent parallel:
   - agent: scout
-    task: {{area_to_explore}} — Explore this area. Output compressed findings on current architecture and friction points.
+    task: $1 — Explore this area. Output compressed findings on current architecture and friction points.
   - agent: prototyper
-    task: {{option_a_description}} — Build a prototype for this approach. Output findings and verdict.
+    task: $2 — Build a prototype for this approach. Output findings and verdict.
   - agent: prototyper
-    task: {{option_b_description}} — Build a prototype for this alternative approach. Output findings and verdict.
+    task: $3 — Build a prototype for this alternative approach. Output findings and verdict.
 ```
 
 **After parallel run:** Read all handoff files. Present a side-by-side comparison inline (don't just list paths). Summarize: what each option did well, where each struggled, key tradeoffs. Ask: which direction should we take? Then either continue chain to integrator or present recommendation.

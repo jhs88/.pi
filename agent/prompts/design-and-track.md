@@ -1,5 +1,6 @@
 ---
-description: Design, prototype, then break into tracked issues. Use when building a feature that needs to be tracked in the issue tracker.
+description: Design, prototype, then break into tracked issues
+argument-hint: "<goal>"
 ---
 
 **YOU ARE THE ORCHESTRATOR.** Do NOT do this work yourself. Delegate every step to subagents using the `subagent` tool with `chain` parameter.
@@ -21,7 +22,7 @@ Execute using **handoff files** between steps — human approves issue breakdown
 ```
 subagent chain:
   - agent: designer
-    task: {{user_goal}} — Synthesize requirements into a design spec. Run `mktemp -t handoff-XXXXXX.md` first, write structured findings to that temp path, then return ONLY the handoff file path.
+    task: $1 — Synthesize requirements into a design spec. Run `mktemp -t handoff-XXXXXX.md` first, write structured findings to that temp path, then return ONLY the handoff file path.
   - agent: prototyper
     task: Read design spec from handoff file: {previous}. Build prototype to validate it. Output findings and verdict with handoff notes for integrator. Use handoff skill to save findings. Return ONLY the handoff file path.
   - agent: integrator
