@@ -18,142 +18,11 @@ pi-mono stuff I've found useful
 
 The workflow prompt decides which level applies.
 
-## extensions
+---
 
-They are pulled directly from the examples in `pi-mono` repo.
-I keep them up to date manually it's easier.
+## Quick Start
 
-## Recommended Skills
-
-pi can read from `~/.agents/skills`, `~/.pi/skills`, `$(cwd)/.pi/skills` we don't include them here.
-
-It's recommended to install Matt's awesome skills here:
-
-```bash
-npx skills@latest add mattpocock/skills
-```
-
-## Recommended Resources
-
-[A Philosophy of Software Design](https://milkov.tech/assets/psd.pdf) - Book related to his skills
-
-## Code Navigation Strategy
-
-**Primary principle: minimize context consumption.** Read outlines first, then targeted sections. Be surgical.
-
-Inspired by [markerikson/opencode-config-example](https://github.com/markerikson/opencode-config-example/blob/main/config/AGENTS.md).
-
-### Tool Hierarchy
-
-| Need | Tool | Approach |
-|------|------|----------|
-| Directory overview | `grepika_toc` | Tree structure of a directory |
-| Find code (NL/regex) | `grepika_search` | Natural language or regex search across indexed codebase |
-| File structure | `grepika_outline` → `grepika_get` with line range | Outline first, then read the section you need |
-| Symbol definitions | `tilth_tilth_search` | Definition-first symbol lookup |
-| What calls X? | `tilth_tilth_search kind:callers` | Caller tracing |
-| Blast-radius before changes | `tilth_tilth_deps` | Dependency impact (via mcp gateway) |
-| Cached file reads | `cachebro_read_file` / `cachebro_read_files` | Fast re-reads, skips unchanged content |
-
-### Quick Decision Flow
-
-- **"Show me the project structure"** → `grepika_toc`
-- **"Find files about X topic"** → `grepika_search` (NL search)
-- **"Where is Y defined?"** → `tilth_tilth_search` (structural)
-- **"What calls Z?"** → `tilth_tilth_search` with callers
-- **"Read this file section"** → `grepika_outline` → `grepika_get` with line range
-- **Config/JSON/small files** → `cachebro_read_file`
-- **Regex/text pattern** → `grepika_search` (grep mode)
-
-### Tool Visibility (context hygiene)
-
-To prevent context pollution, only core navigation tools are exposed as **direct tools** in `mcp.json`. The rest are available via the `mcp()` gateway call but don't appear in the default tool list.
-
-| Direct (always visible) | Gateway-only (available on demand) |
-|------------------------|-----------------------------------|
-| `grepika_toc` | `grepika_context`, `refs`, `stats` |
-| `grepika_outline` | `grepika_index`, `diff`, `add_workspace` |
-| `grepika_search` | |
-| `grepika_get` | |
-| `tilth_tilth_search` | `tilth_tilth_files`, `deps` |
-| `tilth_tilth_read` | `tilth_tilth_diff`, `edit` |
-
-### Workflow Pattern
-
-1. **Orient** — `grepika_toc` on the target directory
-2. **Find** — `grepika_search` or `tilth_tilth_search` to locate symbols/files
-3. **Outline** — `grepika_outline` or `tilth_tilth_read` to see structure
-4. **Read surgically** — `grepika_get` with line range, or `cachebro_read_file`
-5. **Verify** — re-read changed sections, run tests
-
-## Custom Agents
-
-### 9 Agents (~/.pi/agent/agents/) — all on qwen3.6-35b-a3b-mtp
-
-**Core Workflow (max 3 running simultaneously due to hardware):**
-
-| Agent | What it does |
-|-------|--------------------------------------------------|
-| scout | Codebase recon → structured findings |
-| designer | Synthesize requirements → design spec (+ questions for human) |
-| prototyper | Build throwaway prototypes to validate |
-| integrator | Fold prototype into production or delete |
-
-**Specialized Agents:**
-
-| Agent | What it does |
-|-------|--------------------------------------------------|
-| diagnose | Bug diagnosis with ranked hypotheses |
-| triage | Classify issues into category + state |
-| code-reviewer | Quality/security/maintainability review |
-| coder | Legacy general-purpose task executor |
-| meta-agent | Create new agents/skills |
-
-## Custom Prompts
-
-### 8 Workflow Prompts (~/.pi/agent/prompts/) — chain multiple agents
-
-Arguments you type after the command become positional variables (`$1`, `$2`...) inside the template. See `argument-hint` in each prompt's frontmatter for expected inputs.
-
-**Tracking: Handoff Only**
-
-| Command | Chain |
-|---------------------------|---------------------------|
-| `/quick-prototype` | prototyper → integrator |
-| `/parallel-explore-build` | scout + 2× prototyper (parallel) |
-
-**Tracking: Issues**
-
-| Command | Chain |
-|-------------------------------|---------------------------------------------|
-| `/design-and-track` | designer → human review → prototyper → human review → integrator → approve issues → to-issues |
-| `/design-with-handoffs` | designer → human review → prototyper → human review → integrator |
-| `/design-prototype-integrate` | designer → prototyper → integrator (no auto-tracking) |
-
-**Tracking: PRD + Issues**
-
-| Command | Chain |
-|-------------------------------|--------------------------------------------------|
-| `/full-initiative` | designer → human review → publish PRD → prototyper → human review → update PRD → to-issues |
-
-**Cross-Agent (spans sessions)**
-
-| Command | Chain |
-|-------------------------------|--------------------------------------------------|
-| `/cross-agent-prototype` | Grill session → prototype session → return learnings to grill session |
-
-**On-Demand Composition:**
-
-Simple 2-step chains compose directly in chat — no prompt needed:
-
-```
-scout finds the auth code → diagnose analyzes it
-scout finds changed files → code-reviewer reviews them
-```
-
-## How it all works together
-
-### Quick single agent
+### Single agent
 
 ```
 "Use triage to classify this bug report: 'app crashes on login'"
@@ -197,6 +66,118 @@ Use a chain: scout finds the payment code → diagnose analyzes it → integrato
 Run 3 agents in parallel: scout on auth, scout on payments, triage on this bug report
 ```
 
+---
+
+## Custom Agents
+
+### 9 Agents (~/.pi/agent/agents/) — all on qwen3.6-35b-a3b-mtp
+
+**Core Workflow (max 3 running simultaneously due to hardware):**
+
+| Agent | What it does |
+|-------|--------------------------------------------------|
+| scout | Codebase recon → structured findings |
+| designer | Synthesize requirements → design spec (+ questions for human) |
+| prototyper | Build throwaway prototypes to validate |
+| integrator | Fold prototype into production or delete |
+
+**Specialized Agents:**
+
+| Agent | What it does |
+|-------|--------------------------------------------------|
+| diagnose | Bug diagnosis with ranked hypotheses |
+| triage | Classify issues into category + state |
+| code-reviewer | Quality/security/maintainability review |
+| coder | Legacy general-purpose task executor |
+| meta-agent | Create new agents/skills |
+
+---
+
+## Custom Prompts
+
+### 8 Workflow Prompts (~/.pi/agent/prompts/) — chain multiple agents
+
+Arguments you type after the command become positional variables (`$1`, `$2`…) inside the template. See `argument-hint` in each prompt's frontmatter for expected inputs.
+
+**Tracking: Handoff Only**
+
+| Command | Chain |
+|---------------------------|---------------------------|
+| `/quick-prototype` | prototyper → integrator |
+| `/parallel-explore-build` | scout + 2× prototyper (parallel) |
+
+**Tracking: Issues**
+
+| Command | Chain |
+|-------------------------------|---------------------------------------------|
+| `/design-and-track` | designer → human review → prototyper → human review → integrator → approve issues → to-issues |
+| `/design-with-handoffs` | designer → human review → prototyper → human review → integrator |
+| `/design-prototype-integrate` | designer → prototyper → integrator (no auto-tracking) |
+
+**Tracking: PRD + Issues**
+
+| Command | Chain |
+|-------------------------------|--------------------------------------------------|
+| `/full-initiative` | designer → human review → publish PRD → prototyper → human review → update PRD → to-issues |
+
+**Cross-Agent (spans sessions)**
+
+| Command | Chain |
+|-------------------------------|--------------------------------------------------|
+| `/cross-agent-prototype` | Grill session → prototype session → return learnings to grill session |
+
+**On-Demand Composition:**
+
+Simple 2-step chains compose directly in chat — no prompt needed:
+
+```
+scout finds the auth code → diagnose analyzes it
+scout finds changed files → code-reviewer reviews them
+```
+
+---
+
+## Code Navigation Strategy
+
+**Primary principle: minimize context consumption.** Read outlines first, then targeted sections. Be surgical.
+
+Inspired by [markerikson/opencode-config-example](https://github.com/markerikson/opencode-config-example/blob/main/config/AGENTS.md).
+
+### Tool Quick Reference
+
+| Need | Tool | Approach |
+|------|------|----------|
+| Directory overview | `grepika_toc` | Tree structure of a directory |
+| Find code (NL/regex) | `grepika_search` | Natural language or regex search across indexed codebase |
+| File structure | `grepika_outline` → `grepika_get` | Outline first, then read the section you need |
+| Symbol definitions | `tilth_tilth_search` | Definition-first symbol lookup |
+| What calls X? | `tilth_tilth_search kind:callers` | Caller tracing |
+| Blast-radius before changes | `tilth_tilth_deps` | Dependency impact (via mcp gateway) |
+| Cached file reads | `cachebro_read_file` / `read_files` | Fast re-reads, skips unchanged content |
+
+### Tool Visibility (context hygiene)
+
+To prevent context pollution, only core navigation tools are exposed as **direct tools** in `mcp.json`. The rest are available via the `mcp()` gateway call but don't appear in the default tool list.
+
+| Direct (always visible) | Gateway-only (available on demand) |
+|------------------------|-----------------------------------|
+| `grepika_toc` | `grepika_context`, `refs`, `stats` |
+| `grepika_outline` | `grepika_index`, `diff`, `add_workspace` |
+| `grepika_search` | |
+| `grepika_get` | |
+| `tilth_tilth_search` | `tilth_tilth_files`, `deps` |
+| `tilth_tilth_read` | `tilth_tilth_diff`, `edit` |
+
+### Workflow Pattern
+
+1. **Orient** — `grepika_toc` on the target directory
+2. **Find** — `grepika_search` or `tilth_tilth_search` to locate symbols/files
+3. **Outline** — `grepika_outline` or `tilth_tilth_read` to see structure
+4. **Read surgically** — `grepika_get` with line range, or `cachebro_read_file`
+5. **Verify** — re-read changed sections, run tests
+
+---
+
 ## Agent Handoff Pattern
 
 Workflows pass data between agents via `{previous}`:
@@ -204,8 +185,6 @@ Workflows pass data between agents via `{previous}`:
 1. **Agent 1** produces structured output (design spec, prototype findings, etc.)
 2. **Agent 2** receives `{previous}` as context, adds its own layer
 3. **Agent 3** receives `{previous}`, makes decisions, uses `handoff` skill to create summary
-
-**Handoff documents** are created with the `handoff` skill and saved to temp paths (`/tmp/handoff-XXXX.md`). Pass these paths to future sessions to continue work.
 
 ### Questions for Human Pattern
 
@@ -223,7 +202,7 @@ Handoff files act as **write-once, read-when-needed** communication between main
 
 This avoids stuffing giant summaries into `{previous}` that aren't needed until later.
 
-### Context Hygiene (from Matt Pocock's lessons)
+### Context Hygiene
 
 | Principle | Why |
 |-----------|-----|
@@ -260,3 +239,23 @@ This avoids stuffing giant summaries into `{previous}` that aren't needed until 
 | 2-3 steps max | Long workflows (>3 steps) |
 | Context stays relevant | Different domain/task |
 | No human review needed | Need human decision point |
+
+---
+
+## Extensions & Skills
+
+### Extensions
+
+Pulled directly from the examples in `pi-mono` repo. Kept up to date manually — it's easier.
+
+### Recommended Skills
+
+pi reads from `~/.agents/skills`, `~/.pi/skills`, and `$(cwd)/.pi/skills`. It's recommended to install Matt's skills:
+
+```bash
+npx skills@latest add mattpocock/skills
+```
+
+### Recommended Resources
+
+- [A Philosophy of Software Design](https://milkov.tech/assets/psd.pdf) — book related to his skills
