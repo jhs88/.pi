@@ -1,0 +1,44 @@
+{
+  "mcpServers": {
+    "cachebro": {
+      "args": [
+        "-y",
+        "cachebro",
+        "serve"
+      ],
+      "command": "npx",
+      "directTools": [
+        "read_file",
+        "read_files"
+      ]
+    },
+    "grepika": {
+      "args": [
+        "-y",
+        "@agentika/grepika",
+        "--mcp"
+      ],
+      "command": "npx",
+      "directTools": [
+        "toc",
+        "outline",
+        "search",
+        "get"
+      ]
+    },
+    "tilth": {
+      "args": [
+        "-y",
+        "tilth",
+        "--mcp",
+        "--edit"
+      ],
+      "command": "npx",
+      "directTools": [
+        "tilth_search",
+        "tilth_read",
+        "tilth_edit"
+      ]
+    }
+  }
+}

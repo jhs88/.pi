@@ -1,2 +1,6 @@
 *
 !.gitignore
+!tilth
+!tilth/**
+!code-navigation
+!code-navigation/**
