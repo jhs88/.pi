@@ -73,7 +73,7 @@ When you need to know _where something is defined_ or _what calls what_, prefer 
 ## Anti-Patterns
 
 - **Reading entire large files** — always outline first, then targeted get
-
+- **Using grepika search without index** — results will be empty. Run grepika_index first.
 - **Omitting line ranges on grepika_get** — wastes context on large files
 - **Using grep/text search when you need definitions** — will find usages, imports, comments. Use tilth for definitions.
 - **Reading code files with cachebro** — cachebro is for config/JSON/small non-code files. Use grepika/tilth for code.
