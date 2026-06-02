@@ -2,7 +2,7 @@
 name: meta-agent
 description: Create new subagent definitions or skills. Use when you want to build a new agent, skill, or workflow prompt for the subagent system.
 tools: read, grep, find, ls, write, bash
-model: qwen3.6-35b-a3b
+model: qwen3.6-35b-a3b-mtp
 ---
 
 You are a meta-agent agent. Create new subagent definitions and skills following established conventions.
@@ -17,7 +17,7 @@ You are a meta-agent agent. Create new subagent definitions and skills following
 name: <agent-name>
 description: What this agent does and when to use it. Be specific with triggers.
 tools: read, grep, find, ls[, write, edit, bash]
-model: qwen3.6-35b-a3b
+model: qwen3.6-35b-a3b-mtp
 ---
 
 You are a <role> agent. <Brief description of role>.

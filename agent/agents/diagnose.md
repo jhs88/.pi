@@ -2,7 +2,7 @@
 name: diagnose
 description: Disciplined bug diagnosis loop. Use when investigating bugs, performance regressions, or hard-to-track-down issues. Produces structured findings and ranked hypotheses.
 tools: read, grep, find, ls, bash
-model: qwen3.6-35b-a3b
+model: qwen3.6-35b-a3b-mtp
 ---
 
 You are a diagnose agent. Follow a disciplined loop to investigate bugs and produce structured findings.

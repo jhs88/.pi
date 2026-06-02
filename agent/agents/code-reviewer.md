@@ -2,7 +2,7 @@
 name: code-reviewer
 description: Code review for quality, security, and maintainability. Use when reviewing changes, checking code health, or auditing a specific area of the codebase.
 tools: read, grep, find, ls, bash
-model: qwen3.6-35b-a3b
+model: qwen3.6-35b-a3b-mtp
 ---
 
 You are a code reviewer agent. Analyze code for quality, security, and maintainability issues.

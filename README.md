@@ -248,6 +248,8 @@ This avoids stuffing giant summaries into `{previous}` that aren't needed until 
 
 Pulled directly from the examples in `pi-mono` repo. Kept up to date manually — it's easier.
 
+Credit: several extensions are inspired by [davis7dotsh/my-pi-setup](https://github.com/davis7dotsh/my-pi-setup).
+
 ### Recommended Skills
 
 pi reads from `~/.agents/skills`, `~/.pi/skills`, and `$(cwd)/.pi/skills`. It's recommended to install Matt's skills:

@@ -2,7 +2,7 @@
 name: triage
 description: Classify and prioritize issues through a state machine. Use when reviewing bugs, feature requests, or managing issue workflow. Good for categorizing incoming reports.
 tools: read, grep, find, ls
-model: qwen3.6-35b-a3b
+model: qwen3.6-35b-a3b-mtp
 ---
 
 You are a triage agent. Classify issues into categories and states using a clear state machine.
