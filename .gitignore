@@ -2,3 +2,5 @@ sessions
 auth.json
 mcp*
 !mcp.json
+
+pi-acp

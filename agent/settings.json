@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.76.0",
+  "lastChangelogVersion": "0.78.1",
   "defaultProvider": "llamacpp",
   "defaultModel": "qwen3.6-27b-mtp",
   "hideThinkingBlock": false,
@@ -10,6 +10,7 @@
   "followUpMode": "one-at-a-time",
   "enableInstallTelemetry": true,
   "packages": [
-    "npm:pi-mcp-adapter"
+    "npm:pi-mcp-adapter",
+    "npm:pi-acp"
   ]
 }
