@@ -57,39 +57,66 @@ The workflow prompt decides which level applies.
 ### Manual chain (full control)
 
 ```
-Use a chain: scout finds the payment code → diagnose analyzes it → integrator implements fixes
+Use a chain: explore finds the payment code → diagnose analyzes it → integrator implements fixes
 ```
 
 ### Parallel (independent tasks)
 
 ```
-Run 3 agents in parallel: scout on auth, scout on payments, triage on this bug report
+Run 3 agents in parallel: explore on auth, explore on payments, triage on this bug report
 ```
 
 ---
 
 ## Custom Agents
 
-### 9 Agents (~/.pi/agent/agents/) — all on qwen3.6-35b-a3b-mtp
+### 14 Agents (~/.pi/agent/agents/) — qwen3.6-27b-mtp for bigger tasks, qwen3.6-35b-a3b-mtp for fast tasks
 
 **Core Workflow (max 3 running simultaneously due to hardware):**
 
-| Agent | What it does |
-|-------|--------------------------------------------------|
-| scout | Codebase recon → structured findings |
-| designer | Synthesize requirements → design spec (+ questions for human) |
-| prototyper | Build throwaway prototypes to validate |
-| integrator | Fold prototype into production or delete |
+| Agent | Model | What it does |
+|-------|-------|--------------------------------------------------|
+| explore | 27b-mtp | Codebase recon → structured findings (bigger model) |
+| scout | 35b-a3b-mtp | Codebase recon → structured findings (faster model) |
+| plan | 35b-a3b-mtp | Synthesize requirements → design spec (+ questions for human) |
+| prototyper | 35b-a3b-mtp | Build throwaway prototypes to validate |
+| integrator | 35b-a3b-mtp | Fold prototype into production or delete |
+
+**Build Agent:**
+
+| Agent | Model | What it does |
+|-------|-------|--------------------------------------------------|
+| build | 27b-mtp | Default primary agent with all tools (bigger model) |
 
 **Specialized Agents:**
 
-| Agent | What it does |
-|-------|--------------------------------------------------|
-| diagnose | Bug diagnosis with ranked hypotheses |
-| triage | Classify issues into category + state |
-| code-reviewer | Quality/security/maintainability review |
-| coder | Legacy general-purpose task executor |
-| meta-agent | Create new agents/skills |
+| Agent | Model | What it does |
+|-------|-------|--------------------------------------------------|
+| reviewer | 35b-a3b-mtp | Quality/security/maintainability review |
+| test | 35b-a3b-mtp | Writing/debugging tests, improving coverage |
+| docs | 35b-a3b-mtp | Library/API documentation writing |
+| diagnose | 35b-a3b-mtp | Bug diagnosis loop (loads diagnose skill) |
+| triage | 35b-a3b-mtp | Issue classification/prioritization (loads triage skill) |
+| thermo-nuclear-code-quality-review-subagent | 35b-a3b-mtp | Harsh maintainability audit (loads thermo-nuclear-code-quality-review skill) |
+| thermo-nuclear-review-subagent | 35b-a3b-mtp | Branch audit: bugs, security, breaking changes (loads thermo-nuclear-review skill) |
+| meta-agent | 35b-a3b-mtp | Create new agents/skills |
+
+**Skills (~/.pi/agent/skills/):**
+
+| Skill | Source | Purpose |
+|-------|--------|---------|
+| diagnose | ~/.agents/skills/diagnose | Disciplined bug diagnosis workflow |
+| prototype | ~/.agents/skills/prototype | Throwaway prototype building |
+| triage | ~/.agents/skills/triage | Issue classification state machine |
+| thermo-nuclear-review | ~/.agents/skills/thermo-nuclear-review | Security/correctness audit rubric |
+| thermo-nuclear-code-quality-review | ~/.agents/skills/thermo-nuclear-code-quality-review | Maintainability audit rubric |
+| thermos | ~/.agents/skills/thermos | Combined thermo review orchestrator |
+| handoff | ~/.agents/skills/handoff | Session handoff documentation |
+| grill-with-docs | ~/.agents/skills/grill-with-docs | Design grilling with domain docs |
+| improve-codebase-architecture | ~/.agents/skills/improve-codebase-architecture | Architecture deepening |
+| code-navigation | local | Tool reference and navigation patterns |
+| tilth | local | Structural diff/blast-radius analysis |
+| to-prd | ~/.agents/skills/to-prd | PRD publishing |
 
 ---
 
@@ -104,21 +131,21 @@ Arguments you type after the command become positional variables (`$1`, `$2`…)
 | Command | Chain |
 |---------------------------|---------------------------|
 | `/quick-prototype` | prototyper → integrator |
-| `/parallel-explore-build` | scout + 2× prototyper (parallel) |
+| `/parallel-explore-build` | explore + 2× prototyper (parallel) |
 
 **Tracking: Issues**
 
 | Command | Chain |
 |-------------------------------|---------------------------------------------|
-| `/design-and-track` | designer → human review → prototyper → human review → integrator → approve issues → to-issues |
-| `/design-with-handoffs` | designer → human review → prototyper → human review → integrator |
-| `/design-prototype-integrate` | designer → prototyper → integrator (no auto-tracking) |
+| `/design-and-track` | plan → human review → prototyper → human review → integrator → approve issues → to-issues |
+| `/design-with-handoffs` | plan → human review → prototyper → human review → integrator |
+| `/design-prototype-integrate` | plan → prototyper → integrator (no auto-tracking) |
 
 **Tracking: PRD + Issues**
 
 | Command | Chain |
 |-------------------------------|--------------------------------------------------|
-| `/full-initiative` | designer → human review → publish PRD → prototyper → human review → update PRD → to-issues |
+| `/full-initiative` | plan → human review → publish PRD → prototyper → human review → update PRD → to-issues |
 
 **Cross-Agent (spans sessions)**
 
@@ -131,8 +158,8 @@ Arguments you type after the command become positional variables (`$1`, `$2`…)
 Simple 2-step chains compose directly in chat — no prompt needed:
 
 ```
-scout finds the auth code → diagnose analyzes it
-scout finds changed files → code-reviewer reviews them
+explore finds the auth code → diagnose analyzes it
+explore finds changed files → reviewer reviews them
 ```
 
 ---

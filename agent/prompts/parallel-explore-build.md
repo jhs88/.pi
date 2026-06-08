@@ -9,13 +9,13 @@ argument-hint: "<area> <option-A> <option-B>"
 
 Execute as **parallel** agents, then synthesize:
 
-1. **scout** — Explore codebase area (read-only)
+1. **explore** — Explore codebase area (read-only)
 2. **prototyper** — Build prototype for Option A
 3. **prototyper** — Build prototype for Option B (different task)
 
 ```
 subagent parallel:
-  - agent: scout
+  - agent: explore
     task: $1 — Explore this area. Output compressed findings on current architecture and friction points.
   - agent: prototyper
     task: $2 — Build a prototype for this approach. Output findings and verdict.

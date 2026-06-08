@@ -13,7 +13,7 @@ argument-hint: "<goal>"
 
 ```
 subagent chain:
-  - agent: designer
+  - agent: plan
     task: $1
   - agent: prototyper
     task: Review the design spec from {previous}. Build a prototype to validate it. Output handoff notes for the integrator.

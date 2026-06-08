@@ -19,14 +19,15 @@ subagent/
 ├── index.ts             # The extension (entry point)
 ├── agents.ts            # Agent discovery logic
 ├── agents/              # Sample agent definitions
-│   ├── scout.md         # Fast recon, returns compressed context
-│   ├── planner.md       # Creates implementation plans
+│   ├── explore.md       # Codebase recon, bigger model
+│   ├── scout.md         # Fast recon, smaller model
+│   ├── plan.md          # Creates design specs
 │   ├── reviewer.md      # Code review
-│   └── worker.md        # General-purpose (full capabilities)
+│   └── build.md         # General-purpose (full capabilities)
 └── prompts/             # Workflow presets (prompt templates)
-    ├── implement.md     # scout -> planner -> worker
-    ├── scout-and-plan.md    # scout -> planner (no implementation)
-    └── implement-and-review.md  # worker -> reviewer -> worker
+    ├── design-prototype-integrate.md  # plan -> prototyper -> integrator
+    ├── architecture-deepening.md      # explore (×2) -> integrator
+    └── parallel-explore-build.md      # explore + 2× prototyper (parallel)
 ```
 
 ## Installation
@@ -68,24 +69,24 @@ When running interactively, the tool prompts for confirmation before running pro
 
 ### Single agent
 ```
-Use scout to find all authentication code
+Use explore to find all authentication code
 ```
 
 ### Parallel execution
 ```
-Run 2 scouts in parallel: one to find models, one to find providers
+Run 2 explores in parallel: one to find models, one to find providers
 ```
 
 ### Chained workflow
 ```
-Use a chain: first have scout find the read tool, then have planner suggest improvements
+Use a chain: first have explore find the read tool, then have plan suggest improvements
 ```
 
 ### Workflow prompts
 ```
-/implement add Redis caching to the session store
-/scout-and-plan refactor auth to support OAuth
-/implement-and-review add input validation to API endpoints
+/design-prototype-integrate Build a caching layer for the API
+/architecture-deepening src/api/routes
+/parallel-explore-build "auth module" "switch to GraphQL" "keep REST but add tRPC"
 ```
 
 ## Tool Modes
@@ -145,18 +146,20 @@ Project agents override user agents with the same name when `agentScope: "both"`
 
 | Agent | Purpose | Model | Tools |
 |-------|---------|-------|-------|
-| `scout` | Fast codebase recon | Haiku | read, grep, find, ls, bash |
-| `planner` | Implementation plans | Sonnet | read, grep, find, ls |
-| `reviewer` | Code review | Sonnet | read, grep, find, ls, bash |
-| `worker` | General-purpose | Sonnet | (all default) |
+| `explore` | Codebase recon (bigger model) | qwen3.6-27b-mtp | read, grep, find, ls, bash |
+| `scout` | Codebase recon (faster model) | qwen3.6-35b-a3b-mtp | read, grep, find, ls, bash |
+| `plan` | Design specs and planning | qwen3.6-35b-a3b-mtp | read, grep, find, ls |
+| `reviewer` | Code review | qwen3.6-35b-a3b-mtp | read, grep, find, ls, bash |
+| `build` | General-purpose (full capabilities) | qwen3.6-27b-mtp | (all default) |
+| `code` | General-purpose task executor | qwen3.6-35b-a3b-mtp | (all default) |
 
 ## Workflow Prompts
 
 | Prompt | Flow |
 |--------|------|
-| `/implement <query>` | scout → planner → worker |
-| `/scout-and-plan <query>` | scout → planner |
-| `/implement-and-review <query>` | worker → reviewer → worker |
+| `/design-prototype-integrate <query>` | plan → prototyper → integrator |
+| `/architecture-deepening <area>` | explore (×2) → integrator |
+| `/parallel-explore-build <area> <option-A> <option-B>` | explore + 2× prototyper (parallel) |
 
 ## Error Handling
 

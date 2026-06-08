@@ -21,7 +21,7 @@ Execute using **handoff files** between steps — human approves issue breakdown
 
 ```
 subagent chain:
-  - agent: designer
+  - agent: plan
     task: $1 — Synthesize requirements into a design spec. Run `mktemp -t handoff-XXXXXX.md` first, write structured findings to that temp path, then return ONLY the handoff file path.
   - agent: prototyper
     task: Read design spec from handoff file: {previous}. Build prototype to validate it. Output findings and verdict with handoff notes for integrator. Use handoff skill to save findings. Return ONLY the handoff file path.

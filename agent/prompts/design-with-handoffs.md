@@ -19,7 +19,7 @@ Execute as a **chain** using handoff files between steps:
 
 ```
 subagent chain:
-  - agent: designer
+  - agent: plan
     task: $1 — Synthesize requirements into design spec. Use handoff skill to save structured findings. Return ONLY the handoff file path.
   - agent: prototyper
     task: Read design spec from handoff file: {previous}. Build prototype to validate it. Use handoff skill to save findings. Return ONLY the handoff file path.

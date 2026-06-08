@@ -1,5 +1,5 @@
 ---
-name: designer
+name: plan
 description: Produce structured design specs from requirements. Use when starting a new feature, exploring architecture, or before prototyping.
 tools: read, grep, find, ls
 model: qwen3.6-35b-a3b-mtp
