@@ -1,7 +1,7 @@
 ---
 name: explore
 description: Fast codebase recon that returns compressed context for handoff to other agents. Use when you need to explore a codebase, find relevant files, or understand architecture before deeper work. Uses bigger model than scout for more complex exploration tasks.
-tools: read, grep, find, ls, bash
+tools: read, handoff_write, grep, find, ls, bash
 model: qwen3.6-27b-mtp
 ---
 

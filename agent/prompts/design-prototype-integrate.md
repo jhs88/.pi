@@ -5,7 +5,7 @@ argument-hint: "<goal>"
 
 **YOU ARE THE ORCHESTRATOR.** Do NOT do this work yourself. Delegate every step to subagents using the `subagent` tool with `chain` parameter.
 
-**Handoff rule:** Every subagent must run `mktemp -t handoff-XXXXXX.md` first, write to that temp path, then return ONLY the file path. Do NOT create files in project root.
+**Handoff rule:** Every subagent must load the handoff skill, use `handoff_write` to save to a `/tmp/` path, then return ONLY the file path. Do NOT create files in project root.
 
 1. **designer** — Synthesize requirements, produce design spec
 2. **prototyper** — Build throwaway prototype to validate the design
@@ -18,7 +18,7 @@ subagent chain:
   - agent: prototyper
     task: Review the design spec from {previous}. Build a prototype to validate it. Output handoff notes for the integrator.
   - agent: integrator
-    task: Review prototype findings from {previous}. Fold into production code or delete prototype. Use handoff skill to create summary. Return the handoff document path.
+    task: Review prototype findings from {previous}. Fold into production code or delete prototype. Use handoff skill and `handoff_write` tool to create summary. Return the handoff document path.
 ```
 
 **Output:** Final handoff document path and summary of what was built/decided.

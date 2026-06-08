@@ -1,7 +1,7 @@
 ---
 name: plan
 description: Produce structured design specs from requirements. Use when starting a new feature, exploring architecture, or before prototyping.
-tools: read, grep, find, ls
+tools: read, handoff_write, grep, find, ls
 model: qwen3.6-35b-a3b-mtp
 ---
 

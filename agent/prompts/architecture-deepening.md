@@ -5,7 +5,7 @@ argument-hint: "<area>"
 
 **YOU ARE THE ORCHESTRATOR.** Do NOT do this work yourself. Delegate every step to subagents using the `subagent` tool with `chain` parameter.
 
-**Handoff rule:** Every subagent must run `mktemp -t handoff-XXXXXX.md` first, write to that temp path, then return ONLY the file path. Do NOT create files in project root.
+**Handoff rule:** Every subagent must load the handoff skill, use `handoff_write` to save to a `/tmp/` path, then return ONLY the file path. Do NOT create files in project root.
 
 **Active participation:** Present findings concisely (3-5 bullets max). Ask ONE clear question at a time. Don't dump massive summaries.
 
@@ -20,11 +20,11 @@ Execute using **handoff files** between steps — human picks which candidate to
 ```
 subagent chain:
   - agent: explore
-    task: $1 — Explore this area. Look for shallow modules, tightly-coupled code, untested areas. Use handoff skill to save findings. Return ONLY the handoff file path.
+    task: $1 — Explore this area. Look for shallow modules, tightly-coupled code, untested areas. Use handoff skill and `handoff_write` tool to save findings. Return ONLY the handoff file path.
   - agent: explore
-    task: Read initial findings from handoff file: {previous}. Now identify deepening opportunities — shallow modules, tightly-coupled code, untested areas. For each candidate note: Files, Problem, Solution, Benefits. Use handoff skill to save candidates. Return ONLY the handoff file path.
+    task: Read initial findings from handoff file: {previous}. Now identify deepening opportunities — shallow modules, tightly-coupled code, untested areas. For each candidate note: Files, Problem, Solution, Benefits. Use handoff skill and `handoff_write` tool to save candidates. Return ONLY the handoff file path.
   - agent: integrator
-    task: Read deepening candidates from handoff file: {previous}. Human has appended their choice. Implement the chosen refactor. Use handoff skill for final summary. Update CONTEXT.md or create ADR if needed. Return handoff file path.
+    task: Read deepening candidates from handoff file: {previous}. Human has appended their choice. Implement the chosen refactor. Use handoff skill and `handoff_write` tool for final summary. Update CONTEXT.md or create ADR if needed. Return handoff file path.
 ```
 
 **Between each step:** Read the handoff file, summarize key findings inline (don't just dump the path). Present questions/decisions clearly. Wait for user input before continuing.

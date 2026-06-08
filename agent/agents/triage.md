@@ -1,7 +1,7 @@
 ---
 name: triage
 description: Classify and prioritize issues through a state machine. Use when reviewing bugs, feature requests, or managing issue workflow. Loads the triage skill for the full workflow.
-tools: read, grep, find, ls
+tools: read, handoff_write, grep, find, ls
 model: qwen3.6-35b-a3b-mtp
 ---
 

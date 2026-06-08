@@ -5,7 +5,7 @@ argument-hint: "<goal>"
 
 **YOU ARE THE ORCHESTRATOR.** Do NOT do this work yourself. Delegate every step to subagents using the `subagent` tool with `chain` parameter.
 
-**Handoff rule:** Every subagent must run `mktemp -t handoff-XXXXXX.md` first, write to that temp path, then return ONLY the file path. Do NOT create files in project root.
+**Handoff rule:** Every subagent must load the handoff skill, use `handoff_write` to save to a `/tmp/` path, then return ONLY the file path. Do NOT create files in project root.
 
 **Active participation:** Present findings concisely (3-5 bullets max). Ask ONE clear question at a time. Don't dump massive summaries.
 
@@ -20,11 +20,11 @@ Execute as a **chain** using handoff files between steps:
 ```
 subagent chain:
   - agent: plan
-    task: $1 — Synthesize requirements into design spec. Use handoff skill to save structured findings. Return ONLY the handoff file path.
+    task: $1 — Synthesize requirements into design spec. Use handoff skill and `handoff_write` tool to save structured findings. Return ONLY the handoff file path.
   - agent: prototyper
-    task: Read design spec from handoff file: {previous}. Build prototype to validate it. Use handoff skill to save findings. Return ONLY the handoff file path.
+    task: Read design spec from handoff file: {previous}. Build prototype to validate it. Use handoff skill and `handoff_write` tool to save findings. Return ONLY the handoff file path.
   - agent: integrator
-    task: Read prototype findings from handoff file: {previous}. Fold into production or delete. Use handoff skill for final summary. Return handoff file path.
+    task: Read prototype findings from handoff file: {previous}. Fold into production or delete. Use handoff skill and `handoff_write` tool for final summary. Return handoff file path.
 ```
 
 **Between each step:** Read the handoff file, summarize key findings inline (don't just dump the path). Present questions/decisions clearly. Wait for user input before continuing.

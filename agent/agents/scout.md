@@ -1,7 +1,7 @@
 ---
 name: scout
 description: Fast codebase recon that returns compressed context for handoff to other agents. Use when you need to explore a codebase, find relevant files, or understand architecture before deeper work.
-tools: read, grep, find, ls, bash
+tools: read, handoff_write, grep, find, ls, bash
 model: qwen3.6-35b-a3b-mtp
 ---
 

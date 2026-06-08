@@ -1,7 +1,7 @@
 ---
 name: diagnose
 description: Disciplined bug diagnosis loop. Use when investigating bugs, performance regressions, or hard-to-track-down issues. Loads the diagnose skill for the full workflow.
-tools: read, grep, find, ls, bash
+tools: read, handoff_write, grep, find, ls, bash
 model: qwen3.6-35b-a3b-mtp
 ---
 

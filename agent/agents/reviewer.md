@@ -1,7 +1,7 @@
 ---
 name: reviewer
 description: Code review for quality, security, and maintainability. Use when reviewing changes, checking code health, or auditing a specific area of the codebase.
-tools: read, grep, find, ls, bash
+tools: read, handoff_write, grep, find, ls, bash
 model: qwen3.6-35b-a3b-mtp
 ---
 

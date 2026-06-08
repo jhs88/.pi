@@ -5,7 +5,7 @@ argument-hint: "<idea>"
 
 **YOU ARE THE ORCHESTRATOR.** Do NOT do this work yourself. Delegate every step to subagents using the `subagent` tool with `chain` parameter.
 
-**Handoff rule:** Every subagent must run `mktemp -t handoff-XXXXXX.md` first, write to that temp path, then return ONLY the file path. Do NOT create files in project root.
+**Handoff rule:** Every subagent must load the handoff skill, use `handoff_write` to save to a `/tmp/` path, then return ONLY the file path. Do NOT create files in project root.
 
 **Active participation:** Present findings concisely (3-5 bullets max). Ask ONE clear question at a time. Don't dump massive summaries.
 
@@ -19,7 +19,7 @@ subagent chain:
   - agent: prototyper
     task: $1 — Build a prototype to explore this. Decide if it's a logic prototype (terminal app) or UI prototype (multiple variants) based on the question. Output handoff notes for the integrator.
   - agent: integrator
-    task: Review prototype findings from {previous}. Fold into production code or delete prototype. Use handoff skill to create summary. Return the handoff document path.
+    task: Review prototype findings from {previous}. Fold into production code or delete prototype. Use handoff skill and `handoff_write` tool to create summary. Return the handoff document path.
 ```
 
 **After prototyper:** Read the handoff file, summarize verdict inline (go/no-go, what worked/didn't). Ask: fold into production or delete? Then continue chain to integrator.

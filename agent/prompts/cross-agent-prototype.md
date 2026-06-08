@@ -12,9 +12,9 @@ This workflow spans TWO sessions: grilling/planning → prototype → return lea
 Use the main chat to grill requirements. When technical questions arise that need code validation, create a handoff file for the prototype session:
 
 ```
-Run: mktemp -t handoff-prototype-XXXXXX.md
-Write: Technical question + context from grilling + suggested skills
-```
+Use handoff skill and `handoff_write` tool to create a `/tmp/handoff-prototype-*.md` file.
+Content: Technical question + context from grilling + suggested skills.
+Return the handoff file path.
 
 ## Session 2: Prototype (new session)
 
@@ -23,7 +23,7 @@ Start fresh with the handoff file path. Use prototyper to validate:
 ```
 subagent chain:
   - agent: prototyper
-    task: Read prototype request from handoff file: $1. Build minimal prototype to answer the technical question. Output verdict + validated snippets (state machines, schemas, type shapes) that encode decisions more precisely than prose. Use handoff skill to create RETURN document at mktemp -t handoff-return-XXXXXX.md. Return ONLY the return handoff path.
+    task: Read prototype request from handoff file: $1. Build minimal prototype to answer the technical question. Output verdict + validated snippets (state machines, schemas, type shapes) that encode decisions more precisely than prose. Use handoff skill and `handoff_write` tool to create RETURN document at `/tmp/handoff-return-*.md`. Return ONLY the return handoff path.
 ```
 
 ## Session 3: Close the Loop (back to original session)
