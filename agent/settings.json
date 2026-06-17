@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.79.0",
+  "lastChangelogVersion": "0.79.6",
   "defaultProvider": "llamacpp",
   "defaultModel": "qwen3.6-27b-mtp",
   "hideThinkingBlock": false,
@@ -11,6 +11,7 @@
   "enableInstallTelemetry": true,
   "packages": [
     "npm:pi-mcp-adapter",
-    "npm:pi-acp"
+    "npm:pi-acp",
+    "git:github.com/joelhooks/pi-skill-interpolation"
   ]
 }
