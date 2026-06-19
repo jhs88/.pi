@@ -1,7 +1,16 @@
 ---
 description: Skip design, jump straight to prototyping
 argument-hint: "<idea>"
+disable-model-invocation: true
 ---
+
+<!--
+Skills loaded by phase:
+  Phase 1 (prototype)  → /prototype                     — throwaway code to answer a question (logic terminal app OR UI variants)
+  Phase 2 (integrate)  → integrator subagent                  — fold prototype into production or delete; create ADR if needed
+
+Deep-module vocabulary: module, interface, depth, seam, adapter, leverage, locality.
+-->
 
 **YOU ARE THE ORCHESTRATOR.** Do NOT do this work yourself. Delegate every step to subagents using the `subagent` tool with `chain` parameter.
 
@@ -9,15 +18,15 @@ argument-hint: "<idea>"
 
 **Active participation:** Present findings concisely (3-5 bullets max). Ask ONE clear question at a time. Don't dump massive summaries.
 
-Execute as a **chain** of 2 agents:
+Execute as a **chain** of 2 agents — load `/prototype` skill explicitly:
 
-1. **prototyper** — Build prototype based on user input
-2. **integrator** — Handle the results (fold/delete/create ADR)
+1. **prototyper** → build prototype based on user input
+2. **integrator** → handle the results (fold/delete/create ADR)
 
 ```
 subagent chain:
   - agent: prototyper
-    task: $1 — Build a prototype to explore this. Decide if it's a logic prototype (terminal app) or UI prototype (multiple variants) based on the question. Output handoff notes for the integrator.
+    task: $1 — Load /prototype skill. Build a throwaway prototype to explore this. Decide if it's a logic prototype (terminal app) or UI prototype (multiple variants) based on the question. Output handoff notes for the integrator.
   - agent: integrator
     task: Review prototype findings from {previous}. Fold into production code or delete prototype. Use handoff skill and `handoff_write` tool to create summary. Return the handoff document path.
 ```

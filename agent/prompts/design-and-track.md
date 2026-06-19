@@ -1,7 +1,20 @@
 ---
 description: Design, prototype, then break into tracked issues
 argument-hint: "<goal>"
+disable-model-invocation: true
 ---
+
+<!--
+Skills loaded by phase:
+  Phase 1 (grill)      → /grill-with-docs + /domain-modeling — relentless interview; maintain CONTEXT.md glossary + ADRs inline
+  Phase 2 (design)     → plan subagent                        — synthesize requirements into design spec
+  Phase 3 (prototype)  → prototyper subagent                  — throwaway code to validate design
+  Phase 4 (integrate)  → integrator subagent                  — fold prototype into production or delete
+  Phase 5 (issues)     → /to-issues                           — break PRD into vertical slice issues
+
+Handoff pattern: human reviews between each phase via handoff files.
+Deep-module vocabulary: module, interface, depth, seam, adapter, leverage, locality.
+-->
 
 **YOU ARE THE ORCHESTRATOR.** Do NOT do this work yourself. Delegate every step to subagents using the `subagent` tool with `chain` parameter.
 
@@ -9,15 +22,16 @@ argument-hint: "<goal>"
 
 **Active participation:** Present findings concisely (3-5 bullets max). Ask ONE clear question at a time. Don't dump massive summaries.
 
-Execute using **handoff files** between steps — human approves issue breakdown before publishing:
+Execute using **handoff files** between steps — human approves each phase before continuing:
 
-1. **designer** → handoff file (design spec)
-2. Human reviews, appends clarifications
-3. **prototyper** → reads design handoff, builds prototype, writes findings to new handoff
-4. Human reviews prototype handoff, appends verdict
-5. **integrator** → reads final handoff, folds into production or deletes
-6. Human approves issue breakdown draft
-7. **to-issues skill** — publishes approved vertical slice issues
+1. **grill** → load `/grill-with-docs` + `/domain-modeling` in main chat
+2. **plan** → handoff file (design spec)
+3. Human reviews, appends clarifications
+4. **prototyper** → reads design handoff, builds prototype, writes findings to new handoff
+5. Human reviews prototype handoff, appends verdict
+6. **integrator** → reads final handoff, folds into production or deletes
+7. Human approves issue breakdown draft
+8. **/to-issues** — publishes approved vertical slice issues
 
 ```
 subagent chain:
@@ -29,12 +43,12 @@ subagent chain:
     task: Read prototype findings from handoff file: {previous}. Fold into production or delete. Draft issue breakdown in final handoff. Return handoff document path.
 ```
 
-**Between each step:** Read the handoff file, summarize key findings inline (don't just dump the path). Present questions/decisions clearly. Wait for user input before continuing.
+**Before chain (orchestrator):** Load `/grill-with-docs` + `/domain-modeling` skills. Grill the user relentlessly — walk the design tree, sharpen fuzzy language, update CONTEXT.md glossary inline. When grilling is complete, proceed to subagent chain.
 
-**After designer:** Summarize design spec and any open questions. Ask: does this match your intent? Append clarifications to handoff file, then continue chain.
+**After plan:** Summarize design spec and any open questions. Ask: does this match your intent? Append clarifications to handoff file, then continue chain.
 
 **After prototyper:** Summarize verdict (go/no-go), what worked/didn't. Ask: proceed with integration or iterate? Append decision to handoff file, then continue chain.
 
-**After integrator:** Review issue breakdown draft → approve/edit → use `to-issues` skill to publish approved issues.
+**After integrator:** Review issue breakdown draft → approve/edit → use `/to-issues` skill to publish approved issues.
 
 **Output:** Handoff document path + list of created issue numbers.

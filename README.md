@@ -22,48 +22,123 @@ The workflow prompt decides which level applies.
 
 ## Quick Start
 
-### Single agent
+### Matt's flow directly (canonical path)
+
+```
+/grill-with-docs "Build a caching layer for the API"
+# → grills design with domain context, then:
+#   multi-session: to-prd → to-issues
+#   single session: implement directly
+```
+
+### Custom prompts (wrappers around Matt's flow)
+
+```
+/design-and-track "Build a caching layer for the API"
+# → adds issue tracking on top of plan → prototype → integrate
+
+/quick-prototype "Try using Redis vs in-memory cache"
+# → skips design, straight to prototype + integrate
+
+/architecture-deepening "src/api/routes"
+# → wrapper around improve-codebase-architecture skill
+```
+
+### On-ramps
 
 ```
 "Use triage to classify this bug report: 'app crashes on login'"
 ```
 
-### Full workflow - design to production
+---
+
+## Matt's Main Flow
+
+The canonical path for feature work. Custom prompts below are wrappers that add tracking, human gates, or parallelism on top of this flow.
+
+### Core Path
 
 ```
-/design-prototype-integrate "Build a caching layer for the API"
-# → argument becomes $1 inside the template
+/grill-with-docs "Describe the feature"
+  │
+  ├─→ [prototype branch] — validate assumptions with throwaway code
+  │
+  ├─→ Multi-session path:  to-prd → to-issues
+  │     (big initiatives — tracked as PRD + child issues)
+  │
+  └─→ Single-session path: implement directly
+        (smaller features — handoff or issue tracking)
 ```
 
-### Quick prototype - skip design phase
+### On-ramps into the flow
+
+| Entry Point | When | Skill |
+|-------------|------|-------|
+| `/triage` | Bug reports, incoming issues | `triage` skill |
+| `/improve-codebase-architecture` | Architecture review → feeds into grill-with-docs | `improve-codebase-architecture` skill |
+
+### Codebase Health Loop
 
 ```
-/quick-prototype "Try using Redis vs in-memory cache"
+/improve-codebase-architecture "src/api"
+  → identifies architectural debt
+  → findings feed back into /grill-with-docs for next feature
 ```
 
-### Architecture review
+---
+
+## Custom Prompts
+
+Wrappers around Matt's flow. They add tracking levels, human gates, or parallelism that the base flow doesn't enforce automatically.
+
+Arguments you type after the command become positional variables (`$1`, `$2`…) inside the template. See `argument-hint` in each prompt's frontmatter for expected inputs.
+
+### When to use which
+
+| Situation | Use | Why |
+|-----------|-----|-----|
+| Standard feature work | `/grill-with-docs` directly | Canonical flow, no wrapper overhead |
+| Parallel exploration | `/parallel-explore-build` | Our only unique prompt — 3 agents exploring options simultaneously |
+| Human gates mid-chain | `/design-with-handoffs` or `/full-initiative` | Stop for review before each phase |
+| Quick experiment | `/quick-prototype` | Skip design, validate fast |
+| Architecture review | `/architecture-deepening` | Wrapper around `improve-codebase-architecture` skill |
+
+### Tracking Levels (mapped to Matt's skills)
+
+**Handoff Only — wraps `prototype` + `integrator` skills**
+
+| Command | Chain | Wraps |
+|---------------------------|---------------------------|-------|
+| `/quick-prototype` | prototyper → integrator | `prototype` skill |
+| `/parallel-explore-build` | explore + 2× prototyper (parallel) | `prototype` skill (unique — no Matt equivalent) |
+
+**Issues — wraps `plan`, `prototype`, `integrator`, `to-issues` skills**
+
+| Command | Chain | Wraps |
+|-------------------------------|---------------------------------------------|-------|
+| `/design-and-track` | plan → human review → prototyper → human review → integrator → approve issues → to-issues | `to-prd` + `to-issues` skills |
+| `/design-with-handoffs` | plan → human review → prototyper → human review → integrator | `handoff` skill |
+| `/design-prototype-integrate` | plan → prototyper → integrator (no auto-tracking) | — |
+
+**PRD + Issues — wraps `to-prd` + `to-issues` skills**
+
+| Command | Chain | Wraps |
+|-------------------------------|--------------------------------------------------|-------|
+| `/full-initiative` | plan → human review → publish PRD → prototyper → human review → update PRD → to-issues | `to-prd` + `to-issues` skills |
+
+**Cross-Agent (spans sessions)**
+
+| Command | Chain | Wraps |
+|-------------------------------|--------------------------------------------------|-------|
+| `/cross-agent-prototype` | Grill session → prototype session → return learnings to grill session | `handoff` skill |
+
+**On-Demand Composition:**
+
+Simple 2-step chains compose directly in chat — no prompt needed:
 
 ```
-/architecture-deepening "src/api/routes"
-```
-
-### Parallel exploration - 3 arguments for 3 agents
-
-```
-/parallel-explore-build "auth module" "switch to GraphQL" "keep REST but add tRPC"
-# → $1 = area, $2 = option A, $3 = option B
-```
-
-### Manual chain (full control)
-
-```
-Use a chain: explore finds the payment code → diagnose analyzes it → integrator implements fixes
-```
-
-### Parallel (independent tasks)
-
-```
-Run 3 agents in parallel: explore on auth, explore on payments, triage on this bug report
+explore finds the auth code → diagnose analyzes it
+explore finds changed files → reviewer reviews them
 ```
 
 ---
@@ -71,6 +146,8 @@ Run 3 agents in parallel: explore on auth, explore on payments, triage on this b
 ## Custom Agents
 
 ### 14 Agents (~/.pi/agent/agents/) — qwen3.6-27b-mtp for bigger tasks, qwen3.6-35b-a3b-mtp for fast tasks
+
+Agents load Matt's skills internally (e.g., `diagnose` loads the `diagnose` skill, `triage` loads the `triage` skill). The agents are thin wrappers that select a model and inject the appropriate skill.
 
 **Core Workflow (max 3 running simultaneously due to hardware):**
 
@@ -95,10 +172,10 @@ Run 3 agents in parallel: explore on auth, explore on payments, triage on this b
 | reviewer | 35b-a3b-mtp | Quality/security/maintainability review |
 | test | 35b-a3b-mtp | Writing/debugging tests, improving coverage |
 | docs | 35b-a3b-mtp | Library/API documentation writing |
-| diagnose | 35b-a3b-mtp | Bug diagnosis loop (loads diagnose skill) |
-| triage | 35b-a3b-mtp | Issue classification/prioritization (loads triage skill) |
-| thermo-nuclear-code-quality-review-subagent | 35b-a3b-mtp | Harsh maintainability audit (loads thermo-nuclear-code-quality-review skill) |
-| thermo-nuclear-review-subagent | 35b-a3b-mtp | Branch audit: bugs, security, breaking changes (loads thermo-nuclear-review skill) |
+| diagnose | 35b-a3b-mtp | Bug diagnosis loop (loads `diagnose` skill) |
+| triage | 35b-a3b-mtp | Issue classification/prioritization (loads `triage` skill) |
+| thermo-nuclear-code-quality-review-subagent | 35b-a3b-mtp | Harsh maintainability audit (loads `thermo-nuclear-code-quality-review` skill) |
+| thermo-nuclear-review-subagent | 35b-a3b-mtp | Branch audit: bugs, security, breaking changes (loads `thermo-nuclear-review` skill) |
 | meta-agent | 35b-a3b-mtp | Create new agents/skills |
 
 **Skills (~/.pi/agent/skills/):**
@@ -117,50 +194,6 @@ Run 3 agents in parallel: explore on auth, explore on payments, triage on this b
 | code-navigation | local | Tool reference and navigation patterns |
 | tilth | local | Structural diff/blast-radius analysis |
 | to-prd | ~/.agents/skills/to-prd | PRD publishing |
-
----
-
-## Custom Prompts
-
-### 8 Workflow Prompts (~/.pi/agent/prompts/) — chain multiple agents
-
-Arguments you type after the command become positional variables (`$1`, `$2`…) inside the template. See `argument-hint` in each prompt's frontmatter for expected inputs.
-
-**Tracking: Handoff Only**
-
-| Command | Chain |
-|---------------------------|---------------------------|
-| `/quick-prototype` | prototyper → integrator |
-| `/parallel-explore-build` | explore + 2× prototyper (parallel) |
-
-**Tracking: Issues**
-
-| Command | Chain |
-|-------------------------------|---------------------------------------------|
-| `/design-and-track` | plan → human review → prototyper → human review → integrator → approve issues → to-issues |
-| `/design-with-handoffs` | plan → human review → prototyper → human review → integrator |
-| `/design-prototype-integrate` | plan → prototyper → integrator (no auto-tracking) |
-
-**Tracking: PRD + Issues**
-
-| Command | Chain |
-|-------------------------------|--------------------------------------------------|
-| `/full-initiative` | plan → human review → publish PRD → prototyper → human review → update PRD → to-issues |
-
-**Cross-Agent (spans sessions)**
-
-| Command | Chain |
-|-------------------------------|--------------------------------------------------|
-| `/cross-agent-prototype` | Grill session → prototype session → return learnings to grill session |
-
-**On-Demand Composition:**
-
-Simple 2-step chains compose directly in chat — no prompt needed:
-
-```
-explore finds the auth code → diagnose analyzes it
-explore finds changed files → reviewer reviews them
-```
 
 ---
 
@@ -207,11 +240,20 @@ To prevent context pollution, only core navigation tools are exposed as **direct
 
 ## Agent Handoff Pattern
 
-Workflows pass data between agents via `{previous}`:
+Workflows pass data between agents via `{previous}` and the `handoff` skill format from Matt's skills.
 
 1. **Agent 1** produces structured output (design spec, prototype findings, etc.)
 2. **Agent 2** receives `{previous}` as context, adds its own layer
 3. **Agent 3** receives `{previous}`, makes decisions, uses `handoff` skill to create summary
+
+### handoff Skill Format
+
+The `handoff` skill (from Matt's skills) provides the canonical structure for session-to-session communication:
+
+- **Context**: What was done in this session
+- **Decisions**: Key choices made
+- **Next Steps**: What the next agent should do
+- **Suggested Skills**: Which skills the next agent should load
 
 ### Questions for Human Pattern
 

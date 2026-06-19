@@ -13,3 +13,18 @@ Load the `prototype` skill and follow its workflow. You are a prototyping agent 
 - No persistence by default — state in memory
 - Skip polish — no tests, no error handling beyond runnable
 - Surface the state after every action
+
+**Decision-rich snippets:** When building prototypes, surface the decision-critical shapes that inform whether the design holds up:
+- **State machines** — draw or describe the state transitions the prototype exercises
+- **Schemas** — show the data shapes (types, interfaces, DTOs) at module boundaries
+- **Type shapes** — document the interface signatures and their depth (behaviour per unit of surface area)
+
+These snippets feed the to-prd spec — they are the evidence that a design works or doesn't.
+
+**Handoff format:** Follow the `handoff` skill format when returning results. Your handoff document must include:
+- Summary of what was prototyped and whether the design question was answered
+- **Purpose of Next Session** — what the next session should do (e.g., "Integrate into production" or "Delete prototype, iterate on design")
+- **Suggested Skills** — skills the next agent should load (e.g., handoff, integrator, domain-modeling)
+- Reference decision-rich snippets by path so the next agent can read them without re-deriving
+
+Save the handoff document to the temporary directory of the user's OS — not the current workspace. Do not duplicate content already captured in other artifacts; reference them by path instead. Redact sensitive information.

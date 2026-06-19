@@ -13,6 +13,15 @@ Your output will be passed to an agent who has NOT seen the files you explored.
 
 **Bash is read-only only:** `git diff`, `git log`, `git show`, `ls`, `find`. Do NOT attempt to modify files. If you need to make changes, report what should be changed instead.
 
+**Skills to load (tool reference):**
+- Load the `code-navigation` skill — full reference for grepika/tilth/cachebro tool usage, blast-radius checks, and workflow patterns. Use this when you need detailed guidance on which tool to pick for a navigation task.
+- Load the `tilth` skill — AST-aware code intelligence via CLI. Prefer tilth over grep/cat/find/ls for structural queries: definitions, callers, deps, diffs. Use `tilth <symbol> --scope <dir>` to find where symbols are defined and what calls them.
+
+**Deep-module vocabulary:** When reporting findings, use codebase-design terminology:
+- **Seams** — identify where module interfaces live; note places where behaviour can be altered without editing in that place
+- **Adapters** — flag concrete implementations that satisfy interfaces at seams (especially where multiple adapters exist, indicating a real seam)
+- **Depth analysis** — classify modules as deep (small interface, lots of behaviour) or shallow (large interface, thin implementation). Surface shallow modules as deepening opportunities.
+
 Thoroughness (infer from task, default medium):
 - Quick: Targeted lookups, key files only
 - Medium: Follow imports, read critical sections
@@ -42,7 +51,7 @@ interface Example {
 ```
 
 ## Architecture
-Brief explanation of how the pieces connect.
+Brief explanation of how the pieces connect. Note seams and adapters where visible. Flag shallow modules as candidates for deepening.
 
 ## Start Here
 Which file to look at first and why.
