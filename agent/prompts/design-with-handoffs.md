@@ -1,49 +1,41 @@
 ---
-description: Design with handoff files between steps
+description: Design with human gates between steps
 argument-hint: "<goal>"
 disable-model-invocation: true
 ---
 
-<!--
-Skills loaded by phase:
-  Phase 1 (grill)      → /grill-with-docs + /domain-modeling — relentless interview; maintain CONTEXT.md glossary + ADRs inline
-  Phase 2 (design)     → plan subagent                        — synthesize requirements into design spec
-  Phase 3 (prototype)  → prototyper subagent                  — throwaway code to validate design
-  Phase 4 (integrate)  → integrator subagent                  — fold prototype into production or delete
+**YOU ARE THE ORCHESTRATOR.** Do not do this work yourself. Use the `Agent` tool from `@tintinweb/pi-subagents`.
 
-Human reviews handoff between each step.
-Deep-module vocabulary: module, interface, depth, seam, adapter, leverage, locality.
--->
+**Agent contract:**
+- Every `Agent` call must include `subagent_type`, `description` (3-5 words), and a self-contained `prompt`.
+- Default to `inherit_context: false`; paste only the exact context the child needs into `prompt`.
+- Use each agent's config defaults (`tools`, `skills`, `thinking`, `max_turns`) unless this workflow explicitly overrides them.
+- Sequential handoff is explicit: summarize the prior result, then paste that summary/result into the next agent prompt. Do not use `{previous}`.
+- Parallel work: issue multiple `Agent({ ..., run_in_background: true })` calls in one assistant message, then use `get_subagent_result({ agent_id, wait: true, verbose: false })` or completion notifications to gather results.
+- Trust but verify: before reporting success, inspect changed files/tests yourself when agents wrote code.
 
-**YOU ARE THE ORCHESTRATOR.** Do NOT do this work yourself. Delegate every step to subagents using the `subagent` tool with `chain` parameter.
+**Active participation:** Present findings concisely (3-5 bullets max). Ask one clear question at gates. Do not dump raw transcripts unless asked.
 
-**Handoff rule:** Every subagent must load the handoff skill, use `handoff_write` to save to a `/tmp/` path, then return ONLY the file path. Do NOT create files in project root.
+Human-gated chain: grill → plan → human review → prototyper → human review → integrator.
 
-**Active participation:** Present findings concisely (3-5 bullets max). Ask ONE clear question at a time. Don't dump massive summaries.
+1. Main chat: load `/grill-with-docs` + `/domain-modeling`; sharpen requirements.
+2. Launch `plan`:
 
-Execute as a **chain** using handoff files between steps — human reviews after each phase:
-
-1. **grill** → load `/grill-with-docs` + `/domain-modeling` in main chat
-2. **plan** → writes design spec to handoff file
-3. Human reviews handoff, appends clarifications/decisions
-4. **prototyper** → reads updated handoff, builds prototype, writes findings to new handoff
-5. Human reviews prototype handoff, appends verdict
-6. **integrator** → reads final handoff, folds into production or deletes
-
-```
-subagent chain:
-  - agent: plan
-    task: $1 — Synthesize requirements into design spec. Use handoff skill and `handoff_write` tool to save structured findings. Return ONLY the handoff file path.
-  - agent: prototyper
-    task: Read design spec from handoff file: {previous}. Build prototype to validate it. Use handoff skill and `handoff_write` tool to save findings. Return ONLY the handoff file path.
-  - agent: integrator
-    task: Read prototype findings from handoff file: {previous}. Fold into production or delete. Use handoff skill and `handoff_write` tool for final summary. Return handoff file path.
+```text
+Agent fields:
+  subagent_type: plan
+  description: design spec
+  thinking: high
+  max_turns: 10
+  prompt: |
+    Goal: $1
+    Grilled notes: <paste notes>
+    Produce design spec and explicit prototyper instructions.
 ```
 
-**Before chain (orchestrator):** Load `/grill-with-docs` + `/domain-modeling` skills. Grill the user relentlessly — walk the design tree, sharpen fuzzy language, update CONTEXT.md glossary inline. When grilling is complete, proceed to subagent chain.
+3. Summarize plan in 3-5 bullets. Ask: does this match intent? Capture clarifications.
+4. Launch `prototyper` with plan + user notes pasted into prompt.
+5. Summarize verdict. Ask: integrate, iterate, or stop?
+6. If approved, launch `integrator` with design, prototype result, and user decision pasted into prompt.
 
-**After plan:** Summarize design spec and open questions. Ask: does this match your intent? Append clarifications to handoff file, then continue chain.
-
-**After prototyper:** Summarize verdict (go/no-go), what worked/didn't. Ask: proceed with integration or iterate? Append decision to handoff file, then continue chain.
-
-**Output:** Final handoff document path with complete decision trail.
+Output: final decision trail, changed files, verification, and any artifact paths.

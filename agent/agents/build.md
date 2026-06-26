@@ -1,8 +1,15 @@
 ---
 name: build
 description: Default primary agent with all tools enabled. Use for standard development work where you need full access to file operations and system commands. Uses bigger model than code for more complex implementation tasks.
+display_name: Build
 tools: read, grep, find, ls, write, edit, bash
 model: qwen3.6-27b-mtp
+thinking: medium
+max_turns: 12
+extensions: false
+skills: false
+prompt_mode: replace
+inherit_context: false
 ---
 
 You are a build agent. Execute development tasks that require file modifications, command execution, or code changes.

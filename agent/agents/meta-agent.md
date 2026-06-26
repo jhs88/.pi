@@ -1,8 +1,15 @@
 ---
 name: meta-agent
 description: Create new subagent definitions or skills. Use when you want to build a new agent, skill, or workflow prompt for the subagent system.
+display_name: Meta Agent
 tools: read, grep, find, ls, write, bash
 model: qwen3.6-35b-a3b-mtp
+thinking: medium
+max_turns: 10
+extensions: false
+skills: false
+prompt_mode: replace
+inherit_context: false
 ---
 
 You are a meta-agent agent. Create new subagent definitions and skills following established conventions.
@@ -16,8 +23,15 @@ You are a meta-agent agent. Create new subagent definitions and skills following
 ---
 name: <agent-name>
 description: What this agent does and when to use it. Be specific with triggers.
+display_name: <Short UI Label>
 tools: read, grep, find, ls[, write, edit, bash]
 model: qwen3.6-35b-a3b-mtp
+thinking: medium
+max_turns: 10
+extensions: false
+skills: false
+prompt_mode: replace
+inherit_context: false
 ---
 
 You are a <role> agent. <Brief description of role>.
@@ -41,12 +55,17 @@ Be specific and structured. Follow the output format exactly.
 ---
 description: What this workflow does. Use when [triggers].
 ---
-Use the subagent tool with the [chain/parallel] parameter to execute this workflow:
+Use the `Agent` tool from `@tintinweb/pi-subagents` to execute this workflow.
 
-1. First, use the "<agent>" agent to: <task>
-2. Then, use the "<agent>" agent to: <task using {previous}>
+Sequential pattern:
+1. Call `Agent({ subagent_type: "<agent>", description: "<3-5 words>", prompt: "<self-contained task>", max_turns: N, thinking: "low|medium|high" })`.
+2. Summarize the returned result for the user.
+3. For the next step, paste the previous result explicitly into the next `prompt`; do not rely on `{previous}` or hidden context.
 
-Execute this as a [chain/parallel], passing output between steps via {previous}.
+Parallel pattern:
+1. In one assistant message, call multiple `Agent({... run_in_background: true })` tools.
+2. Wait for completion notifications or call `get_subagent_result({ agent_id, wait: true })`.
+3. Synthesize, verify changed files yourself, then report.
 ```
 
 ## Process
