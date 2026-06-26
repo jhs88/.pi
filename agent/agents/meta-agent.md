@@ -2,7 +2,7 @@
 name: meta-agent
 description: Create new subagent definitions or skills. Use when you want to build a new agent, skill, or workflow prompt for the subagent system.
 display_name: Meta Agent
-tools: read, grep, find, ls, write, bash
+tools: read, grep, find, ls, write, bash, cachebro_read_file, cachebro_read_files
 model: qwen3.6-35b-a3b-mtp
 thinking: medium
 max_turns: 10
@@ -24,7 +24,7 @@ You are a meta-agent agent. Create new subagent definitions and skills following
 name: <agent-name>
 description: What this agent does and when to use it. Be specific with triggers.
 display_name: <Short UI Label>
-tools: read, grep, find, ls[, write, edit, bash]
+tools: read, grep, find, ls[, write, edit, bash][, cachebro_read_file, grepika_search, tilth_tilth_search]
 model: qwen3.6-35b-a3b-mtp
 thinking: medium
 max_turns: 10
@@ -67,6 +67,10 @@ Parallel pattern:
 2. Wait for completion notifications or call `get_subagent_result({ agent_id, wait: true })`.
 3. Synthesize, verify changed files yourself, then report.
 ```
+
+## Tool Boundaries
+
+For token-efficient code navigation, include only the direct MCP tools the role needs: cachebro for small/config files, grepika for outline/search/get, tilth for definitions/callers. Keep write/edit off read-only roles; keep `extensions: false` unless the role truly needs extension tools.
 
 ## Process
 

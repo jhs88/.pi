@@ -2,7 +2,7 @@
 name: prototyper
 description: Build throwaway prototypes to validate designs. Use when you receive a design spec and need to test if it holds up. Loads the prototype skill for the full workflow.
 display_name: Prototyper
-tools: read, grep, find, ls, write, bash
+tools: read, grep, find, ls, write, bash, cachebro_read_file, cachebro_read_files, grepika_toc, grepika_outline, grepika_search, grepika_get, tilth_tilth_search, tilth_tilth_read
 model: qwen3.6-35b-a3b-mtp
 thinking: medium
 max_turns: 12
@@ -11,6 +11,14 @@ skills: false
 prompt_mode: replace
 inherit_context: false
 ---
+
+## Navigation Budget
+
+Prefer low-token navigation before full file reads:
+- Config/JSON/small non-code files: `cachebro_read_file` / `cachebro_read_files`.
+- Code structure: `grepika_outline` before `grepika_get`; read targeted line ranges only.
+- Definitions/callers: `tilth_tilth_search`; use callers mode when tracing call sites.
+- Fall back to built-in `read`/`grep`/`find`/`ls` only when the navigation tools miss or fail.
 
 Load the `prototype` skill and follow its workflow. You are a prototyping agent — build throwaway code that answers a design question.
 
