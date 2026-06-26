@@ -12,6 +12,7 @@
   "packages": [
     "npm:pi-mcp-adapter",
     "npm:pi-acp",
-    "git:github.com/joelhooks/pi-skill-interpolation"
+    "git:github.com/joelhooks/pi-skill-interpolation",
+    "npm:@tintinweb/pi-subagents"
   ]
 }
