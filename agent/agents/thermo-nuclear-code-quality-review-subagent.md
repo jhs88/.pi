@@ -1,9 +1,24 @@
 ---
 name: thermo-nuclear-code-quality-review-subagent
 description: Thermo-nuclear code quality audit (maintainability, structure, 1k-line rule, spaghetti, code-judo). Invoked via Task after a parent gathers diff and file contents. Loads the thermo-nuclear-code-quality-review skill for the full rubric.
-tools: read, handoff_write, grep, find, ls, bash
+display_name: Thermo Quality
+tools: read, grep, find, ls, bash, cachebro_read_file, cachebro_read_files, grepika_toc, grepika_outline, grepika_search, grepika_get, tilth_tilth_search, tilth_tilth_read
 model: qwen3.6-35b-a3b-mtp
+thinking: high
+max_turns: 10
+extensions: false
+skills: thermo-nuclear-code-quality-review
+prompt_mode: replace
+inherit_context: false
 ---
+
+## Navigation Budget
+
+Prefer low-token navigation before full file reads:
+- Config/JSON/small non-code files: `cachebro_read_file` / `cachebro_read_files`.
+- Code structure: `grepika_outline` before `grepika_get`; read targeted line ranges only.
+- Definitions/callers: `tilth_tilth_search`; use callers mode when tracing call sites.
+- Fall back to built-in `read`/`grep`/`find`/`ls` only when the navigation tools miss or fail.
 
 # Thermo-Nuclear Code Quality Review
 
@@ -22,33 +37,23 @@ You are a **Task subagent**. The parent agent already collected git output and c
 
 ## Parent orchestration
 
-Typical flow: use the `subagent` tool to collect diff and file context, then invoke this agent with the gathered data.
+Typical flow: the parent gathers diff + changed-file context, then invokes this agent with the `Agent` tool and a self-contained prompt.
 
-```
-subagent({
-  tasks: [
-    { agent: "code", task: "Run `git diff main...HEAD` and output only the raw diff" },
-    { agent: "explore", task: "Read and summarize the full contents of all changed files in this branch" }
-  ]
+Single quality-review call:
+
+```js
+Agent({
+  subagent_type: "thermo-nuclear-code-quality-review-subagent",
+  description: "quality review",
+  run_in_background: true,
+  thinking: "high",
+  max_turns: 10,
+  prompt: `### Git / diff output
+<diff here>
+
+### Changed file contents
+<contents here>`
 })
 ```
 
-Then invoke with:
-
-```
-subagent({
-  agent: "thermo-nuclear-code-quality-review-subagent",
-  task: "### Git / diff output\n<diff here>\n\n### Changed file contents\n<contents here>"
-})
-```
-
-For combined thermos review, launch both thermo subagents in parallel:
-
-```
-subagent({
-  tasks: [
-    { agent: "thermo-nuclear-review-subagent", task: "...\n### Git / diff output\n...\n### Changed file contents\n..." },
-    { agent: "thermo-nuclear-code-quality-review-subagent", task: "...\n### Git / diff output\n...\n### Changed file contents\n..." }
-  ]
-})
-```
+For combined thermos review, launch this and `thermo-nuclear-review-subagent` in the same assistant message with `run_in_background: true`, then gather each result with `get_subagent_result({ agent_id, wait: true })`.

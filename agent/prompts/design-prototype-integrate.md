@@ -4,38 +4,66 @@ argument-hint: "<goal>"
 disable-model-invocation: true
 ---
 
-<!--
-Skills loaded by phase:
-  Phase 1 (grill)      → /grill-with-docs               — relentless interview; maintains CONTEXT.md + ADRs via domain-modeling
-  Phase 2 (design)     → plan subagent                        — synthesize requirements into design spec
-  Phase 3 (prototype)  → prototyper subagent                  — throwaway code to validate design
-  Phase 4 (integrate)  → integrator subagent                  — fold prototype into production or delete
+**YOU ARE THE ORCHESTRATOR.** Do not do this work yourself. Use the `Agent` tool from `@tintinweb/pi-subagents`.
 
-No human gates in this variant — straight chain.
-Deep-module vocabulary: module, interface, depth, seam, adapter, leverage, locality.
--->
+**Agent contract:**
+- Every `Agent` call must include `subagent_type`, `description` (3-5 words), and a self-contained `prompt`.
+- Default to `inherit_context: false`; paste only the exact context the child needs into `prompt`.
+- Use each agent's config defaults (`tools`, `skills`, `thinking`, `max_turns`) unless this workflow explicitly overrides them.
+- Sequential handoff is explicit: summarize the prior result, then paste that summary/result into the next agent prompt. Do not use `{previous}`.
+- Parallel work: issue multiple `Agent({ ..., run_in_background: true })` calls in one assistant message, then use `get_subagent_result({ agent_id, wait: true, verbose: false })` or completion notifications to gather results.
+- Trust but verify: before reporting success, inspect changed files/tests yourself when agents wrote code.
 
-**YOU ARE THE ORCHESTRATOR.** Do NOT do this work yourself. Delegate every step to subagents using the `subagent` tool with `chain` parameter.
+**Active participation:** Present findings concisely (3-5 bullets max). Ask one clear question at gates. Do not dump raw transcripts unless asked.
 
-**Handoff rule:** Every subagent must load the handoff skill, use `handoff_write` to save to a `/tmp/` path, then return ONLY the file path. Do NOT create files in project root.
+Straight chain: grill in main chat, then plan → prototyper → integrator.
 
-Execute as a chain — grill first, then delegate to plan → prototyper → integrator:
+1. Main chat: load `/grill-with-docs`; resolve core requirements and constraints.
+2. Launch plan:
 
-1. **grill** → load `/grill-with-docs` skill in main chat
-2. **plan** → design spec (handoff file)
-3. **prototyper** → throwaway prototype to validate design (handoff file)
-4. **integrator** → fold into production or delete (final handoff)
-
-```
-subagent chain:
-  - agent: plan
-    task: $1 — Synthesize requirements into a design spec. Use handoff skill and `handoff_write` tool to save structured findings. Return ONLY the handoff file path.
-  - agent: prototyper
-    task: Read design spec from handoff file: {previous}. Build prototype to validate it. Output handoff notes for the integrator.
-  - agent: integrator
-    task: Review prototype findings from handoff file: {previous}. Fold into production code or delete prototype. Use handoff skill and `handoff_write` tool to create summary. Return the handoff document path.
+```text
+Agent fields:
+  subagent_type: plan
+  description: design spec
+  thinking: high
+  max_turns: 10
+  prompt: |
+    Goal: $1
+    Grilled requirements: <insert notes>
+    Synthesize a design spec with constraints, success criteria, domain model, module design, open questions, and prototyper instructions.
 ```
 
-**Before chain (orchestrator):** Load `/grill-with-docs` skill. Grill the user relentlessly — walk the design tree, sharpen fuzzy language, maintain CONTEXT.md via domain-modeling. When grilling is complete, proceed to subagent chain without human gates.
+3. Launch prototyper with the plan result pasted explicitly:
 
-**Output:** Final handoff document path and summary of what was built/decided.
+```text
+Agent fields:
+  subagent_type: prototyper
+  description: validate design
+  thinking: medium
+  max_turns: 12
+  prompt: |
+    Design spec:
+    <paste plan result>
+
+    Build a throwaway prototype to validate the riskiest assumption. Return verdict, files, command, and decision-rich snippets.
+```
+
+4. Launch integrator with plan + prototype result pasted explicitly:
+
+```text
+Agent fields:
+  subagent_type: integrator
+  description: integrate result
+  thinking: high
+  max_turns: 14
+  prompt: |
+    Design spec:
+    <paste plan result>
+
+    Prototype result:
+    <paste prototype result>
+
+    Fold validated pieces into production or delete prototype. Verify and report.
+```
+
+Output: final summary, changed files, verification, ADR/CONTEXT updates if any.

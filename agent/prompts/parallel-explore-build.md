@@ -3,26 +3,39 @@ description: Explore + prototype options in parallel
 argument-hint: "<area> <option-A> <option-B>"
 ---
 
-**YOU ARE THE ORCHESTRATOR.** Do NOT do this work yourself. Delegate every step to subagents using the `subagent` tool with `parallel` parameter.
+**YOU ARE THE ORCHESTRATOR.** Do not do this work yourself. Use the `Agent` tool from `@tintinweb/pi-subagents`.
 
-**Handoff rule:** Every subagent must run `mktemp -t handoff-XXXXXX.md` first, write to that temp path, then return ONLY the file path. Do NOT create files in project root.
+**Agent contract:**
+- Every `Agent` call must include `subagent_type`, `description` (3-5 words), and a self-contained `prompt`.
+- Default to `inherit_context: false`; paste only the exact context the child needs into `prompt`.
+- Use each agent's config defaults (`tools`, `skills`, `thinking`, `max_turns`) unless this workflow explicitly overrides them.
+- Sequential handoff is explicit: summarize the prior result, then paste that summary/result into the next agent prompt. Do not use `{previous}`.
+- Parallel work: issue multiple `Agent({ ..., run_in_background: true })` calls in one assistant message, then use `get_subagent_result({ agent_id, wait: true, verbose: false })` or completion notifications to gather results.
+- Trust but verify: before reporting success, inspect changed files/tests yourself when agents wrote code.
 
-Execute as **parallel** agents, then synthesize:
+**Active participation:** Present findings concisely (3-5 bullets max). Ask one clear question at gates. Do not dump raw transcripts unless asked.
 
-1. **explore** — Explore codebase area (read-only)
-2. **prototyper** — Build prototype for Option A
-3. **prototyper** — Build prototype for Option B (different task)
+Execute as **parallel background agents**, then synthesize:
 
+```js
+Agent({
+  subagent_type: "explore",
+  description: "explore area",
+  run_in_background: true,
+  prompt: "$1 — Explore this area. Return compressed findings on current architecture, seams, friction points, and files to inspect first."
+})
+Agent({
+  subagent_type: "prototyper",
+  description: "prototype option A",
+  run_in_background: true,
+  prompt: "$2 — Build a throwaway prototype for this approach. Return verdict, runnable command, files changed/created, and decision-rich snippets."
+})
+Agent({
+  subagent_type: "prototyper",
+  description: "prototype option B",
+  run_in_background: true,
+  prompt: "$3 — Build a throwaway prototype for this alternative. Return verdict, runnable command, files changed/created, and decision-rich snippets."
+})
 ```
-subagent parallel:
-  - agent: explore
-    task: $1 — Explore this area. Output compressed findings on current architecture and friction points.
-  - agent: prototyper
-    task: $2 — Build a prototype for this approach. Output findings and verdict.
-  - agent: prototyper
-    task: $3 — Build a prototype for this alternative approach. Output findings and verdict.
-```
 
-**After parallel run:** Read all handoff files. Present a side-by-side comparison inline (don't just list paths). Summarize: what each option did well, where each struggled, key tradeoffs. Ask: which direction should we take? Then either continue chain to integrator or present recommendation.
-
-**Output:** Side-by-side comparison table + user decision + next steps.
+After all finish: read relevant files if prototypes wrote code, compare results side-by-side, and ask which direction to take. Output a comparison table + recommendation + next step.

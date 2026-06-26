@@ -4,47 +4,37 @@ argument-hint: "<handoff-path>"
 disable-model-invocation: true
 ---
 
-<!--
-Skills loaded by phase:
-  Session 1 (grill)    → /grill-with-docs               — relentless interview; maintains CONTEXT.md + ADRs via domain-modeling
-  Session 2 (prototype)→ /prototype                     — throwaway code to answer the technical question from grilling
-  Handoff format       → /handoff                       — compact conversation to markdown with "suggested skills" section
+**YOU ARE THE ORCHESTRATOR.** Do not do this work yourself. Use the `Agent` tool from `@tintinweb/pi-subagents`.
 
-Deep-module vocabulary: module, interface, depth, seam, adapter, leverage, locality.
--->
+**Agent contract:**
+- Every `Agent` call must include `subagent_type`, `description` (3-5 words), and a self-contained `prompt`.
+- Default to `inherit_context: false`; paste only the exact context the child needs into `prompt`.
+- Use each agent's config defaults (`tools`, `skills`, `thinking`, `max_turns`) unless this workflow explicitly overrides them.
+- Sequential handoff is explicit: summarize the prior result, then paste that summary/result into the next agent prompt. Do not use `{previous}`.
+- Parallel work: issue multiple `Agent({ ..., run_in_background: true })` calls in one assistant message, then use `get_subagent_result({ agent_id, wait: true, verbose: false })` or completion notifications to gather results.
+- Trust but verify: before reporting success, inspect changed files/tests yourself when agents wrote code.
 
-**YOU ARE THE ORCHESTRATOR.** Do NOT do this work yourself. Delegate to subagents using the `subagent` tool.
+**Active participation:** Present findings concisely (3-5 bullets max). Ask one clear question at gates. Do not dump raw transcripts unless asked.
 
-This workflow spans THREE sessions: grilling → prototype → close loop.
+This workflow spans three sessions: grilling → prototype → close loop.
 
 ## Session 1: Grill and Scope
+Load `/grill-with-docs` in the main chat. Maintain CONTEXT.md/ADRs via domain-modeling as decisions crystallize. When a technical question needs code validation, create a compact handoff file containing: question, constraints, relevant snippets, success criteria, suggested skills.
 
-Load `/grill-with-docs` skill in the main chat to grill requirements relentlessly. Maintain CONTEXT.md glossary and ADRs inline via domain-modeling as decisions crystallize.
+## Session 2: Prototype
+Launch a foreground prototyper. The handoff path is input `$1`:
 
-When a technical question arises that needs code validation, load `/handoff` skill to create a handoff file for the prototype session:
-
-```
-Use /handoff skill — include "suggested skills" section recommending /prototype (logic branch).
-Save to `/tmp/handoff-prototype-*.md`.
-Return the handoff file path.
-```
-
-## Session 2: Prototype (new session)
-
-Start fresh with the handoff file path. Load `/prototype` skill and delegate to prototyper:
-
-```
-subagent chain:
-  - agent: prototyper
-    task: Read prototype request from handoff file: $1. Load /prototype skill — build minimal throwaway prototype to answer the technical question. Output verdict + validated snippets (state machines, schemas, type shapes) that encode decisions more precisely than prose. Use /handoff skill and `handoff_write` tool to create RETURN document at `/tmp/handoff-return-*.md`. Return ONLY the return handoff path.
+```js
+Agent({
+  subagent_type: "prototyper",
+  description: "validate handoff",
+  thinking: "medium",
+  max_turns: 12,
+  prompt: "Read prototype request from handoff file: $1. Build a minimal throwaway prototype that answers the technical question. Return verdict + validated snippets (state machines, schemas, type shapes). If the result is too large, write /tmp/handoff-return-*.md and return that path."
+})
 ```
 
-## Session 3: Close the Loop (back to original session)
+## Session 3: Close the Loop
+Read the prototyper result/return handoff. Summarize validated learnings inline, update design/PRD with prototype snippets, then continue planning.
 
-Pass the return handoff file back to your grilling/planning session:
-
-```
-Read return handoff → summarize validated learnings inline → update design spec/PRD with prototype snippets → continue planning
-```
-
-**Output:** Return handoff file path to pass back to original session.
+Output: return handoff path if created, otherwise the inline prototype verdict.
