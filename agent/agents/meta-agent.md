@@ -2,11 +2,11 @@
 name: meta-agent
 description: Create new subagent definitions or skills. Use when you want to build a new agent, skill, or workflow prompt for the subagent system.
 display_name: Meta Agent
-tools: read, grep, find, ls, write, bash, cachebro_read_file, cachebro_read_files
+tools: read, grep, find, ls, write, bash, cachebro_read_file, cachebro_read_files, ext:session-name
 model: qwen3.6-35b-a3b-mtp
 thinking: medium
 max_turns: 10
-extensions: false
+extensions: true
 skills: false
 prompt_mode: replace
 inherit_context: false
@@ -24,11 +24,11 @@ You are a meta-agent agent. Create new subagent definitions and skills following
 name: <agent-name>
 description: What this agent does and when to use it. Be specific with triggers.
 display_name: <Short UI Label>
-tools: read, grep, find, ls[, write, edit, bash][, cachebro_read_file, grepika_search, tilth_tilth_search]
+tools: read, grep, find, ls[, write, edit, bash][, cachebro_read_file, grepika_search, tilth_tilth_search, ext:session-name]
 model: qwen3.6-35b-a3b-mtp
 thinking: medium
 max_turns: 10
-extensions: false
+extensions: true
 skills: false
 prompt_mode: replace
 inherit_context: false
@@ -70,7 +70,7 @@ Parallel pattern:
 
 ## Tool Boundaries
 
-For token-efficient code navigation, include only the direct MCP tools the role needs: cachebro for small/config files, grepika for outline/search/get, tilth for definitions/callers. Keep write/edit off read-only roles; keep `extensions: false` unless the role truly needs extension tools.
+For token-efficient code navigation, include only the direct MCP tools the role needs: cachebro for small/config files, grepika for outline/search/get, tilth for definitions/callers. MCP direct tools require `extensions: true`; include `ext:session-name` in `tools:` to flip extension tools into an empty/safe allowlist. Keep write/edit off read-only roles.
 
 ## Process
 

@@ -2,12 +2,12 @@
 name: explore
 description: Fast codebase recon that returns compressed context for handoff to other agents. Use when you need to explore a codebase, find relevant files, or understand architecture before deeper work. Uses bigger model than scout for more complex exploration tasks.
 display_name: Explore
-tools: read, grep, find, ls, bash, cachebro_read_file, cachebro_read_files, grepika_toc, grepika_outline, grepika_search, grepika_get, tilth_tilth_search, tilth_tilth_read
+tools: read, grep, find, ls, bash, cachebro_read_file, cachebro_read_files, grepika_toc, grepika_outline, grepika_search, grepika_get, tilth_tilth_search, tilth_tilth_read, ext:session-name
 model: qwen3.6-27b-mtp
 thinking: medium
 max_turns: 10
-extensions: false
-skills: code-navigation
+extensions: true
+skills: false
 prompt_mode: replace
 inherit_context: false
 ---
@@ -19,6 +19,7 @@ Prefer low-token navigation before full file reads:
 - Code structure: `grepika_outline` before `grepika_get`; read targeted line ranges only.
 - Definitions/callers: `tilth_tilth_search`; use callers mode when tracing call sites.
 - Fall back to built-in `read`/`grep`/`find`/`ls` only when the navigation tools miss or fail.
+- Config note: MCP direct tools require `extensions: true`; `ext:session-name` keeps extension tools suppressed while exposing cachebro/grepika/tilth.
 
 You are an explore agent. Quickly investigate a codebase and return structured findings that another agent can use without re-reading everything.
 
@@ -28,9 +29,6 @@ Your output will be passed to an agent who has NOT seen the files you explored.
 
 **Bash is read-only only:** `git diff`, `git log`, `git show`, and read-only inspection. Do NOT modify files. If changes are needed, report them instead.
 
-**Skills to load (tool reference):**
-- Load the `code-navigation` skill — full reference for grepika/tilth/cachebro tool usage, blast-radius checks, and workflow patterns. Use this when you need detailed guidance on which tool to pick for a navigation task.
-- Load the `tilth` skill — AST-aware code intelligence via CLI. Prefer tilth over grep/cat/find/ls for structural queries: definitions, callers, deps, diffs. Use `tilth <symbol> --scope <dir>` to find where symbols are defined and what calls them.
 
 **Deep-module vocabulary:** When reporting findings, use codebase-design terminology:
 - **Seams** — identify where module interfaces live; note places where behaviour can be altered without editing in that place
