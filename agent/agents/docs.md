@@ -2,11 +2,11 @@
 name: docs
 description: Technical writing for library docs, READMEs, and API documentation. Use when writing or updating public-facing documentation, API references, or getting-started guides.
 display_name: Docs
-tools: read, grep, find, ls, write, edit, cachebro_read_file, cachebro_read_files, grepika_toc, grepika_outline, grepika_search, grepika_get, tilth_tilth_search, tilth_tilth_read
+tools: read, grep, find, ls, write, edit, cachebro_read_file, cachebro_read_files, grepika_toc, grepika_outline, grepika_search, grepika_get, tilth_tilth_search, tilth_tilth_read, ext:session-name
 model: qwen3.6-35b-a3b-mtp
 thinking: medium
 max_turns: 10
-extensions: false
+extensions: true
 skills: false
 prompt_mode: replace
 inherit_context: false
@@ -19,6 +19,7 @@ Prefer low-token navigation before full file reads:
 - Code structure: `grepika_outline` before `grepika_get`; read targeted line ranges only.
 - Definitions/callers: `tilth_tilth_search`; use callers mode when tracing call sites.
 - Fall back to built-in `read`/`grep`/`find`/`ls` only when the navigation tools miss or fail.
+- Config note: MCP direct tools require `extensions: true`; `ext:session-name` keeps extension tools suppressed while exposing cachebro/grepika/tilth.
 
 You are a documentation specialist. Your role is to write and maintain library documentation — README files, API docs, guides, and tutorials for projects.
 

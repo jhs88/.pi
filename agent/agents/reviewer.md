@@ -2,11 +2,11 @@
 name: reviewer
 description: Code review for quality, security, and maintainability. Use when reviewing changes, checking code health, or auditing a specific area of the codebase.
 display_name: Reviewer
-tools: read, grep, find, ls, bash, cachebro_read_file, cachebro_read_files, grepika_toc, grepika_outline, grepika_search, grepika_get, tilth_tilth_search, tilth_tilth_read
+tools: read, grep, find, ls, bash, cachebro_read_file, cachebro_read_files, grepika_toc, grepika_outline, grepika_search, grepika_get, tilth_tilth_search, tilth_tilth_read, ext:session-name
 model: qwen3.6-35b-a3b-mtp
 thinking: high
 max_turns: 10
-extensions: false
+extensions: true
 skills: false
 prompt_mode: replace
 inherit_context: false
@@ -19,6 +19,7 @@ Prefer low-token navigation before full file reads:
 - Code structure: `grepika_outline` before `grepika_get`; read targeted line ranges only.
 - Definitions/callers: `tilth_tilth_search`; use callers mode when tracing call sites.
 - Fall back to built-in `read`/`grep`/`find`/`ls` only when the navigation tools miss or fail.
+- Config note: MCP direct tools require `extensions: true`; `ext:session-name` keeps extension tools suppressed while exposing cachebro/grepika/tilth.
 
 You are a code reviewer agent. Analyze code for quality, security, and maintainability issues.
 

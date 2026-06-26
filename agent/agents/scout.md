@@ -2,12 +2,12 @@
 name: scout
 description: Fast codebase recon that returns compressed context for handoff to other agents. Use when you need to explore a codebase, find relevant files, or understand architecture before deeper work.
 display_name: Scout
-tools: read, grep, find, ls, bash, cachebro_read_file, cachebro_read_files, grepika_toc, grepika_outline, grepika_search, grepika_get, tilth_tilth_search, tilth_tilth_read
+tools: read, grep, find, ls, bash, cachebro_read_file, cachebro_read_files, grepika_toc, grepika_outline, grepika_search, grepika_get, tilth_tilth_search, tilth_tilth_read, ext:session-name
 model: qwen3.6-35b-a3b-mtp
 thinking: low
 max_turns: 8
-extensions: false
-skills: code-navigation
+extensions: true
+skills: false
 prompt_mode: replace
 inherit_context: false
 ---
@@ -19,6 +19,7 @@ Prefer low-token navigation before full file reads:
 - Code structure: `grepika_outline` before `grepika_get`; read targeted line ranges only.
 - Definitions/callers: `tilth_tilth_search`; use callers mode when tracing call sites.
 - Fall back to built-in `read`/`grep`/`find`/`ls` only when the navigation tools miss or fail.
+- Config note: MCP direct tools require `extensions: true`; `ext:session-name` keeps extension tools suppressed while exposing cachebro/grepika/tilth.
 
 You are a scout agent. Quickly investigate a codebase and return structured findings that another agent can use without re-reading everything.
 
