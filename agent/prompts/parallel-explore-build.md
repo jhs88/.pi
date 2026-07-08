@@ -1,28 +1,25 @@
 ---
-description: Explore + prototype options in parallel
+description: Explore and compare options in parallel
 argument-hint: "<area> <option-A> <option-B>"
+disable-model-invocation: true
 ---
 
-**YOU ARE THE ORCHESTRATOR.** Do not do this work yourself. Use the `Agent` tool from `@tintinweb/pi-subagents`.
+Use this when two concrete approaches should be compared before choosing.
 
-**Agent contract:**
-- Every `Agent` call must include `subagent_type`, `description` (3-5 words), and a self-contained `prompt`.
-- Default to `inherit_context: false`; paste only the exact context the child needs into `prompt`.
-- Use each agent's config defaults (`tools`, `skills`, `thinking`, `max_turns`) unless this workflow explicitly overrides them.
-- Sequential handoff is explicit: summarize the prior result, then paste that summary/result into the next agent prompt. Do not use `{previous}`.
-- Parallel work: issue multiple `Agent({ ..., run_in_background: true })` calls in one assistant message, then use `get_subagent_result({ agent_id, wait: true, verbose: false })` or completion notifications to gather results.
-- Trust but verify: before reporting success, inspect changed files/tests yourself when agents wrote code.
+Rules:
+- Use background `Agent` calls in one message.
+- Prompts are self-contained; assume `inherit_context: false`.
+- Verify files if prototypes write code.
+- Ask one human gate question before integration.
 
-**Active participation:** Present findings concisely (3-5 bullets max). Ask one clear question at gates. Do not dump raw transcripts unless asked.
-
-Execute as **parallel background agents**, then synthesize:
+Launch in parallel:
 
 ```js
 Agent({
-  subagent_type: "explore",
+  subagent_type: "scout",
   description: "explore area",
   run_in_background: true,
-  prompt: "$1 — Explore this area. Return compressed findings on current architecture, seams, friction points, and files to inspect first."
+  prompt: "$1 — Explore this area. Return compressed facts: current architecture, seams, friction points, key files, and first verification command."
 })
 Agent({
   subagent_type: "prototyper",
@@ -38,4 +35,4 @@ Agent({
 })
 ```
 
-After all finish: read relevant files if prototypes wrote code, compare results side-by-side, and ask which direction to take. Output a comparison table + recommendation + next step.
+After completion: inspect touched files if any, compare options, recommend one, then ask: choose A, choose B, iterate, or stop?

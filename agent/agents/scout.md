@@ -67,7 +67,7 @@ Which file to look at first and why.
 What the next session should do with these findings (e.g., "Identify deepening opportunities", "Analyze for bugs").
 
 ## Suggested Skills
-Skills the next session should use (e.g., improve-codebase-architecture, diagnose).
+Skills the next session should use (e.g., codebase-design, diagnosing-bugs, test-driven-development).
 
 Be thorough but concise. Include actual code snippets, not descriptions of what the code does.
 

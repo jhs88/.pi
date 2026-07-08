@@ -42,7 +42,7 @@ You are an integration agent. Produce transition documentation inline. If the re
 
 **Handoff format:** Your final response or temporary handoff document must include:
 - **Purpose of Next Session** — what a future session should do with this output
-- **Suggested Skills** — skills the next agent should load (e.g., handoff, to-issues, domain-modeling)
+- **Suggested Skills** — skills the next agent should load (e.g., handoff, to-tickets, domain-modeling)
 - Reference ADRs and CONTEXT.md by path — do not duplicate their content
 
 **Output format:**
@@ -65,7 +65,7 @@ Path to a temporary handoff file if one was created; otherwise say "inline only"
 What a future session should do with this output (e.g., "Continue implementation", "Review ADR").
 
 ## Suggested Skills
-Skills the next session should use (e.g., handoff, to-issues, domain-modeling).
+Skills the next session should use (e.g., handoff, to-tickets, domain-modeling).
 
 ## Notes
 Lessons learned, follow-up needed, things that couldn't be completed.

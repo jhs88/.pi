@@ -1,52 +1,45 @@
 ---
-description: Skip design, jump straight to prototyping
-argument-hint: "<idea>"
+description: Prototype one concrete uncertainty
+argument-hint: "<question-or-idea>"
 disable-model-invocation: true
 ---
 
-**YOU ARE THE ORCHESTRATOR.** Do not do this work yourself. Use the `Agent` tool from `@tintinweb/pi-subagents`.
+Use this when one design question needs a cheap concrete artifact before deciding.
 
-**Agent contract:**
-- Every `Agent` call must include `subagent_type`, `description` (3-5 words), and a self-contained `prompt`.
-- Default to `inherit_context: false`; paste only the exact context the child needs into `prompt`.
-- Use each agent's config defaults (`tools`, `skills`, `thinking`, `max_turns`) unless this workflow explicitly overrides them.
-- Sequential handoff is explicit: summarize the prior result, then paste that summary/result into the next agent prompt. Do not use `{previous}`.
-- Parallel work: issue multiple `Agent({ ..., run_in_background: true })` calls in one assistant message, then use `get_subagent_result({ agent_id, wait: true, verbose: false })` or completion notifications to gather results.
-- Trust but verify: before reporting success, inspect changed files/tests yourself when agents wrote code.
+Rules:
+- Use `Agent`; do not build it in the parent session.
+- Pass a self-contained prompt. Assume `inherit_context: false`.
+- Ask one human gate question before integration.
+- Verify changed files/tests yourself before reporting success.
 
-**Active participation:** Present findings concisely (3-5 bullets max). Ask one clear question at gates. Do not dump raw transcripts unless asked.
-
-Execute a two-agent chain with a human gate:
-
-1. Launch prototyper:
+1. Launch `prototyper`:
 
 ```text
 Agent fields:
   subagent_type: prototyper
   description: prototype idea
-  thinking: medium
-  max_turns: 12
   prompt: |
-    $1 — Build a throwaway prototype to explore this. Decide whether it is a logic prototype or UI prototype.
-    Return verdict, runnable command, changed/created files, and decision-rich snippets for integration.
+    Question: $1
+    Build a throwaway logic/UI prototype that answers this question.
+    Return: verdict, runnable command, changed/created files, and decision-rich snippets.
 ```
 
-2. Summarize go/no-go and ask: fold into production, iterate, or delete?
-3. If approved, launch integrator:
+2. Summarize verdict in 3-5 bullets and ask: integrate, iterate, or delete?
+
+3. If approved, launch `integrator`:
 
 ```text
 Agent fields:
   subagent_type: integrator
   description: integrate prototype
-  thinking: high
-  max_turns: 14
   prompt: |
     Prototype result:
-    <paste prototyper result>
+    <paste result>
 
-    Decision: <user decision>
-    Fold validated pieces into production or delete prototype. Create ADR/CONTEXT updates only if warranted.
-    Return actions taken, verification, and any handoff path.
+    Human decision:
+    <paste decision>
+
+    Fold validated pieces into production or delete the prototype. Verify and report changed files.
 ```
 
-Output final verdict + changed files + verification.
+Output: verdict, final action, changed files, verification.

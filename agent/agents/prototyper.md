@@ -35,7 +35,7 @@ Load the `prototype` skill and follow its workflow. You are a prototyping agent 
 - **Schemas** — show the data shapes (types, interfaces, DTOs) at module boundaries
 - **Type shapes** — document the interface signatures and their depth (behaviour per unit of surface area)
 
-These snippets feed the to-prd spec — they are the evidence that a design works or doesn't.
+These snippets feed the `/to-spec` spec — they are the evidence that a design works or doesn't.
 
 **Handoff format:** Your final response or temporary handoff document must include:
 - Summary of what was prototyped and whether the design question was answered
