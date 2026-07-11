@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.79.6",
+  "lastChangelogVersion": "0.80.6",
   "defaultProvider": "llamacpp",
   "defaultModel": "qwen3.6-27b-mtp",
   "hideThinkingBlock": false,
@@ -14,5 +14,26 @@
     "npm:pi-acp",
     "git:github.com/joelhooks/pi-skill-interpolation",
     "npm:@tintinweb/pi-subagents"
+  ],
+  "enabledModels": [
+    "openai-codex/gpt-5.3-codex-spark",
+    "openai-codex/gpt-5.4",
+    "openai-codex/gpt-5.4-mini",
+    "openai-codex/gpt-5.5",
+    "llamacpp/eousphoros/kappa-20b-131k",
+    "llamacpp/google/gemma-4-26b-a4b",
+    "llamacpp/google/gemma-4-31b",
+    "llamacpp/qwen3-coder-next",
+    "llamacpp/qwen3.5-122b-a10b",
+    "llamacpp/qwen3.6-27b-mtp",
+    "llamacpp/qwen3.6-35b-a3b-mtp",
+    "llamacpp/nvidia-nemotron-3-nano-omni-30b-a3b-reasoning",
+    "llamacpp/unsloth/nvidia-nemotron-3-super-120b-a12b",
+    "llamacpp/glm-4.7-flash",
+    "llamacpp/nouscoder-14b",
+    "llamacpp/hermes-4.3-36b",
+    "openai-codex/gpt-5.6-luna",
+    "openai-codex/gpt-5.6-sol",
+    "openai-codex/gpt-5.6-terra"
   ]
 }

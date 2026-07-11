@@ -3,7 +3,6 @@ name: docs
 description: Technical writing for library docs, READMEs, and API documentation. Use when writing or updating public-facing documentation, API references, or getting-started guides.
 display_name: Docs
 tools: read, grep, find, ls, write, edit, cachebro_read_file, cachebro_read_files, grepika_toc, grepika_outline, grepika_search, grepika_get, tilth_tilth_search, tilth_tilth_read, ext:session-name
-model: qwen3.6-35b-a3b-mtp
 thinking: medium
 max_turns: 10
 extensions: true

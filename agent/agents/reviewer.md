@@ -3,7 +3,6 @@ name: reviewer
 description: Code review for quality, security, and maintainability. Use when reviewing changes, checking code health, or auditing a specific area of the codebase.
 display_name: Reviewer
 tools: read, grep, find, ls, bash, cachebro_read_file, cachebro_read_files, grepika_toc, grepika_outline, grepika_search, grepika_get, tilth_tilth_search, tilth_tilth_read, ext:session-name
-model: qwen3.6-35b-a3b-mtp
 thinking: high
 max_turns: 10
 extensions: true

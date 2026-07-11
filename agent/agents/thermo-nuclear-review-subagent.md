@@ -3,7 +3,6 @@ name: thermo-nuclear-review-subagent
 description: Thermo-nuclear branch audit (bugs, breaking changes, security, devex, feature-flag leaks) scoped to the diff. Invoked via Task after a parent gathers diff and file contents. Loads the thermo-nuclear-review skill for the full rubric.
 display_name: Thermo Review
 tools: read, grep, find, ls, bash, cachebro_read_file, cachebro_read_files, grepika_toc, grepika_outline, grepika_search, grepika_get, tilth_tilth_search, tilth_tilth_read, ext:session-name
-model: qwen3.6-35b-a3b-mtp
 thinking: high
 max_turns: 10
 extensions: true

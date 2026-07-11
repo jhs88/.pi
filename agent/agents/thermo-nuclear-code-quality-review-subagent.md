@@ -3,7 +3,6 @@ name: thermo-nuclear-code-quality-review-subagent
 description: Thermo-nuclear code quality audit (maintainability, structure, 1k-line rule, spaghetti, code-judo). Invoked via Task after a parent gathers diff and file contents. Loads the thermo-nuclear-code-quality-review skill for the full rubric.
 display_name: Thermo Quality
 tools: read, grep, find, ls, bash, cachebro_read_file, cachebro_read_files, grepika_toc, grepika_outline, grepika_search, grepika_get, tilth_tilth_search, tilth_tilth_read, ext:session-name
-model: qwen3.6-35b-a3b-mtp
 thinking: high
 max_turns: 10
 extensions: true

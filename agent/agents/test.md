@@ -3,7 +3,6 @@ name: test
 description: Writing and debugging tests, improving code coverage. Use when writing unit/integration/e2e tests, fixing failing tests, or analyzing test gaps.
 display_name: Test
 tools: read, grep, find, ls, write, edit, bash, cachebro_read_file, cachebro_read_files, grepika_toc, grepika_outline, grepika_search, grepika_get, tilth_tilth_search, tilth_tilth_read, ext:session-name
-model: qwen3.6-35b-a3b-mtp
 thinking: medium
 max_turns: 12
 extensions: true

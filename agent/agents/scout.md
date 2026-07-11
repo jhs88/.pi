@@ -3,7 +3,6 @@ name: scout
 description: Fast codebase recon that returns compressed context for handoff to other agents. Use when you need to explore a codebase, find relevant files, or understand architecture before deeper work.
 display_name: Scout
 tools: read, grep, find, ls, bash, cachebro_read_file, cachebro_read_files, grepika_toc, grepika_outline, grepika_search, grepika_get, tilth_tilth_search, tilth_tilth_read, ext:session-name
-model: qwen3.6-35b-a3b-mtp
 thinking: low
 max_turns: 8
 extensions: true

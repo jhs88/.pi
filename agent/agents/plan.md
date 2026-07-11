@@ -3,7 +3,6 @@ name: plan
 description: Produce structured design specs from requirements. Use when starting a new feature, exploring architecture, or before prototyping.
 display_name: Plan
 tools: read, grep, find, ls, cachebro_read_file, cachebro_read_files, grepika_toc, grepika_outline, grepika_search, grepika_get, tilth_tilth_search, tilth_tilth_read, ext:session-name
-model: qwen3.6-35b-a3b-mtp
 thinking: high
 max_turns: 10
 extensions: true

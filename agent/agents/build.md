@@ -1,9 +1,8 @@
 ---
 name: build
-description: Default primary agent with all tools enabled. Use for standard development work where you need full access to file operations and system commands. Uses bigger model than code for more complex implementation tasks.
+description: Default primary agent with all tools enabled. Use for standard development work where you need full access to file operations and system commands.
 display_name: Build
 tools: read, grep, find, ls, write, edit, bash, cachebro_read_file, cachebro_read_files, grepika_toc, grepika_outline, grepika_search, grepika_get, tilth_tilth_search, tilth_tilth_read, ext:session-name
-model: qwen3.6-27b-mtp
 thinking: medium
 max_turns: 12
 extensions: true

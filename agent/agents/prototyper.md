@@ -3,7 +3,6 @@ name: prototyper
 description: Build throwaway prototypes to validate designs. Use when you receive a design spec and need to test if it holds up. Loads the prototype skill for the full workflow.
 display_name: Prototyper
 tools: read, grep, find, ls, write, bash, cachebro_read_file, cachebro_read_files, grepika_toc, grepika_outline, grepika_search, grepika_get, tilth_tilth_search, tilth_tilth_read, ext:session-name
-model: qwen3.6-35b-a3b-mtp
 thinking: medium
 max_turns: 12
 extensions: true
