@@ -6,6 +6,24 @@ pi-mono stuff I've found useful
 
 - **Agents = primitives.** Do one thing. Don't hard-wire PRD/issues into them.
 - **Prompts = composition.** Decide flow and tracking based on situation.
+- **Wayfinder tickets resolve decisions.** They do not implement the destination.
+- **Implementation tickets deliver vertical slices.** Create them from an approved spec with `to-tickets`.
+- **Humans own irreversible actions.** Pi does not commit, push, or open a PR without explicit instruction.
+
+### Canonical large-work flow
+
+```text
+wayfinder → to-spec → to-tickets → implement → code-review → human review
+```
+
+Use `wayfinder` when the route is foggy or larger than one practical context window. Small, clear work can start with `grill-with-docs` or proceed directly to implementation. A Wayfinder map charts decision work; after the map is complete, `to-spec` synthesizes the decisions and `to-tickets` creates implementation-sized tracer bullets.
+
+### Shared Strix operating policy
+
+- Run at most three local subagents concurrently.
+- Pause automated work when Hermes, Honcho, or another local workload is contending for Strix resources.
+- Route a task to Codex Spark only deliberately and for that task; never use it as a silent fallback.
+- Keep automatic subagent scheduling disabled by default.
 
 ### Tracking Levels
 
@@ -13,7 +31,7 @@ pi-mono stuff I've found useful
 |-------|----------|
 | Handoff only | Temp file (quick experiments) |
 | Issues | Issue tracker (features with scope) |
-| PRD + Issues | Issue tracker parent + children (big initiatives) |
+| Spec + Issues | Issue tracker parent + children (big initiatives) |
 | ADR | `docs/adr/` (architectural decisions) |
 
 The workflow prompt decides which level applies.
@@ -22,13 +40,20 @@ The workflow prompt decides which level applies.
 
 ## Quick Start
 
-### Matt's flow directly (canonical path)
+### Large or foggy work (canonical path)
 
 ```
-/grill-with-docs "Build a caching layer for the API"
-# → grills design with domain context, then:
-#   multi-session: to-prd → to-issues
-#   single session: implement directly
+/wayfinder "Build a caching layer for the API"
+# → chart and resolve decision tickets, then:
+#   to-spec → human approval → to-tickets
+#   implement each ticket in a fresh context → code-review → human review
+```
+
+### Small, clear work
+
+```
+/grill-with-docs "Add a bounded cache to the existing API adapter"
+# → grill the design with domain context, then implement directly when the route is clear
 ```
 
 ### Custom prompts (wrappers around Matt's flow)
@@ -54,20 +79,23 @@ The workflow prompt decides which level applies.
 
 ## Matt's Main Flow
 
-The canonical path for feature work. Custom prompts below are wrappers that add tracking, human gates, or parallelism on top of this flow.
+Choose the shortest path that preserves decision quality. Custom prompts below are wrappers that add tracking, human gates, or parallelism.
 
 ### Core Path
 
 ```
-/grill-with-docs "Describe the feature"
-  │
-  ├─→ [prototype branch] — validate assumptions with throwaway code
-  │
-  ├─→ Multi-session path:  to-prd → to-issues
-  │     (big initiatives — tracked as PRD + child issues)
-  │
-  └─→ Single-session path: implement directly
-        (smaller features — handoff or issue tracking)
+/wayfinder "Describe a large or foggy feature"
+  → resolve one frontier decision ticket per session
+  → to-spec
+  → human approval
+  → to-tickets
+  → implement each ticket in a fresh context
+  → code-review
+  → human review
+
+/grill-with-docs "Describe a small, clear feature"
+  → prototype if a high-fidelity decision needs evidence
+  → implement directly when the route is clear
 ```
 
 ### On-ramps into the flow
@@ -112,19 +140,19 @@ Arguments you type after the command become positional variables (`$1`, `$2`…)
 | `/quick-prototype` | prototyper → integrator | `prototype` skill |
 | `/parallel-explore-build` | explore + 2× prototyper (parallel) | `prototype` skill (unique — no Matt equivalent) |
 
-**Issues — wraps `plan`, `prototype`, `integrator`, `to-issues` skills**
+**Issues — wraps `plan`, `prototype`, `integrator`, `to-tickets` skills**
 
 | Command | Chain | Wraps |
 |-------------------------------|---------------------------------------------|-------|
-| `/design-and-track` | plan → human review → prototyper → human review → integrator → approve issues → to-issues | `to-prd` + `to-issues` skills |
+| `/design-and-track` | plan → human review → prototyper → human review → integrator → approve issues → to-tickets | `to-spec` + `to-tickets` skills |
 | `/design-with-handoffs` | plan → human review → prototyper → human review → integrator | `handoff` skill |
 | `/design-prototype-integrate` | plan → prototyper → integrator (no auto-tracking) | — |
 
-**PRD + Issues — wraps `to-prd` + `to-issues` skills**
+**Spec + Issues — wraps `to-spec` + `to-tickets` skills**
 
 | Command | Chain | Wraps |
 |-------------------------------|--------------------------------------------------|-------|
-| `/full-initiative` | plan → human review → publish PRD → prototyper → human review → update PRD → to-issues | `to-prd` + `to-issues` skills |
+| `/full-initiative` | plan → human review → publish spec → prototyper → human review → update spec → to-tickets | `to-spec` + `to-tickets` skills |
 
 **Cross-Agent (spans sessions)**
 
@@ -145,38 +173,22 @@ explore finds changed files → reviewer reviews them
 
 ## Custom Agents
 
-### 14 Agents (~/.pi/agent/agents/) — qwen3.6-27b-mtp for bigger tasks, qwen3.6-35b-a3b-mtp for fast tasks
+Custom agents live under `~/.pi/agent/agents/`. They are thin, task-specific wrappers with bounded tools and thinking levels. They inherit the parent model unless a caller deliberately selects a task-scoped model; do not silently reroute them.
 
-Agents load Matt's skills internally (e.g., `diagnose` loads the `diagnose` skill, `triage` loads the `triage` skill). The agents are thin wrappers that select a model and inject the appropriate skill.
+Run no more than three background agents simultaneously. The subagent manager queues additional background work until a slot opens.
 
-**Core Workflow (max 3 running simultaneously due to hardware):**
-
-| Agent | Model | What it does |
-|-------|-------|--------------------------------------------------|
-| explore | 27b-mtp | Codebase recon → structured findings (bigger model) |
-| scout | 35b-a3b-mtp | Codebase recon → structured findings (faster model) |
-| plan | 35b-a3b-mtp | Synthesize requirements → design spec (+ questions for human) |
-| prototyper | 35b-a3b-mtp | Build throwaway prototypes to validate |
-| integrator | 35b-a3b-mtp | Fold prototype into production or delete |
-
-**Build Agent:**
-
-| Agent | Model | What it does |
-|-------|-------|--------------------------------------------------|
-| build | 27b-mtp | Default primary agent with all tools (bigger model) |
-
-**Specialized Agents:**
-
-| Agent | Model | What it does |
-|-------|-------|--------------------------------------------------|
-| reviewer | 35b-a3b-mtp | Quality/security/maintainability review |
-| test | 35b-a3b-mtp | Writing/debugging tests, improving coverage |
-| docs | 35b-a3b-mtp | Library/API documentation writing |
-| diagnose | 35b-a3b-mtp | Bug diagnosis loop (loads `diagnose` skill) |
-| triage | 35b-a3b-mtp | Issue classification/prioritization (loads `triage` skill) |
-| thermo-nuclear-code-quality-review-subagent | 35b-a3b-mtp | Harsh maintainability audit (loads `thermo-nuclear-code-quality-review` skill) |
-| thermo-nuclear-review-subagent | 35b-a3b-mtp | Branch audit: bugs, security, breaking changes (loads `thermo-nuclear-review` skill) |
-| meta-agent | 35b-a3b-mtp | Create new agents/skills |
+| Agent | What it does |
+|-------|--------------|
+| build | Standard development work with full file and shell tools |
+| scout | Fast codebase reconnaissance and compressed handoffs |
+| plan | Requirements grilling and design-spec synthesis |
+| prototyper | Throwaway prototypes that validate high-fidelity decisions |
+| integrator | Fold validated prototype findings into production or delete them |
+| reviewer | Quality, security, and maintainability review |
+| test | Write and debug tests and improve coverage |
+| docs | Technical and API documentation |
+| thermo-nuclear-code-quality-review-subagent | Harsh maintainability audit |
+| thermo-nuclear-review-subagent | Branch audit for bugs, security, and breaking changes |
 
 **Skills (~/.pi/agent/skills/):**
 
@@ -193,7 +205,8 @@ Agents load Matt's skills internally (e.g., `diagnose` loads the `diagnose` skil
 | improve-codebase-architecture | ~/.agents/skills/improve-codebase-architecture | Architecture deepening |
 | code-navigation | local | Tool reference and navigation patterns |
 | tilth | local | Structural diff/blast-radius analysis |
-| to-prd | ~/.agents/skills/to-prd | PRD publishing |
+| to-spec | ~/.agents/skills/to-spec | Spec publishing |
+| to-tickets | ~/.agents/skills/to-tickets | Tracer-bullet implementation tickets |
 
 ---
 

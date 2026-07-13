@@ -1,30 +1,25 @@
 ---
-description: Map huge/foggy work into spec and tickets
+description: Route huge or foggy work through the canonical Wayfinder flow
 argument-hint: "<goal>"
 disable-model-invocation: true
 ---
 
-Use this when the route is unclear, too large for one agent session, or needs research/prototypes before a spec.
+Use this wrapper only when the route is unclear, too large for one practical context window, or needs research/prototypes before a spec. The canonical workflow is:
+
+`wayfinder → to-spec → to-tickets → implement → code-review → human review`
+
+Delegate the current invocation to the `wayfinder` skill and follow that skill exactly. Do not recreate its orchestration here.
 
 Rules:
-- Use `/wayfinder` if available; otherwise maintain the map in the current tracker or a local markdown file.
-- Use `Agent` for bounded investigation tickets. Assume `inherit_context: false`.
-- Preserve blocking edges explicitly.
 - Facts are discovered; decisions are human-owned.
-- Do not jump to implementation until the map is resolved and the human confirms the spec direction.
+- Confirm the tracker and publication scope before writing tracker artifacts unless the user explicitly supplied them and asked to publish.
+- When given a loose goal, chart the map and stop. Do not resolve a ticket in the charting session.
+- When given an existing map, claim and resolve at most one unblocked frontier ticket in this session.
+- Preserve native child and blocking relationships where the tracker supports them.
+- Decision tickets may research, grill, prototype, or perform a prerequisite task; they do not implement the destination.
+- Use a fresh context window for each ticket. Do not carry an entire map into every worker.
+- Do not advance to `to-spec` until the map is complete.
+- Do not advance from an approved spec to `to-tickets` without human approval.
+- Do not commit, push, or open a PR without explicit instruction.
 
-1. Create a map with ticket types:
-   - `research` — primary-source reading; use `/research` if available and save cited notes.
-   - `grilling` — one human decision needed; ask one question at a time.
-   - `prototype` — cheap UI/logic artifact; use `prototyper` and link artifact/verdict.
-   - `task` — mechanical setup/provisioning/data-shaping.
-
-2. Work only tickets whose blockers are resolved. Each child prompt includes: goal, known facts, blocker context, expected output, and where to save notes.
-
-3. When all decision-critical tickets close, synthesize route into a spec. Use `/to-spec` if available.
-
-4. Break approved spec into tracer-bullet tickets with blocking edges. Use `/to-tickets` if available.
-
-5. Implement tickets one at a time with `build`, then `reviewer`.
-
-Output: map path/link, resolved decisions, remaining blockers, spec path/link, ticket list, next ready ticket.
+Output only the artifact and status for this invocation: map or ticket name/link, decision recorded if any, remaining blockers, and the next frontier ticket. Do not execute later workflow phases in the same session.
