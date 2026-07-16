@@ -14,16 +14,40 @@
           "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
         },
         {
-          "id": "google/gemma-4-26b-a4b",
-          "name": "Gemma 4 26b",
+          "id": "gemma-4-e2b-it-qat",
+          "name": "Gemma 4 E2B QAT MTP",
+          "input": ["text", "image"],
+          "reasoning": true,
+          "contextWindow": 49152,
+          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
+        },
+        {
+          "id": "gemma-4-e4b-it-qat",
+          "name": "Gemma 4 E4B QAT MTP",
+          "input": ["text", "image"],
+          "reasoning": true,
+          "contextWindow": 49152,
+          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
+        },
+        {
+          "id": "gemma-4-12b-it-qat",
+          "name": "Gemma 4 12B QAT MTP",
           "input": ["text", "image"],
           "reasoning": true,
           "contextWindow": 56000,
           "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
         },
         {
-          "id": "google/gemma-4-31b",
-          "name": "Gemma 4 31b",
+          "id": "gemma-4-26b-a4b-it-qat",
+          "name": "Gemma 4 26B A4B QAT MTP",
+          "input": ["text", "image"],
+          "reasoning": true,
+          "contextWindow": 56000,
+          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
+        },
+        {
+          "id": "gemma-4-31b-it-qat",
+          "name": "Gemma 4 31B QAT MTP",
           "input": ["text", "image"],
           "reasoning": true,
           "contextWindow": 56000,
