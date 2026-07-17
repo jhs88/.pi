@@ -2,7 +2,7 @@
   "providers": {
     "llamacpp": {
       "baseUrl": "https://cliproxyapi.scherreik.com/v1",
-      "api": "openai-completions",
+      "api": "openai-responses",
       "apiKey": "$CLIPROXYAPI_API_KEY",
       "models": [
         {
