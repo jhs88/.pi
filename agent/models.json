@@ -1,9 +1,9 @@
 {
   "providers": {
     "llamacpp": {
-      "baseUrl": "http://192.168.3.226:8080/v1",
+      "baseUrl": "https://cliproxyapi.scherreik.com/v1",
       "api": "openai-completions",
-      "apiKey": "dummy",
+      "apiKey": "$CLIPROXYAPI_API_KEY",
       "models": [
         {
           "id": "eousphoros/kappa-20b-131k",
