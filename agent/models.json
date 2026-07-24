@@ -2,16 +2,37 @@
   "providers": {
     "llamacpp": {
       "baseUrl": "https://cliproxyapi.scherreik.com/v1",
-      "api": "openai-responses",
+      "api": "openai-completions",
       "apiKey": "$CLIPROXYAPI_API_KEY",
       "models": [
         {
           "id": "eousphoros/kappa-20b-131k",
           "name": "kappa-20b-131k",
-          "input": ["text", "image"],
+          "input": ["text"],
           "reasoning": true,
+          "thinkingLevelMap": {
+            "off": null,
+            "minimal": null,
+            "low": "low",
+            "medium": "medium",
+            "high": "high",
+            "xhigh": null,
+            "max": null
+          },
           "contextWindow": 56536,
-          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
+          "maxTokens": 32768,
+          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+          "compat": {
+            "supportsStore": false,
+            "supportsDeveloperRole": false,
+            "supportsReasoningEffort": false,
+            "maxTokensField": "max_tokens",
+            "supportsStrictMode": false,
+            "thinkingFormat": "chat-template",
+            "chatTemplateKwargs": {
+              "reasoning_effort": { "$var": "thinking.effort" }
+            }
+          }
         },
         {
           "id": "gemma-4-e2b-it-qat",
@@ -19,7 +40,19 @@
           "input": ["text", "image"],
           "reasoning": true,
           "contextWindow": 49152,
-          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
+          "maxTokens": 24576,
+          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+          "compat": {
+            "supportsStore": false,
+            "supportsDeveloperRole": false,
+            "supportsReasoningEffort": false,
+            "maxTokensField": "max_tokens",
+            "supportsStrictMode": false,
+            "thinkingFormat": "chat-template",
+            "chatTemplateKwargs": {
+              "enable_thinking": { "$var": "thinking.enabled" }
+            }
+          }
         },
         {
           "id": "gemma-4-e4b-it-qat",
@@ -27,7 +60,19 @@
           "input": ["text", "image"],
           "reasoning": true,
           "contextWindow": 49152,
-          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
+          "maxTokens": 24576,
+          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+          "compat": {
+            "supportsStore": false,
+            "supportsDeveloperRole": false,
+            "supportsReasoningEffort": false,
+            "maxTokensField": "max_tokens",
+            "supportsStrictMode": false,
+            "thinkingFormat": "chat-template",
+            "chatTemplateKwargs": {
+              "enable_thinking": { "$var": "thinking.enabled" }
+            }
+          }
         },
         {
           "id": "gemma-4-12b-it-qat",
@@ -35,7 +80,19 @@
           "input": ["text", "image"],
           "reasoning": true,
           "contextWindow": 56000,
-          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
+          "maxTokens": 32768,
+          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+          "compat": {
+            "supportsStore": false,
+            "supportsDeveloperRole": false,
+            "supportsReasoningEffort": false,
+            "maxTokensField": "max_tokens",
+            "supportsStrictMode": false,
+            "thinkingFormat": "chat-template",
+            "chatTemplateKwargs": {
+              "enable_thinking": { "$var": "thinking.enabled" }
+            }
+          }
         },
         {
           "id": "gemma-4-26b-a4b-it-qat",
@@ -43,7 +100,19 @@
           "input": ["text", "image"],
           "reasoning": true,
           "contextWindow": 56000,
-          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
+          "maxTokens": 32768,
+          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+          "compat": {
+            "supportsStore": false,
+            "supportsDeveloperRole": false,
+            "supportsReasoningEffort": false,
+            "maxTokensField": "max_tokens",
+            "supportsStrictMode": false,
+            "thinkingFormat": "chat-template",
+            "chatTemplateKwargs": {
+              "enable_thinking": { "$var": "thinking.enabled" }
+            }
+          }
         },
         {
           "id": "gemma-4-31b-it-qat",
@@ -51,15 +120,35 @@
           "input": ["text", "image"],
           "reasoning": true,
           "contextWindow": 56000,
-          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
+          "maxTokens": 32768,
+          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+          "compat": {
+            "supportsStore": false,
+            "supportsDeveloperRole": false,
+            "supportsReasoningEffort": false,
+            "maxTokensField": "max_tokens",
+            "supportsStrictMode": false,
+            "thinkingFormat": "chat-template",
+            "chatTemplateKwargs": {
+              "enable_thinking": { "$var": "thinking.enabled" }
+            }
+          }
         },
         {
           "id": "qwen3-coder-next",
           "name": "Qwen 3 Coder Next",
           "input": ["text"],
-          "reasoning": true,
+          "reasoning": false,
           "contextWindow": 56000,
-          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
+          "maxTokens": 32768,
+          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+          "compat": {
+            "supportsStore": false,
+            "supportsDeveloperRole": false,
+            "supportsReasoningEffort": false,
+            "maxTokensField": "max_tokens",
+            "supportsStrictMode": false
+          }
         },
         {
           "id": "qwen3.5-122b-a10b",
@@ -67,7 +156,19 @@
           "input": ["text", "image"],
           "reasoning": true,
           "contextWindow": 65536,
-          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
+          "maxTokens": 32768,
+          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+          "compat": {
+            "supportsStore": false,
+            "supportsDeveloperRole": false,
+            "supportsReasoningEffort": false,
+            "maxTokensField": "max_tokens",
+            "supportsStrictMode": false,
+            "thinkingFormat": "chat-template",
+            "chatTemplateKwargs": {
+              "enable_thinking": { "$var": "thinking.enabled" }
+            }
+          }
         },
         {
           "id": "qwen3.6-27b-mtp",
@@ -75,7 +176,16 @@
           "input": ["text", "image"],
           "reasoning": true,
           "contextWindow": 262144,
-          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
+          "maxTokens": 81920,
+          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+          "compat": {
+            "supportsStore": false,
+            "supportsDeveloperRole": false,
+            "supportsReasoningEffort": false,
+            "maxTokensField": "max_tokens",
+            "supportsStrictMode": false,
+            "thinkingFormat": "qwen-chat-template"
+          }
         },
         {
           "id": "qwen3.6-27b",
@@ -83,7 +193,16 @@
           "input": ["text", "image"],
           "reasoning": true,
           "contextWindow": 262144,
-          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
+          "maxTokens": 81920,
+          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+          "compat": {
+            "supportsStore": false,
+            "supportsDeveloperRole": false,
+            "supportsReasoningEffort": false,
+            "maxTokensField": "max_tokens",
+            "supportsStrictMode": false,
+            "thinkingFormat": "qwen-chat-template"
+          }
         },
         {
           "id": "qwen3.6-35b-a3b",
@@ -91,7 +210,16 @@
           "input": ["text", "image"],
           "reasoning": true,
           "contextWindow": 262144,
-          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
+          "maxTokens": 81920,
+          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+          "compat": {
+            "supportsStore": false,
+            "supportsDeveloperRole": false,
+            "supportsReasoningEffort": false,
+            "maxTokensField": "max_tokens",
+            "supportsStrictMode": false,
+            "thinkingFormat": "qwen-chat-template"
+          }
         },
         {
           "id": "qwen3.6-35b-a3b-mtp",
@@ -99,15 +227,36 @@
           "input": ["text", "image"],
           "reasoning": true,
           "contextWindow": 262144,
-          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
+          "maxTokens": 81920,
+          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+          "compat": {
+            "supportsStore": false,
+            "supportsDeveloperRole": false,
+            "supportsReasoningEffort": false,
+            "maxTokensField": "max_tokens",
+            "supportsStrictMode": false,
+            "thinkingFormat": "qwen-chat-template"
+          }
         },
         {
           "id": "nvidia-nemotron-3-nano-omni-30b-a3b-reasoning",
           "name": "Nvidia Nemotron 3 Nano",
           "input": ["text", "image"],
           "reasoning": true,
-          "contextWindow": 1000000,
-          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
+          "contextWindow": 262144,
+          "maxTokens": 131072,
+          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+          "compat": {
+            "supportsStore": false,
+            "supportsDeveloperRole": false,
+            "supportsReasoningEffort": false,
+            "maxTokensField": "max_tokens",
+            "supportsStrictMode": false,
+            "thinkingFormat": "chat-template",
+            "chatTemplateKwargs": {
+              "enable_thinking": { "$var": "thinking.enabled" }
+            }
+          }
         },
         {
           "id": "unsloth/nvidia-nemotron-3-super-120b-a12b",
@@ -115,7 +264,19 @@
           "input": ["text"],
           "reasoning": true,
           "contextWindow": 1000000,
-          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
+          "maxTokens": 131072,
+          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+          "compat": {
+            "supportsStore": false,
+            "supportsDeveloperRole": false,
+            "supportsReasoningEffort": false,
+            "maxTokensField": "max_tokens",
+            "supportsStrictMode": false,
+            "thinkingFormat": "chat-template",
+            "chatTemplateKwargs": {
+              "enable_thinking": { "$var": "thinking.enabled" }
+            }
+          }
         },
         {
           "id": "glm-4.7-flash",
@@ -123,7 +284,19 @@
           "input": ["text"],
           "reasoning": true,
           "contextWindow": 56000,
-          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
+          "maxTokens": 32768,
+          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+          "compat": {
+            "supportsStore": false,
+            "supportsDeveloperRole": false,
+            "supportsReasoningEffort": false,
+            "maxTokensField": "max_tokens",
+            "supportsStrictMode": false,
+            "thinkingFormat": "chat-template",
+            "chatTemplateKwargs": {
+              "enable_thinking": { "$var": "thinking.enabled" }
+            }
+          }
         },
         {
           "id": "hermes-4.3-36b",
@@ -131,7 +304,19 @@
           "input": ["text"],
           "reasoning": true,
           "contextWindow": 131072,
-          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
+          "maxTokens": 65536,
+          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+          "compat": {
+            "supportsStore": false,
+            "supportsDeveloperRole": false,
+            "supportsReasoningEffort": false,
+            "maxTokensField": "max_tokens",
+            "supportsStrictMode": false,
+            "thinkingFormat": "chat-template",
+            "chatTemplateKwargs": {
+              "thinking": { "$var": "thinking.enabled" }
+            }
+          }
         },
         {
           "id": "nouscoder-14b",
@@ -139,7 +324,19 @@
           "input": ["text"],
           "reasoning": true,
           "contextWindow": 81920,
-          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
+          "maxTokens": 32768,
+          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+          "compat": {
+            "supportsStore": false,
+            "supportsDeveloperRole": false,
+            "supportsReasoningEffort": false,
+            "maxTokensField": "max_tokens",
+            "supportsStrictMode": false,
+            "thinkingFormat": "chat-template",
+            "chatTemplateKwargs": {
+              "enable_thinking": { "$var": "thinking.enabled" }
+            }
+          }
         },
         {
           "id": "kimi-k3",
@@ -168,7 +365,7 @@
             "supportsStore": false,
             "supportsDeveloperRole": false,
             "supportsReasoningEffort": true,
-            "maxTokensField": "max_tokens",
+            "maxTokensField": "max_completion_tokens",
             "supportsStrictMode": false,
             "thinkingFormat": "openai",
             "requiresReasoningContentOnAssistantMessages": true,
