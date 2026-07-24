@@ -204,6 +204,7 @@ Run no more than three background agents simultaneously. The subagent manager qu
 | grill-with-docs | ~/.agents/skills/grill-with-docs | Design grilling with domain docs |
 | improve-codebase-architecture | ~/.agents/skills/improve-codebase-architecture | Architecture deepening |
 | code-navigation | local | Tool reference and navigation patterns |
+| subagents | local | Bounded delegation guidance for `@tintinweb/pi-subagents` |
 | tilth | local | Structural diff/blast-radius analysis |
 | to-spec | ~/.agents/skills/to-spec | Spec publishing |
 | to-tickets | ~/.agents/skills/to-tickets | Tracer-bullet implementation tickets |
@@ -340,7 +341,7 @@ pi install git:github.com/jhs88/pi-tooling
 
 `pi update --extensions` and `pi update --all` update the managed checkout and rerun its production dependency install whenever its commit changes. Do not copy the package into `agent/extensions`; auto-discovered extension directories do not receive Pi's package installation lifecycle.
 
-Self-hosted Firecrawl reads `FIRECRAWL_API_URL` and optional `FIRECRAWL_API_KEY` from the process environment, then ignored `agent/.env`, then the global Hermes environment (`$HERMES_HOME/.env` or `~/.hermes/.env`). Copy `agent/.env.example` only when a Pi-local override is needed. There is no Firecrawl Cloud fallback.
+Self-hosted Firecrawl reads `FIRECRAWL_API_URL` and optional `FIRECRAWL_API_KEY` from the process environment, then ignored `agent/.env`. Copy `agent/.env.example` when Pi-local configuration is needed. There is no Firecrawl Cloud fallback.
 
 ### Recommended Skills
 
