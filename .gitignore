@@ -6,3 +6,10 @@ trust.json
 
 pi-acp
 
+# Generated local state
+agent/.env
+agent/bin/
+agent/logs/background-terminals/
+agent/workflows/
+.scratch/
+

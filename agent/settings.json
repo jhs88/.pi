@@ -13,7 +13,8 @@
     "npm:pi-mcp-adapter",
     "npm:pi-acp",
     "git:github.com/joelhooks/pi-skill-interpolation",
-    "npm:@tintinweb/pi-subagents"
+    "npm:@tintinweb/pi-subagents",
+    "git:github.com/jhs88/pi-tooling"
   ],
   "enabledModels": [
     "openai-codex/gpt-5.3-codex-spark",
