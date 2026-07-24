@@ -29,10 +29,12 @@ Produce a tested `feat/pi-tooling-extensions` branch that adds first-class `fd`/
 - [Establish Ask User and background-terminal compatibility](issues/11-establish-ask-user-and-background-terminal-compatibility.md) — Both designs fit Pi 0.80.10; hardened terminal lifecycle, logging, delivery, and child-tool policies are required when adapting upstream.
 - [Choose the questionnaire replacement policy](issues/14-choose-the-questionnaire-replacement-policy.md) — `ask_user` replaces and removes `questionnaire` directly; no callers, alias, shim, or dual registration need preserving.
 - [Prototype the local extension package and test layout](issues/10-prototype-the-local-extension-package-and-test-layout.md) — Put the selected tools in one self-contained `agent/extensions/pi-tooling/` package with a tracked lockfile and one verify command; sibling `agent/npm/node_modules` does not resolve local extension dependencies.
+- [Choose the workflow integration architecture](issues/03-choose-the-workflow-integration-architecture.md) — Use the independent in-process workflow engine because it can enforce explicit invocation, a hard three-child budget, artifacts, cancellation, model-runtime integration, and the complete recursive-tool denylist while preserving `@tintinweb/pi-subagents` for ordinary delegation.
+- [Verify the selective integration](issues/07-verify-the-selective-integration.md) — Clean install, TypeScript, 70 focused tests, and the Pi 0.80.10 extension loader passed without launching Pi or inference; the feature branch was pushed for owner testing.
 
 ## Not yet specified
 
-- Any shared-runtime extraction or additional hardening exposed by the compatibility research and workflow prototypes.
+- Live TUI, provider, Firecrawl-server, and Windows behavior remains for the repository owner to smoke-test from the pushed branch.
 
 ## Out of scope
 
