@@ -7,7 +7,7 @@
   },
   "scripts": {
     "check": "tsc --noEmit -p .",
-    "test": "node --test --experimental-strip-types ask-user/*.test.ts background-terminals/*.test.ts file-search/*.test.ts firecrawl/*.test.ts shared/*.test.ts workflows/*.test.ts",
+    "test": "node --test --experimental-strip-types ask-user/*.test.ts background-terminals/*.test.ts file-search/*.test.ts firecrawl/*.test.ts integration/*.test.ts shared/*.test.ts workflows/*.test.ts",
     "verify": "npm run check && npm test",
     "prepare": "effect-tsgo patch"
   },
