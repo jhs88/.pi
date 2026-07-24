@@ -1,13 +1,14 @@
-# Pi tooling feature-branch smoke test
+# Managed Pi tooling smoke test
 
-Use this after pulling `feat/pi-tooling-extensions`. The implementation agent intentionally did not launch Pi or local inference.
+Use this after pulling `feat/pi-tooling-extensions` or updating the managed package.
 
 ## Prepare
 
 ```bash
 git switch feat/pi-tooling-extensions
 git pull --ff-only
-npm ci --prefix agent/extensions/pi-tooling
+pi install git:github.com/jhs88/pi-tooling  # first install only
+pi update --extensions
 ```
 
 Firecrawl uses the process environment first, then ignored `agent/.env`, then the global Hermes environment (`$HERMES_HOME/.env` or `~/.hermes/.env`). Copy `agent/.env.example` to `agent/.env` only when a Pi-local override is needed. `FIRECRAWL_API_KEY` remains optional.
@@ -21,7 +22,7 @@ Firecrawl uses the process environment first, then ignored `agent/.env`, then th
 
 ## Focused checks
 
-- **File search:** ask Pi to use `fd` to list TypeScript files under `agent/extensions/pi-tooling`, then use `rg` to find `FIRECRAWL_API_URL`. Confirm results are bounded and paths are correct.
+- **File search:** ask Pi to use `fd` to list TypeScript files under `~/.pi/agent/git/github.com/jhs88/pi-tooling`, then use `rg` to find `FIRECRAWL_API_URL`. Confirm results are bounded and paths are correct.
 - **Ask User:** explicitly request an `ask_user` question with 2–5 options. Check arrow keys, number selection, custom text, and Escape dismissal.
 - **Firecrawl:** search the web, scrape one result, and run a small bounded crawl. Confirm traffic reaches only the configured self-hosted endpoint. Temporarily unset the URL and confirm the tools fail clearly rather than contacting Firecrawl Cloud.
 - **Background completion:** start `sleep 3; printf 'BG_OK\n'`, inspect it with `bg_list`/`bg_status` and `/ps`, and confirm one completion follow-up appears.

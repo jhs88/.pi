@@ -330,13 +330,15 @@ This avoids stuffing giant summaries into `{previous}` that aren't needed until 
 
 Pulled directly from the examples in `pi-mono` repo. Kept up to date manually — it's easier.
 
-Credit: selected extensions are adapted from [davis7dotsh/my-pi-setup@797eaf6](https://github.com/davis7dotsh/my-pi-setup/tree/797eaf6d6f178759cf7aabde927ef15c91346e7e), with local compatibility, routing, and security changes.
+Credit: selected extensions are adapted from [davis7dotsh/my-pi-setup@797eaf6](https://github.com/davis7dotsh/my-pi-setup/tree/797eaf6d6f178759cf7aabde927ef15c91346e7e), with local compatibility, routing, and security changes. They are distributed as the managed [`jhs88/pi-tooling`](https://github.com/jhs88/pi-tooling) Git package.
 
-The selective package lives at `agent/extensions/pi-tooling/`. Install its pinned dependencies before starting Pi:
+Install it once with:
 
 ```bash
-npm ci --prefix agent/extensions/pi-tooling
+pi install git:github.com/jhs88/pi-tooling
 ```
+
+`pi update --extensions` and `pi update --all` update the managed checkout and rerun its production dependency install whenever its commit changes. Do not copy the package into `agent/extensions`; auto-discovered extension directories do not receive Pi's package installation lifecycle.
 
 Self-hosted Firecrawl reads `FIRECRAWL_API_URL` and optional `FIRECRAWL_API_KEY` from the process environment, then ignored `agent/.env`, then the global Hermes environment (`$HERMES_HOME/.env` or `~/.hermes/.env`). Copy `agent/.env.example` only when a Pi-local override is needed. There is no Firecrawl Cloud fallback.
 
