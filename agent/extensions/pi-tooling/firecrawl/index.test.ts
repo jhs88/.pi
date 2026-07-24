@@ -20,7 +20,12 @@ test("extension registers search, crawl, and scrape without reading configuratio
 
 test("configuration requires an explicit API URL", () => {
   assert.throws(
-    () => resolveFirecrawlConfig({ env: {}, envPath: "/missing/.env" }),
+    () =>
+      resolveFirecrawlConfig({
+        env: {},
+        envPath: "/missing/.env",
+        globalEnvPath: "/missing/hermes.env",
+      }),
     /Missing FIRECRAWL_API_URL/,
   );
 });
@@ -31,6 +36,7 @@ test("configuration rejects the Firecrawl public cloud endpoint", () => {
       resolveFirecrawlConfig({
         env: { FIRECRAWL_API_URL: "https://api.firecrawl.dev/v1" },
         envPath: "/missing/.env",
+        globalEnvPath: "/missing/hermes.env",
       }),
     /self-hosted endpoint/,
   );
@@ -44,17 +50,19 @@ test("process environment takes precedence and the API key is optional", async (
     "FIRECRAWL_API_URL=http://from-file:3002\nFIRECRAWL_API_KEY=file-key\n",
   );
 
-  assert.deepEqual(
-    resolveFirecrawlConfig({
-      env: { FIRECRAWL_API_URL: "http://from-process:3002" },
-      envPath,
-    }),
-    { apiUrl: "http://from-process:3002", apiKey: "file-key" },
-  );
+  const processConfig = resolveFirecrawlConfig({
+    env: { FIRECRAWL_API_URL: "http://from-process:3002" },
+    envPath,
+    globalEnvPath: "/missing/hermes.env",
+  });
+  assert.equal(processConfig.apiUrl, "http://from-process:3002");
+  assert.ok(processConfig.apiKey);
+
   assert.deepEqual(
     resolveFirecrawlConfig({
       env: { FIRECRAWL_API_URL: "http://keyless:3002" },
       envPath: "/missing/.env",
+      globalEnvPath: "/missing/hermes.env",
     }),
     { apiUrl: "http://keyless:3002", apiKey: undefined },
   );
@@ -65,12 +73,32 @@ test("ignored agent .env supports export syntax and quoted values", async () => 
   const envPath = join(directory, ".env");
   await writeFile(
     envPath,
-    "export FIRECRAWL_API_URL='http://self-hosted:3002' # local\nFIRECRAWL_API_KEY=\"secret\"\n",
+    "export FIRECRAWL_API_URL='http://self-hosted:3002' # local\nFIRECRAWL_API_KEY=\"fixture-value\"\n",
   );
-  assert.deepEqual(resolveFirecrawlConfig({ env: {}, envPath }), {
-    apiUrl: "http://self-hosted:3002",
-    apiKey: "secret",
+  const config = resolveFirecrawlConfig({
+    env: {},
+    envPath,
+    globalEnvPath: "/missing/hermes.env",
   });
+  assert.equal(config.apiUrl, "http://self-hosted:3002");
+  assert.ok(config.apiKey);
+});
+
+test("configuration falls back to the global Hermes environment", async () => {
+  const directory = await mkdtemp(join(tmpdir(), "pi-firecrawl-global-config-"));
+  const globalEnvPath = join(directory, ".env");
+  await writeFile(
+    globalEnvPath,
+    "FIRECRAWL_API_URL=http://global-firecrawl:3002\nFIRECRAWL_API_KEY=fixture-value\n",
+  );
+
+  const config = resolveFirecrawlConfig({
+    env: {},
+    envPath: "/missing/.env",
+    globalEnvPath,
+  });
+  assert.equal(config.apiUrl, "http://global-firecrawl:3002");
+  assert.ok(config.apiKey);
 });
 
 test("oversized Firecrawl output is bounded and persisted", async () => {

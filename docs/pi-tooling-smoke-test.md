@@ -8,10 +8,9 @@ Use this after pulling `feat/pi-tooling-extensions`. The implementation agent in
 git switch feat/pi-tooling-extensions
 git pull --ff-only
 npm ci --prefix agent/extensions/pi-tooling
-cp -n agent/.env.example agent/.env
 ```
 
-Set `FIRECRAWL_API_URL` in `agent/.env` to the explicit self-hosted endpoint. Set `FIRECRAWL_API_KEY` only if that deployment requires it.
+Firecrawl uses the process environment first, then ignored `agent/.env`, then the global Hermes environment (`$HERMES_HOME/.env` or `~/.hermes/.env`). Copy `agent/.env.example` to `agent/.env` only when a Pi-local override is needed. `FIRECRAWL_API_KEY` remains optional.
 
 ## Start and discover
 

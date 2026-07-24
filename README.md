@@ -338,7 +338,7 @@ The selective package lives at `agent/extensions/pi-tooling/`. Install its pinne
 npm ci --prefix agent/extensions/pi-tooling
 ```
 
-Self-hosted Firecrawl reads `FIRECRAWL_API_URL` and optional `FIRECRAWL_API_KEY` from the process environment, then from ignored `agent/.env`. Copy `agent/.env.example` as a starting point. There is no Firecrawl Cloud fallback.
+Self-hosted Firecrawl reads `FIRECRAWL_API_URL` and optional `FIRECRAWL_API_KEY` from the process environment, then ignored `agent/.env`, then the global Hermes environment (`$HERMES_HOME/.env` or `~/.hermes/.env`). Copy `agent/.env.example` only when a Pi-local override is needed. There is no Firecrawl Cloud fallback.
 
 ### Recommended Skills
 
