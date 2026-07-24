@@ -1,11 +1,10 @@
 # Managed Pi tooling smoke test
 
-Use this after pulling `feat/pi-tooling-extensions` or updating the managed package.
+Use this after updating the Pi configuration or managed package.
 
 ## Prepare
 
 ```bash
-git switch feat/pi-tooling-extensions
 git pull --ff-only
 pi install git:github.com/jhs88/pi-tooling  # first install only
 pi update --extensions
