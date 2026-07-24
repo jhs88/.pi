@@ -332,6 +332,14 @@ Pulled directly from the examples in `pi-mono` repo. Kept up to date manually â€
 
 Credit: selected extensions are adapted from [davis7dotsh/my-pi-setup@797eaf6](https://github.com/davis7dotsh/my-pi-setup/tree/797eaf6d6f178759cf7aabde927ef15c91346e7e), with local compatibility, routing, and security changes.
 
+The selective package lives at `agent/extensions/pi-tooling/`. Install its pinned dependencies before starting Pi:
+
+```bash
+npm ci --prefix agent/extensions/pi-tooling
+```
+
+Self-hosted Firecrawl reads `FIRECRAWL_API_URL` and optional `FIRECRAWL_API_KEY` from the process environment, then from ignored `agent/.env`. Copy `agent/.env.example` as a starting point. There is no Firecrawl Cloud fallback.
+
 ### Recommended Skills
 
 pi reads from `~/.agents/skills`, `~/.pi/skills`, and `$(cwd)/.pi/skills`. It's recommended to install Matt's skills:

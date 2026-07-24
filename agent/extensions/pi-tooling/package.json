@@ -1,0 +1,31 @@
+{
+  "name": "pi-tooling-extensions",
+  "private": true,
+  "type": "module",
+  "pi": {
+    "extensions": ["./index.ts"]
+  },
+  "scripts": {
+    "check": "tsc --noEmit -p .",
+    "test:effect": "vitest run file-search/index.spec.ts",
+    "test:node": "node --test --experimental-strip-types firecrawl/*.test.ts background-terminals/*.test.ts workflows/*.test.ts",
+    "test": "npm run test:effect && npm run test:node",
+    "verify": "npm run check && npm test",
+    "prepare": "effect-tsgo patch"
+  },
+  "dependencies": {
+    "@effect/platform-node": "4.0.0-beta.98",
+    "acorn": "8.17.0",
+    "effect": "4.0.0-beta.98",
+    "firecrawl": "4.30.0"
+  },
+  "devDependencies": {
+    "@earendil-works/pi-coding-agent": "0.80.10",
+    "@earendil-works/pi-tui": "0.80.10",
+    "@effect/tsgo": "0.19.0",
+    "@effect/vitest": "4.0.0-beta.98",
+    "@types/node": "24.12.4",
+    "typescript": "7.0.2",
+    "vitest": "4.1.10"
+  }
+}

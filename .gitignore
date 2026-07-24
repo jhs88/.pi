@@ -6,3 +6,10 @@ trust.json
 
 pi-acp
 
+# Generated state for selective local extensions
+agent/.env
+agent/bin/
+agent/logs/background-terminals/
+agent/workflows/
+agent/extensions/pi-tooling/node_modules/
+
