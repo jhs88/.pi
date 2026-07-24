@@ -515,6 +515,8 @@ export default function workflows(pi: ExtensionAPI) {
 
         return controller
           .schedule(async (runSignal) => {
+            const resources = await getResources(opts.schema !== undefined);
+
             // Model/provider resolution: default to the parent session's model.
             let model: WorkflowModel | undefined = ctx.model;
             if (opts.model !== undefined || opts.provider !== undefined) {
@@ -528,17 +530,17 @@ export default function workflows(pi: ExtensionAPI) {
                 );
               let resolved: WorkflowModel | undefined;
               if (providerOpt) {
-                resolved = ctx.modelRegistry.find(providerOpt, modelOpt);
+                resolved = resources.modelRuntime.getModel(providerOpt, modelOpt);
               } else {
                 const slash = modelOpt.indexOf("/");
                 if (slash > 0) {
-                  resolved = ctx.modelRegistry.find(
+                  resolved = resources.modelRuntime.getModel(
                     modelOpt.slice(0, slash),
                     modelOpt.slice(slash + 1),
                   );
                 }
-                resolved ??= ctx.modelRegistry
-                  .getAll()
+                resolved ??= resources.modelRuntime
+                  .getModels()
                   .find((m) => m.id === modelOpt);
               }
               if (!resolved) {
@@ -567,7 +569,6 @@ export default function workflows(pi: ExtensionAPI) {
               thinkingLevel = effort as ThinkingLevel;
             }
 
-            const resources = await getResources(opts.schema !== undefined);
             const outcome = await runAgent({
               prompt,
               schema: opts.schema,

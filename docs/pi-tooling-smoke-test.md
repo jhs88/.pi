@@ -16,7 +16,7 @@ Set `FIRECRAWL_API_URL` in `agent/.env` to the explicit self-hosted endpoint. Se
 ## Start and discover
 
 1. Start Pi normally.
-2. Confirm the tools include `fd`, `rg`, `ask_user`, `firecrawl_search`, `firecrawl_scrape`, `firecrawl_crawl`, `workflow`, `bg_start`, `bg_status`, `bg_list`, and `bg_kill`.
+2. Confirm the tools include `fd`, `rg`, `ask_user`, `search`, `scrape`, `crawl`, `workflow`, `bg_start`, `bg_status`, `bg_list`, and `bg_kill`.
 3. Confirm the existing `Agent`, `get_subagent_result`, and `steer_subagent` tools still exist.
 4. Confirm the old `questionnaire` tool is absent.
 

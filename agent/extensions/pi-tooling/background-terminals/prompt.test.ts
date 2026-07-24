@@ -9,6 +9,7 @@ const snapshot: TerminalSnapshot = {
   title: "demo",
   cwd: "/tmp",
   pid: 1,
+  shell: "/bin/sh -c",
   status: "done",
   createdAt: Date.now() - 1000,
   settledAt: Date.now(),

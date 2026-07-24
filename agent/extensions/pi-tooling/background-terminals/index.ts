@@ -49,7 +49,7 @@ import {
   buildTerminalResultMessage,
   describeTerminal,
 } from "./src/prompt.ts";
-import { createDeferredResultDelivery } from "./src/result-delivery.ts";
+import { createCompletionBroker } from "./src/result-delivery.ts";
 import { sanitizeText } from "./src/ui/output-view.ts";
 import { openTerminalPicker } from "./src/ui/ps.ts";
 
@@ -60,7 +60,7 @@ export default function (pi: ExtensionAPI) {
   let sessionContext: ExtensionContext | undefined;
   let ui: ExtensionUIContext | undefined;
   let unsubStatus: (() => void) | undefined;
-  const resultDelivery = createDeferredResultDelivery<TerminalSnapshot>();
+  const resultDelivery = createCompletionBroker<TerminalSnapshot>();
 
   /** Create exactly one process supervisor for the current Pi session. */
   const getManager = (): TerminalManager => {
