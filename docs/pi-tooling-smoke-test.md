@@ -10,7 +10,7 @@ pi install git:github.com/jhs88/pi-tooling  # first install only
 pi update --extensions
 ```
 
-Firecrawl uses the process environment first, then ignored `agent/.env`, then the global Hermes environment (`$HERMES_HOME/.env` or `~/.hermes/.env`). Copy `agent/.env.example` to `agent/.env` only when a Pi-local override is needed. `FIRECRAWL_API_KEY` remains optional.
+Firecrawl uses the process environment first, then ignored `agent/.env`. Copy `agent/.env.example` to `agent/.env` when Pi-local configuration is needed. `FIRECRAWL_API_KEY` remains optional.
 
 ## Start and discover
 

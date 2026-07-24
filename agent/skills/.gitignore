@@ -8,3 +8,5 @@
 !thermos/**
 !thermo-nuclear-*
 !thermo-nuclear-*/**
+!subagents
+!subagents/**
