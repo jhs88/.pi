@@ -11,4 +11,5 @@ agent/.env
 agent/bin/
 agent/logs/background-terminals/
 agent/workflows/
+.scratch/
 
