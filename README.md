@@ -330,7 +330,7 @@ This avoids stuffing giant summaries into `{previous}` that aren't needed until 
 
 Pulled directly from the examples in `pi-mono` repo. Kept up to date manually — it's easier.
 
-Credit: several extensions are inspired by [davis7dotsh/my-pi-setup](https://github.com/davis7dotsh/my-pi-setup).
+Credit: selected extensions are adapted from [davis7dotsh/my-pi-setup@797eaf6](https://github.com/davis7dotsh/my-pi-setup/tree/797eaf6d6f178759cf7aabde927ef15c91346e7e), with local compatibility, routing, and security changes.
 
 ### Recommended Skills
 
