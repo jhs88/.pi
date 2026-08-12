@@ -13,3 +13,6 @@ agent/logs/background-terminals/
 agent/workflows/
 .scratch/
 
+# Cache
+agent/models-store.json
+

@@ -1,7 +1,7 @@
 {
-  "lastChangelogVersion": "0.80.6",
+  "lastChangelogVersion": "0.84.1",
   "defaultProvider": "llamacpp",
-  "defaultModel": "qwen3.6-27b-mtp",
+  "defaultModel": "muse-glimmer-30b-dflash",
   "hideThinkingBlock": false,
   "defaultThinkingLevel": "high",
   "theme": "dracula",
@@ -21,6 +21,10 @@
     "openai-codex/gpt-5.4",
     "openai-codex/gpt-5.4-mini",
     "openai-codex/gpt-5.5",
+    "openai-codex/gpt-5.6-luna",
+    "openai-codex/gpt-5.6-terra",
+    "openai-codex/gpt-5.6-sol",
+    "llamacpp/kimi-k3",
     "llamacpp/eousphoros/kappa-20b-131k",
     "llamacpp/gemma-4-e2b-it-qat",
     "llamacpp/gemma-4-e4b-it-qat",
@@ -36,8 +40,7 @@
     "llamacpp/glm-4.7-flash",
     "llamacpp/nouscoder-14b",
     "llamacpp/hermes-4.3-36b",
-    "openai-codex/gpt-5.6-luna",
-    "openai-codex/gpt-5.6-sol",
-    "openai-codex/gpt-5.6-terra"
+    "llamacpp/ornith-1.0-35b",
+    "llamacpp/muse-glimmer-30b-dflash"
   ]
 }

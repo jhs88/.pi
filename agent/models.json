@@ -6,6 +6,48 @@
       "apiKey": "$CLIPROXYAPI_API_KEY",
       "models": [
         {
+          "id": "ornith-1.0-35b",
+          "name": "ornith-1.0-35b",
+          "input": ["text", "image"],
+          "reasoning": true,
+          "contextWindow": 131072,
+          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
+        },
+        {
+          "id": "muse-glimmer-30b",
+          "name": "Muse Glimmer 30B",
+          "input": ["text", "image"],
+          "reasoning": true,
+          "thinkingLevelMap": {
+            "off": null,
+            "minimal": null,
+            "low": "low",
+            "medium": "medium",
+            "high": "high",
+            "xhigh": "xhigh",
+            "max": null
+          },
+          "contextWindow": 131072,
+          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
+        },
+        {
+          "id": "muse-glimmer-30b-dflash",
+          "name": "Muse Glimmer 30B DFlash",
+          "input": ["text"],
+          "reasoning": true,
+          "thinkingLevelMap": {
+            "off": null,
+            "minimal": null,
+            "low": "low",
+            "medium": "medium",
+            "high": "high",
+            "xhigh": "xhigh",
+            "max": null
+          },
+          "contextWindow": 131072,
+          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
+        },
+        {
           "id": "eousphoros/kappa-20b-131k",
           "name": "kappa-20b-131k",
           "input": ["text", "image"],
