@@ -4,7 +4,6 @@ description: Thermo-nuclear code quality audit (maintainability, structure, 1k-l
 display_name: Thermo Quality
 tools: read, grep, find, ls, bash, cachebro_read_file, cachebro_read_files, grepika_toc, grepika_outline, grepika_search, grepika_get, tilth_tilth_search, tilth_tilth_read, ext:session-name
 thinking: high
-max_turns: 10
 extensions: true
 skills: thermo-nuclear-code-quality-review
 prompt_mode: replace

@@ -4,7 +4,6 @@ description: Produce structured design specs from requirements. Use when startin
 display_name: Plan
 tools: read, grep, find, ls, cachebro_read_file, cachebro_read_files, grepika_toc, grepika_outline, grepika_search, grepika_get, tilth_tilth_search, tilth_tilth_read, ext:session-name
 thinking: high
-max_turns: 10
 extensions: true
 skills: false
 prompt_mode: replace

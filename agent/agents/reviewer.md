@@ -4,7 +4,6 @@ description: Code review for quality, security, and maintainability. Use when re
 display_name: Reviewer
 tools: read, grep, find, ls, bash, cachebro_read_file, cachebro_read_files, grepika_toc, grepika_outline, grepika_search, grepika_get, tilth_tilth_search, tilth_tilth_read, ext:session-name
 thinking: high
-max_turns: 10
 extensions: true
 skills: false
 prompt_mode: replace

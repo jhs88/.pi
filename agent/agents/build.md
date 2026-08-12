@@ -4,7 +4,6 @@ description: Default primary agent with all tools enabled. Use for standard deve
 display_name: Build
 tools: read, grep, find, ls, write, edit, bash, cachebro_read_file, cachebro_read_files, grepika_toc, grepika_outline, grepika_search, grepika_get, tilth_tilth_search, tilth_tilth_read, ext:session-name
 thinking: medium
-max_turns: 12
 extensions: true
 skills: false
 prompt_mode: replace

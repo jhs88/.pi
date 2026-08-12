@@ -4,7 +4,6 @@ description: Thermo-nuclear branch audit (bugs, breaking changes, security, deve
 display_name: Thermo Review
 tools: read, grep, find, ls, bash, cachebro_read_file, cachebro_read_files, grepika_toc, grepika_outline, grepika_search, grepika_get, tilth_tilth_search, tilth_tilth_read, ext:session-name
 thinking: high
-max_turns: 10
 extensions: true
 skills: thermo-nuclear-review
 prompt_mode: replace

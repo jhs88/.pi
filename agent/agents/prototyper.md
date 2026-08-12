@@ -4,7 +4,6 @@ description: Build throwaway prototypes to validate designs. Use when you receiv
 display_name: Prototyper
 tools: read, grep, find, ls, write, bash, cachebro_read_file, cachebro_read_files, grepika_toc, grepika_outline, grepika_search, grepika_get, tilth_tilth_search, tilth_tilth_read, ext:session-name
 thinking: medium
-max_turns: 12
 extensions: true
 skills: false
 prompt_mode: replace

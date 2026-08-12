@@ -4,7 +4,6 @@ description: Fold prototype findings into production code or delete prototype. U
 display_name: Integrator
 tools: read, grep, find, ls, write, edit, bash, cachebro_read_file, cachebro_read_files, grepika_toc, grepika_outline, grepika_search, grepika_get, tilth_tilth_search, tilth_tilth_read, ext:session-name
 thinking: high
-max_turns: 14
 extensions: true
 skills: false
 prompt_mode: replace
