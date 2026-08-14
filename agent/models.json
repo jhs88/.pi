@@ -7,9 +7,17 @@
       "models": [
         {
           "id": "ornith-1.0-35b",
-          "name": "ornith-1.0-35b",
+          "name": "Ornith 1.0 35B",
           "input": ["text", "image"],
           "reasoning": true,
+          "thinkingLevelMap": {
+            "minimal": null,
+            "low": null,
+            "medium": null,
+            "high": "high",
+            "xhigh": null,
+            "max": null
+          },
           "contextWindow": 131072,
           "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
         },
@@ -52,6 +60,15 @@
           "name": "kappa-20b-131k",
           "input": ["text", "image"],
           "reasoning": true,
+          "thinkingLevelMap": {
+            "off": null,
+            "minimal": null,
+            "low": "low",
+            "medium": "medium",
+            "high": "high",
+            "xhigh": null,
+            "max": null
+          },
           "contextWindow": 56536,
           "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
         },
@@ -60,6 +77,14 @@
           "name": "Gemma 4 E2B QAT MTP",
           "input": ["text", "image"],
           "reasoning": true,
+          "thinkingLevelMap": {
+            "minimal": null,
+            "low": null,
+            "medium": null,
+            "high": "high",
+            "xhigh": null,
+            "max": null
+          },
           "contextWindow": 49152,
           "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
         },
@@ -68,6 +93,14 @@
           "name": "Gemma 4 E4B QAT MTP",
           "input": ["text", "image"],
           "reasoning": true,
+          "thinkingLevelMap": {
+            "minimal": null,
+            "low": null,
+            "medium": null,
+            "high": "high",
+            "xhigh": null,
+            "max": null
+          },
           "contextWindow": 49152,
           "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
         },
@@ -76,6 +109,14 @@
           "name": "Gemma 4 12B QAT MTP",
           "input": ["text", "image"],
           "reasoning": true,
+          "thinkingLevelMap": {
+            "minimal": null,
+            "low": null,
+            "medium": null,
+            "high": "high",
+            "xhigh": null,
+            "max": null
+          },
           "contextWindow": 56000,
           "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
         },
@@ -84,6 +125,14 @@
           "name": "Gemma 4 26B A4B QAT MTP",
           "input": ["text", "image"],
           "reasoning": true,
+          "thinkingLevelMap": {
+            "minimal": null,
+            "low": null,
+            "medium": null,
+            "high": "high",
+            "xhigh": null,
+            "max": null
+          },
           "contextWindow": 56000,
           "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
         },
@@ -92,6 +141,14 @@
           "name": "Gemma 4 31B QAT MTP",
           "input": ["text", "image"],
           "reasoning": true,
+          "thinkingLevelMap": {
+            "minimal": null,
+            "low": null,
+            "medium": null,
+            "high": "high",
+            "xhigh": null,
+            "max": null
+          },
           "contextWindow": 56000,
           "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
         },
@@ -99,7 +156,7 @@
           "id": "qwen3-coder-next",
           "name": "Qwen 3 Coder Next",
           "input": ["text"],
-          "reasoning": true,
+          "reasoning": false,
           "contextWindow": 56000,
           "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
         },
@@ -108,6 +165,14 @@
           "name": "Qwen 3.5 122B A10B",
           "input": ["text", "image"],
           "reasoning": true,
+          "thinkingLevelMap": {
+            "minimal": null,
+            "low": null,
+            "medium": null,
+            "high": "high",
+            "xhigh": null,
+            "max": null
+          },
           "contextWindow": 65536,
           "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
         },
@@ -116,6 +181,14 @@
           "name": "Qwen 3.6 27B MTP",
           "input": ["text", "image"],
           "reasoning": true,
+          "thinkingLevelMap": {
+            "minimal": null,
+            "low": null,
+            "medium": null,
+            "high": "high",
+            "xhigh": null,
+            "max": null
+          },
           "contextWindow": 262144,
           "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
         },
@@ -124,6 +197,14 @@
           "name": "Qwen 3.6 27B",
           "input": ["text", "image"],
           "reasoning": true,
+          "thinkingLevelMap": {
+            "minimal": null,
+            "low": null,
+            "medium": null,
+            "high": "high",
+            "xhigh": null,
+            "max": null
+          },
           "contextWindow": 262144,
           "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
         },
@@ -132,6 +213,14 @@
           "name": "Qwen 3.6 35B A3B",
           "input": ["text", "image"],
           "reasoning": true,
+          "thinkingLevelMap": {
+            "minimal": null,
+            "low": null,
+            "medium": null,
+            "high": "high",
+            "xhigh": null,
+            "max": null
+          },
           "contextWindow": 262144,
           "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
         },
@@ -140,6 +229,14 @@
           "name": "Qwen 3.6 35B A3B MTP",
           "input": ["text", "image"],
           "reasoning": true,
+          "thinkingLevelMap": {
+            "minimal": null,
+            "low": null,
+            "medium": null,
+            "high": "high",
+            "xhigh": null,
+            "max": null
+          },
           "contextWindow": 262144,
           "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
         },
@@ -148,6 +245,14 @@
           "name": "Nvidia Nemotron 3 Nano",
           "input": ["text", "image"],
           "reasoning": true,
+          "thinkingLevelMap": {
+            "minimal": null,
+            "low": null,
+            "medium": null,
+            "high": "high",
+            "xhigh": null,
+            "max": null
+          },
           "contextWindow": 1000000,
           "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
         },
@@ -156,6 +261,30 @@
           "name": "Nvidia Nemotron 3 Super",
           "input": ["text"],
           "reasoning": true,
+          "thinkingLevelMap": {
+            "minimal": null,
+            "low": "low",
+            "medium": null,
+            "high": "high",
+            "xhigh": null,
+            "max": null
+          },
+          "contextWindow": 1000000,
+          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
+        },
+        {
+          "id": "nemotron-3.5-lightning",
+          "name": "Nemotron 3.5 Lightning 30B",
+          "input": ["text"],
+          "reasoning": true,
+          "thinkingLevelMap": {
+            "minimal": null,
+            "low": null,
+            "medium": null,
+            "high": "high",
+            "xhigh": null,
+            "max": null
+          },
           "contextWindow": 1000000,
           "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
         },
@@ -164,6 +293,14 @@
           "name": "GLM 4.7 Flash",
           "input": ["text"],
           "reasoning": true,
+          "thinkingLevelMap": {
+            "minimal": null,
+            "low": null,
+            "medium": null,
+            "high": "high",
+            "xhigh": null,
+            "max": null
+          },
           "contextWindow": 56000,
           "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
         },
@@ -172,6 +309,14 @@
           "name": "Hermes 4.3 36B",
           "input": ["text"],
           "reasoning": true,
+          "thinkingLevelMap": {
+            "minimal": null,
+            "low": null,
+            "medium": null,
+            "high": "high",
+            "xhigh": null,
+            "max": null
+          },
           "contextWindow": 131072,
           "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
         },
@@ -180,6 +325,14 @@
           "name": "NousCoder 14B",
           "input": ["text"],
           "reasoning": true,
+          "thinkingLevelMap": {
+            "minimal": null,
+            "low": null,
+            "medium": null,
+            "high": "high",
+            "xhigh": null,
+            "max": null
+          },
           "contextWindow": 81920,
           "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
         },
