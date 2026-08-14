@@ -241,6 +241,22 @@
           "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
         },
         {
+          "id": "qwen3.8-27b",
+          "name": "Qwen 3.8 27B",
+          "input": ["text", "image"],
+          "reasoning": true,
+          "thinkingLevelMap": {
+            "minimal": null,
+            "low": "low",
+            "medium": "medium",
+            "high": "high",
+            "xhigh": "high",
+            "max": null
+          },
+          "contextWindow": 262144,
+          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
+        },
+        {
           "id": "nvidia-nemotron-3-nano-omni-30b-a3b-reasoning",
           "name": "Nvidia Nemotron 3 Nano",
           "input": ["text", "image"],
