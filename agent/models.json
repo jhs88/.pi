@@ -249,8 +249,8 @@
             "minimal": null,
             "low": "low",
             "medium": "medium",
-            "high": "high",
-            "xhigh": "high",
+            "high": null,
+            "xhigh": "xhigh",
             "max": null
           },
           "contextWindow": 262144,
