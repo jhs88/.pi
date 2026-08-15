@@ -16,3 +16,7 @@ agent/workflows/
 # Cache
 agent/models-store.json
 
+# CLIProxyAPI provider private/generated state
+agent/cliproxyapi.json
+agent/cliproxyapi-models.json
+agent/tmp/

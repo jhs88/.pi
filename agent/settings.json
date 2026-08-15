@@ -1,7 +1,7 @@
 {
   "lastChangelogVersion": "0.84.1",
   "defaultProvider": "llamacpp",
-  "defaultModel": "muse-glimmer-30b-dflash",
+  "defaultModel": "muse-glimmer-30b",
   "hideThinkingBlock": false,
   "defaultThinkingLevel": "high",
   "theme": "dracula",
@@ -14,34 +14,7 @@
     "npm:pi-acp",
     "git:github.com/joelhooks/pi-skill-interpolation",
     "npm:@tintinweb/pi-subagents",
-    "git:github.com/jhs88/pi-tooling"
-  ],
-  "enabledModels": [
-    "openai-codex/gpt-5.3-codex-spark",
-    "openai-codex/gpt-5.4",
-    "openai-codex/gpt-5.4-mini",
-    "openai-codex/gpt-5.5",
-    "openai-codex/gpt-5.6-luna",
-    "openai-codex/gpt-5.6-terra",
-    "openai-codex/gpt-5.6-sol",
-    "llamacpp/kimi-k3",
-    "llamacpp/eousphoros/kappa-20b-131k",
-    "llamacpp/gemma-4-e2b-it-qat",
-    "llamacpp/gemma-4-e4b-it-qat",
-    "llamacpp/gemma-4-12b-it-qat",
-    "llamacpp/gemma-4-26b-a4b-it-qat",
-    "llamacpp/gemma-4-31b-it-qat",
-    "llamacpp/qwen3-coder-next",
-    "llamacpp/qwen3.5-122b-a10b",
-    "llamacpp/qwen3.6-27b-mtp",
-    "llamacpp/qwen3.6-35b-a3b-mtp",
-    "llamacpp/qwen3.8-27b",
-    "llamacpp/nvidia-nemotron-3-nano-omni-30b-a3b-reasoning",
-    "llamacpp/unsloth/nvidia-nemotron-3-super-120b-a12b",
-    "llamacpp/glm-4.7-flash",
-    "llamacpp/nouscoder-14b",
-    "llamacpp/hermes-4.3-36b",
-    "llamacpp/ornith-1.0-35b",
-    "llamacpp/muse-glimmer-30b-dflash"
+    "git:github.com/jhs88/pi-tooling",
+    "npm:@router-for-me/pi-cliproxyapi-provider"
   ]
 }
