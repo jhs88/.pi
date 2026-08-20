@@ -10,3 +10,5 @@
 !thermo-nuclear-*/**
 !subagents
 !subagents/**
+!unslop
+!unslop/**
