@@ -206,7 +206,7 @@ Run no more than three background agents simultaneously. The subagent manager qu
 | code-navigation | local | Tool reference and navigation patterns |
 | subagents | local | Bounded delegation guidance for `@tintinweb/pi-subagents` |
 | tilth | local | Structural diff/blast-radius analysis |
-| unslop | Pstack, pinned and vendored locally | Remove AI tells and add human voice |
+| unslop | [Pstack unslop](https://github.com/cursor/plugins/tree/fd6dd6f7276956a532bb78a748a8d2818b6eb5f4/pstack/skills/unslop) by Lauren Tan, MIT | Remove AI tells and add human voice |
 | to-spec | ~/.agents/skills/to-spec | Spec publishing |
 | to-tickets | ~/.agents/skills/to-tickets | Tracer-bullet implementation tickets |
 
