@@ -4,18 +4,35 @@ pi-mono stuff I've found useful
 
 ## Design Philosophy
 
-- **Agents = fresh-context stages.** Each canonical role owns one engineering responsibility and emits a compact evidence handoff.
-- **Skills = composition.** `agent-gauntlet` sequences roles; Matt Pocock's shared skills and Thermos remain reusable skills rather than permanent agent wrappers.
+- **Two workflows are first-class.** The six-role gauntlet provides a strict evidence pipeline; the legacy agents and prompts remain available for flexible planning, exploration, prototyping, implementation, and review.
+- **Agents = fresh-context primitives.** Each child owns one responsibility and emits a compact handoff.
+- **Skills and prompts = composition.** Choose the gauntlet or a legacy wrapper explicitly; neither silently replaces the other.
 - **Humans own strategy and irreversible actions.** Architecture boundaries, commit, push, release, and provider routing require explicit human decisions.
 - **Executable evidence beats confidence.** A missing repository gate is reported as unavailable, never treated as a pass.
 
-### Canonical implementation flow
+### Six-role implementation lane
 
 ```text
 specifier → coder → cleaner → architect → hardener → QA
 ```
 
-Use `/agent-gauntlet` for a complete serial implementation pass. Every role starts with fresh context; the parent passes only the approved contract, artifact references, and exact evidence. The parent runs fresh acceptance commands before mechanically read-only QA. Failures route to a fresh owning role and all downstream gates rerun.
+Use `/skill:agent-gauntlet` for a complete serial implementation pass. Every role starts with fresh context; the parent passes only the approved contract, artifact references, and exact evidence. The parent runs fresh acceptance commands before mechanically read-only QA. Failures route to a fresh owning role and all downstream gates rerun.
+
+### Shared strategic planning lane
+
+```text
+wayfinder → to-spec → to-tickets → implement → code-review → human review
+```
+
+This Matt-skill pipeline can feed either implementation lane after human approval.
+
+### Legacy custom-agent lane
+
+```text
+plan → prototyper → build/integrator → reviewer
+```
+
+Use the legacy custom agents (`scout`, `plan`, `prototyper`, `build`, `integrator`, `reviewer`, `test`, and `docs`) and prompts when work benefits from selective exploration, human gates, or a shorter/nonlinear flow. The legacy Thermos wrappers remain available alongside the newer `/skill:thermos` skill.
 
 ### Shared Strix operating policy
 
@@ -42,24 +59,32 @@ The workflow prompt decides which level applies.
 ### Complete implementation gauntlet
 
 ```text
-/agent-gauntlet "Add a bounded cache to the existing API adapter"
+/skill:agent-gauntlet "Add a bounded cache to the existing API adapter"
 ```
 
 The parent runs the six roles serially. Repository commands define the gates; missing commands are reported rather than invented.
 
+### Legacy design and implementation loop
+
+```text
+/design-loop "Add a bounded cache to the existing API adapter"
+```
+
+This keeps the prior human-gated `plan → prototyper → build/integrator → reviewer` workflow. `/parallel-explore-build`, `/quick-prototype`, and `/initiative-map` remain supported entry points.
+
 ### Decision work before implementation
 
 ```text
-/wayfinder "Choose the caching behavior and boundaries"
-# resolve the map, then run /agent-gauntlet from the approved result
+/skill:wayfinder "Choose the caching behavior and boundaries"
+# resolve the map, then run /skill:agent-gauntlet from the approved result
 ```
 
-Use Matt's `/grill-with-docs`, `/prototype`, `/to-spec`, and `/to-tickets` skills directly when their narrower workflow is a better fit.
+Use Matt's `/skill:grill-with-docs`, `/skill:prototype`, `/skill:to-spec`, and `/skill:to-tickets` skills directly when their narrower workflow is a better fit.
 
 ### Independent branch review
 
 ```text
-/thermos
+/skill:thermos
 ```
 
 Thermos launches two independent, read-only QA passes with complementary correctness and maintainability rubrics, then synthesizes their evidence. It does not replace final QA.
@@ -72,11 +97,15 @@ Choose the shortest flow that preserves decision quality:
 
 | Situation | Use |
 |-----------|-----|
-| Clear implementation request | `/agent-gauntlet` |
-| Foggy, multi-session decision | `/wayfinder`, then `/agent-gauntlet` |
-| Small design question | `/grill-with-docs` |
-| High-fidelity uncertainty | `/prototype` |
-| Independent diff audit | `/thermos` |
+| Clear implementation request | `/skill:agent-gauntlet` |
+| Foggy, multi-session decision | `/skill:wayfinder`, then `/skill:agent-gauntlet` |
+| Human-gated design/prototype loop | `/design-loop` |
+| Compare concrete approaches | `/parallel-explore-build` |
+| One cheap prototype | `/quick-prototype` |
+| Legacy Wayfinder wrapper | `/initiative-map` |
+| Small design question | `/skill:grill-with-docs` |
+| High-fidelity uncertainty | `/skill:prototype` |
+| Independent diff audit | `/skill:thermos` |
 
 Matt Pocock's shared skills remain upstream-managed and immutable in this repository. The local agents consume those skills where useful; they do not duplicate them.
 
@@ -84,7 +113,9 @@ Matt Pocock's shared skills remain upstream-managed and immutable in this reposi
 
 ## Custom Agents
 
-Custom agents live under `~/.pi/agent/agents/`. Exactly six canonical roles are enabled. They inherit the parent model and start with `inherit_context: false`; callers do not silently reroute them. Their tool envelopes use Pi built-ins only, avoiding extension-selector ambiguity; the parent keeps the richer navigation extensions.
+Custom agents live under `~/.pi/agent/agents/`. The strict six-role lane and the legacy flexible lane are both enabled. All custom agents inherit the parent model and start with `inherit_context: false`; workflow selection is explicit. The strict lane uses Pi built-ins only, while legacy roles retain their established tool/skill envelopes.
+
+**Six-role gauntlet agents:**
 
 | Agent | Authority |
 |-------|-----------|
@@ -95,7 +126,22 @@ Custom agents live under `~/.pi/agent/agents/`. Exactly six canonical roles are 
 | hardener | Deeper tests, robustness, security, coverage, complexity, and mutation gates |
 | qa | Independent, mechanically read-only final acceptance of parent-supplied fresh command evidence |
 
-The serial gauntlet uses one child at a time. Other skills may use bounded parallel review, subject to `subagents.json` and the shared-local-resource policy.
+**Legacy flexible agents:**
+
+| Agent | Purpose |
+|-------|---------|
+| scout | Compressed codebase reconnaissance |
+| plan | Structured design specifications |
+| prototyper | Throwaway validation artifacts |
+| build | Direct implementation |
+| integrator | Promote or remove prototype work |
+| reviewer | Read-only code review |
+| test | Test development and diagnosis |
+| docs | Technical documentation |
+| thermo-nuclear-review-subagent | Legacy correctness/security branch audit |
+| thermo-nuclear-code-quality-review-subagent | Legacy maintainability audit |
+
+The serial gauntlet uses one child at a time. Legacy prompts may select or parallelize their own agents, subject to `subagents.json` and the shared-local-resource policy.
 
 **Local skills:**
 

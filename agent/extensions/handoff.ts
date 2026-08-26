@@ -2,7 +2,7 @@
  * Handoff Write Tool - Scoped file writes for subagent handoffs.
  *
  * Only allows writing to /tmp/ paths. This gives read-only agents
- * (specifier, architect, QA, etc.) a safe way to produce handoff
+ * (specifier, architect, QA, plan, reviewer, etc.) a safe way to produce handoff
  * files without granting unrestricted write access to the project.
  */
 
