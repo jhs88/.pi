@@ -1,48 +1,23 @@
 ---
 name: thermos
-description: "Launch both thermo-nuclear review subagents in parallel, then synthesize their findings. Use for thermos, double thermo review, or combined bug/security and code-quality branch audits."
+description: Launch two independent QA agents with complementary thermo review rubrics, then synthesize their findings. Use for thermos, double thermo review, or combined correctness and maintainability review.
 disable-model-invocation: true
 ---
 
 # Thermos
 
-Run the two thermo review passes as async background subagents in parallel, then synthesize their results.
+Thermos is an optional review skill, not an agent type. It composes two fresh, read-only `qa` runs and does not replace the serial `agent-gauntlet` pipeline.
 
 ## Workflow
 
-1. Determine the review scope from the user request, PR, current branch, or relevant changed files.
-2. Gather the diff using `git diff main...HEAD` (or appropriate base).
-3. Read full contents of changed files for context.
-4. Launch both thermo subagents in parallel using the `Agent` tool from `@tintinweb/pi-subagents`:
+1. Fix the review base and scope. Gather the complete diff and changed-file contents.
+2. Launch two fresh background `qa` agents together, explicitly setting `Mode: Thermos audit`:
+   - correctness pass rubric only: bugs, security, breaking changes, unsafe failure modes, and user-path regressions;
+   - quality pass rubric only: maintainability, dependency shape, complexity, duplication, test strength, and robustness.
+3. Give both agents the same self-contained diff, paths, repository constraints, fresh parent-run check output, and forbidden side effects. Tell each agent not to apply the other rubric. QA's read-only tool envelope enforces non-mutation.
+4. Collect both results with `get_subagent_result({ agent_id, wait: true })` only when synthesis depends on them.
+5. Validate file-and-line evidence, deduplicate overlap, preserve disagreements, and report findings before summary.
 
-```js
-Agent({
-  subagent_type: "thermo-nuclear-review-subagent",
-  description: "bug security review",
-  run_in_background: true,
-  thinking: "high",
-  max_turns: 10,
-  prompt: `### Git / diff output
-<diff>
+Use the configured model route unless the user explicitly selects another. Follow the global concurrency policy; if another local workload is contending, run the audits serially.
 
-### Changed file contents
-<contents>`
-})
-Agent({
-  subagent_type: "thermo-nuclear-code-quality-review-subagent",
-  description: "quality review",
-  run_in_background: true,
-  thinking: "high",
-  max_turns: 10,
-  prompt: `### Git / diff output
-<diff>
-
-### Changed file contents
-<contents>`
-})
-```
-
-5. Use completion notifications or `get_subagent_result({ agent_id, wait: true })` to collect both results.
-6. Synthesize the results with findings first, deduplicated across reviewers. Weight overlapping findings more heavily, resolve disagreements with your own judgment, and keep summaries brief.
-
-If individual background summaries are already visible to the user, do not restate them wholesale. Surface the unified verdict, highest-signal findings, and remaining uncertainty.
+Thermos is review evidence, not final certification. The parent verifies findings, routes fixes through the owning canonical role, and then runs a fresh QA final gate.

@@ -4,19 +4,18 @@ pi-mono stuff I've found useful
 
 ## Design Philosophy
 
-- **Agents = primitives.** Do one thing. Don't hard-wire PRD/issues into them.
-- **Prompts = composition.** Decide flow and tracking based on situation.
-- **Wayfinder tickets resolve decisions.** They do not implement the destination.
-- **Implementation tickets deliver vertical slices.** Create them from an approved spec with `to-tickets`.
-- **Humans own irreversible actions.** Pi does not commit, push, or open a PR without explicit instruction.
+- **Agents = fresh-context stages.** Each canonical role owns one engineering responsibility and emits a compact evidence handoff.
+- **Skills = composition.** `agent-gauntlet` sequences roles; Matt Pocock's shared skills and Thermos remain reusable skills rather than permanent agent wrappers.
+- **Humans own strategy and irreversible actions.** Architecture boundaries, commit, push, release, and provider routing require explicit human decisions.
+- **Executable evidence beats confidence.** A missing repository gate is reported as unavailable, never treated as a pass.
 
-### Canonical large-work flow
+### Canonical implementation flow
 
 ```text
-wayfinder → to-spec → to-tickets → implement → code-review → human review
+specifier → coder → cleaner → architect → hardener → QA
 ```
 
-Use `wayfinder` when the route is foggy or larger than one practical context window. Small, clear work can start with `grill-with-docs` or proceed directly to implementation. A Wayfinder map charts decision work; after the map is complete, `to-spec` synthesizes the decisions and `to-tickets` creates implementation-sized tracer bullets.
+Use `/agent-gauntlet` for a complete serial implementation pass. Every role starts with fresh context; the parent passes only the approved contract, artifact references, and exact evidence. The parent runs fresh acceptance commands before mechanically read-only QA. Failures route to a fresh owning role and all downstream gates rerun.
 
 ### Shared Strix operating policy
 
@@ -40,175 +39,76 @@ The workflow prompt decides which level applies.
 
 ## Quick Start
 
-### Large or foggy work (canonical path)
+### Complete implementation gauntlet
 
-```
-/wayfinder "Build a caching layer for the API"
-# → chart and resolve decision tickets, then:
-#   to-spec → human approval → to-tickets
-#   implement each ticket in a fresh context → code-review → human review
+```text
+/agent-gauntlet "Add a bounded cache to the existing API adapter"
 ```
 
-### Small, clear work
+The parent runs the six roles serially. Repository commands define the gates; missing commands are reported rather than invented.
 
-```
-/grill-with-docs "Add a bounded cache to the existing API adapter"
-# → grill the design with domain context, then implement directly when the route is clear
-```
+### Decision work before implementation
 
-### Custom prompts (wrappers around Matt's flow)
-
-```
-/design-and-track "Build a caching layer for the API"
-# → adds issue tracking on top of plan → prototype → integrate
-
-/quick-prototype "Try using Redis vs in-memory cache"
-# → skips design, straight to prototype + integrate
-
-/architecture-deepening "src/api/routes"
-# → wrapper around improve-codebase-architecture skill
+```text
+/wayfinder "Choose the caching behavior and boundaries"
+# resolve the map, then run /agent-gauntlet from the approved result
 ```
 
-### On-ramps
+Use Matt's `/grill-with-docs`, `/prototype`, `/to-spec`, and `/to-tickets` skills directly when their narrower workflow is a better fit.
 
+### Independent branch review
+
+```text
+/thermos
 ```
-"Use triage to classify this bug report: 'app crashes on login'"
-```
+
+Thermos launches two independent, read-only QA passes with complementary correctness and maintainability rubrics, then synthesizes their evidence. It does not replace final QA.
 
 ---
 
-## Matt's Main Flow
+## Workflow Selection
 
-Choose the shortest path that preserves decision quality. Custom prompts below are wrappers that add tracking, human gates, or parallelism.
+Choose the shortest flow that preserves decision quality:
 
-### Core Path
+| Situation | Use |
+|-----------|-----|
+| Clear implementation request | `/agent-gauntlet` |
+| Foggy, multi-session decision | `/wayfinder`, then `/agent-gauntlet` |
+| Small design question | `/grill-with-docs` |
+| High-fidelity uncertainty | `/prototype` |
+| Independent diff audit | `/thermos` |
 
-```
-/wayfinder "Describe a large or foggy feature"
-  → resolve one frontier decision ticket per session
-  → to-spec
-  → human approval
-  → to-tickets
-  → implement each ticket in a fresh context
-  → code-review
-  → human review
-
-/grill-with-docs "Describe a small, clear feature"
-  → prototype if a high-fidelity decision needs evidence
-  → implement directly when the route is clear
-```
-
-### On-ramps into the flow
-
-| Entry Point | When | Skill |
-|-------------|------|-------|
-| `/triage` | Bug reports, incoming issues | `triage` skill |
-| `/improve-codebase-architecture` | Architecture review → feeds into grill-with-docs | `improve-codebase-architecture` skill |
-
-### Codebase Health Loop
-
-```
-/improve-codebase-architecture "src/api"
-  → identifies architectural debt
-  → findings feed back into /grill-with-docs for next feature
-```
-
----
-
-## Custom Prompts
-
-Wrappers around Matt's flow. They add tracking levels, human gates, or parallelism that the base flow doesn't enforce automatically.
-
-Arguments you type after the command become positional variables (`$1`, `$2`…) inside the template. See `argument-hint` in each prompt's frontmatter for expected inputs.
-
-### When to use which
-
-| Situation | Use | Why |
-|-----------|-----|-----|
-| Standard feature work | `/grill-with-docs` directly | Canonical flow, no wrapper overhead |
-| Parallel exploration | `/parallel-explore-build` | Our only unique prompt — 3 agents exploring options simultaneously |
-| Human gates mid-chain | `/design-with-handoffs` or `/full-initiative` | Stop for review before each phase |
-| Quick experiment | `/quick-prototype` | Skip design, validate fast |
-| Architecture review | `/architecture-deepening` | Wrapper around `improve-codebase-architecture` skill |
-
-### Tracking Levels (mapped to Matt's skills)
-
-**Handoff Only — wraps `prototype` + `integrator` skills**
-
-| Command | Chain | Wraps |
-|---------------------------|---------------------------|-------|
-| `/quick-prototype` | prototyper → integrator | `prototype` skill |
-| `/parallel-explore-build` | explore + 2× prototyper (parallel) | `prototype` skill (unique — no Matt equivalent) |
-
-**Issues — wraps `plan`, `prototype`, `integrator`, `to-tickets` skills**
-
-| Command | Chain | Wraps |
-|-------------------------------|---------------------------------------------|-------|
-| `/design-and-track` | plan → human review → prototyper → human review → integrator → approve issues → to-tickets | `to-spec` + `to-tickets` skills |
-| `/design-with-handoffs` | plan → human review → prototyper → human review → integrator | `handoff` skill |
-| `/design-prototype-integrate` | plan → prototyper → integrator (no auto-tracking) | — |
-
-**Spec + Issues — wraps `to-spec` + `to-tickets` skills**
-
-| Command | Chain | Wraps |
-|-------------------------------|--------------------------------------------------|-------|
-| `/full-initiative` | plan → human review → publish spec → prototyper → human review → update spec → to-tickets | `to-spec` + `to-tickets` skills |
-
-**Cross-Agent (spans sessions)**
-
-| Command | Chain | Wraps |
-|-------------------------------|--------------------------------------------------|-------|
-| `/cross-agent-prototype` | Grill session → prototype session → return learnings to grill session | `handoff` skill |
-
-**On-Demand Composition:**
-
-Simple 2-step chains compose directly in chat — no prompt needed:
-
-```
-explore finds the auth code → diagnose analyzes it
-explore finds changed files → reviewer reviews them
-```
+Matt Pocock's shared skills remain upstream-managed and immutable in this repository. The local agents consume those skills where useful; they do not duplicate them.
 
 ---
 
 ## Custom Agents
 
-Custom agents live under `~/.pi/agent/agents/`. They are thin, task-specific wrappers with bounded tools and thinking levels. They inherit the parent model unless a caller deliberately selects a task-scoped model; do not silently reroute them.
+Custom agents live under `~/.pi/agent/agents/`. Exactly six canonical roles are enabled. They inherit the parent model and start with `inherit_context: false`; callers do not silently reroute them. Their tool envelopes use Pi built-ins only, avoiding extension-selector ambiguity; the parent keeps the richer navigation extensions.
 
-Run no more than three background agents simultaneously. The subagent manager queues additional background work until a slot opens.
+| Agent | Authority |
+|-------|-----------|
+| specifier | Read-only behavioral contract and acceptance commands |
+| coder | Smallest behavior-complete implementation |
+| cleaner | Behavior-preserving local simplification |
+| architect | Read-only audit of human-approved boundaries |
+| hardener | Deeper tests, robustness, security, coverage, complexity, and mutation gates |
+| qa | Independent, mechanically read-only final acceptance of parent-supplied fresh command evidence |
 
-| Agent | What it does |
-|-------|--------------|
-| build | Standard development work with full file and shell tools |
-| scout | Fast codebase reconnaissance and compressed handoffs |
-| plan | Requirements grilling and design-spec synthesis |
-| prototyper | Throwaway prototypes that validate high-fidelity decisions |
-| integrator | Fold validated prototype findings into production or delete them |
-| reviewer | Quality, security, and maintainability review |
-| test | Write and debug tests and improve coverage |
-| docs | Technical and API documentation |
-| thermo-nuclear-code-quality-review-subagent | Harsh maintainability audit |
-| thermo-nuclear-review-subagent | Branch audit for bugs, security, and breaking changes |
+The serial gauntlet uses one child at a time. Other skills may use bounded parallel review, subject to `subagents.json` and the shared-local-resource policy.
 
-**Skills (~/.pi/agent/skills/):**
+**Local skills:**
 
-| Skill | Source | Purpose |
-|-------|--------|---------|
-| diagnose | ~/.agents/skills/diagnose | Disciplined bug diagnosis workflow |
-| prototype | ~/.agents/skills/prototype | Throwaway prototype building |
-| triage | ~/.agents/skills/triage | Issue classification state machine |
-| thermo-nuclear-review | ~/.agents/skills/thermo-nuclear-review | Security/correctness audit rubric |
-| thermo-nuclear-code-quality-review | ~/.agents/skills/thermo-nuclear-code-quality-review | Maintainability audit rubric |
-| thermos | ~/.agents/skills/thermos | Combined thermo review orchestrator |
-| handoff | ~/.agents/skills/handoff | Session handoff documentation |
-| grill-with-docs | ~/.agents/skills/grill-with-docs | Design grilling with domain docs |
-| improve-codebase-architecture | ~/.agents/skills/improve-codebase-architecture | Architecture deepening |
-| code-navigation | local | Tool reference and navigation patterns |
-| subagents | local | Bounded delegation guidance for `@tintinweb/pi-subagents` |
-| tilth | local | Structural diff/blast-radius analysis |
-| unslop | [Pstack unslop](https://github.com/cursor/plugins/tree/fd6dd6f7276956a532bb78a748a8d2818b6eb5f4/pstack/skills/unslop) by Lauren Tan, MIT | Remove AI tells and add human voice |
-| to-spec | ~/.agents/skills/to-spec | Spec publishing |
-| to-tickets | ~/.agents/skills/to-tickets | Tracer-bullet implementation tickets |
+| Skill | Purpose |
+|-------|---------|
+| agent-gauntlet | Serial six-role implementation and failure routing |
+| thermos | Parallel complementary QA branch audits |
+| subagents | `@tintinweb/pi-subagents` usage and boundaries |
+| code-navigation | Navigation-tool reference |
+| tilth | Structural diff and blast-radius analysis |
+| unslop | Remove AI writing tells; MIT-licensed Pstack adaptation |
+
+Shared Matt Pocock skills remain under `~/.agents/skills` and are loaded by name from role frontmatter. They are not copied or edited here.
 
 ---
 
@@ -253,76 +153,22 @@ To prevent context pollution, only core navigation tools are exposed as **direct
 
 ---
 
-## Agent Handoff Pattern
+## Agent Handoffs
 
-Workflows pass data between agents via `{previous}` and the `handoff` skill format from Matt's skills.
+Every role starts fresh. The parent passes a compact, self-contained handoff rather than inherited conversation history.
 
-1. **Agent 1** produces structured output (design spec, prototype findings, etc.)
-2. **Agent 2** receives `{previous}` as context, adds its own layer
-3. **Agent 3** receives `{previous}`, makes decisions, uses `handoff` skill to create summary
+Required fields:
 
-### handoff Skill Format
+- status (`PASS`, `FAIL`, or `BLOCKED`);
+- approved scope and relevant paths;
+- files changed, if any;
+- exact commands and outcomes;
+- unresolved risks or unavailable gates;
+- next role or focused human decision.
 
-The `handoff` skill (from Matt's skills) provides the canonical structure for session-to-session communication:
+Large evidence can live in a disposable `/tmp` handoff file or a subagent transcript; pass the path and a concise index. Repository specifications and tracker decisions remain canonical and are referenced rather than copied.
 
-- **Context**: What was done in this session
-- **Decisions**: Key choices made
-- **Next Steps**: What the next agent should do
-- **Suggested Skills**: Which skills the next agent should load
-
-### Questions for Human Pattern
-
-Subagents can't interact directly. If a subagent needs clarification, it outputs `## Questions for Human` in its result. The main agent grills you with those questions, then passes answers back to continue the chain.
-
-### Handoff File as Communication Channel
-
-Handoff files act as **write-once, read-when-needed** communication between main and subagents:
-
-1. Subagent writes findings → returns file path only (not content)
-2. Main agent holds path in context (keeps tokens low)
-3. Human reviews handoff on demand when needed
-4. Human appends decisions to the same file
-5. Next subagent reads updated handoff file
-
-This avoids stuffing giant summaries into `{previous}` that aren't needed until later.
-
-### Context Hygiene
-
-| Principle | Why |
-|-----------|-----|
-| Keep sessions pure | Models degrade with irrelevant tokens ("dumb zone") |
-| Handoffs are disposable | Save to `/tmp`, not codebase — bridges, not docs |
-| Include purpose + suggested skills | Next agent knows how to behave immediately |
-| Close the loop | Prototype findings flow back to inform planning/PRDs |
-| Don't duplicate artifacts | Reference existing issues/docs by path, don't re-copy them |
-
-### Grilling Best Practices
-
-| Do | Don't |
-|----|-------|
-| Lead the conversation — keep agent on track | Sit passively and answer 200 questions |
-| Save decisions to PRD/handoff BEFORE clearing context | Clear context first, lose valuable decisions |
-| Break large scopes into sub-scopes before grilling | Grill at massive scope (hits ~120k "dumb zone") |
-| Use low-fidelity questions for conversation | Try to grill high-fidelity questions (use prototype instead) |
-
-### Question Fidelity
-
-| Low-Fidelity (grillable via chat) | High-Fidelity (needs prototype) |
-|----------------------------------|--------------------------------|
-| URL routing choices | UI "feel" and layout |
-| API contract shape | Complex form interactions |
-| Module boundaries | State machine edge cases |
-| Naming conventions | Animation timing/flow |
-
-**Rule:** If you can't explain the answer in 2 sentences, it's high-fidelity → use `/cross-agent-prototype`.
-
-### When to Chain vs Start Fresh
-
-| Use chain | Use fresh session |
-|-----------|-------------------|
-| 2-3 steps max | Long workflows (>3 steps) |
-| Context stays relevant | Different domain/task |
-| No human review needed | Need human decision point |
+A downstream role treats upstream `PASS` as a claim to verify. The parent reruns required commands immediately before QA; QA independently audits the files, artifacts, and fresh command evidence without shell or write tools. The parent then audits the final diff before any release action.
 
 ---
 

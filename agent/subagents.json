@@ -5,7 +5,7 @@
   "defaultJoinMode": "smart",
   "schedulingEnabled": false,
   "scopeModels": false,
-  "disableDefaultAgents": false,
+  "disableDefaultAgents": true,
   "toolDescriptionMode": "compact",
   "fleetView": true
 }
