@@ -1,74 +1,56 @@
 # .pi
 
-pi-mono stuff I've found useful
+A Pi configuration for human-directed software design, skill-driven bounded work, and a fresh-context six-role implementation gauntlet.
 
-## Design philosophy
-
-- **Human decisions and agent execution are separate layers.** Wayfinder, grilling, research, prototypes, specifications, and tickets establish intent. The six-role gauntlet executes an approved artifact.
-- **Named gauntlet agents are authority boundaries.** Each child starts fresh, owns one responsibility, and emits a compact handoff.
-- **Flexible agents are capability profiles.** `scout`, `build`, and `docs` define tools and context. Active skills define the procedure.
-- **Skills are the source of truth for reusable work.** Research, prototyping, testing, review, and technical writing do not need one agent type each.
-- **Humans own strategy and irreversible actions.** Architecture direction, commit, push, release, and provider routing require explicit human decisions.
-- **Executable evidence beats confidence.** A missing repository gate is unavailable, never passed.
-
-### Human decision layer
+## Architecture
 
 ```text
-small or bounded: grilling / design-loop / prototype
-large or foggy:   wayfinder → to-spec → to-tickets
-```
-
-The parent session owns questions and approval gates. Full research uses the shared `research` skill with a fresh `build`, because that procedure must write a cited Markdown artifact. Read-only source gathering can use `scout` and return evidence to the parent. High-fidelity uncertainty uses `prototype` with a disposable `build` worktree. `/skill:compare-prototypes` runs one scout and two isolated prototypes when two concrete approaches need direct comparison.
-
-### Agent execution layer
-
-```text
+Human decision layer
+wayfinder / grilling / research / prototype / to-spec / to-tickets
+                              ↓ approved artifact
+Agent execution layer
 specifier → coder → cleaner → architect → hardener → QA
+                              ↓ evidence
+Thermos / human review / explicit release decision
 ```
 
-Use `/skill:agent-gauntlet` for the strict implementation pipeline. Every role starts with fresh context. The parent passes only the approved contract, artifact references, and exact evidence. Failures return to a fresh owning role, and downstream gates run again.
+Three rules organize the system:
 
-### Flexible capability profiles
+- **Humans own strategy and irreversible actions.** Product meaning, architectural direction, commit, push, release, and provider routing require explicit human decisions.
+- **Skills own reusable procedures.** Research, prototyping, diagnosis, review, testing, and writing are methodologies rather than permanent agent identities.
+- **Agents own bounded authority.** Fresh roles and capability profiles define tools, context, and responsibility.
 
-Use `scout`, `build`, and `docs` directly only when a strict six-stage pass is unnecessary:
+Background and composition guides:
 
-- `scout` is mechanically read-only and inherits the active review, navigation, or source-gathering procedure.
-- `build` is the extension-enabled mutation and command envelope for an active implementation, research, prototype, test, or integration skill.
-- `docs` is a no-shell editor with Pstack `technical-writing` and `unslop` preloaded.
+- [Composing Matt Pocock's skills](docs/matt-pocock-skills.md)
+- [The Uncle Bob agent gauntlet](docs/uncle-bob-agent-gauntlet.md)
+- [Code navigation](docs/code-navigation.md)
 
-Extension defaults stay hidden to avoid duplicate `Explore`, `Plan`, and `general-purpose` entries. This setting is not fail-closed: the installed extension maps an unknown type to a mutable `general-purpose` fallback. Every workflow therefore preflights exact advertised types before dispatch and stops on a missing name.
+## Choose a workflow
 
-### Shared Strix operating policy
+Use the shortest flow that preserves the required decision and verification boundaries:
 
-- Run at most three local subagents concurrently.
-- Pause automated work when Hermes, Honcho, or another local workload is contending for Strix resources.
-- Route a task to Codex Spark only deliberately and for that task. Never use it as a silent fallback.
-- Keep automatic subagent scheduling disabled by default.
+| Situation | Use |
+|---|---|
+| Clear consequential implementation | `/skill:agent-gauntlet` |
+| Bounded human-gated design and implementation | `/skill:design-loop` |
+| Foggy multi-session destination | `/skill:wayfinder` → `/skill:to-spec` → approval → `/skill:to-tickets` |
+| Primary-source research artifact | `/skill:research` with writable `build` |
+| Read-only source or repository reconnaissance | `scout` with a self-contained evidence contract |
+| One high-fidelity uncertainty | `/skill:prototype` with an isolated `build` |
+| Two runnable alternatives | `/skill:compare-prototypes` |
+| Technical documentation | `/skill:technical-writing` with `docs` |
+| Independent diff audit | `/skill:thermos` or `/skill:code-review` |
 
-### Tracking levels
-
-| Level | Artifact |
-|-------|----------|
-| Handoff only | Temp file or subagent transcript |
-| Issues | Issue tracker |
-| Spec and issues | Approved specification with implementation tickets |
-| ADR | `docs/adr/` for durable architectural decisions |
-
-The active skill chooses the smallest durable artifact that preserves the decision.
-
----
-
-## Quick start
-
-### Run the complete implementation gauntlet
+### Complete implementation gauntlet
 
 ```text
 /skill:agent-gauntlet "Add a bounded cache to the existing API adapter"
 ```
 
-The parent runs six fresh roles serially. Repository commands define the gates. Missing commands remain unavailable.
+The parent runs six roles serially with fresh context. Repository commands define the gates. A missing command is unavailable, never passed.
 
-### Resolve decisions before implementation
+### Resolve decisions first
 
 For work that fits one session:
 
@@ -80,197 +62,159 @@ For a large or foggy destination:
 
 ```text
 /skill:wayfinder "Choose the caching behavior and boundaries"
-# Resolve the map, publish an approved spec or tickets, then run agent-gauntlet.
+# Resolve the map, run to-spec, approve the specification, then run to-tickets.
 ```
 
 Use `/skill:grill-with-docs`, `/skill:research`, `/skill:prototype`, `/skill:to-spec`, and `/skill:to-tickets` directly when one procedure is enough.
 
-### Compare runnable alternatives
+Some decision-layer skills write durable project state. `grill-with-docs` updates domain documents and ADRs. `wayfinder`, `to-spec`, `to-tickets`, and `triage` can create or update tracker records. Inspect the active skill and target before approving those writes.
+
+### Compare alternatives
 
 ```text
 /skill:compare-prototypes "Compare an in-memory cache with Redis"
 ```
 
-The parent launches a read-only scout and two isolated build prototypes, verifies both, and returns the choice to the human. Prototype code does not enter production automatically.
+The parent launches a read-only Scout and two isolated Build prototypes, verifies both, and returns the choice to the human. Prototype code does not enter production automatically.
 
-### Write technical documentation
-
-Load `/skill:technical-writing`, then use a fresh `docs` agent for a no-shell editing pass. The agent also preloads `/skill:unslop`.
-
-### Run an independent branch review
+### Review a branch
 
 ```text
 /skill:thermos
 ```
 
-Thermos launches two independent, read-only QA passes with complementary correctness and maintainability rubrics. It does not replace final acceptance QA.
+Thermos launches two fresh, read-only QA passes with complementary correctness and maintainability rubrics. It is optional review evidence, not final acceptance certification.
 
-### Migrate legacy commands
+## Agents
 
-The prompt files were removed. Use these direct replacements:
-
-| Removed command | Replacement |
-|-----------------|-------------|
-| `/design-loop` | `/skill:design-loop` |
-| `/parallel-explore-build` | `/skill:compare-prototypes` |
-| `/quick-prototype` | `/skill:prototype` |
-| `/initiative-map` | `/skill:wayfinder` |
-
----
-
-## Workflow selection
-
-Choose the shortest flow that preserves the required decision and verification boundaries:
-
-| Situation | Use |
-|-----------|-----|
-| Clear consequential implementation | `/skill:agent-gauntlet` |
-| Bounded human-gated design and implementation | `/skill:design-loop` |
-| Foggy multi-session decision | `/skill:wayfinder`, then an approved specification or tickets |
-| Primary-source research artifact | `/skill:research` with `build` |
-| Read-only source or repository reconnaissance | `scout` with a self-contained evidence contract |
-| One high-fidelity uncertainty | `/skill:prototype` with an isolated `build` agent |
-| Two concrete runnable alternatives | `/skill:compare-prototypes` |
-| Technical documentation | `/skill:technical-writing` with `docs` |
-| Independent diff audit | `/skill:thermos` or `/skill:code-review` |
-
-Matt Pocock's shared skills remain upstream-managed and immutable in this repository. Pstack `technical-writing` and `unslop` are pinned, MIT-licensed local copies with provenance retained beside each skill.
-
----
-
-## Custom agents
-
-Custom agents live under `~/.pi/agent/agents/`. The extension's `general-purpose`, `Explore`, and `Plan` defaults are hidden, not fail-closed; workflows preflight exact advertised names because an unknown type falls back to mutable `general-purpose`. Nine explicit types are available: six strict gauntlet roles and three flexible capability profiles. Every child inherits the parent model and starts with `inherit_context: false`.
+Nine explicit custom types are available. Every child starts fresh and inherits the parent model.
 
 ### Gauntlet authority roles
 
 | Agent | Authority |
-|-------|-----------|
+|---|---|
 | `specifier` | Read-only behavioral contract and acceptance commands |
 | `coder` | Smallest behavior-complete implementation |
 | `cleaner` | Behavior-preserving local simplification |
 | `architect` | Read-only audit of human-approved boundaries |
 | `hardener` | Deeper tests, robustness, security, coverage, complexity, and mutation gates |
-| `qa` | Independent, mechanically read-only final acceptance of parent-supplied evidence |
+| `qa` | Mechanically read-only final acceptance of parent-supplied evidence |
 
 ### Flexible capability profiles
 
 | Agent | Capability |
-|-------|------------|
-| `scout` | Low-thinking, mechanically read-only analysis with direct Cachebro, Grepika, and Tilth navigation plus compressed handoff output |
-| `build` | Extension-enabled file and shell operations for the active skill or bounded parent procedure |
-| `docs` | No-shell documentation editing with Pstack `technical-writing` and `unslop` preloaded |
+|---|---|
+| `scout` | Low-thinking, mechanically read-only analysis with explicit Cachebro, Grepika, and Tilth navigation tools |
+| `build` | Extension-enabled file and shell operations for the active bounded procedure |
+| `docs` | No-shell editing with Pstack `technical-writing` and `unslop` preloaded |
 
-A flexible profile does not own a methodology. The parent loads the applicable skill and passes a self-contained task. For example, a complete research artifact is `research` plus writable `build`; read-only reconnaissance uses `scout`; prototyping is `prototype` plus an isolated `build`; documentation is `technical-writing` plus `docs`.
+A flexible profile does not own a methodology. The parent loads the applicable skill and supplies a self-contained task. For example:
 
-The serial gauntlet uses one child at a time. Skills may use bounded parallel work subject to `subagents.json` and the shared-local-resource policy.
+- complete research artifact: `research` plus writable `build`;
+- read-only reconnaissance: `scout`;
+- disposable experiment: `prototype` plus isolated `build`;
+- documentation: `technical-writing` plus `docs`.
 
-### Local skills
+## Safety boundaries
 
-| Skill | Purpose |
-|-------|---------|
-| `agent-gauntlet` | Serial six-role implementation and failure routing |
-| `design-loop` | One-session human-gated design, optional prototype, implementation, and review |
-| `compare-prototypes` | Parallel scout and two isolated runnable alternatives before a human choice |
-| `thermos` | Parallel complementary QA branch audits |
-| `thermo-nuclear-review` | Strict correctness, security, and regression audit rubric |
-| `thermo-nuclear-code-quality-review` | Strict maintainability and implementation-quality audit rubric |
-| `technical-writing` | Pstack's layered Diátaxis, Google, STE, and Global English standard |
-| `unslop` | Pstack's AI-writing-tell removal and human-voice pass |
-| `subagents` | `@tintinweb/pi-subagents` usage and boundaries |
-| `code-navigation` | Navigation-tool reference |
-| `tilth` | Structural diff and blast-radius analysis |
+Extension defaults remain hidden to avoid duplicate `Explore`, `Plan`, and `general-purpose` entries. Hidden is not fail-closed: the installed subagent extension maps an unknown type to a mutable `general-purpose` fallback.
 
-Shared Matt Pocock skills remain under `~/.agents/skills` and are loaded by name. They are not copied or edited here.
+Every workflow therefore:
 
----
+1. inspects the `Agent` tool's advertised types;
+2. requires the exact intended names;
+3. stops before dispatch when a name is missing;
+4. never probes an unknown or misspelled type.
 
-## Code Navigation Strategy
+`scout` loads only `pi-mcp-adapter` and `session-name`. Its tool list contains explicit read-only operations and omits shell, write, edit, and the generic MCP gateway.
 
-**Primary principle: minimize context consumption.** Read outlines first, then targeted sections. Be surgical.
+The serial gauntlet uses one child at a time. Other skills may use bounded parallel work subject to `agent/subagents.json` and the shared local-resource policy:
 
-Inspired by [markerikson/opencode-config-example](https://github.com/markerikson/opencode-config-example/blob/main/config/AGENTS.md).
+- run no more than three local children concurrently;
+- pause automated work when another local workload is contending;
+- use external overflow only when explicitly selected for that task;
+- keep automatic subagent scheduling disabled by default.
 
-### Tool Quick Reference
+## Handoffs and evidence
 
-| Need | Tool | Approach |
-|------|------|----------|
-| Directory overview | `grepika_toc` | Tree structure of a directory |
-| Find code (NL/regex) | `grepika_search` | Natural language or regex search across indexed codebase |
-| File structure | `grepika_outline` → `grepika_get` | Outline first, then read the section you need |
-| Symbol definitions | `tilth_tilth_search` | Definition-first symbol lookup |
-| What calls X? | `tilth_tilth_search kind:callers` | Caller tracing |
-| Blast-radius before changes | `tilth_tilth_deps` | Dependency impact (via mcp gateway) |
-| Cached file reads | `cachebro_read_file` / `read_files` | Fast re-reads, skips unchanged content |
+The parent passes compact artifacts rather than inherited conversation history. A useful handoff identifies:
 
-### Tool Visibility (context hygiene)
-
-To prevent context pollution, only core navigation tools are exposed as **direct tools** in `mcp.json`. The rest are available via the `mcp()` gateway call but don't appear in the default tool list.
-
-| Direct (always visible) | Gateway-only (available on demand) |
-|------------------------|-----------------------------------|
-| `grepika_toc` | `grepika_context`, `refs`, `stats` |
-| `grepika_outline` | `grepika_diff` |
-| `grepika_search` | |
-| `grepika_get` | |
-| `tilth_tilth_search` | `tilth_tilth_files`, `deps` |
-| `tilth_tilth_read` | `tilth_tilth_diff`, `edit` |
-
-### Workflow Pattern
-
-1. **Orient** — `grepika_toc` on the target directory
-2. **Find** — `grepika_search` or `tilth_tilth_search` to locate symbols/files
-3. **Outline** — `grepika_outline` or `tilth_tilth_read` to see structure
-4. **Read surgically** — `grepika_get` with line range, or `cachebro_read_file`
-5. **Verify** — re-read changed sections, run tests
-
----
-
-## Agent Handoffs
-
-Every role starts fresh. The parent passes a compact, self-contained handoff rather than inherited conversation history.
-
-Required fields:
-
-- status (`PASS`, `FAIL`, or `BLOCKED`);
+- status: `PASS`, `FAIL`, or `BLOCKED`;
 - approved scope and relevant paths;
 - files changed, if any;
 - exact commands and outcomes;
-- unresolved risks or unavailable gates;
-- next role or focused human decision.
+- unresolved risks and unavailable gates;
+- next owning role or focused human decision.
 
-Large evidence can live in a disposable `/tmp` handoff file or a subagent transcript; pass the path and a concise index. Repository specifications and tracker decisions remain canonical and are referenced rather than copied.
+Large disposable evidence can live under `/tmp` or in a subagent transcript. Repository specifications, issues, tests, and ADRs remain canonical and are referenced rather than copied.
 
-A downstream role treats upstream `PASS` as a claim to verify. The parent reruns required commands immediately before QA; QA independently audits the files, artifacts, and fresh command evidence without shell or write tools. The parent then audits the final diff before any release action.
+A downstream `PASS` is a claim to verify. The parent reruns required checks immediately before QA, and QA remains read-only. Completing a workflow does not authorize commit, push, merge, publish, or deployment.
 
----
+## Local skills
 
-## Extensions & Skills
+Repository-local skills include:
 
-### Extensions
+| Skill | Purpose |
+|---|---|
+| `agent-gauntlet` | Serial six-role implementation and failure routing |
+| `design-loop` | One-session human-gated design, optional prototype, implementation, and review |
+| `compare-prototypes` | Scout plus two isolated runnable alternatives before a human choice |
+| `thermos` | Complementary read-only QA branch audits |
+| `technical-writing` | Pstack's layered Diátaxis, Google, STE, and Global English standard |
+| `unslop` | Pstack's AI-writing-tell removal and human-voice pass |
+| `subagents` | `@tintinweb/pi-subagents` usage and safety boundaries |
+| `code-navigation` | Navigation-tool reference |
+| `tilth` | Structural diff and blast-radius analysis |
 
-Configuration-local extensions in this repository are adapted from the examples in `pi-mono` and maintained manually.
+Shared Matt Pocock skills remain under `~/.agents/skills` and are loaded by name. They are not copied or edited in this repository. See [the composition guide](docs/matt-pocock-skills.md).
 
-Credit: selected extensions are adapted from [davis7dotsh/my-pi-setup@797eaf6](https://github.com/davis7dotsh/my-pi-setup/tree/797eaf6d6f178759cf7aabde927ef15c91346e7e), with local compatibility, routing, and security changes. They are distributed as the managed [`jhs88/pi-tooling`](https://github.com/jhs88/pi-tooling) Git package.
+## Installation and updates
 
-Install it once with:
+### Pi Tooling extensions
+
+Configuration-local extensions are distributed through the managed [`jhs88/pi-tooling`](https://github.com/jhs88/pi-tooling) Git package:
 
 ```bash
 pi install git:github.com/jhs88/pi-tooling
 ```
 
-`pi update --extensions` and `pi update --all` update the managed checkout and rerun its production dependency install whenever its commit changes. Do not copy the package into `agent/extensions`; auto-discovered extension directories do not receive Pi's package installation lifecycle.
+`pi update --extensions` and `pi update --all` update the managed checkout and rerun its production dependency installation when needed. Do not copy the package into `agent/extensions`; auto-discovered extension directories do not receive Pi's package lifecycle.
+
+Selected extensions are adapted from [davis7dotsh/my-pi-setup@797eaf6](https://github.com/davis7dotsh/my-pi-setup/tree/797eaf6d6f178759cf7aabde927ef15c91346e7e), with local compatibility, routing, and security changes.
+
+### Shared skills
+
+Pi reads shared skills from `~/.agents/skills`, user-local skills from `~/.pi/agent/skills`, and project skills from supported project discovery paths.
+
+Install Matt Pocock's shared set with:
+
+```bash
+npx skills@latest add mattpocock/skills -g
+```
+
+Run `/skill:setup-matt-pocock-skills` once in a project that has not configured its issue tracker, triage labels, and documentation layout.
+
+Pstack `technical-writing` and `unslop` are pinned MIT-licensed local copies. Their provenance is retained beside each skill.
+
+### Firecrawl
 
 Self-hosted Firecrawl reads `FIRECRAWL_API_URL` and optional `FIRECRAWL_API_KEY` from the process environment, then ignored `agent/.env`. Copy `agent/.env.example` when Pi-local configuration is needed. There is no Firecrawl Cloud fallback.
 
-### Recommended skills
+## Legacy command migration
 
-Pi reads user skills from `~/.pi/agent/skills` and `~/.agents/skills`, plus project skills from `$(cwd)/.pi/skills` and trusted ancestor `.agents/skills` directories. It's recommended to install Matt's skills:
+The old prompt files were removed. Use these replacements:
 
-```bash
-npx skills@latest add mattpocock/skills
-```
+| Removed command | Replacement |
+|---|---|
+| `/design-loop` | `/skill:design-loop` |
+| `/parallel-explore-build` | `/skill:compare-prototypes` |
+| `/quick-prototype` | `/skill:prototype` |
+| `/initiative-map` | `/skill:wayfinder` |
 
-### Recommended Resources
+## Further reading
 
-- [A Philosophy of Software Design](https://milkov.tech/assets/psd.pdf) — book related to his skills
+- [Managed Pi tooling smoke test](docs/pi-tooling-smoke-test.md)
+- [A Philosophy of Software Design](https://milkov.tech/assets/psd.pdf)
+- [Matt Pocock's skills](https://github.com/mattpocock/skills)
+- [Uncle Bob and Matt Pocock interview](https://www.youtube.com/watch?v=zcLPGC-tvgk)
+- [SwarmForge](https://github.com/unclebob/swarm-forge)

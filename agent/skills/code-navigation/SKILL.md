@@ -3,27 +3,27 @@ name: code-navigation
 description: Full tool reference for codebase navigation. Use when you need detailed guidance on grepika/tilth/cachebro usage, blast-radius checks, or workflow patterns
 ---
 
-# Code Navigation & File Reading
+# Code navigation and file reading
 
 Full tool reference for navigating codebases. APPEND_SYSTEM.md has the quick-reference table; this skill provides detailed usage, workflows, and edge cases.
 
-## Grepika — Default Exploration Tool
+## Grepika as the default exploration tool
 
 Use grepika first for all code exploration and reading.
 
-### Direct Tools (always visible)
+### Direct tools
 
-- `grepika_toc` — directory tree overview
-- `grepika_search` — find code patterns (regex or natural language). Auto-indexed via `--root` in mcp.json.
-- `grepika_outline` — extract file structure (functions, classes, types). **Always do this before reading code.**
-- `grepika_get` with `start_line`/`end_line` — read targeted sections. Use outline results to pick exact line ranges. **Never omit line range on large files.**
+- `grepika_toc` gives a directory tree overview.
+- `grepika_search` finds regex or natural-language code patterns. The `--root` setting in `mcp.json` enables automatic indexing.
+- `grepika_outline` extracts file structure. Use it before reading code.
+- `grepika_get` with `start_line` and `end_line` reads targeted sections. Always provide a line range for large files.
 
-### Gateway Tools (via `mcp()`)
+### Gateway tools
 
-- `mcp({ server: "grepika", tool: "context" })` — see surrounding code at a search match location
-- `mcp({ server: "grepika", tool: "refs" })` — find all references to a symbol/identifier
+- `mcp({ server: "grepika", tool: "context" })` shows code around a search match.
+- `mcp({ server: "grepika", tool: "refs" })` finds references to a symbol or identifier.
 
-### Core Workflow
+### Core workflow
 
 ```
 grepika_outline → identify symbols of interest → grepika_get with line range → read only what's needed
@@ -31,36 +31,36 @@ grepika_outline → identify symbols of interest → grepika_get with line range
 
 Repeat as necessary. This keeps context lean.
 
-## Tilth — Structural / Definition Queries
+## Tilth for structural and definition queries
 
 When you need to know _where something is defined_ or _what calls what_, prefer tilth over grepika.
 
-### Direct Tools (always visible)
+### Direct tools
 
-- `tilth_tilth_read` — smart file reading. Small files shown whole, large files auto-outlined with drillable line ranges.
-- `tilth_tilth_search` — definition-first search. Finds where symbols are **defined** (not just string matches), shows surrounding structure, resolves callees inline.
+- `tilth_tilth_read` reads small files whole and outlines large files with drillable line ranges.
+- `tilth_tilth_search` finds symbol definitions, shows surrounding structure, and resolves callees inline.
   - Use `scope` param to limit to a subdirectory
   - Multi-symbol: pass comma-separated names to trace across files in one call
   - Callers: `kind: callers` finds all call sites using tree-sitter structural matching
-- `tilth_tilth_edit` — batch edit files using hashline anchors from tilth_read output.
 
-### Gateway Tools (via `mcp()`)
+### Gateway tools
 
-- `mcp({ server: "tilth", tool: "deps" })` — blast-radius check. What a file imports and what uses its exports. **Use before breaking changes.**
+- `mcp({ server: "tilth", tool: "tilth_deps" })` reports imports and consumers of a file's exports. Use it before breaking changes.
+- `mcp({ server: "tilth", tool: "tilth_write" })` batches file mutations using hashline anchors or explicit overwrite and append modes.
 
-### When to Choose Tilth Over Grepika
+### When to choose Tilth over Grepika
 
 - You want the **definition** of a symbol, not just occurrences of a string
 - You need **callers** of a function (structural, not text grep)
 - You want to trace **multiple symbols** across files in one call
 
-## Non-Code Files
+## Non-code files
 
-- **Config, JSON, small files:** `cachebro_read_file` / `cachebro_read_files` — typically small enough for full reads
+- **Config, JSON, small files.** Use `cachebro_read_file` or `cachebro_read_files`; these files are usually small enough to read whole.
 - **Markdown/docs:** Don't blindly read whole file. Scan headers with `rg "^#{1,3} "` first, then read targeted sections with offset/limit. Only full-read if small or genuinely needed.
 - **Fallback:** If cachebro reports stale cache or truncates reads, use the built-in `Read` tool directly.
 
-## Decision Flowchart
+## Decision table
 
 | Question                          | Tool                                     | Why                             |
 | --------------------------------- | ---------------------------------------- | ------------------------------- |
@@ -68,12 +68,12 @@ When you need to know _where something is defined_ or _what calls what_, prefer 
 | "Where is Y defined?"             | tilth search                             | Definition-first structural     |
 | "What calls Z?"                   | tilth search (callers)                   | Tree-sitter structural matching |
 | Regex/text pattern match          | `grepika_search` (grep mode)             | Fast text search                |
-| "What would break if I change X?" | `mcp({ server: "tilth", tool: "deps" })` | Blast-radius analysis           |
+| "What would break if I change X?" | `mcp({ server: "tilth", tool: "tilth_deps" })` | Blast-radius analysis           |
 
-## Anti-Patterns
+## Anti-patterns
 
-- **Reading entire large files** — always outline first, then targeted get
-- **Using grepika search without index** — results will be empty. Run grepika_index first.
-- **Omitting line ranges on grepika_get** — wastes context on large files
-- **Using grep/text search when you need definitions** — will find usages, imports, comments. Use tilth for definitions.
-- **Reading code files with cachebro** — cachebro is for config/JSON/small non-code files. Use grepika/tilth for code.
+- **Reading entire large files.** Outline first, then fetch the required range.
+- **Treating an empty Grepika result as proof.** Verify the configured index is ready, then retry or read canonical source.
+- **Omitting line ranges on `grepika_get`.** This wastes context on large files.
+- **Using text search when you need definitions.** Text search also finds usages, imports, and comments. Use Tilth for definitions.
+- **Reading code files with Cachebro.** Cachebro is for config, JSON, and small non-code files. Use Grepika or Tilth for code.
