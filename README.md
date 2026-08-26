@@ -172,13 +172,15 @@ Shared Matt Pocock skills remain under `~/.agents/skills` and are loaded by name
 
 ### Pi Tooling extensions
 
-Configuration-local extensions are distributed through the managed [`jhs88/pi-tooling`](https://github.com/jhs88/pi-tooling) Git package:
+Managed file search, Firecrawl, interaction, background terminal, and workflow extensions are distributed through the [`jhs88/pi-tooling`](https://github.com/jhs88/pi-tooling) Git package:
 
 ```bash
 pi install git:github.com/jhs88/pi-tooling
 ```
 
 `pi update --extensions` and `pi update --all` update the managed checkout and rerun its production dependency installation when needed. Do not copy the package into `agent/extensions`; auto-discovered extension directories do not receive Pi's package lifecycle.
+
+The tracked files already under `agent/extensions/` are repository-local extensions. Update them through this repository, not through the managed-package commands above.
 
 Selected extensions are adapted from [davis7dotsh/my-pi-setup@797eaf6](https://github.com/davis7dotsh/my-pi-setup/tree/797eaf6d6f178759cf7aabde927ef15c91346e7e), with local compatibility, routing, and security changes.
 
@@ -191,6 +193,8 @@ Install Matt Pocock's shared set with:
 ```bash
 npx skills@latest add mattpocock/skills -g
 ```
+
+This resolves current upstream content. Review the upstream revision, selected roster, and installed diff before accepting an install or update.
 
 Run `/skill:setup-matt-pocock-skills` once in a project that has not configured its issue tracker, triage labels, and documentation layout.
 

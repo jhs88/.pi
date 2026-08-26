@@ -12,7 +12,7 @@ It is an adaptation, not a claim that Robert C. Martin prescribed this exact Pi 
 
 Primary sources:
 
-- Matt Pocock's interview, ["Uncle Bob on Software Fundamentals in the Age of AI"](https://www.youtube.com/watch?v=zcLPGC-tvgk), 56:39.
+- Matt Pocock's interview, ["LIVE: Uncle Bob on Software Fundamentals in the Age of AI"](https://www.youtube.com/watch?v=zcLPGC-tvgk), 56:39.
 - Robert C. Martin's later [SwarmForge](https://github.com/unclebob/swarm-forge) documentation, compared at pinned revision [`8e83a09`](https://github.com/unclebob/swarm-forge/tree/8e83a09a41a7970edf8107f074cc41c12b953a08).
 
 Interview timestamps below are approximate because the analysis used an automatic transcript. Claims about the later six-role implementation come from the pinned repository, not the interview. Design conclusions labeled as this repository's choices are adaptations made for Pi.

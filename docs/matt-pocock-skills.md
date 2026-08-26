@@ -8,7 +8,7 @@ The exact procedure for each skill remains canonical in:
 ~/.agents/skills/<skill>/SKILL.md
 ```
 
-Those shared files are upstream-managed and immutable here. When this guide and a current skill disagree, follow the skill.
+Those shared files live outside this repository and are treated as canonical here. When this guide and a current skill disagree, follow the installed skill.
 
 Upstream: [mattpocock/skills](https://github.com/mattpocock/skills)
 
@@ -41,7 +41,7 @@ The main routes are:
 | Hard bug or regression | `/skill:diagnosing-bugs` | Build a red feedback loop, isolate the cause, then fix it |
 | Existing conversation is already resolved | `/skill:to-spec` | Human approval, then `/skill:to-tickets` if needed |
 | Approved spec or plan needs slicing | `/skill:to-tickets` | Implement tracer-bullet tickets in dependency order |
-| Another session must continue | `/skill:handoff` | Pass a compact artifact rather than the whole conversation |
+| Work crosses a portability boundary such as a new harness, directory, colleague, or forked side task | `/skill:handoff` | Pass a compact artifact rather than the whole conversation |
 
 These routes are not all read-only. `grill-with-docs` updates project vocabulary and ADRs. `wayfinder`, `to-spec`, and `to-tickets` publish tracker artifacts. `triage` can comment, label, or close records after the skill's human gate. Confirm the configured tracker and proposed writes before acting.
 
@@ -182,15 +182,21 @@ Repository policy overrides an upstream workflow's default side effects. In this
 
 ## Installation and setup
 
-Install or update the shared skills through their upstream mechanism:
+Install the shared skills globally through their upstream mechanism:
 
 ```bash
 npx skills@latest add mattpocock/skills -g
 ```
 
+The command resolves current upstream content. Review the upstream revision, selected roster, and installed diff before accepting it. For an ordinary content refresh when the roster has not changed, use:
+
+```bash
+npx skills update -g
+```
+
 Run `/skill:setup-matt-pocock-skills` once per project when its issue tracker, triage labels, or documentation layout have not been configured.
 
-Pi reads shared skills from `~/.agents/skills`, user-local skills from `~/.pi/agent/skills`, and project skills from the supported project discovery paths. This repository keeps Matt's shared set outside the repository so upstream updates do not create local forks.
+Pi reads shared skills from `~/.agents/skills`, user-local skills from `~/.pi/agent/skills`, and project skills from the supported project discovery paths. This repository keeps Matt's shared set outside the repository so updates do not create local forks here.
 
 ## What this guide deliberately leaves out
 
