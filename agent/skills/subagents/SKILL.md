@@ -11,9 +11,11 @@ Each child is headless, has its own context window, and cannot infer the parent 
 
 ## Spawn
 
+Before any call, inspect the `Agent` tool's advertised types and require the exact intended name. The configured defaults are hidden, not fail-closed: an unknown or misspelled type falls back to a mutable `general-purpose` agent. Stop when the intended type is absent; never probe by dispatching an unknown name.
+
 Call `Agent` with:
 
-- `subagent_type`: an available built-in or configured agent type;
+- `subagent_type`: the exact preflighted configured agent type;
 - `prompt`: the complete task briefing;
 - `description`: a short three-to-five-word UI label;
 - `run_in_background: true` when the parent can continue useful work independently.

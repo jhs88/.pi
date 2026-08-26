@@ -2,159 +2,186 @@
 
 pi-mono stuff I've found useful
 
-## Design Philosophy
+## Design philosophy
 
-- **Two workflows are first-class.** The six-role gauntlet provides a strict evidence pipeline; the legacy agents and prompts remain available for flexible planning, exploration, prototyping, implementation, and review.
-- **Agents = fresh-context primitives.** Each child owns one responsibility and emits a compact handoff.
-- **Skills and prompts = composition.** Choose the gauntlet or a legacy wrapper explicitly; neither silently replaces the other.
-- **Humans own strategy and irreversible actions.** Architecture boundaries, commit, push, release, and provider routing require explicit human decisions.
-- **Executable evidence beats confidence.** A missing repository gate is reported as unavailable, never treated as a pass.
+- **Human decisions and agent execution are separate layers.** Wayfinder, grilling, research, prototypes, specifications, and tickets establish intent. The six-role gauntlet executes an approved artifact.
+- **Named gauntlet agents are authority boundaries.** Each child starts fresh, owns one responsibility, and emits a compact handoff.
+- **Flexible agents are capability profiles.** `scout`, `build`, and `docs` define tools and context. Active skills define the procedure.
+- **Skills are the source of truth for reusable work.** Research, prototyping, testing, review, and technical writing do not need one agent type each.
+- **Humans own strategy and irreversible actions.** Architecture direction, commit, push, release, and provider routing require explicit human decisions.
+- **Executable evidence beats confidence.** A missing repository gate is unavailable, never passed.
 
-### Six-role implementation lane
+### Human decision layer
+
+```text
+small or bounded: grilling / design-loop / prototype
+large or foggy:   wayfinder → to-spec → to-tickets
+```
+
+The parent session owns questions and approval gates. Full research uses the shared `research` skill with a fresh `build`, because that procedure must write a cited Markdown artifact. Read-only source gathering can use `scout` and return evidence to the parent. High-fidelity uncertainty uses `prototype` with a disposable `build` worktree. `/skill:compare-prototypes` runs one scout and two isolated prototypes when two concrete approaches need direct comparison.
+
+### Agent execution layer
 
 ```text
 specifier → coder → cleaner → architect → hardener → QA
 ```
 
-Use `/skill:agent-gauntlet` for a complete serial implementation pass. Every role starts with fresh context; the parent passes only the approved contract, artifact references, and exact evidence. The parent runs fresh acceptance commands before mechanically read-only QA. Failures route to a fresh owning role and all downstream gates rerun.
+Use `/skill:agent-gauntlet` for the strict implementation pipeline. Every role starts with fresh context. The parent passes only the approved contract, artifact references, and exact evidence. Failures return to a fresh owning role, and downstream gates run again.
 
-### Shared strategic planning lane
+### Flexible capability profiles
 
-```text
-wayfinder → to-spec → to-tickets → implement → code-review → human review
-```
+Use `scout`, `build`, and `docs` directly only when a strict six-stage pass is unnecessary:
 
-This Matt-skill pipeline can feed either implementation lane after human approval.
+- `scout` is mechanically read-only and inherits the active review, navigation, or source-gathering procedure.
+- `build` is the extension-enabled mutation and command envelope for an active implementation, research, prototype, test, or integration skill.
+- `docs` is a no-shell editor with Pstack `technical-writing` and `unslop` preloaded.
 
-### Legacy custom-agent lane
-
-```text
-plan → prototyper → build/integrator → reviewer
-```
-
-Use the legacy custom agents (`scout`, `plan`, `prototyper`, `build`, `integrator`, `reviewer`, `test`, and `docs`) and prompts when work benefits from selective exploration, human gates, or a shorter/nonlinear flow. The legacy Thermos wrappers remain available alongside the newer `/skill:thermos` skill.
+Extension defaults stay hidden to avoid duplicate `Explore`, `Plan`, and `general-purpose` entries. This setting is not fail-closed: the installed extension maps an unknown type to a mutable `general-purpose` fallback. Every workflow therefore preflights exact advertised types before dispatch and stops on a missing name.
 
 ### Shared Strix operating policy
 
 - Run at most three local subagents concurrently.
 - Pause automated work when Hermes, Honcho, or another local workload is contending for Strix resources.
-- Route a task to Codex Spark only deliberately and for that task; never use it as a silent fallback.
+- Route a task to Codex Spark only deliberately and for that task. Never use it as a silent fallback.
 - Keep automatic subagent scheduling disabled by default.
 
-### Tracking Levels
+### Tracking levels
 
 | Level | Artifact |
 |-------|----------|
-| Handoff only | Temp file (quick experiments) |
-| Issues | Issue tracker (features with scope) |
-| Spec + Issues | Issue tracker parent + children (big initiatives) |
-| ADR | `docs/adr/` (architectural decisions) |
+| Handoff only | Temp file or subagent transcript |
+| Issues | Issue tracker |
+| Spec and issues | Approved specification with implementation tickets |
+| ADR | `docs/adr/` for durable architectural decisions |
 
-The workflow prompt decides which level applies.
+The active skill chooses the smallest durable artifact that preserves the decision.
 
 ---
 
-## Quick Start
+## Quick start
 
-### Complete implementation gauntlet
+### Run the complete implementation gauntlet
 
 ```text
 /skill:agent-gauntlet "Add a bounded cache to the existing API adapter"
 ```
 
-The parent runs the six roles serially. Repository commands define the gates; missing commands are reported rather than invented.
+The parent runs six fresh roles serially. Repository commands define the gates. Missing commands remain unavailable.
 
-### Legacy design and implementation loop
+### Resolve decisions before implementation
+
+For work that fits one session:
 
 ```text
-/design-loop "Add a bounded cache to the existing API adapter"
+/skill:design-loop "Choose and implement bounded cache behavior"
 ```
 
-This keeps the prior human-gated `plan → prototyper → build/integrator → reviewer` workflow. `/parallel-explore-build`, `/quick-prototype`, and `/initiative-map` remain supported entry points.
-
-### Decision work before implementation
+For a large or foggy destination:
 
 ```text
 /skill:wayfinder "Choose the caching behavior and boundaries"
-# resolve the map, then run /skill:agent-gauntlet from the approved result
+# Resolve the map, publish an approved spec or tickets, then run agent-gauntlet.
 ```
 
-Use Matt's `/skill:grill-with-docs`, `/skill:prototype`, `/skill:to-spec`, and `/skill:to-tickets` skills directly when their narrower workflow is a better fit.
+Use `/skill:grill-with-docs`, `/skill:research`, `/skill:prototype`, `/skill:to-spec`, and `/skill:to-tickets` directly when one procedure is enough.
 
-### Independent branch review
+### Compare runnable alternatives
+
+```text
+/skill:compare-prototypes "Compare an in-memory cache with Redis"
+```
+
+The parent launches a read-only scout and two isolated build prototypes, verifies both, and returns the choice to the human. Prototype code does not enter production automatically.
+
+### Write technical documentation
+
+Load `/skill:technical-writing`, then use a fresh `docs` agent for a no-shell editing pass. The agent also preloads `/skill:unslop`.
+
+### Run an independent branch review
 
 ```text
 /skill:thermos
 ```
 
-Thermos launches two independent, read-only QA passes with complementary correctness and maintainability rubrics, then synthesizes their evidence. It does not replace final QA.
+Thermos launches two independent, read-only QA passes with complementary correctness and maintainability rubrics. It does not replace final acceptance QA.
+
+### Migrate legacy commands
+
+The prompt files were removed. Use these direct replacements:
+
+| Removed command | Replacement |
+|-----------------|-------------|
+| `/design-loop` | `/skill:design-loop` |
+| `/parallel-explore-build` | `/skill:compare-prototypes` |
+| `/quick-prototype` | `/skill:prototype` |
+| `/initiative-map` | `/skill:wayfinder` |
 
 ---
 
-## Workflow Selection
+## Workflow selection
 
-Choose the shortest flow that preserves decision quality:
+Choose the shortest flow that preserves the required decision and verification boundaries:
 
 | Situation | Use |
 |-----------|-----|
-| Clear implementation request | `/skill:agent-gauntlet` |
-| Foggy, multi-session decision | `/skill:wayfinder`, then `/skill:agent-gauntlet` |
-| Human-gated design/prototype loop | `/design-loop` |
-| Compare concrete approaches | `/parallel-explore-build` |
-| One cheap prototype | `/quick-prototype` |
-| Legacy Wayfinder wrapper | `/initiative-map` |
-| Small design question | `/skill:grill-with-docs` |
-| High-fidelity uncertainty | `/skill:prototype` |
-| Independent diff audit | `/skill:thermos` |
+| Clear consequential implementation | `/skill:agent-gauntlet` |
+| Bounded human-gated design and implementation | `/skill:design-loop` |
+| Foggy multi-session decision | `/skill:wayfinder`, then an approved specification or tickets |
+| Primary-source research artifact | `/skill:research` with `build` |
+| Read-only source or repository reconnaissance | `scout` with a self-contained evidence contract |
+| One high-fidelity uncertainty | `/skill:prototype` with an isolated `build` agent |
+| Two concrete runnable alternatives | `/skill:compare-prototypes` |
+| Technical documentation | `/skill:technical-writing` with `docs` |
+| Independent diff audit | `/skill:thermos` or `/skill:code-review` |
 
-Matt Pocock's shared skills remain upstream-managed and immutable in this repository. The local agents consume those skills where useful; they do not duplicate them.
+Matt Pocock's shared skills remain upstream-managed and immutable in this repository. Pstack `technical-writing` and `unslop` are pinned, MIT-licensed local copies with provenance retained beside each skill.
 
 ---
 
-## Custom Agents
+## Custom agents
 
-Custom agents live under `~/.pi/agent/agents/`. The strict six-role lane and the legacy flexible lane are both enabled. All custom agents inherit the parent model and start with `inherit_context: false`; workflow selection is explicit. The strict lane uses Pi built-ins only, while legacy roles retain their established tool/skill envelopes.
+Custom agents live under `~/.pi/agent/agents/`. The extension's `general-purpose`, `Explore`, and `Plan` defaults are hidden, not fail-closed; workflows preflight exact advertised names because an unknown type falls back to mutable `general-purpose`. Nine explicit types are available: six strict gauntlet roles and three flexible capability profiles. Every child inherits the parent model and starts with `inherit_context: false`.
 
-**Six-role gauntlet agents:**
+### Gauntlet authority roles
 
 | Agent | Authority |
 |-------|-----------|
-| specifier | Read-only behavioral contract and acceptance commands |
-| coder | Smallest behavior-complete implementation |
-| cleaner | Behavior-preserving local simplification |
-| architect | Read-only audit of human-approved boundaries |
-| hardener | Deeper tests, robustness, security, coverage, complexity, and mutation gates |
-| qa | Independent, mechanically read-only final acceptance of parent-supplied fresh command evidence |
+| `specifier` | Read-only behavioral contract and acceptance commands |
+| `coder` | Smallest behavior-complete implementation |
+| `cleaner` | Behavior-preserving local simplification |
+| `architect` | Read-only audit of human-approved boundaries |
+| `hardener` | Deeper tests, robustness, security, coverage, complexity, and mutation gates |
+| `qa` | Independent, mechanically read-only final acceptance of parent-supplied evidence |
 
-**Legacy flexible agents:**
+### Flexible capability profiles
 
-| Agent | Purpose |
-|-------|---------|
-| scout | Compressed codebase reconnaissance |
-| plan | Structured design specifications |
-| prototyper | Throwaway validation artifacts |
-| build | Direct implementation |
-| integrator | Promote or remove prototype work |
-| reviewer | Read-only code review |
-| test | Test development and diagnosis |
-| docs | Technical documentation |
-| thermo-nuclear-review-subagent | Legacy correctness/security branch audit |
-| thermo-nuclear-code-quality-review-subagent | Legacy maintainability audit |
+| Agent | Capability |
+|-------|------------|
+| `scout` | Low-thinking, mechanically read-only analysis with direct Cachebro, Grepika, and Tilth navigation plus compressed handoff output |
+| `build` | Extension-enabled file and shell operations for the active skill or bounded parent procedure |
+| `docs` | No-shell documentation editing with Pstack `technical-writing` and `unslop` preloaded |
 
-The serial gauntlet uses one child at a time. Legacy prompts may select or parallelize their own agents, subject to `subagents.json` and the shared-local-resource policy.
+A flexible profile does not own a methodology. The parent loads the applicable skill and passes a self-contained task. For example, a complete research artifact is `research` plus writable `build`; read-only reconnaissance uses `scout`; prototyping is `prototype` plus an isolated `build`; documentation is `technical-writing` plus `docs`.
 
-**Local skills:**
+The serial gauntlet uses one child at a time. Skills may use bounded parallel work subject to `subagents.json` and the shared-local-resource policy.
+
+### Local skills
 
 | Skill | Purpose |
 |-------|---------|
-| agent-gauntlet | Serial six-role implementation and failure routing |
-| thermos | Parallel complementary QA branch audits |
-| subagents | `@tintinweb/pi-subagents` usage and boundaries |
-| code-navigation | Navigation-tool reference |
-| tilth | Structural diff and blast-radius analysis |
-| unslop | Remove AI writing tells; MIT-licensed Pstack adaptation |
+| `agent-gauntlet` | Serial six-role implementation and failure routing |
+| `design-loop` | One-session human-gated design, optional prototype, implementation, and review |
+| `compare-prototypes` | Parallel scout and two isolated runnable alternatives before a human choice |
+| `thermos` | Parallel complementary QA branch audits |
+| `thermo-nuclear-review` | Strict correctness, security, and regression audit rubric |
+| `thermo-nuclear-code-quality-review` | Strict maintainability and implementation-quality audit rubric |
+| `technical-writing` | Pstack's layered Diátaxis, Google, STE, and Global English standard |
+| `unslop` | Pstack's AI-writing-tell removal and human-voice pass |
+| `subagents` | `@tintinweb/pi-subagents` usage and boundaries |
+| `code-navigation` | Navigation-tool reference |
+| `tilth` | Structural diff and blast-radius analysis |
 
-Shared Matt Pocock skills remain under `~/.agents/skills` and are loaded by name from role frontmatter. They are not copied or edited here.
+Shared Matt Pocock skills remain under `~/.agents/skills` and are loaded by name. They are not copied or edited here.
 
 ---
 
@@ -236,9 +263,9 @@ pi install git:github.com/jhs88/pi-tooling
 
 Self-hosted Firecrawl reads `FIRECRAWL_API_URL` and optional `FIRECRAWL_API_KEY` from the process environment, then ignored `agent/.env`. Copy `agent/.env.example` when Pi-local configuration is needed. There is no Firecrawl Cloud fallback.
 
-### Recommended Skills
+### Recommended skills
 
-pi reads from `~/.agents/skills`, `~/.pi/skills`, and `$(cwd)/.pi/skills`. It's recommended to install Matt's skills:
+Pi reads user skills from `~/.pi/agent/skills` and `~/.agents/skills`, plus project skills from `$(cwd)/.pi/skills` and trusted ancestor `.agents/skills` directories. It's recommended to install Matt's skills:
 
 ```bash
 npx skills@latest add mattpocock/skills
