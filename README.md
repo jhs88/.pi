@@ -104,7 +104,7 @@ Nine explicit custom types are available. Every child starts fresh and inherits 
 
 | Agent | Capability |
 |---|---|
-| `scout` | Low-thinking, mechanically read-only analysis with explicit Cachebro, Grepika, and Tilth navigation tools |
+| `scout` | Low-thinking, mechanically workspace-read-only analysis with explicit Cachebro, Grepika, and Tilth navigation tools; Cachebro state lives in the user cache directory |
 | `build` | Extension-enabled file and shell operations for the active bounded procedure |
 | `docs` | No-shell editing with Pstack `technical-writing` and `unslop` preloaded |
 
@@ -169,6 +169,8 @@ Repository-local skills include:
 Shared Matt Pocock skills remain under `~/.agents/skills` and are loaded by name. They are not copied or edited in this repository. See [the composition guide](docs/matt-pocock-skills.md).
 
 ## Installation and updates
+
+`agent/mcp-cache.json` is generated local state and remains ignored. After changing `agent/mcp.json`, start Pi once to refresh stale direct-tool metadata, then restart Pi before using the affected direct tools.
 
 ### Pi Tooling extensions
 

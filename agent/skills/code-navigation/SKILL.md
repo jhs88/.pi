@@ -59,6 +59,7 @@ When you need to know _where something is defined_ or _what calls what_, prefer 
 - **Config, JSON, small files.** Use `cachebro_read_file` or `cachebro_read_files`; these files are usually small enough to read whole.
 - **Markdown/docs:** Don't blindly read whole file. Scan headers with `rg "^#{1,3} "` first, then read targeted sections with offset/limit. Only full-read if small or genuinely needed.
 - **Fallback:** If cachebro reports stale cache or truncates reads, use the built-in `Read` tool directly.
+- **Workspace safety:** Cachebro's `CACHEBRO_DIR` points at the user cache directory. Its database must not appear under the active workspace.
 
 ## Decision table
 

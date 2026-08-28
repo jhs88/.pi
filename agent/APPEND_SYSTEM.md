@@ -23,6 +23,8 @@ Standard behaviors that pi should always follow.
 | Code search (NL/regex)       | `grepika_search`                                             |
 | Cached file reads            | `cachebro_read_file` / `cachebro_read_files`                 |
 
+Cachebro persists its database in the user cache directory, outside the active workspace.
+
 ### Quick Decision
 
 - "Find files about X topic" → **grepika** (NL search)

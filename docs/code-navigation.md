@@ -16,6 +16,8 @@ Inspired by [markerikson/opencode-config-example](https://github.com/markerikson
 | Dependency impact | `mcp({ server: "tilth", tool: "tilth_deps" })` | Inspect blast radius before mutation |
 | Cached file reads | `cachebro_read_file` / `cachebro_read_files` | Avoid retransmitting unchanged content |
 
+Cachebro stores its database under the user cache directory configured by `CACHEBRO_DIR`, not in the active workspace.
+
 ## Default sequence
 
 1. **Orient.** Inspect the target directory with `grepika_toc`.
