@@ -6,6 +6,7 @@
   "defaultThinkingLevel": "high",
   "theme": "dracula",
   "quietStartup": true,
+  "enableSkillCommands": true,
   "steeringMode": "one-at-a-time",
   "followUpMode": "one-at-a-time",
   "enableInstallTelemetry": true,

@@ -85,6 +85,16 @@ The parent launches a read-only Scout and two isolated Build prototypes, verifie
 
 Thermos launches two fresh, read-only QA passes with complementary correctness and maintainability rubrics. It is optional review evidence, not final acceptance certification.
 
+### Babysit an existing PR
+
+```text
+/skill:babysit-pr <PR URL>
+```
+
+The shared [babysit-pr skill](agent/skills/babysit-pr/SKILL.md) handles scoped CI and review fixes. Its [review-agent triage policy](agent/skills/babysit-pr/references/bot-triage.md) treats findings as claims to verify. Reject clearly refuted findings independently with a recorded reason; ask Joe about uncertain or consequential tradeoffs. Commit and push require authorization for the run. Merging is out of scope.
+
+Pi discovers the skill in `agent/skills/`; `enableSkillCommands: true` explicitly enables `/skill:babysit-pr`. Start a fresh Pi session after installation. Default-profile Hermes on this host loads the same canonical directory through `~/.hermes/skills/github/babysit-pr`. Other hosts and profiles need their own installation.
+
 ## Agents
 
 Nine explicit custom types are available. Every child starts fresh and inherits the parent model.
