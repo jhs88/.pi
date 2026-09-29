@@ -10,10 +10,11 @@
       "env": {
         "CACHEBRO_DIR": "${HOME}/.cache/cachebro"
       },
-      "directTools": [
-        "read_file",
-        "read_files"
-      ]
+      "exposure": "codemode",
+      "toolExposure": {
+        "read_file": "direct",
+        "read_files": "direct"
+      }
     },
     "grepika": {
       "args": [
@@ -24,12 +25,13 @@
         "."
       ],
       "command": "npx",
-      "directTools": [
-        "toc",
-        "outline",
-        "search",
-        "get"
-      ]
+      "exposure": "codemode",
+      "toolExposure": {
+        "toc": "direct",
+        "outline": "direct",
+        "search": "direct",
+        "get": "direct"
+      }
     },
     "tilth": {
       "args": [
@@ -39,10 +41,22 @@
         "--edit"
       ],
       "command": "npx",
-      "directTools": [
-        "tilth_search",
-        "tilth_read"
-      ]
+      "exposure": "codemode",
+      "toolExposure": {
+        "tilth_search": "direct",
+        "tilth_read": "direct"
+      }
+    },
+    "firecrawl": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "firecrawl-mcp"
+      ],
+      "env": {
+        "FIRECRAWL_API_URL": "http://172.16.8.179:3002"
+      },
+      "exposure": "codemode-deferred"
     }
   }
 }

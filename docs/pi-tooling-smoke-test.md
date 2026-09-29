@@ -10,7 +10,9 @@ pi install git:github.com/jhs88/pi-tooling  # first install only
 pi update --extensions
 ```
 
-Firecrawl uses the process environment first, then ignored `agent/.env`. Copy `agent/.env.example` to `agent/.env` when Pi-local configuration is needed. `FIRECRAWL_API_KEY` remains optional.
+After a package reinstall, apply the explicit native MCP child compatibility patch described in the [README](../README.md#native-mcp-migration), then `/reload` or restart Pi. The README also provides offline configuration and profile checks; the checks below intentionally exercise live tools.
+
+The managed Firecrawl extension uses the process environment first, then ignored `agent/.env`. Copy `agent/.env.example` to `agent/.env` when Pi-local configuration is needed. `FIRECRAWL_API_KEY` remains optional. Native Firecrawl MCP separately uses the self-hosted URL in `agent/mcp.json`.
 
 ## Start and discover
 

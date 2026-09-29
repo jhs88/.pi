@@ -136,7 +136,7 @@ Every workflow therefore:
 3. stops before dispatch when a name is missing;
 4. never probes an unknown or misspelled type.
 
-`scout` loads only `pi-mcp-adapter` and `session-name`. Its tool list contains explicit read-only operations and omits shell, write, edit, and the generic MCP gateway.
+`scout` loads only `builtin:mcp` and `session-name`. It allows eight explicit read-only navigation tools, with no shell, write, edit, codemode, or tool discovery. `build` and `docs` use the same navigation allowlist alongside their existing built-in tools; `docs` remains no-shell. The six gauntlet roles keep extensions disabled.
 
 The serial gauntlet uses one child at a time. Other skills may use bounded parallel work subject to `agent/subagents.json` and the shared local-resource policy:
 
@@ -180,7 +180,27 @@ Shared Matt Pocock skills remain under `~/.agents/skills` and are loaded by name
 
 ## Installation and updates
 
-`agent/mcp-cache.json` is generated local state and remains ignored. After changing `agent/mcp.json`, start Pi once to refresh stale direct-tool metadata, then restart Pi before using the affected direct tools.
+### Native MCP migration
+
+Use Pi with native MCP support (validated against 0.99.1). `agent/settings.json` explicitly enables `+builtin:mcp`, removes `pi-mcp-adapter`, and pins the separate `@tintinweb/pi-subagents` package to 0.19.0. Provider, model, thinking, and skill-command defaults remain unchanged.
+
+Personal servers live in `~/.pi/agent/mcp.json`; this setup does not use a shared MCP configuration source. Eight navigation tools are direct; other navigation tools use `codemode`, and Firecrawl uses `codemode-deferred`. See [code navigation](docs/code-navigation.md) for discovery and the [navigation skill](agent/skills/code-navigation/SKILL.md) for schemas and calling conventions. Old `mcp-cache.json` metadata is ignored and is not used by native MCP.
+
+SDK children require the reviewed compatibility patch from the companion `pi-tooling` checkout. After installing or reinstalling packages, apply it explicitly:
+
+```bash
+npm --prefix ~/pi-tooling run compat:subagents
+```
+
+Then run `/reload` in Pi, or start a fresh session. There are no automatic package-patching hooks. Child `tools:` entries use `ext:builtin:mcp/<native-tool-name>` selectors: plain CSV names select only built-in tools. A selector grants a tool only when its extension is loaded. Keep the child allowlists narrow; parent codemode discovery is not a child capability.
+
+Offline configuration and profile checks (no model requests or MCP connections):
+
+```bash
+node scripts/validate-native-mcp.mjs
+```
+
+After activation, use `/mcp` to inspect status and exposure. `pi mcp list` connects to the configured servers; run that live check only when server access is intended.
 
 ### Pi Tooling extensions
 
@@ -214,7 +234,9 @@ Pstack `technical-writing` and `unslop` are pinned MIT-licensed local copies. Th
 
 ### Firecrawl
 
-Self-hosted Firecrawl reads `FIRECRAWL_API_URL` and optional `FIRECRAWL_API_KEY` from the process environment, then ignored `agent/.env`. Copy `agent/.env.example` when Pi-local configuration is needed. There is no Firecrawl Cloud fallback.
+Native Firecrawl MCP uses `npx -y firecrawl-mcp` with the self-hosted URL `http://172.16.8.179:3002` in `agent/mcp.json`. Its tools use `codemode-deferred`; discover their current names and schemas before calling. No API key, browser automation server, or shared MCP source is configured.
+
+The separate managed Firecrawl extension still reads `FIRECRAWL_API_URL` and optional `FIRECRAWL_API_KEY` from the process environment, then ignored `agent/.env`. Copy `agent/.env.example` when that extension needs Pi-local configuration. There is no managed-extension Firecrawl Cloud fallback.
 
 ## Legacy command migration
 

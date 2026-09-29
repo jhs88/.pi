@@ -11,11 +11,13 @@
   "followUpMode": "one-at-a-time",
   "enableInstallTelemetry": true,
   "packages": [
-    "npm:pi-mcp-adapter",
     "npm:pi-acp",
     "git:github.com/joelhooks/pi-skill-interpolation",
-    "npm:@tintinweb/pi-subagents@0.18.0",
+    "npm:@tintinweb/pi-subagents@0.19.0",
     "git:github.com/jhs88/pi-tooling",
     "npm:@router-for-me/pi-cliproxyapi-provider"
+  ],
+  "extensions": [
+    "+builtin:mcp"
   ]
 }

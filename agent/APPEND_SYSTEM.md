@@ -15,13 +15,13 @@ Standard behaviors that pi should always follow.
 
 **Principle: minimize context consumption.** Read outlines first, then targeted sections. Be surgical.
 
-| Need                         | Tool                                                         |
-| ---------------------------- | ------------------------------------------------------------ |
-| Directory overview           | `grepika_toc`                                                |
-| Symbol definitions / callers | `tilth_tilth_search` (use `kind:callers` for caller tracing) |
-| File structure               | `grepika_outline` → `grepika_get` (read only needed lines)   |
-| Code search (NL/regex)       | `grepika_search`                                             |
-| Cached file reads            | `cachebro_read_file` / `cachebro_read_files`                 |
+| Need | Tool |
+|---|---|
+| Directory overview | `mcp__grepika__toc` |
+| Symbol definitions / callers | `mcp__tilth__tilth_search` (use `kind:callers` for caller tracing) |
+| File structure | `mcp__grepika__outline` → `mcp__grepika__get` (read only needed lines) |
+| Code search (NL/regex) | `mcp__grepika__search` |
+| Cached file reads | `mcp__cachebro__read_file` / `mcp__cachebro__read_files` |
 
 Cachebro persists its database in the user cache directory, outside the active workspace.
 
@@ -34,10 +34,12 @@ Cachebro persists its database in the user cache directory, outside the active w
 
 ### Non-Code Files
 
-- Config, JSON, small files: `cachebro_read_file` / `cachebro_read_files`
+- Config, JSON, small files: `mcp__cachebro__read_file` / `mcp__cachebro__read_files`
 - Markdown/docs: scan headers with `rg` first, read targeted sections
 - Fallback if cachebro misbehaves: built-in `Read` tool
 
-**Load `code-navigation` skill for full tool reference and workflow patterns.**
+Native MCP names use `mcp__<server>__<offered-tool>`. In parent sessions, discover other operations through `codemode`: `searchTools(query, { namespace })` → `describeTool(name)` → `tools.<name>(args)`. Check MCP results for `isError`. Restricted children have only their explicit navigation allowlist; use the available built-in tools when discovery is absent.
+
+**Load `code-navigation` for tool schemas and discovery workflows.**
 
 **Grepika:** uses relative paths only (no absolute paths). Omit `path` to search workspace root.
