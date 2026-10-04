@@ -2,7 +2,7 @@
 name: build
 description: Fresh extension-enabled workspace operator. Use when an active skill or workflow needs bounded edits, commands, prototypes, tests, or integration work outside the strict gauntlet.
 display_name: Build
-tools: read, grep, find, ls, write, edit, bash, ext:pi-mcp-adapter/mcp, ext:session-name
+tools: read, grep, find, ls, write, edit, bash, ext:builtin:mcp/mcp__cachebro__read_file, ext:builtin:mcp/mcp__cachebro__read_files, ext:builtin:mcp/mcp__grepika__toc, ext:builtin:mcp/mcp__grepika__outline, ext:builtin:mcp/mcp__grepika__search, ext:builtin:mcp/mcp__grepika__get, ext:builtin:mcp/mcp__tilth__tilth_search, ext:builtin:mcp/mcp__tilth__tilth_read, ext:session-name
 thinking: medium
 extensions: true
 skills: true

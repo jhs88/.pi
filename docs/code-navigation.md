@@ -8,19 +8,19 @@ Inspired by [markerikson/opencode-config-example](https://github.com/markerikson
 
 | Need | Tool | Approach |
 |---|---|---|
-| Directory overview | `grepika_toc` | Inspect the target tree before choosing files |
-| Natural-language or regex search | `grepika_search` | Locate symbols, concepts, and exact text |
-| File structure | `grepika_outline` → `grepika_get` | Read the outline, then a targeted range |
-| Symbol definitions | `tilth_tilth_search` | Prefer definition-first navigation |
-| Callers of a symbol | `tilth_tilth_search kind:callers` | Trace incoming dependencies |
-| Dependency impact | `mcp({ server: "tilth", tool: "tilth_deps" })` | Inspect blast radius before mutation |
-| Cached file reads | `cachebro_read_file` / `cachebro_read_files` | Avoid retransmitting unchanged content |
+| Directory overview | `mcp__grepika__toc` | Inspect the target tree before choosing files |
+| Natural-language or regex search | `mcp__grepika__search` | Locate symbols, concepts, and exact text |
+| File structure | `mcp__grepika__outline` → `mcp__grepika__get` | Read the outline, then a targeted range |
+| Symbol definitions | `mcp__tilth__tilth_search` | Prefer definition-first navigation |
+| Callers of a symbol | `mcp__tilth__tilth_search kind:callers` | Trace incoming dependencies |
+| Dependency impact | Discover `mcp__tilth__tilth_deps` in codemode | Inspect blast radius before mutation |
+| Cached file reads | `mcp__cachebro__read_file` / `mcp__cachebro__read_files` | Avoid retransmitting unchanged content |
 
 Cachebro stores its database under the user cache directory configured by `CACHEBRO_DIR`, not in the active workspace.
 
 ## Default sequence
 
-1. **Orient.** Inspect the target directory with `grepika_toc`.
+1. **Orient.** Inspect the target directory with `mcp__grepika__toc`.
 2. **Find.** Locate symbols or concepts with Grepika or Tilth search.
 3. **Outline.** Inspect file or symbol structure.
 4. **Read surgically.** Fetch only the relevant section.
@@ -29,18 +29,11 @@ Cachebro stores its database under the user cache directory configured by `CACHE
 
 ## Tool visibility
 
-The parent configuration keeps common navigation tools directly visible and leaves less common operations behind the generic MCP gateway to reduce tool-list context.
+Native MCP is explicitly enabled through `+builtin:mcp`. The personal `agent/mcp.json` keeps eight Cachebro, Grepika, and Tilth navigation tools directly visible through `toolExposure` overrides. Other navigation operations use `codemode`; Firecrawl uses `codemode`, so its tools are discovered on demand rather than listed in the codemode description.
 
-| Direct in the general configuration | Gateway-only in the general configuration |
-|---|---|
-| `grepika_toc` | `mcp({ server: "grepika", tool: "context" })` |
-| `grepika_outline` | `mcp({ server: "grepika", tool: "refs" })` |
-| `grepika_search` | `mcp({ server: "grepika", tool: "stats" })` |
-| `grepika_get` | `mcp({ server: "grepika", tool: "diff" })` |
-| `tilth_tilth_search` | `mcp({ server: "tilth", tool: "tilth_deps" })` and other configured Tilth operations |
-| `tilth_tilth_read` | `mcp({ server: "tilth", tool: "tilth_write" })` for mutation |
+In a parent session, discover tools with `searchTools(query, { namespace })`, inspect `describeTool(name)` or `ALL_TOOLS`, then call `tools.<name>(args)` using the offered schema. Check `isError` in MCP results before using their content. See the [navigation skill](../agent/skills/code-navigation/SKILL.md) for examples.
 
-The `scout` profile is intentionally narrower. It loads only `pi-mcp-adapter` and `session-name`, exposes eight explicit read-only Cachebro, Grepika, and Tilth tools, and has no generic MCP gateway, shell, write, or edit capability.
+The child profiles are intentionally narrower. `scout` loads only `builtin:mcp` and `session-name` and allows eight explicit read-only navigation tools, with no shell, write, edit, codemode, or tool discovery. `build` and `docs` use the same navigation allowlist alongside their existing built-ins; `docs` has no shell. Their `tools:` entries select native navigation through `ext:builtin:mcp/<native-tool-name>`, not plain tool names. The six gauntlet roles keep extensions disabled. Installation and the explicit SDK compatibility-patch command are in the [README](../README.md#native-mcp-migration).
 
 Tool availability is a runtime fact. Inspect the active tool catalog rather than assuming that an MCP server, extension, or profile exposes every operation described here.
 
