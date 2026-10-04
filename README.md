@@ -186,6 +186,15 @@ Use Pi with native MCP support (validated against 1.0.2). `agent/settings.json` 
 
 Personal servers live in `~/.pi/agent/mcp.json`; this setup does not use a shared MCP configuration source. Eight navigation tools are direct; other navigation tools use `codemode`, and Firecrawl uses `codemode`. See [code navigation](docs/code-navigation.md) for discovery and the [navigation skill](agent/skills/code-navigation/SKILL.md) for schemas and calling conventions. Old `mcp-cache.json` metadata is ignored and is not used by native MCP.
 
+Removing the adapter from settings does not uninstall a separate global npm installation. Remove both managed and global installations when migrating:
+
+```bash
+pi remove npm:pi-mcp-adapter
+npm uninstall --global --ignore-scripts pi-mcp-adapter
+```
+
+Run the global cleanup even if the adapter is already absent from `pi list`. Native MCP validation checks for leftover installations as well as configuration.
+
 SDK children require the reviewed compatibility patch from the companion `pi-tooling` checkout. After installing or reinstalling packages, apply it explicitly:
 
 ```bash

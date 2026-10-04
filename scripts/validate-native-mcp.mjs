@@ -1,7 +1,7 @@
 // Offline checks against the installed Pi SDK and subagents parsers; no sessions or servers.
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
-import { readFileSync, realpathSync } from "node:fs";
+import { existsSync, readFileSync, realpathSync } from "node:fs";
 import { homedir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
@@ -16,6 +16,16 @@ const subagentsDir = process.env.PI_SUBAGENTS_DIR ?? join(
 );
 const json = (path) => JSON.parse(readFileSync(path, "utf8"));
 assert.equal(json(join(subagentsDir, "package.json")).version, "0.19.0");
+
+const globalNpmDir = execFileSync("npm", ["root", "--global"], { encoding: "utf8" }).trim();
+for (const adapterDir of new Set([
+  join(agentDir, "npm/node_modules/pi-mcp-adapter"),
+  resolve(subagentsDir, "../../pi-mcp-adapter"),
+  join(globalNpmDir, "pi-mcp-adapter"),
+])) {
+  assert(!existsSync(adapterDir), `Legacy MCP adapter remains at ${adapterDir}; follow the README migration cleanup steps`);
+}
+console.log("PASS legacy adapter cleanup: no managed or global installation");
 
 // Pi itself uses Jiti to load extension sources. Disable its disk cache so checks are read-only.
 const { createJiti } = await import(pathToFileURL(join(sdkDir, "node_modules/jiti/lib/jiti.mjs")));
@@ -38,7 +48,9 @@ const { parseExtSelectors, extensionCanonicalName, installExtensionToolScope } =
 
 const settings = json(join(agentDir, "settings.json"));
 assert(settings.extensions.includes("+builtin:mcp"));
-assert(!settings.packages.includes("npm:pi-mcp-adapter"));
+assert(!settings.packages.some((pkg) => /^npm:pi-mcp-adapter(?:@|$)/.test(
+  typeof pkg === "string" ? pkg : pkg.source,
+)), "Legacy MCP adapter must be removed from configured packages");
 assert(settings.packages.includes("npm:@tintinweb/pi-subagents@0.19.0"));
 assert.equal(settings.enableSkillCommands, true);
 const navigation = {
