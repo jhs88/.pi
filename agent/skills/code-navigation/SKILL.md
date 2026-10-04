@@ -7,7 +7,7 @@ description: Full tool reference for codebase navigation. Use when you need deta
 
 Full tool reference for navigating codebases. APPEND_SYSTEM.md has the quick-reference table; this skill provides detailed usage, workflows, and edge cases.
 
-Native MCP reads personal servers from `~/.pi/agent/mcp.json`. Eight navigation tools are direct; remaining navigation tools use `codemode`, and Firecrawl uses `codemode-deferred`. Names follow `mcp__<server>__<server-offered-tool>`. Use `/mcp` for status and exposure.
+Native MCP reads personal servers from `~/.pi/agent/mcp.json`. Eight navigation tools are direct; remaining navigation tools use `codemode`, and Firecrawl uses `codemode`. Names follow `mcp__<server>__<server-offered-tool>`. Use `/mcp` for status and exposure.
 
 `scout`, `build`, and `docs` allow only the eight direct navigation tools alongside their profile-specific built-ins. They have no codemode or tool discovery capability. When an operation below is unavailable, use the allowed built-ins or report the gap to the parent; a documented tool is not an authorization grant.
 

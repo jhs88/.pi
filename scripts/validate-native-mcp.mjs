@@ -59,9 +59,9 @@ for (const { name, config, source, scope } of loaded.servers) {
   if (name === "firecrawl") {
     assert.deepEqual(config, {
       command: "npx", args: ["-y", "firecrawl-mcp"],
-      env: { FIRECRAWL_API_URL: "http://172.16.8.179:3002" }, exposure: "codemode-deferred",
+      env: { FIRECRAWL_API_URL: "http://172.16.8.179:3002" }, exposure: "codemode",
     });
-    assert.equal(getMcpToolExposure(config, "firecrawl_scrape"), "codemode-deferred");
+    assert.equal(getMcpToolExposure(config, "firecrawl_scrape"), "codemode");
   } else {
     assert.equal(config.exposure, "codemode");
     assert.deepEqual(config.toolExposure, Object.fromEntries(navigation[name].map((t) => [t, "direct"])));
@@ -72,7 +72,7 @@ for (const { name, config, source, scope } of loaded.servers) {
 assert.deepEqual(loaded.servers.find((s) => s.name === "cachebro").config.env, {
   CACHEBRO_DIR: "${HOME}/.cache/cachebro",
 });
-console.log("PASS native config parser: four personal servers, eight direct tools, deferred Firecrawl");
+console.log("PASS native config parser: four personal servers, eight direct tools, codemode Firecrawl");
 
 const builtinLists = {
   architect: ["read", "grep", "find", "ls"],

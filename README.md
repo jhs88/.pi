@@ -182,9 +182,9 @@ Shared Matt Pocock skills remain under `~/.agents/skills` and are loaded by name
 
 ### Native MCP migration
 
-Use Pi with native MCP support (validated against 0.99.1). `agent/settings.json` explicitly enables `+builtin:mcp`, removes `pi-mcp-adapter`, and pins the separate `@tintinweb/pi-subagents` package to 0.19.0. Provider, model, thinking, and skill-command defaults remain unchanged.
+Use Pi with native MCP support (validated against 1.0.2). `agent/settings.json` explicitly enables `+builtin:mcp`, removes `pi-mcp-adapter`, and pins the separate `@tintinweb/pi-subagents` package to 0.19.0. Provider, model, thinking, and skill-command defaults remain unchanged.
 
-Personal servers live in `~/.pi/agent/mcp.json`; this setup does not use a shared MCP configuration source. Eight navigation tools are direct; other navigation tools use `codemode`, and Firecrawl uses `codemode-deferred`. See [code navigation](docs/code-navigation.md) for discovery and the [navigation skill](agent/skills/code-navigation/SKILL.md) for schemas and calling conventions. Old `mcp-cache.json` metadata is ignored and is not used by native MCP.
+Personal servers live in `~/.pi/agent/mcp.json`; this setup does not use a shared MCP configuration source. Eight navigation tools are direct; other navigation tools use `codemode`, and Firecrawl uses `codemode`. See [code navigation](docs/code-navigation.md) for discovery and the [navigation skill](agent/skills/code-navigation/SKILL.md) for schemas and calling conventions. Old `mcp-cache.json` metadata is ignored and is not used by native MCP.
 
 SDK children require the reviewed compatibility patch from the companion `pi-tooling` checkout. After installing or reinstalling packages, apply it explicitly:
 
@@ -234,7 +234,7 @@ Pstack `technical-writing` and `unslop` are pinned MIT-licensed local copies. Th
 
 ### Firecrawl
 
-Native Firecrawl MCP uses `npx -y firecrawl-mcp` with the self-hosted URL `http://172.16.8.179:3002` in `agent/mcp.json`. Its tools use `codemode-deferred`; discover their current names and schemas before calling. No API key, browser automation server, or shared MCP source is configured.
+Native Firecrawl MCP uses `npx -y firecrawl-mcp` with the self-hosted URL `http://172.16.8.179:3002` in `agent/mcp.json`. Its tools use `codemode`; discover their current names and schemas before calling. No API key, browser automation server, or shared MCP source is configured.
 
 The separate managed Firecrawl extension still reads `FIRECRAWL_API_URL` and optional `FIRECRAWL_API_KEY` from the process environment, then ignored `agent/.env`. Copy `agent/.env.example` when that extension needs Pi-local configuration. There is no managed-extension Firecrawl Cloud fallback.
 

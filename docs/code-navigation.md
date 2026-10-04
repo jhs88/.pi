@@ -29,7 +29,7 @@ Cachebro stores its database under the user cache directory configured by `CACHE
 
 ## Tool visibility
 
-Native MCP is explicitly enabled through `+builtin:mcp`. The personal `agent/mcp.json` keeps eight Cachebro, Grepika, and Tilth navigation tools directly visible through `toolExposure` overrides. Other navigation operations use `codemode`; Firecrawl uses `codemode-deferred`, so its tools are discovered on demand rather than listed in the codemode description.
+Native MCP is explicitly enabled through `+builtin:mcp`. The personal `agent/mcp.json` keeps eight Cachebro, Grepika, and Tilth navigation tools directly visible through `toolExposure` overrides. Other navigation operations use `codemode`; Firecrawl uses `codemode`, so its tools are discovered on demand rather than listed in the codemode description.
 
 In a parent session, discover tools with `searchTools(query, { namespace })`, inspect `describeTool(name)` or `ALL_TOOLS`, then call `tools.<name>(args)` using the offered schema. Check `isError` in MCP results before using their content. See the [navigation skill](../agent/skills/code-navigation/SKILL.md) for examples.
 

@@ -56,7 +56,7 @@
       "env": {
         "FIRECRAWL_API_URL": "http://172.16.8.179:3002"
       },
-      "exposure": "codemode-deferred"
+      "exposure": "codemode"
     }
   }
 }
