@@ -54,7 +54,6 @@ assert(!settings.packages.some((pkg) => /^npm:pi-mcp-adapter(?:@|$)/.test(
 assert(settings.packages.includes("npm:@tintinweb/pi-subagents@0.19.0"));
 assert.equal(settings.enableSkillCommands, true);
 const navigation = {
-  cachebro: ["read_file", "read_files"],
   grepika: ["toc", "outline", "search", "get"],
   tilth: ["tilth_search", "tilth_read"],
 };
@@ -62,7 +61,7 @@ const names = Object.entries(navigation).flatMap(([server, tools]) => tools.map(
 const selectors = names.map((name) => `ext:builtin:mcp/${name}`);
 const loaded = loadMcpConfig({ agentDir, cwd: root, projectTrusted: false });
 assert.deepEqual(loaded.errors, []);
-assert.deepEqual(loaded.servers.map((s) => s.name).sort(), ["cachebro", "firecrawl", "grepika", "tilth"]);
+assert.deepEqual(loaded.servers.map((s) => s.name).sort(), ["firecrawl", "grepika", "tilth"]);
 for (const { name, config, source, scope } of loaded.servers) {
   assert.equal(source, join(agentDir, "mcp.json"));
   assert.equal(scope, "global");
@@ -81,10 +80,7 @@ for (const { name, config, source, scope } of loaded.servers) {
     assert.equal(getMcpToolExposure(config, "other_offered_tool"), "codemode");
   }
 }
-assert.deepEqual(loaded.servers.find((s) => s.name === "cachebro").config.env, {
-  CACHEBRO_DIR: "${HOME}/.cache/cachebro",
-});
-console.log("PASS native config parser: four personal servers, eight direct tools, codemode Firecrawl");
+console.log("PASS native config parser: three personal servers, six direct tools, codemode Firecrawl");
 
 const builtinLists = {
   architect: ["read", "grep", "find", "ls"],

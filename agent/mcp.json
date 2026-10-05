@@ -1,21 +1,5 @@
 {
   "mcpServers": {
-    "cachebro": {
-      "args": [
-        "-y",
-        "cachebro",
-        "serve"
-      ],
-      "command": "npx",
-      "env": {
-        "CACHEBRO_DIR": "${HOME}/.cache/cachebro"
-      },
-      "exposure": "codemode",
-      "toolExposure": {
-        "read_file": "direct",
-        "read_files": "direct"
-      }
-    },
     "grepika": {
       "args": [
         "-y",

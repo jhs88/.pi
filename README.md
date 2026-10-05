@@ -114,7 +114,7 @@ Nine explicit custom types are available. Every child starts fresh and inherits 
 
 | Agent | Capability |
 |---|---|
-| `scout` | Low-thinking, mechanically workspace-read-only analysis with explicit Cachebro, Grepika, and Tilth navigation tools; Cachebro state lives in the user cache directory |
+| `scout` | Low-thinking, mechanically workspace-read-only analysis with explicit Grepika and Tilth navigation tools |
 | `build` | Extension-enabled file and shell operations for the active bounded procedure |
 | `docs` | No-shell editing with Pstack `technical-writing` and `unslop` preloaded |
 
@@ -136,7 +136,7 @@ Every workflow therefore:
 3. stops before dispatch when a name is missing;
 4. never probes an unknown or misspelled type.
 
-`scout` loads only `builtin:mcp` and `session-name`. It allows eight explicit read-only navigation tools, with no shell, write, edit, codemode, or tool discovery. `build` and `docs` use the same navigation allowlist alongside their existing built-in tools; `docs` remains no-shell. The six gauntlet roles keep extensions disabled.
+`scout` loads only `builtin:mcp` and `session-name`. It allows six explicit read-only navigation tools, with no shell, write, edit, codemode, or tool discovery. `build` and `docs` use the same navigation allowlist alongside their existing built-in tools; `docs` remains no-shell. The six gauntlet roles keep extensions disabled.
 
 The serial gauntlet uses one child at a time. Other skills may use bounded parallel work subject to `agent/subagents.json` and the shared local-resource policy:
 
@@ -184,7 +184,7 @@ Shared Matt Pocock skills remain under `~/.agents/skills` and are loaded by name
 
 Use Pi with native MCP support (validated against 1.0.2). `agent/settings.json` explicitly enables `+builtin:mcp`, removes `pi-mcp-adapter`, and pins the separate `@tintinweb/pi-subagents` package to 0.19.0. Provider, model, thinking, and skill-command defaults remain unchanged.
 
-Personal servers live in `~/.pi/agent/mcp.json`; this setup does not use a shared MCP configuration source. Eight navigation tools are direct; other navigation tools use `codemode`, and Firecrawl uses `codemode`. See [code navigation](docs/code-navigation.md) for discovery and the [navigation skill](agent/skills/code-navigation/SKILL.md) for schemas and calling conventions. Old `mcp-cache.json` metadata is ignored and is not used by native MCP.
+Personal servers live in `~/.pi/agent/mcp.json`; this setup does not use a shared MCP configuration source. Six navigation tools are direct; other navigation tools use `codemode`, and Firecrawl uses `codemode`. See [code navigation](docs/code-navigation.md) for discovery and the [navigation skill](agent/skills/code-navigation/SKILL.md) for schemas and calling conventions. Old `mcp-cache.json` metadata is ignored and is not used by native MCP.
 
 Removing the adapter from settings does not uninstall a separate global npm installation. Remove both managed and global installations when migrating:
 

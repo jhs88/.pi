@@ -14,9 +14,7 @@ Inspired by [markerikson/opencode-config-example](https://github.com/markerikson
 | Symbol definitions | `mcp__tilth__tilth_search` | Prefer definition-first navigation |
 | Callers of a symbol | `mcp__tilth__tilth_search kind:callers` | Trace incoming dependencies |
 | Dependency impact | Discover `mcp__tilth__tilth_deps` in codemode | Inspect blast radius before mutation |
-| Cached file reads | `mcp__cachebro__read_file` / `mcp__cachebro__read_files` | Avoid retransmitting unchanged content |
-
-Cachebro stores its database under the user cache directory configured by `CACHEBRO_DIR`, not in the active workspace.
+| File reads | built-in `read` | Read the required lines |
 
 ## Default sequence
 
@@ -29,11 +27,11 @@ Cachebro stores its database under the user cache directory configured by `CACHE
 
 ## Tool visibility
 
-Native MCP is explicitly enabled through `+builtin:mcp`. The personal `agent/mcp.json` keeps eight Cachebro, Grepika, and Tilth navigation tools directly visible through `toolExposure` overrides. Other navigation operations use `codemode`; Firecrawl uses `codemode`, so its tools are discovered on demand rather than listed in the codemode description.
+Native MCP is explicitly enabled through `+builtin:mcp`. The personal `agent/mcp.json` keeps six Grepika and Tilth navigation tools directly visible through `toolExposure` overrides. Other navigation operations use `codemode`; Firecrawl uses `codemode`, so its tools are discovered on demand rather than listed in the codemode description.
 
 In a parent session, discover tools with `searchTools(query, { namespace })`, inspect `describeTool(name)` or `ALL_TOOLS`, then call `tools.<name>(args)` using the offered schema. Check `isError` in MCP results before using their content. See the [navigation skill](../agent/skills/code-navigation/SKILL.md) for examples.
 
-The child profiles are intentionally narrower. `scout` loads only `builtin:mcp` and `session-name` and allows eight explicit read-only navigation tools, with no shell, write, edit, codemode, or tool discovery. `build` and `docs` use the same navigation allowlist alongside their existing built-ins; `docs` has no shell. Their `tools:` entries select native navigation through `ext:builtin:mcp/<native-tool-name>`, not plain tool names. The six gauntlet roles keep extensions disabled. Installation and the explicit SDK compatibility-patch command are in the [README](../README.md#native-mcp-migration).
+The child profiles are intentionally narrower. `scout` loads only `builtin:mcp` and `session-name` and allows six explicit read-only navigation tools, with no shell, write, edit, codemode, or tool discovery. `build` and `docs` use the same navigation allowlist alongside their existing built-ins; `docs` has no shell. Their `tools:` entries select native navigation through `ext:builtin:mcp/<native-tool-name>`, not plain tool names. The six gauntlet roles keep extensions disabled. Installation and the explicit SDK compatibility-patch command are in the [README](../README.md#native-mcp-migration).
 
 Tool availability is a runtime fact. Inspect the active tool catalog rather than assuming that an MCP server, extension, or profile exposes every operation described here.
 

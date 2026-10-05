@@ -21,9 +21,7 @@ Standard behaviors that pi should always follow.
 | Symbol definitions / callers | `mcp__tilth__tilth_search` (use `kind:callers` for caller tracing) |
 | File structure | `mcp__grepika__outline` → `mcp__grepika__get` (read only needed lines) |
 | Code search (NL/regex) | `mcp__grepika__search` |
-| Cached file reads | `mcp__cachebro__read_file` / `mcp__cachebro__read_files` |
-
-Cachebro persists its database in the user cache directory, outside the active workspace.
+| File reads | built-in `read` |
 
 ### Quick Decision
 
@@ -34,9 +32,8 @@ Cachebro persists its database in the user cache directory, outside the active w
 
 ### Non-Code Files
 
-- Config, JSON, small files: `mcp__cachebro__read_file` / `mcp__cachebro__read_files`
+- Config, JSON, small files: built-in `read`
 - Markdown/docs: scan headers with `rg` first, read targeted sections
-- Fallback if cachebro misbehaves: built-in `Read` tool
 
 Native MCP names use `mcp__<server>__<offered-tool>`. In parent sessions, discover other operations through `codemode`: `searchTools(query, { namespace })` → `describeTool(name)` → `tools.<name>(args)`. Check MCP results for `isError`. Restricted children have only their explicit navigation allowlist; use the available built-in tools when discovery is absent.
 
