@@ -1,15 +1,15 @@
 ---
 name: code-navigation
-description: Full tool reference for codebase navigation. Use when you need detailed guidance on grepika/tilth/cachebro usage, blast-radius checks, or workflow patterns
+description: Full tool reference for codebase navigation. Use when you need detailed guidance on Grepika and Tilth usage, blast-radius checks, or workflow patterns
 ---
 
 # Code navigation and file reading
 
 Full tool reference for navigating codebases. APPEND_SYSTEM.md has the quick-reference table; this skill provides detailed usage, workflows, and edge cases.
 
-Native MCP reads personal servers from `~/.pi/agent/mcp.json`. Eight navigation tools are direct; remaining navigation tools use `codemode`, and Firecrawl uses `codemode`. Names follow `mcp__<server>__<server-offered-tool>`. Use `/mcp` for status and exposure.
+Native MCP reads personal servers from `~/.pi/agent/mcp.json`. Six navigation tools are direct; remaining navigation tools use `codemode`, and Firecrawl uses `codemode`. Names follow `mcp__<server>__<server-offered-tool>`. Use `/mcp` for status and exposure.
 
-`scout`, `build`, and `docs` allow only the eight direct navigation tools alongside their profile-specific built-ins. They have no codemode or tool discovery capability. When an operation below is unavailable, use the allowed built-ins or report the gap to the parent; a documented tool is not an authorization grant.
+`scout`, `build`, and `docs` allow only the six direct navigation tools alongside their profile-specific built-ins. They have no codemode or tool discovery capability. When an operation below is unavailable, use the allowed built-ins or report the gap to the parent; a documented tool is not an authorization grant.
 
 ## Grepika as the default exploration tool
 
@@ -75,10 +75,8 @@ Only Tilth search and read are direct. Other Tilth operations require codemode d
 
 ## Non-code files
 
-- **Config, JSON, small files.** Use `mcp__cachebro__read_file` or `mcp__cachebro__read_files`; these files are usually small enough to read whole.
+- **Config, JSON, small files.** Use built-in `read`; these files are usually small enough to read whole.
 - **Markdown/docs:** Don't blindly read whole file. Scan headers with `rg "^#{1,3} "` first, then read targeted sections with offset/limit. Only full-read if small or genuinely needed.
-- **Fallback:** If cachebro reports stale cache or truncates reads, use the built-in `Read` tool directly.
-- **Workspace safety:** Cachebro's `CACHEBRO_DIR` points at the user cache directory. Its database must not appear under the active workspace.
 
 ## Decision table
 
@@ -96,4 +94,3 @@ Only Tilth search and read are direct. Other Tilth operations require codemode d
 - **Treating an empty Grepika result as proof.** Verify the configured index is ready, then retry or read canonical source.
 - **Omitting line ranges on `mcp__grepika__get`.** This wastes context on large files.
 - **Using text search when you need definitions.** Text search also finds usages, imports, and comments. Use Tilth for definitions.
-- **Reading code files with Cachebro.** Cachebro is for config, JSON, and small non-code files. Use Grepika or Tilth for code.
