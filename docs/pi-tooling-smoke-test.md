@@ -12,7 +12,7 @@ pi update --extensions
 
 After a package reinstall, apply the child compatibility patch in the [README](../README.md#setup), then reload or restart Pi. These checks exercise live tools.
 
-The managed Firecrawl extension uses the process environment first, then ignored `agent/.env`. Copy `agent/.env.example` to `agent/.env` when Pi-local configuration is needed. `FIRECRAWL_API_KEY` remains optional. Native Firecrawl MCP separately uses the self-hosted URL in `agent/mcp.json`.
+Set `FIRECRAWL_API_URL` in the process environment before starting Pi or its T3 backend. Both native MCP and the managed Firecrawl extension use it. Native MCP does not load `agent/.env`; the extension retains that legacy fallback. `FIRECRAWL_API_KEY` is optional for the managed extension.
 
 ## Start and discover
 

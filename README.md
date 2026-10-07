@@ -33,7 +33,7 @@ Keep the previous skill revision on runtimes where the adapter is disabled. Test
 
 Personal MCP servers are configured in `agent/mcp.json`. Six navigation tools are directly exposed; other operations and Firecrawl use codemode discovery. Use `/mcp` to inspect exposure. `pi mcp list` connects to servers, so run it only when live access is intended.
 
-Native Firecrawl uses the self-hosted URL configured in `agent/mcp.json`. The separate managed Firecrawl extension reads `FIRECRAWL_API_URL` and optional `FIRECRAWL_API_KEY` from the process environment, then ignored `agent/.env`. Use `agent/.env.example` for Pi-local configuration. The extension has no Firecrawl Cloud fallback.
+Set `FIRECRAWL_API_URL` in the environment that launches Pi, using your self-hosted endpoint. Native MCP resolves `${FIRECRAWL_API_URL}` in `agent/mcp.json`; the managed Firecrawl extension reads the same process variable. Configure it in your shell profile or launcher/service environment and restart that launcher. An unrelated terminal export does not reach an already-running T3 backend. Native MCP does not automatically load `agent/.env`. The managed extension still supports that file as a legacy fallback and has no Firecrawl Cloud fallback.
 
 ## Workflows
 

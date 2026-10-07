@@ -38,7 +38,7 @@
         "firecrawl-mcp"
       ],
       "env": {
-        "FIRECRAWL_API_URL": "http://172.16.8.179:3002"
+        "FIRECRAWL_API_URL": "${FIRECRAWL_API_URL}"
       },
       "exposure": "codemode"
     }
