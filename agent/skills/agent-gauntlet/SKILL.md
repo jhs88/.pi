@@ -11,13 +11,13 @@ Use this skill for implementation that benefits from independent role boundaries
 ## Intake
 
 1. Record the goal, writable repository, reference-only sources, preserved behavior, forbidden side effects, and acceptance checks.
-2. Preflight the `Agent` tool's advertised types. Require the exact names `specifier`, `coder`, `cleaner`, `architect`, `hardener`, and `qa`; stop before mutation if any is absent. Unknown types can fall back to a general agent and therefore are never attempted.
+2. Preflight the `subagent` tool's advertised types. Require the exact names `specifier`, `coder`, `cleaner`, `architect`, `hardener`, and `qa`; stop before mutation if any is absent. Unknown types can fall back to a general agent and therefore are never attempted.
 3. Keep model/provider selection inherited. None of the six role files pins a model, so an unavailable model cannot silently reroute a role. Use one foreground child at a time unless the user explicitly authorizes another policy.
 4. Discover verification commands from the repository. A missing gate is `UNAVAILABLE`, never a pass.
 
 ## Serial pipeline
 
-Launch each role through `Agent` with `inherit_context` left at its configured `false` value. Every prompt is self-contained: goal, paths, approved decisions, current artifact or diff, exact prior evidence, forbidden actions, and expected handoff.
+Launch each role through `subagent` with `inherit_context` left at its configured `false` value. Every prompt is self-contained: goal, paths, approved decisions, current artifact or diff, exact prior evidence, forbidden actions, and expected handoff.
 
 1. `specifier` — produce the behavioral contract. Stop for the human on `BLOCKED`.
 2. `coder` — implement the smallest approved slice.

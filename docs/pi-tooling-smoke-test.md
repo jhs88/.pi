@@ -1,6 +1,6 @@
 # Managed Pi tooling smoke test
 
-Use this after updating the Pi configuration or managed package.
+Use this after updating the Pi configuration or managed package. This configuration revision requires the opt-in subagent adapter; keep the previous skills on runtimes where it is disabled.
 
 ## Prepare
 
@@ -16,9 +16,9 @@ The managed Firecrawl extension uses the process environment first, then ignored
 
 ## Start and discover
 
-1. Start Pi normally.
+1. Start Pi with `PI_TOOLING_SUBAGENTS_COMPAT=1` in its process environment. Confirm the companion adapter is installed and the host supports it before loading the renamed skills.
 2. Confirm the tools include `fd`, `rg`, `ask_user`, `search`, `scrape`, `crawl`, `workflow`, `bg_start`, `bg_status`, `bg_list`, and `bg_kill`.
-3. Confirm the existing `Agent`, `get_subagent_result`, and `steer_subagent` tools still exist.
+3. Confirm `subagent`, `subagent_result`, and `subagent_steer` are active. Confirm optional `subagent_workflow` appears only when enabled upstream.
 4. Confirm the old `questionnaire` tool is absent.
 
 ## Focused checks
@@ -29,8 +29,8 @@ The managed Firecrawl extension uses the process environment first, then ignored
 - **Background completion:** start `sleep 3; printf 'BG_OK\n'`, inspect it with `bg_list`/`bg_status` and `/ps`, and confirm one completion follow-up appears.
 - **Background termination:** start a long command that spawns a child, call `bg_kill`, and confirm the process tree exits. Confirm no stdin control is offered.
 - **Workflow:** explicitly invoke `workflow` with a two-child bounded script. Confirm at most three children can run, artifacts appear under `agent/workflows/`, and the result/failure is surfaced.
-- **Child isolation:** in a workflow child, confirm `workflow`, `Agent`, `get_subagent_result`, `steer_subagent`, `ask_user`, and all `bg_*` tools are unavailable.
-- **Existing delegation:** run a small `Agent` delegation and confirm `@tintinweb/pi-subagents` behavior is unchanged.
+- **Child isolation:** in a workflow child, confirm `workflow`, `subagent`, `subagent_result`, `subagent_steer`, `subagent_workflow`, `ask_user`, and all `bg_*` tools are unavailable.
+- **Delegation:** run a small read-only foreground `subagent` task. Confirm live progress, the final result, and cancellation. Explicit background requests must fail before spawning a child.
 - **Session cleanup:** start a long background terminal, switch or end the session, and confirm it is terminated.
 
 ## Report useful failures

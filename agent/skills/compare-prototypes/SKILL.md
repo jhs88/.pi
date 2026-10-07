@@ -12,12 +12,12 @@ Use this for two already-defined alternatives whose important difference is easi
 
 1. Fix one decision question and two named alternatives.
 2. Record shared constraints, the writable repository, disposable paths or worktrees, forbidden effects, and the observations that would distinguish the alternatives.
-3. Preflight the `Agent` tool's advertised types. Require exact `scout` and `build` entries; stop if either is absent. Never attempt an unknown type because the extension falls back to a mutable `general-purpose` agent even while defaults are hidden.
+3. Preflight the `subagent` tool's advertised types. Require exact `scout` and `build` entries; stop if either is absent. Never attempt an unknown type because the extension falls back to a mutable `general-purpose` agent even while defaults are hidden.
 4. Load `prototype`. Load `codebase-design` when module interfaces or seams are part of the comparison.
 
 ## Run one bounded wave
 
-Launch three background agents together, subject to the configured concurrency limit:
+Launch three fresh agents, subject to the configured concurrency limit. Run them serially unless the advertised tool supports concurrent execution:
 
 - one fresh `scout` to report current structure, relevant seams, key files, and the smallest verification command;
 - one fresh `build` in an isolated worktree to prototype alternative A;

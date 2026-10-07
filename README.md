@@ -131,7 +131,7 @@ Extension defaults remain hidden to avoid duplicate `Explore`, `Plan`, and `gene
 
 Every workflow therefore:
 
-1. inspects the `Agent` tool's advertised types;
+1. inspects the `subagent` tool's advertised types;
 2. requires the exact intended names;
 3. stops before dispatch when a name is missing;
 4. never probes an unknown or misspelled type.
@@ -224,6 +224,14 @@ pi install git:github.com/jhs88/pi-tooling
 The tracked files already under `agent/extensions/` are repository-local extensions. Update them through this repository, not through the managed-package commands above.
 
 Selected extensions are adapted from [davis7dotsh/my-pi-setup@797eaf6](https://github.com/davis7dotsh/my-pi-setup/tree/797eaf6d6f178759cf7aabde927ef15c91346e7e), with local compatibility, routing, and security changes.
+
+### Subagent compatibility rollout
+
+The local delegation skills use `subagent`, `subagent_result`, and `subagent_steer`. Apply this configuration revision only to a runtime with the companion Pi Tooling subagent compatibility adapter enabled and its active tools verified. Test against Pi 1.0.3 and the pinned `@tintinweb/pi-subagents@0.19.0` package.
+
+Set `PI_TOOLING_SUBAGENTS_COMPAT=1` in the environment of the process launching Pi. For T3, it must reach the backend that starts Pi, not just an unrelated terminal. Restart the backend and check the active tool list before using these skills. Optional `subagent_workflow` requires tintinweb's workflow to be enabled; Pi Tooling's separate `workflow` remains unchanged.
+
+The adapter is disabled by default. Do not deploy this skill revision to a runtime that still exposes only the original tool names. Keep the previous configuration revision on those runtimes. Test in an isolated Pi configuration before rollout; actual T3 rendering is not established by model-free RPC tests. See the companion package's `subagents/README.md` for installation, environment setup, limitations, and rollback.
 
 ### Shared skills
 
