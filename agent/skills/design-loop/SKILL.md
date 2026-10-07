@@ -41,6 +41,6 @@ If a prototype was approved, production code reimplements the validated decision
 
 ## Review and close
 
-Run `code-review` or `thermos` when its independent review value matches the change. The parent verifies artifacts and commands before reporting completion.
+Run `code-review` when its independent review value matches the change. The parent verifies artifacts and commands before reporting completion.
 
 Return the decision trail, changed files, exact verification, review findings, unresolved risks, and unperformed release actions.

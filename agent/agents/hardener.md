@@ -5,7 +5,7 @@ display_name: Hardener
 tools: read, grep, find, ls, write, edit, bash
 thinking: high
 extensions: false
-skills: thermo-nuclear-code-quality-review, diagnosing-bugs
+skills: diagnosing-bugs
 prompt_mode: replace
 inherit_context: false
 ---

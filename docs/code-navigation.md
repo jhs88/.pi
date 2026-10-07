@@ -31,7 +31,7 @@ Native MCP is explicitly enabled through `+builtin:mcp`. The personal `agent/mcp
 
 In a parent session, discover tools with `searchTools(query, { namespace })`, inspect `describeTool(name)` or `ALL_TOOLS`, then call `tools.<name>(args)` using the offered schema. Check `isError` in MCP results before using their content. See the [navigation skill](../agent/skills/code-navigation/SKILL.md) for examples.
 
-The child profiles are intentionally narrower. `scout` loads only `builtin:mcp` and `session-name` and allows six explicit read-only navigation tools, with no shell, write, edit, codemode, or tool discovery. `build` and `docs` use the same navigation allowlist alongside their existing built-ins; `docs` has no shell. Their `tools:` entries select native navigation through `ext:builtin:mcp/<native-tool-name>`, not plain tool names. The six gauntlet roles keep extensions disabled. Installation and the explicit SDK compatibility-patch command are in the [README](../README.md#native-mcp-migration).
+The child profiles are intentionally narrower. `scout` loads only `builtin:mcp` and `session-name` and allows six explicit read-only navigation tools, with no shell, write, edit, codemode, or tool discovery. `build` and `docs` use the same navigation allowlist alongside their existing built-ins; `docs` has no shell. Their `tools:` entries select native navigation through `ext:builtin:mcp/<native-tool-name>`, not plain tool names. The six gauntlet roles keep extensions disabled. Installation and the explicit SDK compatibility-patch command are in the [README](../README.md#setup).
 
 Tool availability is a runtime fact. Inspect the active tool catalog rather than assuming that an MCP server, extension, or profile exposes every operation described here.
 

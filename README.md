@@ -1,275 +1,80 @@
 # .pi
 
-A Pi configuration for human-directed software design, skill-driven bounded work, and a fresh-context six-role implementation gauntlet.
+Personal Pi configuration with shared skills, bounded agent roles, native MCP, and managed [Pi Tooling](https://github.com/jhs88/pi-tooling) extensions.
 
-## Architecture
+## Setup
 
-```text
-Human decision layer
-wayfinder / grilling / research / prototype / to-spec / to-tickets
-                              ↓ approved artifact
-Agent execution layer
-specifier → coder → cleaner → architect → hardener → QA
-                              ↓ evidence
-Thermos / human review / explicit release decision
-```
-
-Three rules organize the system:
-
-- **Humans own strategy and irreversible actions.** Product meaning, architectural direction, commit, push, release, and provider routing require explicit human decisions.
-- **Skills own reusable procedures.** Research, prototyping, diagnosis, review, testing, and writing are methodologies rather than permanent agent identities.
-- **Agents own bounded authority.** Fresh roles and capability profiles define tools, context, and responsibility.
-
-Background and composition guides:
-
-- [Composing Matt Pocock's skills](docs/matt-pocock-skills.md)
-- [The Uncle Bob agent gauntlet](docs/uncle-bob-agent-gauntlet.md)
-- [Code navigation](docs/code-navigation.md)
-
-## Choose a workflow
-
-Use the shortest flow that preserves the required decision and verification boundaries:
-
-| Situation | Use |
-|---|---|
-| Clear consequential implementation | `/skill:agent-gauntlet` |
-| Bounded human-gated design and implementation | `/skill:design-loop` |
-| Foggy multi-session destination | `/skill:wayfinder` → `/skill:to-spec` → approval → `/skill:to-tickets` |
-| Primary-source research artifact | `/skill:research` with writable `build` |
-| Read-only source or repository reconnaissance | `scout` with a self-contained evidence contract |
-| One high-fidelity uncertainty | `/skill:prototype` with an isolated `build` |
-| Two runnable alternatives | `/skill:compare-prototypes` |
-| Technical documentation | `/skill:technical-writing` with `docs` |
-| Independent diff audit | `/skill:thermos` or `/skill:code-review` |
-
-### Complete implementation gauntlet
-
-```text
-/skill:agent-gauntlet "Add a bounded cache to the existing API adapter"
-```
-
-The parent runs six roles serially with fresh context. Repository commands define the gates. A missing command is unavailable, never passed.
-
-### Resolve decisions first
-
-For work that fits one session:
-
-```text
-/skill:design-loop "Choose and implement bounded cache behavior"
-```
-
-For a large or foggy destination:
-
-```text
-/skill:wayfinder "Choose the caching behavior and boundaries"
-# Resolve the map, run to-spec, approve the specification, then run to-tickets.
-```
-
-Use `/skill:grill-with-docs`, `/skill:research`, `/skill:prototype`, `/skill:to-spec`, and `/skill:to-tickets` directly when one procedure is enough.
-
-Some decision-layer skills write durable project state. `grill-with-docs` updates domain documents and ADRs. `wayfinder`, `to-spec`, `to-tickets`, and `triage` can create or update tracker records. Inspect the active skill and target before approving those writes.
-
-### Compare alternatives
-
-```text
-/skill:compare-prototypes "Compare an in-memory cache with Redis"
-```
-
-The parent launches a read-only Scout and two isolated Build prototypes, verifies both, and returns the choice to the human. Prototype code does not enter production automatically.
-
-### Review a branch
-
-```text
-/skill:thermos
-```
-
-Thermos launches two fresh, read-only QA passes with complementary correctness and maintainability rubrics. It is optional review evidence, not final acceptance certification.
-
-### Babysit an existing PR
-
-```text
-/skill:babysit-pr <PR URL>
-```
-
-The shared [babysit-pr skill](agent/skills/babysit-pr/SKILL.md) handles scoped CI and review fixes. Its [review-agent triage policy](agent/skills/babysit-pr/references/bot-triage.md) treats findings as claims to verify. Reject clearly refuted findings independently with a recorded reason; ask Joe about uncertain or consequential tradeoffs. Commit and push require authorization for the run. Merging is out of scope.
-
-Pi discovers the skill in `agent/skills/`; `enableSkillCommands: true` explicitly enables `/skill:babysit-pr`. Start a fresh Pi session after installation. Default-profile Hermes on this host loads the same canonical directory through `~/.hermes/skills/github/babysit-pr`. Other hosts and profiles need their own installation.
-
-## Agents
-
-Nine explicit custom types are available. Every child starts fresh and inherits the parent model.
-
-### Gauntlet authority roles
-
-| Agent | Authority |
-|---|---|
-| `specifier` | Read-only behavioral contract and acceptance commands |
-| `coder` | Smallest behavior-complete implementation |
-| `cleaner` | Behavior-preserving local simplification |
-| `architect` | Read-only audit of human-approved boundaries |
-| `hardener` | Deeper tests, robustness, security, coverage, complexity, and mutation gates |
-| `qa` | Mechanically read-only final acceptance of parent-supplied evidence |
-
-### Flexible capability profiles
-
-| Agent | Capability |
-|---|---|
-| `scout` | Low-thinking, mechanically workspace-read-only analysis with explicit Grepika and Tilth navigation tools |
-| `build` | Extension-enabled file and shell operations for the active bounded procedure |
-| `docs` | No-shell editing with Pstack `technical-writing` and `unslop` preloaded |
-
-A flexible profile does not own a methodology. The parent loads the applicable skill and supplies a self-contained task. For example:
-
-- complete research artifact: `research` plus writable `build`;
-- read-only reconnaissance: `scout`;
-- disposable experiment: `prototype` plus isolated `build`;
-- documentation: `technical-writing` plus `docs`.
-
-## Safety boundaries
-
-Extension defaults remain hidden to avoid duplicate `Explore`, `Plan`, and `general-purpose` entries. Hidden is not fail-closed: the installed subagent extension maps an unknown type to a mutable `general-purpose` fallback.
-
-Every workflow therefore:
-
-1. inspects the `subagent` tool's advertised types;
-2. requires the exact intended names;
-3. stops before dispatch when a name is missing;
-4. never probes an unknown or misspelled type.
-
-`scout` loads only `builtin:mcp` and `session-name`. It allows six explicit read-only navigation tools, with no shell, write, edit, codemode, or tool discovery. `build` and `docs` use the same navigation allowlist alongside their existing built-in tools; `docs` remains no-shell. The six gauntlet roles keep extensions disabled.
-
-The serial gauntlet uses one child at a time. Other skills may use bounded parallel work subject to `agent/subagents.json` and the shared local-resource policy:
-
-- run no more than three local children concurrently;
-- pause automated work when another local workload is contending;
-- use external overflow only when explicitly selected for that task;
-- keep automatic subagent scheduling disabled by default.
-
-## Handoffs and evidence
-
-The parent passes compact artifacts rather than inherited conversation history. A useful handoff identifies:
-
-- status: `PASS`, `FAIL`, or `BLOCKED`;
-- approved scope and relevant paths;
-- files changed, if any;
-- exact commands and outcomes;
-- unresolved risks and unavailable gates;
-- next owning role or focused human decision.
-
-Large disposable evidence can live under `/tmp` or in a subagent transcript. Repository specifications, issues, tests, and ADRs remain canonical and are referenced rather than copied.
-
-A downstream `PASS` is a claim to verify. The parent reruns required checks immediately before QA, and QA remains read-only. Completing a workflow does not authorize commit, push, merge, publish, or deployment.
-
-## Local skills
-
-Repository-local skills include:
-
-| Skill | Purpose |
-|---|---|
-| `agent-gauntlet` | Serial six-role implementation and failure routing |
-| `design-loop` | One-session human-gated design, optional prototype, implementation, and review |
-| `compare-prototypes` | Scout plus two isolated runnable alternatives before a human choice |
-| `thermos` | Complementary read-only QA branch audits |
-| `technical-writing` | Pstack's layered Diátaxis, Google, STE, and Global English standard |
-| `unslop` | Pstack's AI-writing-tell removal and human-voice pass |
-| `subagents` | `@tintinweb/pi-subagents` usage and safety boundaries |
-| `code-navigation` | Navigation-tool reference |
-| `tilth` | Structural diff and blast-radius analysis |
-
-Shared Matt Pocock skills remain under `~/.agents/skills` and are loaded by name. They are not copied or edited in this repository. See [the composition guide](docs/matt-pocock-skills.md).
-
-## Installation and updates
-
-### Native MCP migration
-
-Use Pi with native MCP support (validated against 1.0.2). `agent/settings.json` explicitly enables `+builtin:mcp`, removes `pi-mcp-adapter`, and pins the separate `@tintinweb/pi-subagents` package to 0.19.0. Provider, model, thinking, and skill-command defaults remain unchanged.
-
-Personal servers live in `~/.pi/agent/mcp.json`; this setup does not use a shared MCP configuration source. Six navigation tools are direct; other navigation tools use `codemode`, and Firecrawl uses `codemode`. See [code navigation](docs/code-navigation.md) for discovery and the [navigation skill](agent/skills/code-navigation/SKILL.md) for schemas and calling conventions. Old `mcp-cache.json` metadata is ignored and is not used by native MCP.
-
-Removing the adapter from settings does not uninstall a separate global npm installation. Remove both managed and global installations when migrating:
+Use a native-MCP-capable Pi host. The subagent compatibility adapter is tested with Pi 1.0.3 and the pinned `@tintinweb/pi-subagents@0.19.0` package.
 
 ```bash
-pi remove npm:pi-mcp-adapter
-npm uninstall --global --ignore-scripts pi-mcp-adapter
+pi install git:github.com/jhs88/pi-tooling
+npx skills@latest add mattpocock/skills -g
 ```
 
-Run the global cleanup even if the adapter is already absent from `pi list`. Native MCP validation checks for leftover installations as well as configuration.
+Review upstream skill revisions and changes before accepting updates. Shared Matt Pocock skills live in `~/.agents/skills`; this repository does not fork them. Run `/skill:setup-matt-pocock-skills` in projects that need tracker and documentation setup.
 
-SDK children require the reviewed compatibility patch from the companion `pi-tooling` checkout. After installing or reinstalling packages, apply it explicitly:
+Update managed extensions with `pi update --extensions`. Repository-local extensions in `agent/extensions/` update through this repository.
+
+After installing or reinstalling packages, apply the native MCP child compatibility patch from your companion Pi Tooling checkout, then reload or restart Pi:
 
 ```bash
 npm --prefix ~/pi-tooling run compat:subagents
 ```
 
-Then run `/reload` in Pi, or start a fresh session. There are no automatic package-patching hooks. Child `tools:` entries use `ext:builtin:mcp/<native-tool-name>` selectors: plain CSV names select only built-in tools. A selector grants a tool only when its extension is loaded. Keep the child allowlists narrow; parent codemode discovery is not a child capability.
+### Subagent tools
 
-Offline configuration and profile checks (no model requests or MCP connections):
+These delegation skills require the opt-in compatibility adapter. Set `PI_TOOLING_SUBAGENTS_COMPAT=1` in the environment of the process launching Pi. For T3, that environment must reach the backend that starts Pi.
 
-```bash
-node scripts/validate-native-mcp.mjs
-```
+Verify `subagent`, `subagent_result`, and `subagent_steer` are advertised before using the skills. Optional `subagent_workflow` follows upstream availability and is separate from Pi Tooling's `workflow`.
 
-After activation, use `/mcp` to inspect status and exposure. `pi mcp list` connects to the configured servers; run that live check only when server access is intended.
+Keep the previous skill revision on runtimes where the adapter is disabled. Test in an isolated configuration first. See [adapter setup and limitations](https://github.com/jhs88/pi-tooling/blob/main/subagents/README.md). Actual T3 rendering still needs a work-computer test.
 
-### Pi Tooling extensions
+### MCP and Firecrawl
 
-Managed file search, Firecrawl, interaction, background terminal, and workflow extensions are distributed through the [`jhs88/pi-tooling`](https://github.com/jhs88/pi-tooling) Git package:
+Personal MCP servers are configured in `agent/mcp.json`. Six navigation tools are directly exposed; other operations and Firecrawl use codemode discovery. Use `/mcp` to inspect exposure. `pi mcp list` connects to servers, so run it only when live access is intended.
 
-```bash
-pi install git:github.com/jhs88/pi-tooling
-```
+Native Firecrawl uses the self-hosted URL configured in `agent/mcp.json`. The separate managed Firecrawl extension reads `FIRECRAWL_API_URL` and optional `FIRECRAWL_API_KEY` from the process environment, then ignored `agent/.env`. Use `agent/.env.example` for Pi-local configuration. The extension has no Firecrawl Cloud fallback.
 
-`pi update --extensions` and `pi update --all` update the managed checkout and rerun its production dependency installation when needed. Do not copy the package into `agent/extensions`; auto-discovered extension directories do not receive Pi's package lifecycle.
+## Workflows
 
-The tracked files already under `agent/extensions/` are repository-local extensions. Update them through this repository, not through the managed-package commands above.
-
-Selected extensions are adapted from [davis7dotsh/my-pi-setup@797eaf6](https://github.com/davis7dotsh/my-pi-setup/tree/797eaf6d6f178759cf7aabde927ef15c91346e7e), with local compatibility, routing, and security changes.
-
-### Subagent compatibility rollout
-
-The local delegation skills use `subagent`, `subagent_result`, and `subagent_steer`. Apply this configuration revision only to a runtime with the companion Pi Tooling subagent compatibility adapter enabled and its active tools verified. Test against Pi 1.0.3 and the pinned `@tintinweb/pi-subagents@0.19.0` package.
-
-Set `PI_TOOLING_SUBAGENTS_COMPAT=1` in the environment of the process launching Pi. For T3, it must reach the backend that starts Pi, not just an unrelated terminal. Restart the backend and check the active tool list before using these skills. Optional `subagent_workflow` requires tintinweb's workflow to be enabled; Pi Tooling's separate `workflow` remains unchanged.
-
-The adapter is disabled by default. Do not deploy this skill revision to a runtime that still exposes only the original tool names. Keep the previous configuration revision on those runtimes. Test in an isolated Pi configuration before rollout; actual T3 rendering is not established by model-free RPC tests. See the companion package's `subagents/README.md` for installation, environment setup, limitations, and rollback.
-
-### Shared skills
-
-Pi reads shared skills from `~/.agents/skills`, user-local skills from `~/.pi/agent/skills`, and project skills from supported project discovery paths.
-
-Install Matt Pocock's shared set with:
-
-```bash
-npx skills@latest add mattpocock/skills -g
-```
-
-This resolves current upstream content. Review the upstream revision, selected roster, and installed diff before accepting an install or update.
-
-Run `/skill:setup-matt-pocock-skills` once in a project that has not configured its issue tracker, triage labels, and documentation layout.
-
-Pstack `technical-writing` and `unslop` are pinned MIT-licensed local copies. Their provenance is retained beside each skill.
-
-### Firecrawl
-
-Native Firecrawl MCP uses `npx -y firecrawl-mcp` with the self-hosted URL `http://172.16.8.179:3002` in `agent/mcp.json`. Its tools use `codemode`; discover their current names and schemas before calling. No API key, browser automation server, or shared MCP source is configured.
-
-The separate managed Firecrawl extension still reads `FIRECRAWL_API_URL` and optional `FIRECRAWL_API_KEY` from the process environment, then ignored `agent/.env`. Copy `agent/.env.example` when that extension needs Pi-local configuration. There is no managed-extension Firecrawl Cloud fallback.
-
-## Legacy command migration
-
-The old prompt files were removed. Use these replacements:
-
-| Removed command | Replacement |
+| Need | Use |
 |---|---|
-| `/design-loop` | `/skill:design-loop` |
-| `/parallel-explore-build` | `/skill:compare-prototypes` |
-| `/quick-prototype` | `/skill:prototype` |
-| `/initiative-map` | `/skill:wayfinder` |
+| Bounded design and implementation | `/skill:design-loop` |
+| Consequential implementation | `/skill:agent-gauntlet` |
+| Large or unclear destination | `/skill:wayfinder` → `/skill:to-spec` → approval → `/skill:to-tickets` |
+| Research with a written artifact | `/skill:research` with `build` |
+| Read-only reconnaissance | `scout` |
+| One implementation uncertainty | `/skill:prototype` with isolated `build` |
+| Compare runnable alternatives | `/skill:compare-prototypes` |
+| Documentation | `/skill:technical-writing` with `docs` |
+| Independent diff review | `/skill:code-review` |
+| Existing PR fixes | `/skill:babysit-pr <PR URL>` |
 
-## Further reading
+Load the current skill for its procedure. Some skills write tracker records, ADRs, or domain documents; confirm those targets before execution.
 
-- [Managed Pi tooling smoke test](docs/pi-tooling-smoke-test.md)
-- [A Philosophy of Software Design](https://milkov.tech/assets/psd.pdf)
-- [Matt Pocock's skills](https://github.com/mattpocock/skills)
-- [Uncle Bob and Matt Pocock interview](https://www.youtube.com/watch?v=zcLPGC-tvgk)
-- [SwarmForge](https://github.com/unclebob/swarm-forge)
+## Agents and boundaries
+
+```text
+specifier → coder → cleaner → architect → hardener → qa
+```
+
+The gauntlet runs serially with fresh contexts. `specifier`, `architect`, and `qa` are read-only. Implementation roles make bounded changes; architecture decisions remain human-owned. QA verifies parent-supplied, fresh acceptance evidence. Missing checks are unavailable, never passed.
+
+The flexible profiles are `scout` for read-only navigation, `build` for bounded file and shell work, and `docs` for no-shell documentation. Skills supply the procedure; profiles supply permissions.
+
+- Preflight the exact advertised agent types. Unknown names can fall back to a mutable default agent; never probe by dispatching them.
+- Children receive self-contained tasks and inherit the parent model unless an override is requested.
+- Run no more than three children concurrently and pause when local resources are contended. Use foreground delegation unless the advertised tool supports background execution.
+- `scout` exposes only six read-only navigation tools. `build` and `docs` share that navigation allowlist; `docs` has no shell. Gauntlet roles disable extensions.
+- Native child tools require `ext:builtin:mcp/<native-tool-name>` selectors and the extension loaded. Parent codemode discovery does not grant child capabilities.
+- Handoffs include scope, changed files, exact commands and outcomes, unresolved risks, and the next owner. A prior `PASS` is a claim to verify.
+- Commit, push, merge, release, deployment, and provider changes require explicit approval.
+
+Local skill procedures live in `agent/skills/`. Pstack `technical-writing` and `unslop` retain their pinned provenance and licenses. Selected extensions originate from [davis7dotsh/my-pi-setup@797eaf6](https://github.com/davis7dotsh/my-pi-setup/tree/797eaf6d6f178759cf7aabde927ef15c91346e7e).
+
+## Guides
+
+- [Workflow selection](docs/matt-pocock-skills.md)
+- [Gauntlet rationale](docs/uncle-bob-agent-gauntlet.md)
+- [Code navigation](docs/code-navigation.md)
+- [Live smoke checks](docs/pi-tooling-smoke-test.md)
