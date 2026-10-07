@@ -21,7 +21,7 @@ An explicit PR in the user's request takes precedence. Otherwise resolve the ope
 - Authorized actions: local edits, commit, push, CI rerun, comments, thread resolution. Record each separately.
 - Deadline and repair-round budget. Default to three repair rounds and a 60-minute session window unless the user supplies bounds. A round is one coherent fix batch followed by verification.
 
-An active babysitting request permits scoped local fixes, subject to repository restrictions. Joe approves commits and pushes unless he explicitly authorizes them for this run. Ask once for a bounded commit/push authorization if needed; otherwise stop at the tested diff. Keep merge, force-push, review dismissal, and protection changes outside this workflow. Preserve model/provider routing; installing this skill is not permission to launch additional workers.
+An active babysitting request permits scoped local fixes, subject to repository restrictions. Commits and pushes require explicit user authorization for this run. Ask once for a bounded commit/push authorization if needed; otherwise stop at the tested diff. Keep merge, force-push, review dismissal, and protection changes outside this workflow. Preserve model/provider routing; installing this skill is not permission to launch additional workers.
 
 **Done when:** the exact PR, writable checkout, allowed actions, and stopping conditions are recorded. Use one writer per checkout; preserve unrelated local changes.
 
@@ -85,4 +85,4 @@ Preserve model/provider settings. Without an explicitly authorized, verified dur
 
 ## Provenance and ownership
 
-Original workflow written with Joe from a user-supplied screenshot of a skill named `babysit-pr`. The screenshot's repository, revision, author identity, and license are unverified. Its referenced `bot-triage.md` was not provided. This package does not claim to reproduce that missing file; the triage policy is the policy agreed with Joe.
+Original workflow developed from a user-supplied screenshot of a skill named `babysit-pr`. The screenshot's repository, revision, author identity, and license are unverified. Its referenced `bot-triage.md` was not provided. This package does not claim to reproduce that missing file; the triage policy is defined in this skill's reference.
