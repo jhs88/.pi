@@ -10,7 +10,7 @@ Use this when the goal is small enough for one parent session but still needs a 
 
 The parent owns every user question and gate. Children start fresh, receive self-contained prompts, and never decide for the human.
 
-Before the first `Agent` call, preflight the tool's advertised types and require every type this run will use: `build` for an optional prototype or small flexible implementation, plus all six gauntlet types when implementation will invoke `agent-gauntlet`. Stop if a required name is absent. Never attempt an unknown type: this extension falls back to a mutable `general-purpose` agent even while defaults are hidden.
+Before the first `subagent` call, preflight the tool's advertised types and require every type this run will use: `build` for an optional prototype or small flexible implementation, plus all six gauntlet types when implementation will invoke `agent-gauntlet`. Stop if a required name is absent. Never attempt an unknown type: this extension falls back to a mutable `general-purpose` agent even while defaults are hidden.
 
 ## Shape the decision
 
