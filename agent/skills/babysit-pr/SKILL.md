@@ -1,12 +1,8 @@
 ---
 name: babysit-pr
 description: Use to babysit a PR and fix review or CI findings.
-version: 1.0.0
-author: Hermes Agent and Joe Scherreik
-metadata:
-  hermes:
-    tags: [github, pull-request, review, ci]
-    related_skills: [pr-watch, release-readiness]
+version: 1.1.0
+tags: [github, pull-request, review, ci]
 ---
 
 # Babysit a PR
@@ -25,7 +21,7 @@ An explicit PR in the user's request takes precedence. Otherwise resolve the ope
 - Authorized actions: local edits, commit, push, CI rerun, comments, thread resolution. Record each separately.
 - Deadline and repair-round budget. Default to three repair rounds and a 60-minute session window unless the user supplies bounds. A round is one coherent fix batch followed by verification.
 
-An active babysitting request permits scoped local fixes, subject to repository restrictions. Joe approves commits and pushes unless he explicitly authorizes them for this run. Ask once for a bounded commit/push authorization if needed; otherwise stop at the tested diff. Keep merge, force-push, review dismissal, and protection changes outside this workflow. Preserve model/provider routing; installing this skill is not permission to launch Pi or other workers.
+An active babysitting request permits scoped local fixes, subject to repository restrictions. Commits and pushes require explicit user authorization for this run. Ask once for a bounded commit/push authorization if needed; otherwise stop at the tested diff. Keep merge, force-push, review dismissal, and protection changes outside this workflow. Preserve model/provider routing; installing this skill is not permission to launch additional workers.
 
 **Done when:** the exact PR, writable checkout, allowed actions, and stopping conditions are recorded. Use one writer per checkout; preserve unrelated local changes.
 
@@ -81,18 +77,12 @@ Re-read the final PR head and base. All of these must hold for an unqualified re
 
 Report the PR link and head SHA, what the PR actually does based on its diff, fixes made, material rejected/deferred findings with reasons, decisive check/review evidence, and anything still awaiting approval. If only remediation is finished, say so rather than calling the PR merge-ready. Never merge as part of this skill.
 
-## Runtime guidance
+## Execution capabilities
 
-### Hermes
+Read references relative to this skill directory. Use the available file, shell and GitHub tools within the approved scope. For requested independent review, inspect the available subagent capability and provide a read-only contract with the exact repository/head and required evidence. Verify findings yourself. If delegation is unavailable, report that limitation rather than substituting self-review or starting another runtime.
 
-Load the skill through `skill_view(name="babysit-pr")` or `/babysit-pr`. For a requested independent review, use `delegate_task` with a read-only contract, exact repository/head, scope, and required evidence. Inspect findings yourself. Subagents are not durable watchers. For bounded background terminal jobs use completion notifications; for durable monitoring discover the current cron schema and record the created job ID. Do not pin models or change routing.
-
-### Pi
-
-Load with `/skill:babysit-pr`. Read references relative to this skill directory. Use Pi's available read/edit/bash tools and approved GitHub access; Hermes-only tool names are not Pi APIs. For requested independent review, inspect the installed subagent capability and pass the same read-only contract. If none is available, report the limitation rather than silently substituting a self-review or launching another runtime. Preserve the configured model and provider. Without a verified durable scheduler, report that monitoring ends with the session.
+Preserve model/provider settings. Without an explicitly authorized, verified durable scheduler, monitoring ends with the session. A background subagent is not a durable watcher.
 
 ## Provenance and ownership
 
-Original workflow written with Joe from a user-supplied screenshot of a skill named `babysit-pr`. The screenshot's repository, revision, author identity, and license are unverified. Its referenced `bot-triage.md` was not provided. This package does not claim to reproduce that missing file; the triage policy is the policy agreed with Joe.
-
-The canonical directory lives in the user's Pi configuration repository at `agent/skills/babysit-pr`. Default-profile Hermes consumes the same directory through a symlink. Edit the canonical files once; refresh each runtime's skill catalog after changes. Other profiles and remote Pi installations are not implicitly included.
+Original workflow developed from a user-supplied screenshot of a skill named `babysit-pr`. The screenshot's repository, revision, author identity, and license are unverified. Its referenced `bot-triage.md` was not provided. This package does not claim to reproduce that missing file; the triage policy is defined in this skill's reference.

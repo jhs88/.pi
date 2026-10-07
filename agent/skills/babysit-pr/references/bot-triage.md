@@ -36,11 +36,11 @@ Separate uncertainty from low impact. If evidence is inaccessible or assumptions
 - **Reject:** Evidence shows the claim is incorrect, already handled, or a nonrequired preference with no demonstrated benefit here. Reject independently when the evidence is clear and record the reason. A useful rejection names the mistaken assumption and the code/test/requirement that contradicts it.
 - **Defer:** The improvement is valid but nonblocking and belongs outside this PR. Record why deferral is safe and a follow-up description. Create an external ticket only with authorization; otherwise retain it in the handoff. Ask the user if deferral involves a consequential risk or behavior/scope decision.
 - **Superseded or duplicate:** Link to the applicable finding or changed code and verify that the concern was actually removed. Age alone does not invalidate a finding.
-- **Needs decision:** Evidence is uncertain, intended behavior is unclear, or the fix changes scope, architecture, public behavior, or another consequential tradeoff. Present the evidence, options, and recommendation to Joe.
+- **Needs decision:** Evidence is uncertain, intended behavior is unclear, or the fix changes scope, architecture, public behavior, or another consequential tradeoff. Present the evidence, options, and recommendation to the user.
 
 A valid finding is not automatically blocking. A serious defect does not become optional because it is pre-existing, outside the diff, or inconvenient; disclose it and ask when its relationship to release safety is consequential. Do not label an accepted risk a false positive.
 
-Joe's policy: independently reject clearly refuted findings with a recorded reason; ask about uncertain or consequential tradeoffs. This permits an internal assessment, not publishing comments, dismissing a review, or resolving a GitHub thread. Those actions require the run's authorization and platform policy.
+Independently reject clearly refuted findings with a recorded reason; ask about uncertain or consequential tradeoffs. This permits an internal assessment, not publishing comments, dismissing a review, or resolving a GitHub thread. Those actions require the run's authorization and platform policy.
 
 **Done when:** every finding has a supported disposition; material unresolved findings prevent an unqualified ready claim.
 
@@ -48,7 +48,7 @@ Joe's policy: independently reject clearly refuted findings with a recorded reas
 
 For fixes, check the original failure and plausible regressions in the touched behavior. Review the changed code, not just the author's summary. When an independent follow-up review is warranted, constrain it to the fix and affected behavior; a full fresh audit is a separate request.
 
-Treat newly discovered consequential regressions seriously, but triage unrelated suggestions rather than automatically expanding the work. Keep the repair budget. Repeated disagreement without new evidence goes to Joe, not another rewrite cycle.
+Treat newly discovered consequential regressions seriously, but triage unrelated suggestions rather than automatically expanding the work. Keep the repair budget. Repeated disagreement without new evidence goes to the user, not another rewrite cycle.
 
 For rejection or deferral, preserve the reasoning even if the agent repeats the finding. Reopen it when new evidence or code changes undermine that reasoning. Never require a bot to agree with a justified rejection as a substitute for engineering judgment.
 
