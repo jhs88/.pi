@@ -1,0 +1,30 @@
+{
+  "purpose": "Guide example verification; excluded from benchmark totals",
+  "result": {
+    "api": "typesafe-system-one",
+    "provider": "llama.cpp",
+    "model": "ggml-org/Kev-4B-GGUF",
+    "answers": {
+      "passed": {
+        "type": "bool",
+        "probability": 0.001418201260965991
+      }
+    },
+    "stopReason": "stop",
+    "timestamp": 1791466275301,
+    "usage": {
+      "input": 28,
+      "output": 0,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "totalTokens": 28,
+      "cost": {
+        "input": 0,
+        "output": 0,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 0
+      }
+    }
+  }
+}
