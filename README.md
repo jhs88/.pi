@@ -4,7 +4,7 @@ Personal Pi configuration with shared skills, bounded agent roles, native MCP, a
 
 ## Setup
 
-Use a native-MCP-capable Pi host. The subagent compatibility adapter is tested with Pi 1.0.3 and the pinned `@tintinweb/pi-subagents@0.19.0` package.
+Use Pi 1.1.0 or newer. Native llama.cpp decision models also require a llama.cpp 0.6.0 or newer router. The subagent compatibility adapter uses the pinned `@tintinweb/pi-subagents@0.19.0` package.
 
 ```bash
 pi install git:github.com/jhs88/pi-tooling
@@ -18,12 +18,12 @@ Update managed extensions with `pi update --extensions`. Repository-local extens
 After installing or reinstalling packages, apply the native MCP child compatibility patch from your companion Pi Tooling checkout, then reload or restart Pi:
 
 ```bash
-npm --prefix ~/pi-tooling run compat:subagents
+npm --prefix ~/Github/jhs88/pi-tooling run compat:subagents
 ```
 
 ### Subagent tools
 
-These delegation skills require the opt-in compatibility adapter. Set `PI_TOOLING_SUBAGENTS_COMPAT=1` in the environment of the process launching Pi. For T3, that environment must reach the backend that starts Pi.
+Pi Tooling enables the compatibility adapter by default on supported hosts. No opt-in environment variable is needed for Pi or T3. Set `PI_TOOLING_SUBAGENTS_COMPAT=0` only to disable it. The separate native MCP child patch above still requires explicit application.
 
 Verify `subagent`, `subagent_result`, and `subagent_steer` are advertised before using the skills. Optional `subagent_workflow` follows upstream availability and is separate from Pi Tooling's `workflow`.
 

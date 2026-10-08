@@ -1,6 +1,6 @@
 # Managed Pi tooling smoke test
 
-Use this after updating the Pi configuration or managed package. This configuration revision requires the opt-in subagent adapter; keep the previous skills on runtimes where it is disabled.
+Use this after updating the Pi configuration or managed package. Use Pi 1.1.0 or newer. The subagent adapter is enabled by default on supported hosts; keep the previous skills on runtimes where it is disabled.
 
 ## Prepare
 
@@ -16,7 +16,7 @@ Set `FIRECRAWL_API_URL` in the process environment before starting Pi or its T3 
 
 ## Start and discover
 
-1. Start Pi with `PI_TOOLING_SUBAGENTS_COMPAT=1` in its process environment. Confirm the companion adapter is installed and the host supports it before loading the renamed skills.
+1. Start Pi without `PI_TOOLING_SUBAGENTS_COMPAT` set. Confirm the updated companion adapter is installed and the host supports it before loading the renamed skills. `PI_TOOLING_SUBAGENTS_COMPAT=0` explicitly disables the adapter.
 2. Confirm the tools include `fd`, `rg`, `ask_user`, `search`, `scrape`, `crawl`, `workflow`, `bg_start`, `bg_status`, `bg_list`, and `bg_kill`.
 3. Confirm `subagent`, `subagent_result`, and `subagent_steer` are active. Confirm optional `subagent_workflow` appears only when enabled upstream.
 4. Confirm the old `questionnaire` tool is absent.
