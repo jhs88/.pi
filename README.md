@@ -25,9 +25,7 @@ npm --prefix ~/Github/jhs88/pi-tooling run compat:subagents
 
 Pi Tooling enables the compatibility adapter by default on supported hosts. No opt-in environment variable is needed for Pi or T3. Set `PI_TOOLING_SUBAGENTS_COMPAT=0` only to disable it. The separate native MCP child patch above still requires explicit application.
 
-Verify `subagent`, `subagent_result`, and `subagent_steer` are advertised before using the skills. Optional `subagent_workflow` follows upstream availability and is separate from Pi Tooling's `workflow`.
-
-Keep the previous skill revision on runtimes where the adapter is disabled. Test in an isolated configuration first. See [adapter setup and limitations](https://github.com/jhs88/pi-tooling/blob/main/subagents/README.md). Actual T3 rendering still needs a work-computer test.
+Delegation uses `subagent`, `subagent_result`, and `subagent_steer`. Optional `subagent_workflow` follows upstream availability and is separate from Pi Tooling's `workflow`. The tools are visible in T3's UI, as confirmed by the repository owner. See [adapter setup and limitations](https://github.com/jhs88/pi-tooling/blob/main/subagents/README.md).
 
 ### MCP and Firecrawl
 
@@ -77,5 +75,4 @@ Local skill procedures live in `agent/skills/`. Pstack `technical-writing` and `
 - [Workflow selection](docs/matt-pocock-skills.md)
 - [Gauntlet rationale](docs/uncle-bob-agent-gauntlet.md)
 - [Code navigation](docs/code-navigation.md)
-- [Live smoke checks](docs/pi-tooling-smoke-test.md)
 - [Local decision models: install, configure, and choose](docs/local-decision-models.md)
