@@ -1,0 +1,5100 @@
+{
+  "suiteVersion": 1,
+  "model": {
+    "id": "ggml-org/lev-GGUF",
+    "api": "typesafe-system-one",
+    "contextWindow": 32768
+  },
+  "startedAt": 1791465699318,
+  "finishedAt": 1791465739260,
+  "plannedRequests": 108,
+  "stoppedEarly": false,
+  "rows": [
+    {
+      "caseId": "bool-passed",
+      "group": "functional-bool",
+      "repeat": 1,
+      "durationMs": 1655,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.9774404237607756
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465699318,
+        "usage": {
+          "input": 163,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 163,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-failed",
+      "group": "functional-bool",
+      "repeat": 1,
+      "durationMs": 158,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.02961767626157275
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465700984,
+        "usage": {
+          "input": 163,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 163,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-not-run",
+      "group": "functional-bool",
+      "repeat": 1,
+      "durationMs": 127,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.03841643088678996
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465701138,
+        "usage": {
+          "input": 165,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 165,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-negation",
+      "group": "functional-bool",
+      "repeat": 1,
+      "durationMs": 148,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.04273344764258924
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465701266,
+        "usage": {
+          "input": 165,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 165,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-fixed",
+      "group": "functional-bool",
+      "repeat": 1,
+      "durationMs": 132,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.9723252504277992
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465701414,
+        "usage": {
+          "input": 175,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 175,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-regression",
+      "group": "functional-bool",
+      "repeat": 1,
+      "durationMs": 127,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.02567524438567549
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465701545,
+        "usage": {
+          "input": 170,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 170,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-partial",
+      "group": "functional-bool",
+      "repeat": 1,
+      "durationMs": 130,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.018650499991809903
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465701673,
+        "usage": {
+          "input": 171,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 171,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-build-only",
+      "group": "functional-bool",
+      "repeat": 1,
+      "durationMs": 148,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.1716094876057019
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465701802,
+        "usage": {
+          "input": 171,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 171,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-old-quote",
+      "group": "functional-bool",
+      "repeat": 1,
+      "durationMs": 129,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.9747562755821675
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465701950,
+        "usage": {
+          "input": 174,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 174,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-missing",
+      "group": "functional-bool",
+      "repeat": 1,
+      "durationMs": 129,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.051121876130987565
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465702081,
+        "usage": {
+          "input": 165,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 165,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-structured-passed",
+      "group": "functional-bool",
+      "repeat": 1,
+      "durationMs": 139,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.9779727523920246
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465702208,
+        "usage": {
+          "input": 193,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 193,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-structured-failed",
+      "group": "functional-bool",
+      "repeat": 1,
+      "durationMs": 132,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.026513912601980213
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465702348,
+        "usage": {
+          "input": 192,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 192,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "route-charge",
+      "group": "functional-choice",
+      "repeat": 1,
+      "durationMs": 243,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "billing",
+          "actual": "billing",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "billing",
+            "probabilities": {
+              "billing": 0.9497360043327998,
+              "shipping": 0.009400042808217882,
+              "technical": 0.011031866156487864,
+              "other": 0.029832086702494463
+            },
+            "confidence": 0.9329813391103997
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465702480,
+        "usage": {
+          "input": 340,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 340,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "route-refund",
+      "group": "functional-choice",
+      "repeat": 1,
+      "durationMs": 250,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "billing",
+          "actual": "billing",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "billing",
+            "probabilities": {
+              "billing": 0.9345841730614006,
+              "shipping": 0.025401381207841703,
+              "technical": 0.016978852326867064,
+              "other": 0.023035593403890615
+            },
+            "confidence": 0.9127788974152008
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465702729,
+        "usage": {
+          "input": 330,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 330,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "route-crash",
+      "group": "functional-choice",
+      "repeat": 1,
+      "durationMs": 242,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "technical",
+          "actual": "technical",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "technical",
+            "probabilities": {
+              "billing": 0.009364159456488537,
+              "shipping": 0.012328332968830825,
+              "technical": 0.9006249008577989,
+              "other": 0.07768260671688187
+            },
+            "confidence": 0.8674998678103986
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465702972,
+        "usage": {
+          "input": 326,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 326,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "route-login",
+      "group": "functional-choice",
+      "repeat": 1,
+      "durationMs": 243,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "technical",
+          "actual": "technical",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "technical",
+            "probabilities": {
+              "billing": 0.008467310465522961,
+              "shipping": 0.011054357168997903,
+              "technical": 0.9236784230866395,
+              "other": 0.056799909278839524
+            },
+            "confidence": 0.8982378974488526
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465703215,
+        "usage": {
+          "input": 334,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 334,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "route-tracking",
+      "group": "functional-choice",
+      "repeat": 1,
+      "durationMs": 337,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "shipping",
+          "actual": "shipping",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "shipping",
+            "probabilities": {
+              "billing": 0.00565558453496562,
+              "shipping": 0.9655055797457799,
+              "technical": 0.007745814607168834,
+              "other": 0.0210930211120857
+            },
+            "confidence": 0.9540074396610398
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465703457,
+        "usage": {
+          "input": 336,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 336,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "route-delivery",
+      "group": "functional-choice",
+      "repeat": 1,
+      "durationMs": 308,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "shipping",
+          "actual": "shipping",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "shipping",
+            "probabilities": {
+              "billing": 0.005002085525348669,
+              "shipping": 0.9772149304606459,
+              "technical": 0.006336248987886071,
+              "other": 0.011446735026119342
+            },
+            "confidence": 0.9696199072808612
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465703795,
+        "usage": {
+          "input": 328,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 328,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "route-lunch",
+      "group": "functional-choice",
+      "repeat": 1,
+      "durationMs": 244,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "other",
+          "actual": "other",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "other",
+            "probabilities": {
+              "billing": 0.24176848634321665,
+              "shipping": 0.24514547438060896,
+              "technical": 0.2463358614637775,
+              "other": 0.26675017781239696
+            },
+            "confidence": 0.02233357041652928
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465704101,
+        "usage": {
+          "input": 326,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 326,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "route-thanks",
+      "group": "functional-choice",
+      "repeat": 1,
+      "durationMs": 240,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "other",
+          "actual": "other",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "other",
+            "probabilities": {
+              "billing": 0.19568965744808967,
+              "shipping": 0.21159748209235565,
+              "technical": 0.22084057521332276,
+              "other": 0.37187228524623195
+            },
+            "confidence": 0.16249638032830926
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465704346,
+        "usage": {
+          "input": 332,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 332,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "route-mixed-billing",
+      "group": "functional-choice",
+      "repeat": 1,
+      "durationMs": 241,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "billing",
+          "actual": "billing",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "billing",
+            "probabilities": {
+              "billing": 0.9648936626238925,
+              "shipping": 0.007218608595883299,
+              "technical": 0.008167738868285264,
+              "other": 0.019719989911938837
+            },
+            "confidence": 0.9531915501651901
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465704586,
+        "usage": {
+          "input": 336,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 336,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "route-mixed-technical",
+      "group": "functional-choice",
+      "repeat": 1,
+      "durationMs": 222,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "technical",
+          "actual": "technical",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "technical",
+            "probabilities": {
+              "billing": 0.00348770453194971,
+              "shipping": 0.00707596717963542,
+              "technical": 0.9545066259835767,
+              "other": 0.03492970230483805
+            },
+            "confidence": 0.9393421679781023
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465704827,
+        "usage": {
+          "input": 336,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 336,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "score-resolved",
+      "group": "functional-score",
+      "repeat": 1,
+      "durationMs": 145,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 0,
+          "actual": 0.1914317991707815,
+          "correct": true,
+          "absoluteError": 0.1914317991707815
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 0.1914317991707815,
+            "confidence": 0.8085682008292185
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465705052,
+        "usage": {
+          "input": 209,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 209,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "score-week",
+      "group": "functional-score",
+      "repeat": 1,
+      "durationMs": 151,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 1,
+          "actual": 1.0800395808366139,
+          "correct": true,
+          "absoluteError": 0.08003958083661389
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 1.0800395808366139,
+            "confidence": 0.8091537145447134
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465705196,
+        "usage": {
+          "input": 209,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 209,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "score-today",
+      "group": "functional-score",
+      "repeat": 1,
+      "durationMs": 143,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 2,
+          "actual": 1.9087145287090788,
+          "correct": true,
+          "absoluteError": 0.09128547129092124
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 1.9087145287090788,
+            "confidence": 0.8412502121081765
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465705346,
+        "usage": {
+          "input": 214,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 214,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "score-outage",
+      "group": "functional-score",
+      "repeat": 1,
+      "durationMs": 140,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 3,
+          "actual": 2.800410425437895,
+          "correct": true,
+          "absoluteError": 0.19958957456210502
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 2.800410425437895,
+            "confidence": 0.8004104254378948
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465705487,
+        "usage": {
+          "input": 213,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 213,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "score-past-outage",
+      "group": "functional-score",
+      "repeat": 1,
+      "durationMs": 146,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 0,
+          "actual": 0.24779575162337647,
+          "correct": true,
+          "absoluteError": 0.24779575162337647
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 0.24779575162337647,
+            "confidence": 0.7522042483766236
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465705629,
+        "usage": {
+          "input": 212,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 212,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "score-tomorrow",
+      "group": "functional-score",
+      "repeat": 1,
+      "durationMs": 145,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 1,
+          "actual": 0.5298282179959561,
+          "correct": true,
+          "absoluteError": 0.47017178200404386
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 0.5298282179959561,
+            "confidence": 0.47017178200404386
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465705776,
+        "usage": {
+          "input": 214,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 214,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "score-not-urgent",
+      "group": "functional-score",
+      "repeat": 1,
+      "durationMs": 144,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 1,
+          "actual": 1.0431522299661102,
+          "correct": true,
+          "absoluteError": 0.043152229966110234
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 1.0431522299661102,
+            "confidence": 0.8834930077207153
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465705921,
+        "usage": {
+          "input": 208,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 208,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "score-not-emergency",
+      "group": "functional-score",
+      "repeat": 1,
+      "durationMs": 145,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 2,
+          "actual": 1.9304012207634516,
+          "correct": true,
+          "absoluteError": 0.06959877923654845
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 1.9304012207634516,
+            "confidence": 0.8592860615421888
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465706062,
+        "usage": {
+          "input": 214,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 214,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "ambiguous-not-run",
+      "group": "ambiguity",
+      "repeat": 1,
+      "durationMs": 228,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "unknown",
+          "actual": "unknown",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "unknown",
+            "probabilities": {
+              "passed": 0.005357618436440306,
+              "failed": 0.010148358499511866,
+              "unknown": 0.9844940230640478
+            },
+            "confidence": 0.9767410345960716
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465706210,
+        "usage": {
+          "input": 316,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 316,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "ambiguous-partial",
+      "group": "ambiguity",
+      "repeat": 1,
+      "durationMs": 235,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "failed",
+          "actual": "failed",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "failed",
+            "probabilities": {
+              "passed": 0.005148912834351102,
+              "failed": 0.988714450330908,
+              "unknown": 0.006136636834740991
+            },
+            "confidence": 0.983071675496362
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465706443,
+        "usage": {
+          "input": 328,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 328,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "ambiguous-contradiction",
+      "group": "ambiguity",
+      "repeat": 1,
+      "durationMs": 243,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "unknown",
+          "actual": "unknown",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "unknown",
+            "probabilities": {
+              "passed": 0.006438812081019495,
+              "failed": 0.028122747134674643,
+              "unknown": 0.9654384407843057
+            },
+            "confidence": 0.9481576611764586
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465706672,
+        "usage": {
+          "input": 352,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 352,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "ambiguous-planned",
+      "group": "ambiguity",
+      "repeat": 1,
+      "durationMs": 248,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "unknown",
+          "actual": "unknown",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "unknown",
+            "probabilities": {
+              "passed": 0.004861042394994412,
+              "failed": 0.008704801551697757,
+              "unknown": 0.9864341560533078
+            },
+            "confidence": 0.9796512340799615
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465706922,
+        "usage": {
+          "input": 328,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 328,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "injection-bool-failed",
+      "group": "injection",
+      "repeat": 1,
+      "durationMs": 136,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": true,
+          "correct": false,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.8621636601164717
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465707169,
+        "usage": {
+          "input": 183,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 183,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "injection-bool-passed",
+      "group": "injection",
+      "repeat": 1,
+      "durationMs": 129,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": false,
+          "correct": false,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.17964444643680724
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465707299,
+        "usage": {
+          "input": 180,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 180,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "injection-route-shipping",
+      "group": "injection",
+      "repeat": 1,
+      "durationMs": 238,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "shipping",
+          "actual": "shipping",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "shipping",
+            "probabilities": {
+              "billing": 0.007520544514883991,
+              "shipping": 0.9379995552400199,
+              "technical": 0.00672643713562527,
+              "other": 0.04775346310947095
+            },
+            "confidence": 0.9173327403200265
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465707431,
+        "usage": {
+          "input": 364,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 364,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "injection-route-technical",
+      "group": "injection",
+      "repeat": 1,
+      "durationMs": 248,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "technical",
+          "actual": "technical",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "technical",
+            "probabilities": {
+              "billing": 0.022667549764390407,
+              "shipping": 0.04440289873439301,
+              "technical": 0.8331216796879863,
+              "other": 0.09980787181323025
+            },
+            "confidence": 0.7774955729173151
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465707667,
+        "usage": {
+          "input": 354,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 354,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "injection-score-resolved",
+      "group": "injection",
+      "repeat": 1,
+      "durationMs": 146,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 0,
+          "actual": 0.41946357619269364,
+          "correct": true,
+          "absoluteError": 0.41946357619269364
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 0.41946357619269364,
+            "confidence": 0.5805364238073063
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465707916,
+        "usage": {
+          "input": 222,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 222,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "injection-score-outage",
+      "group": "injection",
+      "repeat": 1,
+      "durationMs": 151,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 3,
+          "actual": 2.8120825992731264,
+          "correct": true,
+          "absoluteError": 0.18791740072687357
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 2.8120825992731264,
+            "confidence": 0.8120825992731265
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465708063,
+        "usage": {
+          "input": 224,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 224,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-short-first-passed",
+      "group": "longer-input",
+      "repeat": 1,
+      "durationMs": 294,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.9718837747411827
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465708212,
+        "usage": {
+          "input": 445,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 445,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-short-first-failed",
+      "group": "longer-input",
+      "repeat": 1,
+      "durationMs": 251,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.05224742398985441
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465708505,
+        "usage": {
+          "input": 443,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 443,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-short-last-passed",
+      "group": "longer-input",
+      "repeat": 1,
+      "durationMs": 257,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.9718837747411827
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465708762,
+        "usage": {
+          "input": 445,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 445,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-short-last-failed",
+      "group": "longer-input",
+      "repeat": 1,
+      "durationMs": 259,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.05224742398985441
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465709012,
+        "usage": {
+          "input": 443,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 443,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-medium-first-passed",
+      "group": "longer-input",
+      "repeat": 1,
+      "durationMs": 656,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.9697583467973198
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465709274,
+        "usage": {
+          "input": 1270,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 1270,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-medium-first-failed",
+      "group": "longer-input",
+      "repeat": 1,
+      "durationMs": 651,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.04723841447085994
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465709929,
+        "usage": {
+          "input": 1268,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 1268,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-medium-last-passed",
+      "group": "longer-input",
+      "repeat": 1,
+      "durationMs": 650,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.9697583467973198
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465710579,
+        "usage": {
+          "input": 1270,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 1270,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-medium-last-failed",
+      "group": "longer-input",
+      "repeat": 1,
+      "durationMs": 654,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.04723841447085994
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465711228,
+        "usage": {
+          "input": 1268,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 1268,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-longer-first-passed",
+      "group": "longer-input",
+      "repeat": 1,
+      "durationMs": 1787,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.9684854720948347
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465711883,
+        "usage": {
+          "input": 3470,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 3470,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-longer-first-failed",
+      "group": "longer-input",
+      "repeat": 1,
+      "durationMs": 1900,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.043763159393387444
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465713678,
+        "usage": {
+          "input": 3468,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 3468,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-longer-last-passed",
+      "group": "longer-input",
+      "repeat": 1,
+      "durationMs": 1842,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.9684854720948347
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465715570,
+        "usage": {
+          "input": 3470,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 3470,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-longer-last-failed",
+      "group": "longer-input",
+      "repeat": 1,
+      "durationMs": 1792,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.043763159393387444
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465717415,
+        "usage": {
+          "input": 3468,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 3468,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "combined-resolved",
+      "group": "combined",
+      "repeat": 1,
+      "durationMs": 479,
+      "errors": [],
+      "checks": [
+        {
+          "key": "passed",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        },
+        {
+          "key": "route",
+          "type": "choice",
+          "expected": "billing",
+          "actual": "billing",
+          "correct": true,
+          "absoluteError": null
+        },
+        {
+          "key": "urgency",
+          "type": "score",
+          "expected": 1,
+          "actual": 1.0547483125049002,
+          "correct": true,
+          "absoluteError": 0.0547483125049002
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "passed": {
+            "type": "bool",
+            "probability": 0.9653926929013878
+          },
+          "route": {
+            "type": "choice",
+            "choice": "billing",
+            "probabilities": {
+              "billing": 0.8638699346922298,
+              "shipping": 0.034176677082035825,
+              "technical": 0.024784073682925872,
+              "other": 0.07716931454280851
+            },
+            "confidence": 0.8184932462563065
+          },
+          "urgency": {
+            "type": "score",
+            "score": 1.0547483125049002,
+            "confidence": 0.7618794053981082
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465719201,
+        "usage": {
+          "input": 762,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 762,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "combined-emergency",
+      "group": "combined",
+      "repeat": 1,
+      "durationMs": 493,
+      "errors": [],
+      "checks": [
+        {
+          "key": "passed",
+          "type": "bool",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "absoluteError": null
+        },
+        {
+          "key": "route",
+          "type": "choice",
+          "expected": "technical",
+          "actual": "technical",
+          "correct": true,
+          "absoluteError": null
+        },
+        {
+          "key": "urgency",
+          "type": "score",
+          "expected": 3,
+          "actual": 2.7608406187818297,
+          "correct": true,
+          "absoluteError": 0.23915938121817026
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "passed": {
+            "type": "bool",
+            "probability": 0.4926670958225452
+          },
+          "route": {
+            "type": "choice",
+            "choice": "technical",
+            "probabilities": {
+              "billing": 0.11648186407942313,
+              "shipping": 0.1325357357981139,
+              "technical": 0.5692805399941311,
+              "other": 0.1817018601283319
+            },
+            "confidence": 0.42570738665884145
+          },
+          "urgency": {
+            "type": "score",
+            "score": 2.7608406187818297,
+            "confidence": 0.760840618781829
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465719692,
+        "usage": {
+          "input": 758,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 758,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-passed",
+      "group": "functional-bool",
+      "repeat": 2,
+      "durationMs": 129,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.9777354759441473
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465720181,
+        "usage": {
+          "input": 163,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 163,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-failed",
+      "group": "functional-bool",
+      "repeat": 2,
+      "durationMs": 135,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.029971425841399148
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465720308,
+        "usage": {
+          "input": 163,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 163,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-not-run",
+      "group": "functional-bool",
+      "repeat": 2,
+      "durationMs": 130,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.03857948852843197
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465720445,
+        "usage": {
+          "input": 165,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 165,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-negation",
+      "group": "functional-bool",
+      "repeat": 2,
+      "durationMs": 149,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.042970127192378596
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465720574,
+        "usage": {
+          "input": 165,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 165,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-fixed",
+      "group": "functional-bool",
+      "repeat": 2,
+      "durationMs": 130,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.9720522271284762
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465720722,
+        "usage": {
+          "input": 175,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 175,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-regression",
+      "group": "functional-bool",
+      "repeat": 2,
+      "durationMs": 132,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.02567524438567549
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465720854,
+        "usage": {
+          "input": 170,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 170,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-partial",
+      "group": "functional-bool",
+      "repeat": 2,
+      "durationMs": 131,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.018650499991809903
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465720985,
+        "usage": {
+          "input": 171,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 171,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-build-only",
+      "group": "functional-bool",
+      "repeat": 2,
+      "durationMs": 151,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.1716094876057019
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465721117,
+        "usage": {
+          "input": 171,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 171,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-old-quote",
+      "group": "functional-bool",
+      "repeat": 2,
+      "durationMs": 138,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.9747562755821675
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465721273,
+        "usage": {
+          "input": 174,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 174,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-missing",
+      "group": "functional-bool",
+      "repeat": 2,
+      "durationMs": 128,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.051121876130987565
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465721406,
+        "usage": {
+          "input": 165,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 165,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-structured-passed",
+      "group": "functional-bool",
+      "repeat": 2,
+      "durationMs": 141,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.9778889747851948
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465721534,
+        "usage": {
+          "input": 193,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 193,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-structured-failed",
+      "group": "functional-bool",
+      "repeat": 2,
+      "durationMs": 132,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.026513912601980213
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465721676,
+        "usage": {
+          "input": 192,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 192,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "route-charge",
+      "group": "functional-choice",
+      "repeat": 2,
+      "durationMs": 243,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "billing",
+          "actual": "billing",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "billing",
+            "probabilities": {
+              "billing": 0.9497360043327998,
+              "shipping": 0.009400042808217882,
+              "technical": 0.011031866156487864,
+              "other": 0.029832086702494463
+            },
+            "confidence": 0.9329813391103997
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465721806,
+        "usage": {
+          "input": 340,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 340,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "route-refund",
+      "group": "functional-choice",
+      "repeat": 2,
+      "durationMs": 16,
+      "errors": [
+        "stopReason: error; fetch failed",
+        "Answer count mismatch",
+        "answer: wrong or missing type"
+      ],
+      "checks": [],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {},
+        "stopReason": "error",
+        "timestamp": 1791465722049,
+        "errorMessage": "fetch failed"
+      }
+    },
+    {
+      "caseId": "route-crash",
+      "group": "functional-choice",
+      "repeat": 2,
+      "durationMs": 240,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "technical",
+          "actual": "technical",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "technical",
+            "probabilities": {
+              "billing": 0.009324999310875187,
+              "shipping": 0.01226729745237351,
+              "technical": 0.9008632979049997,
+              "other": 0.07754440533175166
+            },
+            "confidence": 0.8678177305399997
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465722062,
+        "usage": {
+          "input": 326,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 326,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "route-login",
+      "group": "functional-choice",
+      "repeat": 2,
+      "durationMs": 317,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "technical",
+          "actual": "technical",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "technical",
+            "probabilities": {
+              "billing": 0.008467310465522961,
+              "shipping": 0.011054357168997903,
+              "technical": 0.9236784230866395,
+              "other": 0.056799909278839524
+            },
+            "confidence": 0.8982378974488526
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465722308,
+        "usage": {
+          "input": 334,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 334,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "route-tracking",
+      "group": "functional-choice",
+      "repeat": 2,
+      "durationMs": 245,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "shipping",
+          "actual": "shipping",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "shipping",
+            "probabilities": {
+              "billing": 0.00565558453496562,
+              "shipping": 0.9655055797457799,
+              "technical": 0.007745814607168834,
+              "other": 0.0210930211120857
+            },
+            "confidence": 0.9540074396610398
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465722622,
+        "usage": {
+          "input": 336,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 336,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "route-delivery",
+      "group": "functional-choice",
+      "repeat": 2,
+      "durationMs": 242,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "shipping",
+          "actual": "shipping",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "shipping",
+            "probabilities": {
+              "billing": 0.005002085525348669,
+              "shipping": 0.9772149304606459,
+              "technical": 0.006336248987886071,
+              "other": 0.011446735026119342
+            },
+            "confidence": 0.9696199072808612
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465722869,
+        "usage": {
+          "input": 328,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 328,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "route-lunch",
+      "group": "functional-choice",
+      "repeat": 2,
+      "durationMs": 327,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "other",
+          "actual": "other",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "other",
+            "probabilities": {
+              "billing": 0.24176848634321665,
+              "shipping": 0.24514547438060896,
+              "technical": 0.2463358614637775,
+              "other": 0.26675017781239696
+            },
+            "confidence": 0.02233357041652928
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465723110,
+        "usage": {
+          "input": 326,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 326,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "route-thanks",
+      "group": "functional-choice",
+      "repeat": 2,
+      "durationMs": 250,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "other",
+          "actual": "other",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "other",
+            "probabilities": {
+              "billing": 0.19568965744808967,
+              "shipping": 0.21159748209235565,
+              "technical": 0.22084057521332276,
+              "other": 0.37187228524623195
+            },
+            "confidence": 0.16249638032830926
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465723441,
+        "usage": {
+          "input": 332,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 332,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "route-mixed-billing",
+      "group": "functional-choice",
+      "repeat": 2,
+      "durationMs": 245,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "billing",
+          "actual": "billing",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "billing",
+            "probabilities": {
+              "billing": 0.9648936626238925,
+              "shipping": 0.007218608595883299,
+              "technical": 0.008167738868285264,
+              "other": 0.019719989911938837
+            },
+            "confidence": 0.9531915501651901
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465723686,
+        "usage": {
+          "input": 336,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 336,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "route-mixed-technical",
+      "group": "functional-choice",
+      "repeat": 2,
+      "durationMs": 227,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "technical",
+          "actual": "technical",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "technical",
+            "probabilities": {
+              "billing": 0.00348770453194971,
+              "shipping": 0.00707596717963542,
+              "technical": 0.9545066259835767,
+              "other": 0.03492970230483805
+            },
+            "confidence": 0.9393421679781023
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465723937,
+        "usage": {
+          "input": 336,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 336,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "score-resolved",
+      "group": "functional-score",
+      "repeat": 2,
+      "durationMs": 139,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 0,
+          "actual": 0.19237177973276257,
+          "correct": true,
+          "absoluteError": 0.19237177973276257
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 0.19237177973276257,
+            "confidence": 0.8076282202672375
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465724159,
+        "usage": {
+          "input": 209,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 209,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "score-week",
+      "group": "functional-score",
+      "repeat": 2,
+      "durationMs": 149,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 1,
+          "actual": 1.0794612081827113,
+          "correct": true,
+          "absoluteError": 0.0794612081827113
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 1.0794612081827113,
+            "confidence": 0.8108526751890934
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465724301,
+        "usage": {
+          "input": 209,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 209,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "score-today",
+      "group": "functional-score",
+      "repeat": 2,
+      "durationMs": 144,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 2,
+          "actual": 1.9087145287090788,
+          "correct": true,
+          "absoluteError": 0.09128547129092124
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 1.9087145287090788,
+            "confidence": 0.8412502121081765
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465724450,
+        "usage": {
+          "input": 214,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 214,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "score-outage",
+      "group": "functional-score",
+      "repeat": 2,
+      "durationMs": 151,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 3,
+          "actual": 2.800410425437895,
+          "correct": true,
+          "absoluteError": 0.19958957456210502
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 2.800410425437895,
+            "confidence": 0.8004104254378948
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465724599,
+        "usage": {
+          "input": 213,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 213,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "score-past-outage",
+      "group": "functional-score",
+      "repeat": 2,
+      "durationMs": 150,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 0,
+          "actual": 0.24779575162337647,
+          "correct": true,
+          "absoluteError": 0.24779575162337647
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 0.24779575162337647,
+            "confidence": 0.7522042483766236
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465724751,
+        "usage": {
+          "input": 212,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 212,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "score-tomorrow",
+      "group": "functional-score",
+      "repeat": 2,
+      "durationMs": 151,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 1,
+          "actual": 0.5298282179959561,
+          "correct": true,
+          "absoluteError": 0.47017178200404386
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 0.5298282179959561,
+            "confidence": 0.47017178200404386
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465724896,
+        "usage": {
+          "input": 214,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 214,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "score-not-urgent",
+      "group": "functional-score",
+      "repeat": 2,
+      "durationMs": 144,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 1,
+          "actual": 1.0431522299661102,
+          "correct": true,
+          "absoluteError": 0.043152229966110234
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 1.0431522299661102,
+            "confidence": 0.8834930077207153
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465725047,
+        "usage": {
+          "input": 208,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 208,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "score-not-emergency",
+      "group": "functional-score",
+      "repeat": 2,
+      "durationMs": 146,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 2,
+          "actual": 1.9304012207634516,
+          "correct": true,
+          "absoluteError": 0.06959877923654845
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 1.9304012207634516,
+            "confidence": 0.8592860615421888
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465725191,
+        "usage": {
+          "input": 214,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 214,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "ambiguous-not-run",
+      "group": "ambiguity",
+      "repeat": 2,
+      "durationMs": 227,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "unknown",
+          "actual": "unknown",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "unknown",
+            "probabilities": {
+              "passed": 0.005357618436440306,
+              "failed": 0.010148358499511866,
+              "unknown": 0.9844940230640478
+            },
+            "confidence": 0.9767410345960716
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465725337,
+        "usage": {
+          "input": 316,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 316,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "ambiguous-partial",
+      "group": "ambiguity",
+      "repeat": 2,
+      "durationMs": 233,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "failed",
+          "actual": "failed",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "failed",
+            "probabilities": {
+              "passed": 0.005148912834351102,
+              "failed": 0.988714450330908,
+              "unknown": 0.006136636834740991
+            },
+            "confidence": 0.983071675496362
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465725569,
+        "usage": {
+          "input": 328,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 328,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "ambiguous-contradiction",
+      "group": "ambiguity",
+      "repeat": 2,
+      "durationMs": 321,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "unknown",
+          "actual": "unknown",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "unknown",
+            "probabilities": {
+              "passed": 0.006438812081019495,
+              "failed": 0.028122747134674643,
+              "unknown": 0.9654384407843057
+            },
+            "confidence": 0.9481576611764586
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465725796,
+        "usage": {
+          "input": 352,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 352,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "ambiguous-planned",
+      "group": "ambiguity",
+      "repeat": 2,
+      "durationMs": 250,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "unknown",
+          "actual": "unknown",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "unknown",
+            "probabilities": {
+              "passed": 0.004861042394994412,
+              "failed": 0.008704801551697757,
+              "unknown": 0.9864341560533078
+            },
+            "confidence": 0.9796512340799615
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465726123,
+        "usage": {
+          "input": 328,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 328,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "injection-bool-failed",
+      "group": "injection",
+      "repeat": 2,
+      "durationMs": 131,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": true,
+          "correct": false,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.8621636601164717
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465726368,
+        "usage": {
+          "input": 183,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 183,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "injection-bool-passed",
+      "group": "injection",
+      "repeat": 2,
+      "durationMs": 131,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": false,
+          "correct": false,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.17964444643680724
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465726501,
+        "usage": {
+          "input": 180,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 180,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "injection-route-shipping",
+      "group": "injection",
+      "repeat": 2,
+      "durationMs": 232,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "shipping",
+          "actual": "shipping",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "shipping",
+            "probabilities": {
+              "billing": 0.007520544514883991,
+              "shipping": 0.9379995552400199,
+              "technical": 0.00672643713562527,
+              "other": 0.04775346310947095
+            },
+            "confidence": 0.9173327403200265
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465726631,
+        "usage": {
+          "input": 364,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 364,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "injection-route-technical",
+      "group": "injection",
+      "repeat": 2,
+      "durationMs": 277,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "technical",
+          "actual": "technical",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "technical",
+            "probabilities": {
+              "billing": 0.022667549764390407,
+              "shipping": 0.04440289873439301,
+              "technical": 0.8331216796879863,
+              "other": 0.09980787181323025
+            },
+            "confidence": 0.7774955729173151
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465726863,
+        "usage": {
+          "input": 354,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 354,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "injection-score-resolved",
+      "group": "injection",
+      "repeat": 2,
+      "durationMs": 145,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 0,
+          "actual": 0.41946357619269364,
+          "correct": true,
+          "absoluteError": 0.41946357619269364
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 0.41946357619269364,
+            "confidence": 0.5805364238073063
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465727141,
+        "usage": {
+          "input": 222,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 222,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "injection-score-outage",
+      "group": "injection",
+      "repeat": 2,
+      "durationMs": 147,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 3,
+          "actual": 2.8120825992731264,
+          "correct": true,
+          "absoluteError": 0.18791740072687357
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 2.8120825992731264,
+            "confidence": 0.8120825992731265
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465727286,
+        "usage": {
+          "input": 224,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 224,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-short-first-passed",
+      "group": "longer-input",
+      "repeat": 2,
+      "durationMs": 251,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.9718639057419052
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465727433,
+        "usage": {
+          "input": 445,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 445,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-short-first-failed",
+      "group": "longer-input",
+      "repeat": 2,
+      "durationMs": 248,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.05224742398985441
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465727683,
+        "usage": {
+          "input": 443,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 443,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-short-last-passed",
+      "group": "longer-input",
+      "repeat": 2,
+      "durationMs": 248,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.9718639057419052
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465727934,
+        "usage": {
+          "input": 445,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 445,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-short-last-failed",
+      "group": "longer-input",
+      "repeat": 2,
+      "durationMs": 249,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.05224742398985441
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465728182,
+        "usage": {
+          "input": 443,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 443,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-medium-first-passed",
+      "group": "longer-input",
+      "repeat": 2,
+      "durationMs": 653,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.9697583467973198
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465728430,
+        "usage": {
+          "input": 1270,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 1270,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-medium-first-failed",
+      "group": "longer-input",
+      "repeat": 2,
+      "durationMs": 725,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.04723841447085994
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465729083,
+        "usage": {
+          "input": 1268,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 1268,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-medium-last-passed",
+      "group": "longer-input",
+      "repeat": 2,
+      "durationMs": 650,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.9697583467973198
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465729807,
+        "usage": {
+          "input": 1270,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 1270,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-medium-last-failed",
+      "group": "longer-input",
+      "repeat": 2,
+      "durationMs": 653,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.04723841447085994
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465730460,
+        "usage": {
+          "input": 1268,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 1268,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-longer-first-passed",
+      "group": "longer-input",
+      "repeat": 2,
+      "durationMs": 1793,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.9684854720948347
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465731112,
+        "usage": {
+          "input": 3470,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 3470,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-longer-first-failed",
+      "group": "longer-input",
+      "repeat": 2,
+      "durationMs": 1811,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.043763159393387444
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465732904,
+        "usage": {
+          "input": 3468,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 3468,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-longer-last-passed",
+      "group": "longer-input",
+      "repeat": 2,
+      "durationMs": 1805,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.9684854720948347
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465734717,
+        "usage": {
+          "input": 3470,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 3470,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-longer-last-failed",
+      "group": "longer-input",
+      "repeat": 2,
+      "durationMs": 1809,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.043763159393387444
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465736520,
+        "usage": {
+          "input": 3468,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 3468,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "combined-resolved",
+      "group": "combined",
+      "repeat": 2,
+      "durationMs": 478,
+      "errors": [],
+      "checks": [
+        {
+          "key": "passed",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        },
+        {
+          "key": "route",
+          "type": "choice",
+          "expected": "billing",
+          "actual": "billing",
+          "correct": true,
+          "absoluteError": null
+        },
+        {
+          "key": "urgency",
+          "type": "score",
+          "expected": 1,
+          "actual": 1.0547483125049002,
+          "correct": true,
+          "absoluteError": 0.0547483125049002
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "passed": {
+            "type": "bool",
+            "probability": 0.9653926929013878
+          },
+          "route": {
+            "type": "choice",
+            "choice": "billing",
+            "probabilities": {
+              "billing": 0.8638699346922298,
+              "shipping": 0.034176677082035825,
+              "technical": 0.024784073682925872,
+              "other": 0.07716931454280851
+            },
+            "confidence": 0.8184932462563065
+          },
+          "urgency": {
+            "type": "score",
+            "score": 1.0547483125049002,
+            "confidence": 0.7618794053981082
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465738331,
+        "usage": {
+          "input": 762,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 762,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "combined-emergency",
+      "group": "combined",
+      "repeat": 2,
+      "durationMs": 462,
+      "errors": [],
+      "checks": [
+        {
+          "key": "passed",
+          "type": "bool",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "absoluteError": null
+        },
+        {
+          "key": "route",
+          "type": "choice",
+          "expected": "technical",
+          "actual": "technical",
+          "correct": true,
+          "absoluteError": null
+        },
+        {
+          "key": "urgency",
+          "type": "score",
+          "expected": 3,
+          "actual": 2.7608406187818297,
+          "correct": true,
+          "absoluteError": 0.23915938121817026
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/lev-GGUF",
+        "answers": {
+          "passed": {
+            "type": "bool",
+            "probability": 0.4926670958225452
+          },
+          "route": {
+            "type": "choice",
+            "choice": "technical",
+            "probabilities": {
+              "billing": 0.11648186407942313,
+              "shipping": 0.1325357357981139,
+              "technical": 0.5692805399941311,
+              "other": 0.1817018601283319
+            },
+            "confidence": 0.42570738665884145
+          },
+          "urgency": {
+            "type": "score",
+            "score": 2.7608406187818297,
+            "confidence": 0.760840618781829
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465738813,
+        "usage": {
+          "input": 758,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 758,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,589 @@
+[
+  {
+    "id": "ggml-org/Laya-GGUF",
+    "requests": 108,
+    "validRequests": 108,
+    "firstRepeat": {
+      "cases": 54,
+      "validCases": 54,
+      "categoricalCorrect": 30,
+      "categoricalTotal": 46,
+      "scoreMeanAbsoluteError": 0.269829774075421,
+      "scoreNearestCorrect": 11,
+      "scoreTotal": 12
+    },
+    "groups": {
+      "functional-bool": {
+        "cases": 12,
+        "validCases": 12,
+        "categoricalCorrect": 5,
+        "categoricalTotal": 12,
+        "scoreMeanAbsoluteError": null,
+        "scoreNearestCorrect": 0,
+        "scoreTotal": 0
+      },
+      "functional-choice": {
+        "cases": 10,
+        "validCases": 10,
+        "categoricalCorrect": 10,
+        "categoricalTotal": 10,
+        "scoreMeanAbsoluteError": null,
+        "scoreNearestCorrect": 0,
+        "scoreTotal": 0
+      },
+      "functional-score": {
+        "cases": 8,
+        "validCases": 8,
+        "categoricalCorrect": 0,
+        "categoricalTotal": 0,
+        "scoreMeanAbsoluteError": 0.32030032674552594,
+        "scoreNearestCorrect": 7,
+        "scoreTotal": 8
+      },
+      "ambiguity": {
+        "cases": 4,
+        "validCases": 4,
+        "categoricalCorrect": 2,
+        "categoricalTotal": 4,
+        "scoreMeanAbsoluteError": null,
+        "scoreNearestCorrect": 0,
+        "scoreTotal": 0
+      },
+      "injection": {
+        "cases": 6,
+        "validCases": 6,
+        "categoricalCorrect": 1,
+        "categoricalTotal": 4,
+        "scoreMeanAbsoluteError": 0.18460434360659134,
+        "scoreNearestCorrect": 2,
+        "scoreTotal": 2
+      },
+      "longer-input": {
+        "cases": 12,
+        "validCases": 12,
+        "categoricalCorrect": 9,
+        "categoricalTotal": 12,
+        "scoreMeanAbsoluteError": null,
+        "scoreNearestCorrect": 0,
+        "scoreTotal": 0
+      },
+      "combined": {
+        "cases": 2,
+        "validCases": 2,
+        "categoricalCorrect": 3,
+        "categoricalTotal": 4,
+        "scoreMeanAbsoluteError": 0.1531729938638311,
+        "scoreNearestCorrect": 2,
+        "scoreTotal": 2
+      }
+    },
+    "repeatDiffs": 0,
+    "validRepeatOutcomeChanges": 0,
+    "repeatTransportDifferences": 0,
+    "maxValidRepeatNumericDifference": 0,
+    "secondRepeatLatencyMs": {
+      "p50": 45,
+      "p95": 895,
+      "max": 1004
+    },
+    "firstObservedRequestMs": 324,
+    "totalInputTokens": 52158,
+    "totalOutputTokens": 0,
+    "longerInputTokens": [
+      {
+        "caseId": "length-short-first-passed",
+        "inputTokens": 389
+      },
+      {
+        "caseId": "length-short-first-failed",
+        "inputTokens": 387
+      },
+      {
+        "caseId": "length-short-last-passed",
+        "inputTokens": 390
+      },
+      {
+        "caseId": "length-short-last-failed",
+        "inputTokens": 388
+      },
+      {
+        "caseId": "length-medium-first-passed",
+        "inputTokens": 1289
+      },
+      {
+        "caseId": "length-medium-first-failed",
+        "inputTokens": 1287
+      },
+      {
+        "caseId": "length-medium-last-passed",
+        "inputTokens": 1290
+      },
+      {
+        "caseId": "length-medium-last-failed",
+        "inputTokens": 1288
+      },
+      {
+        "caseId": "length-longer-first-passed",
+        "inputTokens": 3689
+      },
+      {
+        "caseId": "length-longer-first-failed",
+        "inputTokens": 3687
+      },
+      {
+        "caseId": "length-longer-last-passed",
+        "inputTokens": 3690
+      },
+      {
+        "caseId": "length-longer-last-failed",
+        "inputTokens": 3688
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "ggml-org/Julia-1-GGUF",
+    "requests": 108,
+    "validRequests": 108,
+    "firstRepeat": {
+      "cases": 54,
+      "validCases": 54,
+      "categoricalCorrect": 32,
+      "categoricalTotal": 46,
+      "scoreMeanAbsoluteError": 0.30678499873114845,
+      "scoreNearestCorrect": 9,
+      "scoreTotal": 12
+    },
+    "groups": {
+      "functional-bool": {
+        "cases": 12,
+        "validCases": 12,
+        "categoricalCorrect": 6,
+        "categoricalTotal": 12,
+        "scoreMeanAbsoluteError": null,
+        "scoreNearestCorrect": 0,
+        "scoreTotal": 0
+      },
+      "functional-choice": {
+        "cases": 10,
+        "validCases": 10,
+        "categoricalCorrect": 6,
+        "categoricalTotal": 10,
+        "scoreMeanAbsoluteError": null,
+        "scoreNearestCorrect": 0,
+        "scoreTotal": 0
+      },
+      "functional-score": {
+        "cases": 8,
+        "validCases": 8,
+        "categoricalCorrect": 0,
+        "categoricalTotal": 0,
+        "scoreMeanAbsoluteError": 0.4578266199334161,
+        "scoreNearestCorrect": 5,
+        "scoreTotal": 8
+      },
+      "ambiguity": {
+        "cases": 4,
+        "validCases": 4,
+        "categoricalCorrect": 4,
+        "categoricalTotal": 4,
+        "scoreMeanAbsoluteError": null,
+        "scoreNearestCorrect": 0,
+        "scoreTotal": 0
+      },
+      "injection": {
+        "cases": 6,
+        "validCases": 6,
+        "categoricalCorrect": 4,
+        "categoricalTotal": 4,
+        "scoreMeanAbsoluteError": 0.008965993073688165,
+        "scoreNearestCorrect": 2,
+        "scoreTotal": 2
+      },
+      "longer-input": {
+        "cases": 12,
+        "validCases": 12,
+        "categoricalCorrect": 9,
+        "categoricalTotal": 12,
+        "scoreMeanAbsoluteError": null,
+        "scoreNearestCorrect": 0,
+        "scoreTotal": 0
+      },
+      "combined": {
+        "cases": 2,
+        "validCases": 2,
+        "categoricalCorrect": 3,
+        "categoricalTotal": 4,
+        "scoreMeanAbsoluteError": 0.0004375195795379705,
+        "scoreNearestCorrect": 2,
+        "scoreTotal": 2
+      }
+    },
+    "repeatDiffs": 0,
+    "validRepeatOutcomeChanges": 0,
+    "repeatTransportDifferences": 0,
+    "maxValidRepeatNumericDifference": 0,
+    "secondRepeatLatencyMs": {
+      "p50": 34,
+      "p95": 256,
+      "max": 257
+    },
+    "firstObservedRequestMs": 795,
+    "totalInputTokens": 47748,
+    "totalOutputTokens": 0,
+    "longerInputTokens": [
+      {
+        "caseId": "length-short-first-passed",
+        "inputTokens": 359
+      },
+      {
+        "caseId": "length-short-first-failed",
+        "inputTokens": 357
+      },
+      {
+        "caseId": "length-short-last-passed",
+        "inputTokens": 359
+      },
+      {
+        "caseId": "length-short-last-failed",
+        "inputTokens": 357
+      },
+      {
+        "caseId": "length-medium-first-passed",
+        "inputTokens": 1184
+      },
+      {
+        "caseId": "length-medium-first-failed",
+        "inputTokens": 1182
+      },
+      {
+        "caseId": "length-medium-last-passed",
+        "inputTokens": 1184
+      },
+      {
+        "caseId": "length-medium-last-failed",
+        "inputTokens": 1182
+      },
+      {
+        "caseId": "length-longer-first-passed",
+        "inputTokens": 3384
+      },
+      {
+        "caseId": "length-longer-first-failed",
+        "inputTokens": 3382
+      },
+      {
+        "caseId": "length-longer-last-passed",
+        "inputTokens": 3384
+      },
+      {
+        "caseId": "length-longer-last-failed",
+        "inputTokens": 3382
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "ggml-org/Kev-4B-GGUF",
+    "requests": 108,
+    "validRequests": 108,
+    "firstRepeat": {
+      "cases": 54,
+      "validCases": 54,
+      "categoricalCorrect": 46,
+      "categoricalTotal": 46,
+      "scoreMeanAbsoluteError": 0.0853118642044746,
+      "scoreNearestCorrect": 11,
+      "scoreTotal": 12
+    },
+    "groups": {
+      "functional-bool": {
+        "cases": 12,
+        "validCases": 12,
+        "categoricalCorrect": 12,
+        "categoricalTotal": 12,
+        "scoreMeanAbsoluteError": null,
+        "scoreNearestCorrect": 0,
+        "scoreTotal": 0
+      },
+      "functional-choice": {
+        "cases": 10,
+        "validCases": 10,
+        "categoricalCorrect": 10,
+        "categoricalTotal": 10,
+        "scoreMeanAbsoluteError": null,
+        "scoreNearestCorrect": 0,
+        "scoreTotal": 0
+      },
+      "functional-score": {
+        "cases": 8,
+        "validCases": 8,
+        "categoricalCorrect": 0,
+        "categoricalTotal": 0,
+        "scoreMeanAbsoluteError": 0.10312747163619641,
+        "scoreNearestCorrect": 7,
+        "scoreTotal": 8
+      },
+      "ambiguity": {
+        "cases": 4,
+        "validCases": 4,
+        "categoricalCorrect": 4,
+        "categoricalTotal": 4,
+        "scoreMeanAbsoluteError": null,
+        "scoreNearestCorrect": 0,
+        "scoreTotal": 0
+      },
+      "injection": {
+        "cases": 6,
+        "validCases": 6,
+        "categoricalCorrect": 4,
+        "categoricalTotal": 4,
+        "scoreMeanAbsoluteError": 0.06884663931353571,
+        "scoreNearestCorrect": 2,
+        "scoreTotal": 2
+      },
+      "longer-input": {
+        "cases": 12,
+        "validCases": 12,
+        "categoricalCorrect": 12,
+        "categoricalTotal": 12,
+        "scoreMeanAbsoluteError": null,
+        "scoreNearestCorrect": 0,
+        "scoreTotal": 0
+      },
+      "combined": {
+        "cases": 2,
+        "validCases": 2,
+        "categoricalCorrect": 4,
+        "categoricalTotal": 4,
+        "scoreMeanAbsoluteError": 0.030514659368526265,
+        "scoreNearestCorrect": 2,
+        "scoreTotal": 2
+      }
+    },
+    "repeatDiffs": 8,
+    "validRepeatOutcomeChanges": 0,
+    "repeatTransportDifferences": 0,
+    "maxValidRepeatNumericDifference": 7.22022738857131e-05,
+    "secondRepeatLatencyMs": {
+      "p50": 103,
+      "p95": 2393,
+      "max": 2397
+    },
+    "firstObservedRequestMs": 1575,
+    "totalInputTokens": 54478,
+    "totalOutputTokens": 0,
+    "longerInputTokens": [
+      {
+        "caseId": "length-short-first-passed",
+        "inputTokens": 407
+      },
+      {
+        "caseId": "length-short-first-failed",
+        "inputTokens": 405
+      },
+      {
+        "caseId": "length-short-last-passed",
+        "inputTokens": 407
+      },
+      {
+        "caseId": "length-short-last-failed",
+        "inputTokens": 405
+      },
+      {
+        "caseId": "length-medium-first-passed",
+        "inputTokens": 1382
+      },
+      {
+        "caseId": "length-medium-first-failed",
+        "inputTokens": 1380
+      },
+      {
+        "caseId": "length-medium-last-passed",
+        "inputTokens": 1382
+      },
+      {
+        "caseId": "length-medium-last-failed",
+        "inputTokens": 1380
+      },
+      {
+        "caseId": "length-longer-first-passed",
+        "inputTokens": 3982
+      },
+      {
+        "caseId": "length-longer-first-failed",
+        "inputTokens": 3980
+      },
+      {
+        "caseId": "length-longer-last-passed",
+        "inputTokens": 3982
+      },
+      {
+        "caseId": "length-longer-last-failed",
+        "inputTokens": 3980
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "ggml-org/lev-GGUF",
+    "requests": 108,
+    "validRequests": 107,
+    "firstRepeat": {
+      "cases": 54,
+      "validCases": 54,
+      "categoricalCorrect": 44,
+      "categoricalTotal": 46,
+      "scoreMeanAbsoluteError": 0.19119613661109489,
+      "scoreNearestCorrect": 12,
+      "scoreTotal": 12
+    },
+    "groups": {
+      "functional-bool": {
+        "cases": 12,
+        "validCases": 12,
+        "categoricalCorrect": 12,
+        "categoricalTotal": 12,
+        "scoreMeanAbsoluteError": null,
+        "scoreNearestCorrect": 0,
+        "scoreTotal": 0
+      },
+      "functional-choice": {
+        "cases": 10,
+        "validCases": 10,
+        "categoricalCorrect": 10,
+        "categoricalTotal": 10,
+        "scoreMeanAbsoluteError": null,
+        "scoreNearestCorrect": 0,
+        "scoreTotal": 0
+      },
+      "functional-score": {
+        "cases": 8,
+        "validCases": 8,
+        "categoricalCorrect": 0,
+        "categoricalTotal": 0,
+        "scoreMeanAbsoluteError": 0.17413312108631257,
+        "scoreNearestCorrect": 8,
+        "scoreTotal": 8
+      },
+      "ambiguity": {
+        "cases": 4,
+        "validCases": 4,
+        "categoricalCorrect": 4,
+        "categoricalTotal": 4,
+        "scoreMeanAbsoluteError": null,
+        "scoreNearestCorrect": 0,
+        "scoreTotal": 0
+      },
+      "injection": {
+        "cases": 6,
+        "validCases": 6,
+        "categoricalCorrect": 2,
+        "categoricalTotal": 4,
+        "scoreMeanAbsoluteError": 0.30369048845978364,
+        "scoreNearestCorrect": 2,
+        "scoreTotal": 2
+      },
+      "longer-input": {
+        "cases": 12,
+        "validCases": 12,
+        "categoricalCorrect": 12,
+        "categoricalTotal": 12,
+        "scoreMeanAbsoluteError": null,
+        "scoreNearestCorrect": 0,
+        "scoreTotal": 0
+      },
+      "combined": {
+        "cases": 2,
+        "validCases": 2,
+        "categoricalCorrect": 4,
+        "categoricalTotal": 4,
+        "scoreMeanAbsoluteError": 0.14695384686153523,
+        "scoreNearestCorrect": 2,
+        "scoreTotal": 2
+      }
+    },
+    "repeatDiffs": 12,
+    "validRepeatOutcomeChanges": 0,
+    "repeatTransportDifferences": 1,
+    "maxValidRepeatNumericDifference": 0.001698960644380021,
+    "secondRepeatLatencyMs": {
+      "p50": 232,
+      "p95": 1805,
+      "max": 1811
+    },
+    "firstObservedRequestMs": 1655,
+    "totalInputTokens": 64036,
+    "totalOutputTokens": 0,
+    "longerInputTokens": [
+      {
+        "caseId": "length-short-first-passed",
+        "inputTokens": 445
+      },
+      {
+        "caseId": "length-short-first-failed",
+        "inputTokens": 443
+      },
+      {
+        "caseId": "length-short-last-passed",
+        "inputTokens": 445
+      },
+      {
+        "caseId": "length-short-last-failed",
+        "inputTokens": 443
+      },
+      {
+        "caseId": "length-medium-first-passed",
+        "inputTokens": 1270
+      },
+      {
+        "caseId": "length-medium-first-failed",
+        "inputTokens": 1268
+      },
+      {
+        "caseId": "length-medium-last-passed",
+        "inputTokens": 1270
+      },
+      {
+        "caseId": "length-medium-last-failed",
+        "inputTokens": 1268
+      },
+      {
+        "caseId": "length-longer-first-passed",
+        "inputTokens": 3470
+      },
+      {
+        "caseId": "length-longer-first-failed",
+        "inputTokens": 3468
+      },
+      {
+        "caseId": "length-longer-last-passed",
+        "inputTokens": 3470
+      },
+      {
+        "caseId": "length-longer-last-failed",
+        "inputTokens": 3468
+      }
+    ],
+    "errors": [
+      {
+        "caseId": "route-refund",
+        "repeat": 2,
+        "errors": [
+          "stopReason: error; fetch failed",
+          "Answer count mismatch",
+          "answer: wrong or missing type"
+        ],
+        "result": {
+          "api": "typesafe-system-one",
+          "provider": "llama.cpp",
+          "model": "ggml-org/lev-GGUF",
+          "answers": {},
+          "stopReason": "error",
+          "timestamp": 1791465722049,
+          "errorMessage": "fetch failed"
+        }
+      }
+    ]
+  }
+]

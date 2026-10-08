@@ -1,0 +1,78 @@
+[
+  {
+    "repeat": 1,
+    "caseId": "route-refund",
+    "result": {
+      "api": "typesafe-system-one",
+      "provider": "llama.cpp",
+      "model": "ggml-org/lev-GGUF",
+      "answers": {
+        "answer": {
+          "type": "choice",
+          "choice": "billing",
+          "probabilities": {
+            "billing": 0.9356984166911587,
+            "shipping": 0.024884418063074502,
+            "technical": 0.01680049808565673,
+            "other": 0.02261666716011011
+          },
+          "confidence": 0.9142645555882116
+        }
+      },
+      "stopReason": "stop",
+      "timestamp": 1791465825219,
+      "usage": {
+        "input": 330,
+        "output": 0,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "totalTokens": 330,
+        "cost": {
+          "input": 0,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "total": 0
+        }
+      }
+    }
+  },
+  {
+    "repeat": 2,
+    "caseId": "route-refund",
+    "result": {
+      "api": "typesafe-system-one",
+      "provider": "llama.cpp",
+      "model": "ggml-org/lev-GGUF",
+      "answers": {
+        "answer": {
+          "type": "choice",
+          "choice": "billing",
+          "probabilities": {
+            "billing": 0.9356984166911587,
+            "shipping": 0.024884418063074502,
+            "technical": 0.01680049808565673,
+            "other": 0.02261666716011011
+          },
+          "confidence": 0.9142645555882116
+        }
+      },
+      "stopReason": "stop",
+      "timestamp": 1791465825464,
+      "usage": {
+        "input": 330,
+        "output": 0,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "totalTokens": 330,
+        "cost": {
+          "input": 0,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "total": 0
+        }
+      }
+    }
+  }
+]

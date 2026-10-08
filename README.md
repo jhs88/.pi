@@ -78,3 +78,4 @@ Local skill procedures live in `agent/skills/`. Pstack `technical-writing` and `
 - [Gauntlet rationale](docs/uncle-bob-agent-gauntlet.md)
 - [Code navigation](docs/code-navigation.md)
 - [Live smoke checks](docs/pi-tooling-smoke-test.md)
+- [Local decision models: install, configure, and choose](docs/local-decision-models.md)

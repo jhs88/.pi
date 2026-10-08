@@ -1,0 +1,146 @@
+{
+  "capturedAfterRunAt": "2026-10-08T13:31:15.075338+00:00",
+  "piCliVersion": "1.1.0",
+  "routerBuild": "b11485-bd4eeaa04",
+  "routerRole": "router",
+  "modelsAutoload": true,
+  "classificationLocalOnly": true,
+  "models": [
+    {
+      "id": "ggml-org/Julia-1-GGUF",
+      "architecture": {
+        "input_modalities": [
+          "text"
+        ],
+        "output_modalities": [
+          "decisions"
+        ]
+      },
+      "status": "sleeping",
+      "filename": "Julia-1-Q8_0.gguf",
+      "n_params": 144192769,
+      "weight_bytes": 153292036,
+      "parameters": {
+        "--ctx-size": "8192",
+        "--batch-size": "8192",
+        "--ubatch-size": "8192",
+        "--cache-type-k": "f16",
+        "--cache-type-v": "f16",
+        "--cache-ram": "0",
+        "--cache-reuse": "0",
+        "--flash-attn": "on",
+        "--load-mode": "dio",
+        "--n-gpu-layers": "999",
+        "--parallel": "1",
+        "--threads": "12",
+        "--sleep-idle-seconds": "300",
+        "--no-warmup": true,
+        "--cache-prompt": true,
+        "--jinja": true
+      }
+    },
+    {
+      "id": "ggml-org/Kev-4B-GGUF",
+      "architecture": {
+        "input_modalities": [
+          "text"
+        ],
+        "output_modalities": [
+          "decisions"
+        ]
+      },
+      "status": "sleeping",
+      "filename": "Kev-4B-Q8_0.gguf",
+      "n_params": 4207062528,
+      "weight_bytes": 4472829952,
+      "parameters": {
+        "--ctx-size": "32768",
+        "--batch-size": "4096",
+        "--ubatch-size": "512",
+        "--cache-type-k": "q8_0",
+        "--cache-type-v": "q8_0",
+        "--cache-ram": "0",
+        "--cache-reuse": "0",
+        "--flash-attn": "on",
+        "--load-mode": "dio",
+        "--n-gpu-layers": "999",
+        "--parallel": "1",
+        "--swa-checkpoints": "32",
+        "--checkpoint-min-step": "0",
+        "--threads": "12",
+        "--sleep-idle-seconds": "300",
+        "--no-warmup": true,
+        "--cache-prompt": true,
+        "--jinja": true
+      }
+    },
+    {
+      "id": "ggml-org/Laya-GGUF",
+      "architecture": {
+        "input_modalities": [
+          "text"
+        ],
+        "output_modalities": [
+          "decisions"
+        ]
+      },
+      "status": "sleeping",
+      "filename": "Laya-Q8_0.gguf",
+      "n_params": 421029889,
+      "weight_bytes": 447612932,
+      "parameters": {
+        "--ctx-size": "8192",
+        "--batch-size": "8192",
+        "--ubatch-size": "8192",
+        "--cache-type-k": "f16",
+        "--cache-type-v": "f16",
+        "--cache-ram": "0",
+        "--cache-reuse": "0",
+        "--flash-attn": "on",
+        "--load-mode": "dio",
+        "--n-gpu-layers": "999",
+        "--parallel": "1",
+        "--threads": "12",
+        "--sleep-idle-seconds": "300",
+        "--no-warmup": true,
+        "--cache-prompt": true,
+        "--jinja": true
+      }
+    },
+    {
+      "id": "ggml-org/lev-GGUF",
+      "architecture": {
+        "input_modalities": [
+          "text"
+        ],
+        "output_modalities": [
+          "decisions"
+        ]
+      },
+      "status": "sleeping",
+      "filename": "lev-Q8_0.gguf",
+      "n_params": 4205751296,
+      "weight_bytes": 4471435264,
+      "parameters": {
+        "--ctx-size": "32768",
+        "--batch-size": "4096",
+        "--ubatch-size": "512",
+        "--cache-type-k": "q8_0",
+        "--cache-type-v": "q8_0",
+        "--cache-ram": "0",
+        "--cache-reuse": "0",
+        "--flash-attn": "on",
+        "--load-mode": "dio",
+        "--n-gpu-layers": "999",
+        "--parallel": "1",
+        "--swa-checkpoints": "32",
+        "--checkpoint-min-step": "0",
+        "--threads": "12",
+        "--sleep-idle-seconds": "300",
+        "--no-warmup": true,
+        "--cache-prompt": true,
+        "--jinja": true
+      }
+    }
+  ]
+}

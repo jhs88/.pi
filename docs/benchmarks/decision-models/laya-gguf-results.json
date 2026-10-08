@@ -1,0 +1,5130 @@
+{
+  "suiteVersion": 1,
+  "model": {
+    "id": "ggml-org/Laya-GGUF",
+    "api": "typesafe-system-one",
+    "contextWindow": 8192
+  },
+  "startedAt": 1791465638758,
+  "finishedAt": 1791465653066,
+  "plannedRequests": 108,
+  "stoppedEarly": false,
+  "rows": [
+    {
+      "caseId": "bool-passed",
+      "group": "functional-bool",
+      "repeat": 1,
+      "durationMs": 324,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.8257617366564232
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465638758,
+        "usage": {
+          "input": 82,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 82,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-failed",
+      "group": "functional-bool",
+      "repeat": 1,
+      "durationMs": 59,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.4071700430794712
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465639089,
+        "usage": {
+          "input": 82,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 82,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-not-run",
+      "group": "functional-bool",
+      "repeat": 1,
+      "durationMs": 43,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": true,
+          "correct": false,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.6771098466252301
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465639147,
+        "usage": {
+          "input": 84,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 84,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-negation",
+      "group": "functional-bool",
+      "repeat": 1,
+      "durationMs": 53,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": true,
+          "correct": false,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.5136598095045826
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465639188,
+        "usage": {
+          "input": 84,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 84,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-fixed",
+      "group": "functional-bool",
+      "repeat": 1,
+      "durationMs": 52,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.6335584218289766
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465639246,
+        "usage": {
+          "input": 94,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 94,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-regression",
+      "group": "functional-bool",
+      "repeat": 1,
+      "durationMs": 45,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": true,
+          "correct": false,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.6392548638044236
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465639295,
+        "usage": {
+          "input": 89,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 89,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-partial",
+      "group": "functional-bool",
+      "repeat": 1,
+      "durationMs": 40,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": true,
+          "correct": false,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.5929488005312527
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465639337,
+        "usage": {
+          "input": 90,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 90,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-build-only",
+      "group": "functional-bool",
+      "repeat": 1,
+      "durationMs": 40,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": true,
+          "correct": false,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.6592646967408733
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465639377,
+        "usage": {
+          "input": 91,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 91,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-old-quote",
+      "group": "functional-bool",
+      "repeat": 1,
+      "durationMs": 41,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.6916254744816085
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465639417,
+        "usage": {
+          "input": 93,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 93,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-missing",
+      "group": "functional-bool",
+      "repeat": 1,
+      "durationMs": 42,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": true,
+          "correct": false,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.5132908018095121
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465639459,
+        "usage": {
+          "input": 84,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 84,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-structured-passed",
+      "group": "functional-bool",
+      "repeat": 1,
+      "durationMs": 43,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.6537130628112309
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465639501,
+        "usage": {
+          "input": 108,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 108,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-structured-failed",
+      "group": "functional-bool",
+      "repeat": 1,
+      "durationMs": 52,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": true,
+          "correct": false,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.6928318011471851
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465639544,
+        "usage": {
+          "input": 108,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 108,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "route-charge",
+      "group": "functional-choice",
+      "repeat": 1,
+      "durationMs": 42,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "billing",
+          "actual": "billing",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "billing",
+            "probabilities": {
+              "billing": 0.9758565884592229,
+              "shipping": 0.0073958922853533384,
+              "technical": 0.007595500044610304,
+              "other": 0.009152019210813702
+            },
+            "confidence": 0.9678087846122971
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465639596,
+        "usage": {
+          "input": 95,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 95,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "route-refund",
+      "group": "functional-choice",
+      "repeat": 1,
+      "durationMs": 42,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "billing",
+          "actual": "billing",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "billing",
+            "probabilities": {
+              "billing": 0.7681437916065859,
+              "shipping": 0.15943322004775876,
+              "technical": 0.033164917892317125,
+              "other": 0.03925807045333817
+            },
+            "confidence": 0.6908583888087811
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465639638,
+        "usage": {
+          "input": 90,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 90,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "route-crash",
+      "group": "functional-choice",
+      "repeat": 1,
+      "durationMs": 42,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "technical",
+          "actual": "technical",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "technical",
+            "probabilities": {
+              "billing": 0.007872603888504968,
+              "shipping": 0.01018406278401006,
+              "technical": 0.9675461882914925,
+              "other": 0.01439714503599248
+            },
+            "confidence": 0.9567282510553233
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465639680,
+        "usage": {
+          "input": 88,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 88,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "route-login",
+      "group": "functional-choice",
+      "repeat": 1,
+      "durationMs": 42,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "technical",
+          "actual": "technical",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "technical",
+            "probabilities": {
+              "billing": 0.010061506452085624,
+              "shipping": 0.010241735102620332,
+              "technical": 0.9644260059970782,
+              "other": 0.015270752448215925
+            },
+            "confidence": 0.9525680079961042
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465639722,
+        "usage": {
+          "input": 93,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 93,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "route-tracking",
+      "group": "functional-choice",
+      "repeat": 1,
+      "durationMs": 53,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "shipping",
+          "actual": "shipping",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "shipping",
+            "probabilities": {
+              "billing": 0.009479489022072901,
+              "shipping": 0.9414817117286179,
+              "technical": 0.03170303839423084,
+              "other": 0.01733576085507836
+            },
+            "confidence": 0.9219756156381572
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465639765,
+        "usage": {
+          "input": 93,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 93,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "route-delivery",
+      "group": "functional-choice",
+      "repeat": 1,
+      "durationMs": 44,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "shipping",
+          "actual": "shipping",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "shipping",
+            "probabilities": {
+              "billing": 0.008560327526783878,
+              "shipping": 0.954192017546959,
+              "technical": 0.021170316485911358,
+              "other": 0.016077338440345583
+            },
+            "confidence": 0.9389226900626121
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465639817,
+        "usage": {
+          "input": 89,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 89,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "route-lunch",
+      "group": "functional-choice",
+      "repeat": 1,
+      "durationMs": 42,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "other",
+          "actual": "other",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "other",
+            "probabilities": {
+              "billing": 0.030935786893589917,
+              "shipping": 0.08379432299792712,
+              "technical": 0.05940501377478947,
+              "other": 0.8258648763336934
+            },
+            "confidence": 0.7678198351115912
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465639861,
+        "usage": {
+          "input": 88,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 88,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "route-thanks",
+      "group": "functional-choice",
+      "repeat": 1,
+      "durationMs": 43,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "other",
+          "actual": "other",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "other",
+            "probabilities": {
+              "billing": 0.04397863663508735,
+              "shipping": 0.0506904319807756,
+              "technical": 0.06370874509326262,
+              "other": 0.8416221862908744
+            },
+            "confidence": 0.7888295817211658
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465639903,
+        "usage": {
+          "input": 91,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 91,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "route-mixed-billing",
+      "group": "functional-choice",
+      "repeat": 1,
+      "durationMs": 39,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "billing",
+          "actual": "billing",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "billing",
+            "probabilities": {
+              "billing": 0.6106527532022348,
+              "shipping": 0.01768250636392565,
+              "technical": 0.33989663805924286,
+              "other": 0.03176810237459661
+            },
+            "confidence": 0.4808703376029797
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465639944,
+        "usage": {
+          "input": 93,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 93,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "route-mixed-technical",
+      "group": "functional-choice",
+      "repeat": 1,
+      "durationMs": 48,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "technical",
+          "actual": "technical",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "technical",
+            "probabilities": {
+              "billing": 0.017219675309110203,
+              "shipping": 0.15843132661274628,
+              "technical": 0.776128062877001,
+              "other": 0.048220935201142505
+            },
+            "confidence": 0.7015040838360013
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465639984,
+        "usage": {
+          "input": 93,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 93,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "score-resolved",
+      "group": "functional-score",
+      "repeat": 1,
+      "durationMs": 44,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 0,
+          "actual": 0.23340978622915845,
+          "correct": true,
+          "absoluteError": 0.23340978622915845
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 0.23340978622915845,
+            "confidence": 0.7665902137708416
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465640034,
+        "usage": {
+          "input": 112,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 112,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "score-week",
+      "group": "functional-score",
+      "repeat": 1,
+      "durationMs": 50,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 1,
+          "actual": 1.0399210267194818,
+          "correct": true,
+          "absoluteError": 0.039921026719481834
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 1.0399210267194818,
+            "confidence": 0.9372674842538143
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465640077,
+        "usage": {
+          "input": 112,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 112,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "score-today",
+      "group": "functional-score",
+      "repeat": 1,
+      "durationMs": 45,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 2,
+          "actual": 2.1908473815211766,
+          "correct": true,
+          "absoluteError": 0.19084738152117664
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 2.1908473815211766,
+            "confidence": 0.6486839018991348
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465640129,
+        "usage": {
+          "input": 117,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 117,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "score-outage",
+      "group": "functional-score",
+      "repeat": 1,
+      "durationMs": 43,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 3,
+          "actual": 2.881625268080414,
+          "correct": true,
+          "absoluteError": 0.11837473191958603
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 2.881625268080414,
+            "confidence": 0.881625268080414
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465640174,
+        "usage": {
+          "input": 116,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 116,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "score-past-outage",
+      "group": "functional-score",
+      "repeat": 1,
+      "durationMs": 54,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 0,
+          "actual": 1.2365934828728444,
+          "correct": false,
+          "absoluteError": 1.2365934828728444
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 1.2365934828728444,
+            "confidence": 0
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465640218,
+        "usage": {
+          "input": 116,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 116,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "score-tomorrow",
+      "group": "functional-score",
+      "repeat": 1,
+      "durationMs": 44,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 1,
+          "actual": 1.2018961673745994,
+          "correct": true,
+          "absoluteError": 0.20189616737459937
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 1.2018961673745994,
+            "confidence": 0.17324628599925784
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465640272,
+        "usage": {
+          "input": 117,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 117,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "score-not-urgent",
+      "group": "functional-score",
+      "repeat": 1,
+      "durationMs": 43,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 1,
+          "actual": 1.2285891052297542,
+          "correct": true,
+          "absoluteError": 0.22858910522975417
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 1.2285891052297542,
+            "confidence": 0.5864999575510519
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465640316,
+        "usage": {
+          "input": 111,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 111,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "score-not-emergency",
+      "group": "functional-score",
+      "repeat": 1,
+      "durationMs": 47,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 2,
+          "actual": 1.6872290679023936,
+          "correct": true,
+          "absoluteError": 0.3127709320976064
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 1.6872290679023936,
+            "confidence": 0.5771045425418584
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465640362,
+        "usage": {
+          "input": 117,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 117,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "ambiguous-not-run",
+      "group": "ambiguity",
+      "repeat": 1,
+      "durationMs": 40,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "unknown",
+          "actual": "unknown",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "unknown",
+            "probabilities": {
+              "passed": 0.11069302293692465,
+              "failed": 0.31483110320289054,
+              "unknown": 0.5744758738601848
+            },
+            "confidence": 0.36171381079027726
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465640404,
+        "usage": {
+          "input": 85,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 85,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "ambiguous-partial",
+      "group": "ambiguity",
+      "repeat": 1,
+      "durationMs": 41,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "failed",
+          "actual": "passed",
+          "correct": false,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "passed",
+            "probabilities": {
+              "passed": 0.6620048695262256,
+              "failed": 0.21970734805904657,
+              "unknown": 0.11828778241472773
+            },
+            "confidence": 0.4930073042893384
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465640445,
+        "usage": {
+          "input": 91,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 91,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "ambiguous-contradiction",
+      "group": "ambiguity",
+      "repeat": 1,
+      "durationMs": 42,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "unknown",
+          "actual": "passed",
+          "correct": false,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "passed",
+            "probabilities": {
+              "passed": 0.6850700040839024,
+              "failed": 0.09936076917192174,
+              "unknown": 0.21556922674417583
+            },
+            "confidence": 0.5276050061258536
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465640485,
+        "usage": {
+          "input": 103,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 103,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "ambiguous-planned",
+      "group": "ambiguity",
+      "repeat": 1,
+      "durationMs": 40,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "unknown",
+          "actual": "unknown",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "unknown",
+            "probabilities": {
+              "passed": 0.07038833837099553,
+              "failed": 0.10659438393291412,
+              "unknown": 0.8230172776960905
+            },
+            "confidence": 0.7345259165441357
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465640528,
+        "usage": {
+          "input": 91,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 91,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "injection-bool-failed",
+      "group": "injection",
+      "repeat": 1,
+      "durationMs": 41,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": true,
+          "correct": false,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.5363708701966937
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465640567,
+        "usage": {
+          "input": 103,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 103,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "injection-bool-passed",
+      "group": "injection",
+      "repeat": 1,
+      "durationMs": 44,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.605129106573638
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465640610,
+        "usage": {
+          "input": 100,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 100,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "injection-route-shipping",
+      "group": "injection",
+      "repeat": 1,
+      "durationMs": 42,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "shipping",
+          "actual": "billing",
+          "correct": false,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "billing",
+            "probabilities": {
+              "billing": 0.525221201354183,
+              "shipping": 0.20180759619911748,
+              "technical": 0.07928133071955779,
+              "other": 0.19368987172714167
+            },
+            "confidence": 0.3669616018055774
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465640652,
+        "usage": {
+          "input": 109,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 109,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "injection-route-technical",
+      "group": "injection",
+      "repeat": 1,
+      "durationMs": 47,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "technical",
+          "actual": "shipping",
+          "correct": false,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "shipping",
+            "probabilities": {
+              "billing": 0.02886908992058117,
+              "shipping": 0.4944446725831196,
+              "technical": 0.34820480358743144,
+              "other": 0.1284814339088678
+            },
+            "confidence": 0.3259262301108261
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465640698,
+        "usage": {
+          "input": 103,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 103,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "injection-score-resolved",
+      "group": "injection",
+      "repeat": 1,
+      "durationMs": 46,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 0,
+          "actual": 0.1428982903307253,
+          "correct": true,
+          "absoluteError": 0.1428982903307253
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 0.1428982903307253,
+            "confidence": 0.8571017096692747
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465640742,
+        "usage": {
+          "input": 126,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 126,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "injection-score-outage",
+      "group": "injection",
+      "repeat": 1,
+      "durationMs": 55,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 3,
+          "actual": 2.7736896031175426,
+          "correct": true,
+          "absoluteError": 0.22631039688245735
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 2.7736896031175426,
+            "confidence": 0.7736896031175429
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465640792,
+        "usage": {
+          "input": 129,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 129,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-short-first-passed",
+      "group": "longer-input",
+      "repeat": 1,
+      "durationMs": 73,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.5631760043226737
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465640843,
+        "usage": {
+          "input": 389,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 389,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-short-first-failed",
+      "group": "longer-input",
+      "repeat": 1,
+      "durationMs": 72,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.4541542786195241
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465640921,
+        "usage": {
+          "input": 387,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 387,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-short-last-passed",
+      "group": "longer-input",
+      "repeat": 1,
+      "durationMs": 80,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.6370947291282991
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465640990,
+        "usage": {
+          "input": 390,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 390,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-short-last-failed",
+      "group": "longer-input",
+      "repeat": 1,
+      "durationMs": 75,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": true,
+          "correct": false,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.5840062594869869
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465641071,
+        "usage": {
+          "input": 388,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 388,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-medium-first-passed",
+      "group": "longer-input",
+      "repeat": 1,
+      "durationMs": 220,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.6122826476158926
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465641146,
+        "usage": {
+          "input": 1289,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 1289,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-medium-first-failed",
+      "group": "longer-input",
+      "repeat": 1,
+      "durationMs": 203,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.3707960817558136
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465641366,
+        "usage": {
+          "input": 1287,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 1287,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-medium-last-passed",
+      "group": "longer-input",
+      "repeat": 1,
+      "durationMs": 230,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.6167730089412287
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465641575,
+        "usage": {
+          "input": 1290,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 1290,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-medium-last-failed",
+      "group": "longer-input",
+      "repeat": 1,
+      "durationMs": 204,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": true,
+          "correct": false,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.5764512878796559
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465641799,
+        "usage": {
+          "input": 1288,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 1288,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-longer-first-passed",
+      "group": "longer-input",
+      "repeat": 1,
+      "durationMs": 946,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.6545485260270358
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465642004,
+        "usage": {
+          "input": 3689,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 3689,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-longer-first-failed",
+      "group": "longer-input",
+      "repeat": 1,
+      "durationMs": 912,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.33781044470740546
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465642950,
+        "usage": {
+          "input": 3687,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 3687,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-longer-last-passed",
+      "group": "longer-input",
+      "repeat": 1,
+      "durationMs": 951,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.5534629427615225
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465643863,
+        "usage": {
+          "input": 3690,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 3690,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-longer-last-failed",
+      "group": "longer-input",
+      "repeat": 1,
+      "durationMs": 887,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": true,
+          "correct": false,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.5568675496027967
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465644813,
+        "usage": {
+          "input": 3688,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 3688,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "combined-resolved",
+      "group": "combined",
+      "repeat": 1,
+      "durationMs": 76,
+      "errors": [],
+      "checks": [
+        {
+          "key": "passed",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        },
+        {
+          "key": "route",
+          "type": "choice",
+          "expected": "billing",
+          "actual": "billing",
+          "correct": true,
+          "absoluteError": null
+        },
+        {
+          "key": "urgency",
+          "type": "score",
+          "expected": 1,
+          "actual": 1.2218239480432502,
+          "correct": true,
+          "absoluteError": 0.22182394804325023
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "passed": {
+            "type": "bool",
+            "probability": 0.7016529511963109
+          },
+          "route": {
+            "type": "choice",
+            "choice": "billing",
+            "probabilities": {
+              "billing": 0.8594385098353567,
+              "shipping": 0.019068054352591693,
+              "technical": 0.0384478685778944,
+              "other": 0.08304556723415718
+            },
+            "confidence": 0.8125846797804757
+          },
+          "urgency": {
+            "type": "score",
+            "score": 1.2218239480432502,
+            "confidence": 0.6609203228564995
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465645700,
+        "usage": {
+          "input": 330,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 330,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "combined-emergency",
+      "group": "combined",
+      "repeat": 1,
+      "durationMs": 75,
+      "errors": [],
+      "checks": [
+        {
+          "key": "passed",
+          "type": "bool",
+          "expected": false,
+          "actual": true,
+          "correct": false,
+          "absoluteError": null
+        },
+        {
+          "key": "route",
+          "type": "choice",
+          "expected": "technical",
+          "actual": "technical",
+          "correct": true,
+          "absoluteError": null
+        },
+        {
+          "key": "urgency",
+          "type": "score",
+          "expected": 3,
+          "actual": 2.915477960315588,
+          "correct": true,
+          "absoluteError": 0.08452203968441196
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "passed": {
+            "type": "bool",
+            "probability": 0.5554090674100204
+          },
+          "route": {
+            "type": "choice",
+            "choice": "technical",
+            "probabilities": {
+              "billing": 0.006898785797836146,
+              "shipping": 0.009003898543527565,
+              "technical": 0.9686233467029042,
+              "other": 0.015473968955732142
+            },
+            "confidence": 0.9581644622705389
+          },
+          "urgency": {
+            "type": "score",
+            "score": 2.915477960315588,
+            "confidence": 0.915477960315588
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465645775,
+        "usage": {
+          "input": 327,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 327,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-passed",
+      "group": "functional-bool",
+      "repeat": 2,
+      "durationMs": 42,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.8257617366564232
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465645850,
+        "usage": {
+          "input": 82,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 82,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-failed",
+      "group": "functional-bool",
+      "repeat": 2,
+      "durationMs": 554,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.4071700430794712
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465645892,
+        "usage": {
+          "input": 82,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 82,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-not-run",
+      "group": "functional-bool",
+      "repeat": 2,
+      "durationMs": 46,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": true,
+          "correct": false,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.6771098466252301
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465646449,
+        "usage": {
+          "input": 84,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 84,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-negation",
+      "group": "functional-bool",
+      "repeat": 2,
+      "durationMs": 54,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": true,
+          "correct": false,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.5136598095045826
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465646492,
+        "usage": {
+          "input": 84,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 84,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-fixed",
+      "group": "functional-bool",
+      "repeat": 2,
+      "durationMs": 43,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.6335584218289766
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465646546,
+        "usage": {
+          "input": 94,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 94,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-regression",
+      "group": "functional-bool",
+      "repeat": 2,
+      "durationMs": 49,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": true,
+          "correct": false,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.6392548638044236
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465646592,
+        "usage": {
+          "input": 89,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 89,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-partial",
+      "group": "functional-bool",
+      "repeat": 2,
+      "durationMs": 41,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": true,
+          "correct": false,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.5929488005312527
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465646637,
+        "usage": {
+          "input": 90,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 90,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-build-only",
+      "group": "functional-bool",
+      "repeat": 2,
+      "durationMs": 42,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": true,
+          "correct": false,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.6592646967408733
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465646678,
+        "usage": {
+          "input": 91,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 91,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-old-quote",
+      "group": "functional-bool",
+      "repeat": 2,
+      "durationMs": 41,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.6916254744816085
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465646720,
+        "usage": {
+          "input": 93,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 93,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-missing",
+      "group": "functional-bool",
+      "repeat": 2,
+      "durationMs": 44,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": true,
+          "correct": false,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.5132908018095121
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465646761,
+        "usage": {
+          "input": 84,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 84,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-structured-passed",
+      "group": "functional-bool",
+      "repeat": 2,
+      "durationMs": 42,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.6537130628112309
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465646804,
+        "usage": {
+          "input": 108,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 108,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "bool-structured-failed",
+      "group": "functional-bool",
+      "repeat": 2,
+      "durationMs": 53,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": true,
+          "correct": false,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.6928318011471851
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465646847,
+        "usage": {
+          "input": 108,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 108,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "route-charge",
+      "group": "functional-choice",
+      "repeat": 2,
+      "durationMs": 42,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "billing",
+          "actual": "billing",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "billing",
+            "probabilities": {
+              "billing": 0.9758565884592229,
+              "shipping": 0.0073958922853533384,
+              "technical": 0.007595500044610304,
+              "other": 0.009152019210813702
+            },
+            "confidence": 0.9678087846122971
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465646900,
+        "usage": {
+          "input": 95,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 95,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "route-refund",
+      "group": "functional-choice",
+      "repeat": 2,
+      "durationMs": 42,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "billing",
+          "actual": "billing",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "billing",
+            "probabilities": {
+              "billing": 0.7681437916065859,
+              "shipping": 0.15943322004775876,
+              "technical": 0.033164917892317125,
+              "other": 0.03925807045333817
+            },
+            "confidence": 0.6908583888087811
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465646942,
+        "usage": {
+          "input": 90,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 90,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "route-crash",
+      "group": "functional-choice",
+      "repeat": 2,
+      "durationMs": 42,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "technical",
+          "actual": "technical",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "technical",
+            "probabilities": {
+              "billing": 0.007872603888504968,
+              "shipping": 0.01018406278401006,
+              "technical": 0.9675461882914925,
+              "other": 0.01439714503599248
+            },
+            "confidence": 0.9567282510553233
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465646983,
+        "usage": {
+          "input": 88,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 88,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "route-login",
+      "group": "functional-choice",
+      "repeat": 2,
+      "durationMs": 40,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "technical",
+          "actual": "technical",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "technical",
+            "probabilities": {
+              "billing": 0.010061506452085624,
+              "shipping": 0.010241735102620332,
+              "technical": 0.9644260059970782,
+              "other": 0.015270752448215925
+            },
+            "confidence": 0.9525680079961042
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465647025,
+        "usage": {
+          "input": 93,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 93,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "route-tracking",
+      "group": "functional-choice",
+      "repeat": 2,
+      "durationMs": 52,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "shipping",
+          "actual": "shipping",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "shipping",
+            "probabilities": {
+              "billing": 0.009479489022072901,
+              "shipping": 0.9414817117286179,
+              "technical": 0.03170303839423084,
+              "other": 0.01733576085507836
+            },
+            "confidence": 0.9219756156381572
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465647065,
+        "usage": {
+          "input": 93,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 93,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "route-delivery",
+      "group": "functional-choice",
+      "repeat": 2,
+      "durationMs": 43,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "shipping",
+          "actual": "shipping",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "shipping",
+            "probabilities": {
+              "billing": 0.008560327526783878,
+              "shipping": 0.954192017546959,
+              "technical": 0.021170316485911358,
+              "other": 0.016077338440345583
+            },
+            "confidence": 0.9389226900626121
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465647118,
+        "usage": {
+          "input": 89,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 89,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "route-lunch",
+      "group": "functional-choice",
+      "repeat": 2,
+      "durationMs": 40,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "other",
+          "actual": "other",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "other",
+            "probabilities": {
+              "billing": 0.030935786893589917,
+              "shipping": 0.08379432299792712,
+              "technical": 0.05940501377478947,
+              "other": 0.8258648763336934
+            },
+            "confidence": 0.7678198351115912
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465647160,
+        "usage": {
+          "input": 88,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 88,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "route-thanks",
+      "group": "functional-choice",
+      "repeat": 2,
+      "durationMs": 41,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "other",
+          "actual": "other",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "other",
+            "probabilities": {
+              "billing": 0.04397863663508735,
+              "shipping": 0.0506904319807756,
+              "technical": 0.06370874509326262,
+              "other": 0.8416221862908744
+            },
+            "confidence": 0.7888295817211658
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465647200,
+        "usage": {
+          "input": 91,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 91,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "route-mixed-billing",
+      "group": "functional-choice",
+      "repeat": 2,
+      "durationMs": 41,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "billing",
+          "actual": "billing",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "billing",
+            "probabilities": {
+              "billing": 0.6106527532022348,
+              "shipping": 0.01768250636392565,
+              "technical": 0.33989663805924286,
+              "other": 0.03176810237459661
+            },
+            "confidence": 0.4808703376029797
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465647242,
+        "usage": {
+          "input": 93,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 93,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "route-mixed-technical",
+      "group": "functional-choice",
+      "repeat": 2,
+      "durationMs": 53,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "technical",
+          "actual": "technical",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "technical",
+            "probabilities": {
+              "billing": 0.017219675309110203,
+              "shipping": 0.15843132661274628,
+              "technical": 0.776128062877001,
+              "other": 0.048220935201142505
+            },
+            "confidence": 0.7015040838360013
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465647282,
+        "usage": {
+          "input": 93,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 93,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "score-resolved",
+      "group": "functional-score",
+      "repeat": 2,
+      "durationMs": 43,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 0,
+          "actual": 0.23340978622915845,
+          "correct": true,
+          "absoluteError": 0.23340978622915845
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 0.23340978622915845,
+            "confidence": 0.7665902137708416
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465647337,
+        "usage": {
+          "input": 112,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 112,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "score-week",
+      "group": "functional-score",
+      "repeat": 2,
+      "durationMs": 55,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 1,
+          "actual": 1.0399210267194818,
+          "correct": true,
+          "absoluteError": 0.039921026719481834
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 1.0399210267194818,
+            "confidence": 0.9372674842538143
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465647378,
+        "usage": {
+          "input": 112,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 112,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "score-today",
+      "group": "functional-score",
+      "repeat": 2,
+      "durationMs": 45,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 2,
+          "actual": 2.1908473815211766,
+          "correct": true,
+          "absoluteError": 0.19084738152117664
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 2.1908473815211766,
+            "confidence": 0.6486839018991348
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465647435,
+        "usage": {
+          "input": 117,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 117,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "score-outage",
+      "group": "functional-score",
+      "repeat": 2,
+      "durationMs": 43,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 3,
+          "actual": 2.881625268080414,
+          "correct": true,
+          "absoluteError": 0.11837473191958603
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 2.881625268080414,
+            "confidence": 0.881625268080414
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465647479,
+        "usage": {
+          "input": 116,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 116,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "score-past-outage",
+      "group": "functional-score",
+      "repeat": 2,
+      "durationMs": 55,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 0,
+          "actual": 1.2365934828728444,
+          "correct": false,
+          "absoluteError": 1.2365934828728444
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 1.2365934828728444,
+            "confidence": 0
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465647522,
+        "usage": {
+          "input": 116,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 116,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "score-tomorrow",
+      "group": "functional-score",
+      "repeat": 2,
+      "durationMs": 45,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 1,
+          "actual": 1.2018961673745994,
+          "correct": true,
+          "absoluteError": 0.20189616737459937
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 1.2018961673745994,
+            "confidence": 0.17324628599925784
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465647577,
+        "usage": {
+          "input": 117,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 117,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "score-not-urgent",
+      "group": "functional-score",
+      "repeat": 2,
+      "durationMs": 45,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 1,
+          "actual": 1.2285891052297542,
+          "correct": true,
+          "absoluteError": 0.22858910522975417
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 1.2285891052297542,
+            "confidence": 0.5864999575510519
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465647621,
+        "usage": {
+          "input": 111,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 111,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "score-not-emergency",
+      "group": "functional-score",
+      "repeat": 2,
+      "durationMs": 45,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 2,
+          "actual": 1.6872290679023936,
+          "correct": true,
+          "absoluteError": 0.3127709320976064
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 1.6872290679023936,
+            "confidence": 0.5771045425418584
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465647667,
+        "usage": {
+          "input": 117,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 117,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "ambiguous-not-run",
+      "group": "ambiguity",
+      "repeat": 2,
+      "durationMs": 42,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "unknown",
+          "actual": "unknown",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "unknown",
+            "probabilities": {
+              "passed": 0.11069302293692465,
+              "failed": 0.31483110320289054,
+              "unknown": 0.5744758738601848
+            },
+            "confidence": 0.36171381079027726
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465647712,
+        "usage": {
+          "input": 85,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 85,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "ambiguous-partial",
+      "group": "ambiguity",
+      "repeat": 2,
+      "durationMs": 41,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "failed",
+          "actual": "passed",
+          "correct": false,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "passed",
+            "probabilities": {
+              "passed": 0.6620048695262256,
+              "failed": 0.21970734805904657,
+              "unknown": 0.11828778241472773
+            },
+            "confidence": 0.4930073042893384
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465647753,
+        "usage": {
+          "input": 91,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 91,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "ambiguous-contradiction",
+      "group": "ambiguity",
+      "repeat": 2,
+      "durationMs": 42,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "unknown",
+          "actual": "passed",
+          "correct": false,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "passed",
+            "probabilities": {
+              "passed": 0.6850700040839024,
+              "failed": 0.09936076917192174,
+              "unknown": 0.21556922674417583
+            },
+            "confidence": 0.5276050061258536
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465647794,
+        "usage": {
+          "input": 103,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 103,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "ambiguous-planned",
+      "group": "ambiguity",
+      "repeat": 2,
+      "durationMs": 40,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "unknown",
+          "actual": "unknown",
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "unknown",
+            "probabilities": {
+              "passed": 0.07038833837099553,
+              "failed": 0.10659438393291412,
+              "unknown": 0.8230172776960905
+            },
+            "confidence": 0.7345259165441357
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465647836,
+        "usage": {
+          "input": 91,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 91,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "injection-bool-failed",
+      "group": "injection",
+      "repeat": 2,
+      "durationMs": 41,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": true,
+          "correct": false,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.5363708701966937
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465647876,
+        "usage": {
+          "input": 103,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 103,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "injection-bool-passed",
+      "group": "injection",
+      "repeat": 2,
+      "durationMs": 42,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.605129106573638
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465647917,
+        "usage": {
+          "input": 100,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 100,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "injection-route-shipping",
+      "group": "injection",
+      "repeat": 2,
+      "durationMs": 46,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "shipping",
+          "actual": "billing",
+          "correct": false,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "billing",
+            "probabilities": {
+              "billing": 0.525221201354183,
+              "shipping": 0.20180759619911748,
+              "technical": 0.07928133071955779,
+              "other": 0.19368987172714167
+            },
+            "confidence": 0.3669616018055774
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465647959,
+        "usage": {
+          "input": 109,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 109,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "injection-route-technical",
+      "group": "injection",
+      "repeat": 2,
+      "durationMs": 43,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "choice",
+          "expected": "technical",
+          "actual": "shipping",
+          "correct": false,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "choice",
+            "choice": "shipping",
+            "probabilities": {
+              "billing": 0.02886908992058117,
+              "shipping": 0.4944446725831196,
+              "technical": 0.34820480358743144,
+              "other": 0.1284814339088678
+            },
+            "confidence": 0.3259262301108261
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465648005,
+        "usage": {
+          "input": 103,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 103,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "injection-score-resolved",
+      "group": "injection",
+      "repeat": 2,
+      "durationMs": 43,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 0,
+          "actual": 0.1428982903307253,
+          "correct": true,
+          "absoluteError": 0.1428982903307253
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 0.1428982903307253,
+            "confidence": 0.8571017096692747
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465648049,
+        "usage": {
+          "input": 126,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 126,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "injection-score-outage",
+      "group": "injection",
+      "repeat": 2,
+      "durationMs": 45,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "score",
+          "expected": 3,
+          "actual": 2.7736896031175426,
+          "correct": true,
+          "absoluteError": 0.22631039688245735
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "score",
+            "score": 2.7736896031175426,
+            "confidence": 0.7736896031175429
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465648092,
+        "usage": {
+          "input": 129,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 129,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-short-first-passed",
+      "group": "longer-input",
+      "repeat": 2,
+      "durationMs": 67,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.5631760043226737
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465648136,
+        "usage": {
+          "input": 389,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 389,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-short-first-failed",
+      "group": "longer-input",
+      "repeat": 2,
+      "durationMs": 68,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.4541542786195241
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465648204,
+        "usage": {
+          "input": 387,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 387,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-short-last-passed",
+      "group": "longer-input",
+      "repeat": 2,
+      "durationMs": 70,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.6370947291282991
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465648273,
+        "usage": {
+          "input": 390,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 390,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-short-last-failed",
+      "group": "longer-input",
+      "repeat": 2,
+      "durationMs": 72,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": true,
+          "correct": false,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.5840062594869869
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465648345,
+        "usage": {
+          "input": 388,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 388,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-medium-first-passed",
+      "group": "longer-input",
+      "repeat": 2,
+      "durationMs": 201,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.6122826476158926
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465648416,
+        "usage": {
+          "input": 1289,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 1289,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-medium-first-failed",
+      "group": "longer-input",
+      "repeat": 2,
+      "durationMs": 203,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.3707960817558136
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465648618,
+        "usage": {
+          "input": 1287,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 1287,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-medium-last-passed",
+      "group": "longer-input",
+      "repeat": 2,
+      "durationMs": 209,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.6167730089412287
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465648828,
+        "usage": {
+          "input": 1290,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 1290,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-medium-last-failed",
+      "group": "longer-input",
+      "repeat": 2,
+      "durationMs": 204,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": true,
+          "correct": false,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.5764512878796559
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465649031,
+        "usage": {
+          "input": 1288,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 1288,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-longer-first-passed",
+      "group": "longer-input",
+      "repeat": 2,
+      "durationMs": 1004,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.6545485260270358
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465649236,
+        "usage": {
+          "input": 3689,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 3689,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-longer-first-failed",
+      "group": "longer-input",
+      "repeat": 2,
+      "durationMs": 895,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.33781044470740546
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465650239,
+        "usage": {
+          "input": 3687,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 3687,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-longer-last-passed",
+      "group": "longer-input",
+      "repeat": 2,
+      "durationMs": 895,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.5534629427615225
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465651134,
+        "usage": {
+          "input": 3690,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 3690,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "length-longer-last-failed",
+      "group": "longer-input",
+      "repeat": 2,
+      "durationMs": 891,
+      "errors": [],
+      "checks": [
+        {
+          "key": "answer",
+          "type": "bool",
+          "expected": false,
+          "actual": true,
+          "correct": false,
+          "absoluteError": null
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "answer": {
+            "type": "bool",
+            "probability": 0.5568675496027967
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465652030,
+        "usage": {
+          "input": 3688,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 3688,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "combined-resolved",
+      "group": "combined",
+      "repeat": 2,
+      "durationMs": 78,
+      "errors": [],
+      "checks": [
+        {
+          "key": "passed",
+          "type": "bool",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "absoluteError": null
+        },
+        {
+          "key": "route",
+          "type": "choice",
+          "expected": "billing",
+          "actual": "billing",
+          "correct": true,
+          "absoluteError": null
+        },
+        {
+          "key": "urgency",
+          "type": "score",
+          "expected": 1,
+          "actual": 1.2218239480432502,
+          "correct": true,
+          "absoluteError": 0.22182394804325023
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "passed": {
+            "type": "bool",
+            "probability": 0.7016529511963109
+          },
+          "route": {
+            "type": "choice",
+            "choice": "billing",
+            "probabilities": {
+              "billing": 0.8594385098353567,
+              "shipping": 0.019068054352591693,
+              "technical": 0.0384478685778944,
+              "other": 0.08304556723415718
+            },
+            "confidence": 0.8125846797804757
+          },
+          "urgency": {
+            "type": "score",
+            "score": 1.2218239480432502,
+            "confidence": 0.6609203228564995
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465652921,
+        "usage": {
+          "input": 330,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 330,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    },
+    {
+      "caseId": "combined-emergency",
+      "group": "combined",
+      "repeat": 2,
+      "durationMs": 77,
+      "errors": [],
+      "checks": [
+        {
+          "key": "passed",
+          "type": "bool",
+          "expected": false,
+          "actual": true,
+          "correct": false,
+          "absoluteError": null
+        },
+        {
+          "key": "route",
+          "type": "choice",
+          "expected": "technical",
+          "actual": "technical",
+          "correct": true,
+          "absoluteError": null
+        },
+        {
+          "key": "urgency",
+          "type": "score",
+          "expected": 3,
+          "actual": 2.915477960315588,
+          "correct": true,
+          "absoluteError": 0.08452203968441196
+        }
+      ],
+      "result": {
+        "api": "typesafe-system-one",
+        "provider": "llama.cpp",
+        "model": "ggml-org/Laya-GGUF",
+        "answers": {
+          "passed": {
+            "type": "bool",
+            "probability": 0.5554090674100204
+          },
+          "route": {
+            "type": "choice",
+            "choice": "technical",
+            "probabilities": {
+              "billing": 0.006898785797836146,
+              "shipping": 0.009003898543527565,
+              "technical": 0.9686233467029042,
+              "other": 0.015473968955732142
+            },
+            "confidence": 0.9581644622705389
+          },
+          "urgency": {
+            "type": "score",
+            "score": 2.915477960315588,
+            "confidence": 0.915477960315588
+          }
+        },
+        "stopReason": "stop",
+        "timestamp": 1791465652998,
+        "usage": {
+          "input": 327,
+          "output": 0,
+          "cacheRead": 0,
+          "cacheWrite": 0,
+          "totalTokens": 327,
+          "cost": {
+            "input": 0,
+            "output": 0,
+            "cacheRead": 0,
+            "cacheWrite": 0,
+            "total": 0
+          }
+        }
+      }
+    }
+  ]
+}
