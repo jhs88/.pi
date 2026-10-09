@@ -2,9 +2,9 @@
 name: scout
 description: Fresh workspace-read-only analysis with compressed handoff output. Use when a skill or workflow needs bounded codebase or source reconnaissance.
 display_name: Scout
-tools: read, grep, find, ls, ext:builtin:mcp/mcp__grepika__toc, ext:builtin:mcp/mcp__grepika__outline, ext:builtin:mcp/mcp__grepika__search, ext:builtin:mcp/mcp__grepika__get, ext:builtin:mcp/mcp__tilth__tilth_search, ext:builtin:mcp/mcp__tilth__tilth_read, ext:session-name
+tools: read, grep, find, ls, ext:builtin:mcp/mcp__grepika__toc, ext:builtin:mcp/mcp__grepika__outline, ext:builtin:mcp/mcp__grepika__search, ext:builtin:mcp/mcp__grepika__get, ext:builtin:mcp/mcp__tilth__tilth_search, ext:builtin:mcp/mcp__tilth__tilth_read
 thinking: low
-extensions: builtin:mcp, session-name
+extensions: builtin:mcp
 skills: true
 prompt_mode: append
 inherit_context: false

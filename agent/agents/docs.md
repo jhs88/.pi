@@ -2,7 +2,7 @@
 name: docs
 description: Fresh no-shell documentation editor. Use for READMEs, guides, references, RFCs, PR descriptions, and other technical prose that should follow Pstack technical-writing and unslop.
 display_name: Docs
-tools: read, grep, find, ls, write, edit, ext:builtin:mcp/mcp__grepika__toc, ext:builtin:mcp/mcp__grepika__outline, ext:builtin:mcp/mcp__grepika__search, ext:builtin:mcp/mcp__grepika__get, ext:builtin:mcp/mcp__tilth__tilth_search, ext:builtin:mcp/mcp__tilth__tilth_read, ext:session-name
+tools: read, grep, find, ls, write, edit, ext:builtin:mcp/mcp__grepika__toc, ext:builtin:mcp/mcp__grepika__outline, ext:builtin:mcp/mcp__grepika__search, ext:builtin:mcp/mcp__grepika__get, ext:builtin:mcp/mcp__tilth__tilth_search, ext:builtin:mcp/mcp__tilth__tilth_read
 thinking: medium
 extensions: true
 skills: technical-writing, unslop
