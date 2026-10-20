@@ -4,7 +4,7 @@ Personal Pi configuration with shared skills, bounded agent roles, native MCP, a
 
 ## Setup
 
-Use Pi 1.1.0 or newer. Native llama.cpp decision models also require a llama.cpp 0.6.0 or newer router. The subagent compatibility adapter uses the pinned `@tintinweb/pi-subagents@0.19.0` package.
+Use Pi 1.1.0 or newer. Native llama.cpp decision models also require a llama.cpp 0.6.0 or newer router. The subagent compatibility adapter uses the pinned `@tintinweb/pi-subagents@0.22.0` package.
 
 ```bash
 pi install git:github.com/jhs88/pi-tooling
@@ -15,17 +15,13 @@ Review upstream skill revisions and changes before accepting updates. Shared Mat
 
 Update managed extensions with `pi update --extensions`. Repository-local extensions in `agent/extensions/` update through this repository.
 
-After installing or reinstalling packages, apply the native MCP child compatibility patch from your companion Pi Tooling checkout, then reload or restart Pi:
-
-```bash
-npm --prefix ~/Github/jhs88/pi-tooling run compat:subagents
-```
+Subagents 0.22.0 includes native MCP child support upstream. No compatibility source patch is needed. Reload or restart Pi after updating packages. Keep the matching Pi Tooling adapter update installed alongside the new subagents pin.
 
 ### Subagent tools
 
-Pi Tooling enables the compatibility adapter by default on supported hosts. No opt-in environment variable is needed for Pi or T3. Set `PI_TOOLING_SUBAGENTS_COMPAT=0` only to disable it. The separate native MCP child patch above still requires explicit application.
+Pi Tooling enables the compatibility adapter by default on supported hosts. No opt-in environment variable is needed for Pi or T3. Set `PI_TOOLING_SUBAGENTS_COMPAT=0` only to disable it. The adapter supports the exact 0.22.0 dependency pin; unreviewed versions retain their original tools instead of aliases.
 
-Delegation uses `subagent`, `subagent_result`, and `subagent_steer`. Optional `subagent_workflow` follows upstream availability and is separate from Pi Tooling's `workflow`. The tools are visible in T3's UI, as confirmed by the repository owner. See [adapter setup and limitations](https://github.com/jhs88/pi-tooling/blob/main/subagents/README.md).
+Delegation uses `subagent`, `subagent_result`, and `subagent_steer`. `subagent_workflow` uses the upstream workflow engine. Pi Tooling no longer supplies a separate `workflow` tool. Inspect runs in `/agents` → Workflows. T3 tool visibility was confirmed on the earlier baseline; the 0.22.0 upgrade has SDK/RPC verification, not a new UI check. See [adapter setup and limitations](https://github.com/jhs88/pi-tooling/blob/main/subagents/README.md).
 
 ### MCP and Firecrawl
 
@@ -62,7 +58,7 @@ The flexible profiles are `scout` for read-only navigation, `build` for bounded 
 
 - Preflight the exact advertised agent types. Unknown names can fall back to a mutable default agent; never probe by dispatching them.
 - Children receive self-contained tasks and inherit the parent model unless an override is requested.
-- Run no more than three children concurrently and pause when local resources are contended. Use foreground delegation unless the advertised tool supports background execution.
+- Ordinary delegation retains its configured concurrency limit. Workflows use upstream scheduling without a separate three-child cap. Pause when local resources are contended. Upstream workflows run in the background.
 - `scout` exposes only six read-only navigation tools. `build` and `docs` share that navigation allowlist; `docs` has no shell. Gauntlet roles disable extensions.
 - Native child tools require `ext:builtin:mcp/<native-tool-name>` selectors and the extension loaded. Parent codemode discovery does not grant child capabilities.
 - Handoffs include scope, changed files, exact commands and outcomes, unresolved risks, and the next owner. A prior `PASS` is a claim to verify.

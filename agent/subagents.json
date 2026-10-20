@@ -7,6 +7,8 @@
   "schedulingEnabled": false,
   "scopeModels": false,
   "disableDefaultAgents": true,
+  "packageAgents": false,
+  "packageWorkflows": true,
   "toolDescriptionMode": "compact",
   "fleetView": true
 }
