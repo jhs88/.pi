@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.84.1",
+  "lastChangelogVersion": "1.3.0",
   "defaultProvider": "llamacpp",
   "defaultModel": "muse-glimmer-30b",
   "hideThinkingBlock": false,
@@ -13,9 +13,9 @@
   "packages": [
     "npm:pi-acp",
     "git:github.com/joelhooks/pi-skill-interpolation",
-    "npm:@tintinweb/pi-subagents@0.19.0",
-    "git:github.com/jhs88/pi-tooling",
-    "npm:@router-for-me/pi-cliproxyapi-provider"
+    "npm:@tintinweb/pi-subagents@0.22.0",
+    "npm:@router-for-me/pi-cliproxyapi-provider",
+    "git:github.com/jhs88/pi-tooling"
   ],
   "extensions": [
     "+builtin:mcp"
