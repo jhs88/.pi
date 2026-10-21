@@ -1,7 +1,7 @@
 ---
 name: babysit-pr
 description: Use to babysit a PR and fix review or CI findings.
-version: 1.1.0
+version: 1.2.1
 tags: [github, pull-request, review, ci]
 ---
 
@@ -9,7 +9,7 @@ tags: [github, pull-request, review, ci]
 
 Drive an existing PR through review and CI remediation until it is ready to merge or a specific blocker requires the user. Ready to merge is a verified state, not permission to merge.
 
-Use for "babysit this PR", "address the reviews", or "keep fixing until green". For observation-only requests such as "watch CI and notify me", use `pr-watch` where available, or monitor without mutation. Creating a PR and conducting a standalone review are separate workflows.
+Use for "babysit this PR", "address the reviews", or "keep fixing until green". For observation-only requests such as "watch CI and notify me", use T3 Code's `watch_pull_request` without mutation when available. Outside T3, use `pr-watch` where available or report that monitoring is unavailable. Creating a PR and conducting a standalone review are separate workflows.
 
 ## 1. Establish the contract
 
@@ -19,9 +19,9 @@ An explicit PR in the user's request takes precedence. Otherwise resolve the ope
 - Local checkout/worktree, dirty state, and any other writer.
 - Required checks, expected review agents, human review requirements, and repository merge policy.
 - Authorized actions: local edits, commit, push, CI rerun, comments, thread resolution. Record each separately.
-- Deadline and repair-round budget. Default to three repair rounds and a 60-minute session window unless the user supplies bounds. A round is one coherent fix batch followed by verification.
+- Repair-round budget, defaulting to three rounds, and any user-requested deadline. A round is one coherent fix batch followed by verification.
 
-An active babysitting request permits scoped local fixes, subject to repository restrictions. Commits and pushes require explicit user authorization for this run. Ask once for a bounded commit/push authorization if needed; otherwise stop at the tested diff. Keep merge, force-push, review dismissal, and protection changes outside this workflow. Preserve model/provider routing; installing this skill is not permission to launch additional workers.
+An active babysitting request permits scoped local fixes, subject to repository restrictions. Commits and pushes require explicit user authorization for this run. Ask once for a bounded commit/push authorization if needed; otherwise stop at the tested diff. Keep merge, force-push, review dismissal, and protection changes outside this workflow.
 
 **Done when:** the exact PR, writable checkout, allowed actions, and stopping conditions are recorded. Use one writer per checkout; preserve unrelated local changes.
 
@@ -41,7 +41,7 @@ Apply the triage reference. Group duplicate findings and make one coherent, mini
 
 Reproduce each bug or document its concrete failing path. Add regression coverage where practical and run the repository's required verification. Resolve conflicts only within the authorized branch-update strategy; pause for ambiguous behavior changes or destructive history operations. Do not weaken tests, checks, or review policy to obtain green status.
 
-If an extra independent review is requested, use the runtime guidance below. Do not add unsolicited full review rounds.
+Run extra independent reviews only when requested. Verify their findings against the current head.
 
 **Done when:** each finding has a disposition and evidence, fixes have real test results, and unresolved decisions are explicit.
 
@@ -49,21 +49,26 @@ If an extra independent review is requested, use the runtime guidance below. Do 
 
 Before committing or pushing, use the repository's release-readiness process where available. Check the full diff, allowed file scope, tests, and current remote head. If another writer advanced the branch, reconcile safely before publishing.
 
-When authorized, commit and push the verified batch. Read back the exact remote PR head and confirm it equals the intended commit. Verify any authorized comment or thread update by reading its exact target back. A successful write response alone is insufficient.
+Commit and push the verified batch within the recorded authorization. Read back the exact remote PR head and confirm it equals the intended commit. Verify any authorized comment or thread update by reading its exact target back. A successful write response alone is insufficient.
 
 A new head invalidates prior green conclusions. Re-read CI and review evidence for the new head, and reassess findings whose code changed. Wait for expected review agents to finish or explicitly report their absence. Absence of findings is not proof that review ran.
 
 **Done when:** the remote state reflects the authorized changes and verification is attached to the latest head, or the user has a tested diff awaiting publication approval.
 
-## 5. Continue or stop
+## 5. Wait for T3, then resume or stop
 
-Repeat within the recorded budget while actionable issues remain. Poll at a reasonable cadence, normally 60–120 seconds with backoff for rate limits. Stay silent on unchanged state. A repeated failure without new evidence requires diagnosis or escalation, not another identical retry.
+Continue repairs within the recorded budget. Diagnose repeated failures rather than retrying without new evidence. When only CI or review is pending:
 
-Stop on ready-to-merge, closed/merged PR, revoked approval, required human decision, unavailable permissions, exhausted budget, or deadline. Record the PR/head, finding ledger, test evidence, pending work, and exact resume action. A paused run is not complete.
+1. Handle existing findings, then call `watch_pull_request` with the PR URL. Confirm `watching: true`, or reuse an active watch for this PR.
+2. Re-read PR evidence to catch changes during registration. Handle new actionable findings before waiting. Save the current head, finding ledger, verification, permissions, remaining budget, any deadline, and pending conditions in task notes.
+3. End the turn with a brief waiting status and leave the watch active. Wait for T3 to wake the thread instead of running polling loops or background watchers.
+4. On a wake, check the budget and any deadline, then re-read the head/base, checks, and reviews. A notification is not proof of readiness. Return to section 2 to assess new evidence and repair as needed, reusing the watch if more waiting is needed. Duplicate notifications do not consume repair rounds.
 
-For monitoring that must outlive the session, use an explicitly authorized durable watcher with a delivery target and stop condition. Do not claim continued monitoring without one. Reuse an existing watcher rather than creating a duplicate, and verify shutdown when the run ends.
+Stop when ready to merge, the PR closes or merges, approval is revoked, progress needs a human decision or unavailable permission, or the budget or requested deadline is reached. Before the final handoff, call `unwatch_pull_request` and confirm `watching: false`. Report cleanup failures explicitly. Waiting with an active watch is not a final handoff.
 
-**Done when:** final remote state and watcher lifecycle are verified and the report distinguishes ready, blocked, paused, and already closed/merged.
+If watching is unavailable or registration fails, pause and report the blocker rather than silently falling back to polling. Native watching does not enforce exact deadlines; disclose that limitation if a hard cutoff is requested.
+
+**Done when:** a verified watch is active and the turn has ended awaiting a wake, or watching has stopped and the final status and resume action are recorded.
 
 ## Ready-to-merge gate and report
 
@@ -75,14 +80,4 @@ Re-read the final PR head and base. All of these must hold for an unqualified re
 - Required human approvals and thread/review policies are satisfied. Our rejection of a finding does not clear a platform blocker.
 - The final read has not changed head/base or invalidated the evidence. A changed snapshot returns to verification.
 
-Report the PR link and head SHA, what the PR actually does based on its diff, fixes made, material rejected/deferred findings with reasons, decisive check/review evidence, and anything still awaiting approval. If only remediation is finished, say so rather than calling the PR merge-ready. Never merge as part of this skill.
-
-## Execution capabilities
-
-Read references relative to this skill directory. Use the available file, shell and GitHub tools within the approved scope. For requested independent review, inspect the available subagent capability and provide a read-only contract with the exact repository/head and required evidence. Verify findings yourself. If delegation is unavailable, report that limitation rather than substituting self-review or starting another runtime.
-
-Preserve model/provider settings. Without an explicitly authorized, verified durable scheduler, monitoring ends with the session. A background subagent is not a durable watcher.
-
-## Provenance and ownership
-
-Original workflow developed from a user-supplied screenshot of a skill named `babysit-pr`. The screenshot's repository, revision, author identity, and license are unverified. Its referenced `bot-triage.md` was not provided. This package does not claim to reproduce that missing file; the triage policy is defined in this skill's reference.
+Report the PR link and head SHA, what the PR actually does based on its diff, fixes made, material rejected/deferred findings with reasons, decisive check/review evidence, and anything still awaiting approval. For blocked or paused work, give the exact resume action. If only remediation is finished, say so rather than calling the PR merge-ready.
