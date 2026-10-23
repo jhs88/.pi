@@ -23,6 +23,12 @@ Pi Tooling enables the compatibility adapter by default on supported hosts. No o
 
 Delegation uses `subagent`, `subagent_result`, and `subagent_steer`. `subagent_workflow` uses the upstream workflow engine. Pi Tooling no longer supplies a separate `workflow` tool. Inspect runs in `/agents` → Workflows. T3 tool visibility was confirmed on the earlier baseline; the 0.22.0 upgrade has SDK/RPC verification, not a new UI check. See [adapter setup and limitations](https://github.com/jhs88/pi-tooling/blob/main/subagents/README.md).
 
+### User questions in T3
+
+Pi Tooling provides `ask_user`. Its terminal-only implementation returns `no-ui` in RPC mode, which T3 uses. The local `agent/extensions/ask-user-rpc.ts` adapter handles that fallback through Pi's standard `select` and `input` dialogs, which T3 displays as question cards. Selections, typed answers, dismissal, and interruption return to the existing tool call. The adapter leaves terminal sessions and upstream implementations that already return an answer alone.
+
+Restart T3 after pulling this configuration so existing Pi sessions load the adapter. Verify with `node --test tests/ask-user-rpc.test.mjs`; the tests use the managed Pi installation and installed Pi Tooling, including a local model fixture for real RPC round trips. Set `PI_TEST_PACKAGE` to a Pi coding-agent package directory when using a different host installation. The older `pi-acp@0.0.34` adapter supports fixed-choice dialogs but cancels text input; use T3's native Pi provider for typed answers.
+
 ### MCP and Firecrawl
 
 Personal MCP servers are configured in `agent/mcp.json`. Six navigation tools are directly exposed; other operations and Firecrawl use codemode discovery. Use `/mcp` to inspect exposure. `pi mcp list` connects to servers, so run it only when live access is intended.
