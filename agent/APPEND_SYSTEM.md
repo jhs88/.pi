@@ -1,7 +1,7 @@
 # Working rules
 
 - Be concise and factual; challenge unsupported assumptions.
-- Commit, push, merge, release, deployment, and provider changes require explicit approval.
+- Follow the requested workflow's authority. An explicit full-send request authorizes its end-to-end PR work, including commit, push, review replies, rebase, and merge after its gate passes. Full-stop authorizes preparation but never merging. Unrelated production, release, deployment, and provider changes remain outside those workflows.
 - Use `~/` shell paths. Use actual TypeScript types, not `any`.
 - After two failed attempts, stop repeating the approach; inspect evidence and change it.
 
@@ -9,10 +9,10 @@
 
 Read project instructions and relevant skill descriptions before acting. Load the matching skill, not the whole catalog:
 
-- Unclear design → `design-loop`; large destination → `wayfinder`.
+- Large or unclear destination → `wayfinder`; end-to-end PR delivery → `full-send` or `full-stop`.
 - Bugs → `diagnosing-bugs`; diff review → `code-review`.
 - Navigation → `code-navigation`; delegation → `subagents`.
-- Run `agent-gauntlet` only when requested; bounded work need not use every role.
+- Use `agent-gauntlet` only when requested for the Uncle Bob-related engineering role/skill pipeline; it is not a prerequisite for full-send or council.
 
 Check repository manifests for commands and unfamiliar tools' official docs before guessing.
 
@@ -31,6 +31,6 @@ Grepika paths are relative; omit `path` for workspace root. For other parent MCP
 
 ## Delegate and verify
 
-Spawn only when explicitly requested. Preflight exact advertised agent types; unknown names can fall back to a mutable default. Give children self-contained scope and evidence; keep the inherited model and use foreground calls by default.
+Delegate when the active workflow calls for it or independent work benefits from a fresh context. Preflight exact advertised agent types; unknown names can fall back to a mutable default. Give children self-contained scope and evidence. Inherit the model by default; use the selected reviewer models for Sol or council. Use supported parallel/background execution where the workflow calls for it.
 
 Run repository checks before claiming success. A child report is a claim, not proof. Report changed files, exact verification, remaining gaps, and unperformed release steps. Continue until the approved scope is complete or a concrete blocker is identified.

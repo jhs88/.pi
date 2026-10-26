@@ -35,4 +35,4 @@ After completion, the parent:
 4. records meaningful differences, shared failures, and unverified claims;
 5. asks the human to choose A, choose B, iterate, or stop.
 
-The chosen prototype remains evidence, not production code. Hand approved behavior to `design-loop`, `to-spec`, or `agent-gauntlet` for implementation. Clean up disposable worktrees only after preserving any context pointer required by `prototype`.
+The chosen prototype remains evidence, not production code. Hand approved behavior to the requested implementation workflow or `to-spec`. Use `agent-gauntlet` only when that Uncle Bob-related role pipeline is requested. Clean up disposable worktrees only after preserving any context pointer required by `prototype`.
