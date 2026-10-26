@@ -2,8 +2,9 @@
 
 Nine one-to-one local adaptations of [Theo Browne's tstack](https://github.com/t3dotgg/tstack),
 pinned at `7de017b3fc9d50c03cf3ecb98fb71e0ca65a78bd`. Each retains its upstream
-name, intent, sibling dependencies, and a complete MIT notice. Source hashes
-and the inventory live in [tstack-manifest.json](tstack-manifest.json).
+name, intent, and sibling dependencies. Attribution and required notices live
+in [third-party notices](third-party-notices.md), outside the skill prompts.
+Source hashes and the inventory live in [tstack-manifest.json](tstack-manifest.json).
 
 ## Local policy
 

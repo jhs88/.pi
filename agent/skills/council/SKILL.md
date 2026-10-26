@@ -79,4 +79,3 @@ remote writes by reading back their exact targets. Main is the default branch.
 Adapted from Theo Browne's MIT-licensed tstack at the revision in frontmatter.
 The original workflow, review style, and sibling names are retained. Local
 changes cover native tools, verified remote readback, and the GPT-only roster.
-The full upstream license is in `references/LICENSE-tstack.txt`.

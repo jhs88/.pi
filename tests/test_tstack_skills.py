@@ -44,11 +44,21 @@ class Packaging(unittest.TestCase):
             self.assertIn('Follow the requested workflow directly', text)
             self.assertNotIn('## Local authority and verification', text)
 
-    def test_complete_mit_notice(self):
-        notices = [(SKILLS / n / 'references/LICENSE-tstack.txt').read_bytes() for n in NAMES]
-        self.assertEqual(len(set(notices)), 1)
-        self.assertIn(b'Copyright (c) 2026 Theo Browne', notices[0])
-        self.assertIn(b'THE SOFTWARE IS PROVIDED "AS IS"', notices[0])
+    def test_notices_centralized_in_docs(self):
+        notices = (ROOT / 'docs/third-party-notices.md').read_text()
+        for owner in ['Theo Browne', 'Lauren Tan']:
+            self.assertEqual(notices.count('Copyright (c) 2026 ' + owner), 1)
+        self.assertEqual(notices.count('Permission is hereby granted, free of charge'), 2)
+        self.assertEqual(notices.count('THE SOFTWARE IS PROVIDED "AS IS"'), 2)
+        self.assertEqual(notices.count('SOFTWARE.\n```'), 2)
+        for name in NAMES | {'technical-writing', 'unslop'}:
+            self.assertIn('`' + name + '`', notices)
+        tracked = subprocess.check_output(['git', 'ls-files'], cwd=ROOT, text=True)
+        for rel in tracked.splitlines():
+            if (ROOT / rel).is_file():
+                self.assertFalse(Path(rel).name.lower().startswith(('license', 'licence')), rel)
+        for name in NAMES:
+            self.assertNotIn('LICENSE-tstack.txt', (SKILLS / name / 'SKILL.md').read_text())
 
     def test_support_hashes(self):
         manifest = json.loads((ROOT / 'docs/tstack-manifest.json').read_text())
