@@ -110,7 +110,7 @@ class Packaging(unittest.TestCase):
     def test_pi_default_and_workflow_steering(self):
         settings = json.loads((ROOT / 'agent/settings.json').read_text())
         self.assertEqual(settings['defaultModel'], 'gpt-6.1-sol')
-        self.assertEqual(settings['defaultProvider'], 'llamacpp')
+        self.assertEqual(settings['defaultProvider'], 'cliproxyapi')
         steering = (ROOT / 'agent/APPEND_SYSTEM.md').read_text()
         self.assertNotIn('Spawn only when explicitly requested', steering)
         self.assertIn('Delegate when the active workflow calls for it', steering)

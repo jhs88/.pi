@@ -37,7 +37,7 @@ Set `FIRECRAWL_API_URL` in the environment that launches Pi, using your self-hos
 
 ## Workflows
 
-Pi defaults to `llamacpp / gpt-6.1-sol`, thinking `high`, through the existing CLIProxyAPI connection. Children inherit that model unless a review workflow selects another. `design-loop` has been removed.
+Pi defaults to `cliproxyapi / gpt-6.1-sol`, thinking `high`, through the existing CLIProxyAPI connection. Children inherit that model unless a review workflow selects another. `design-loop` has been removed.
 
 | Need | Use |
 |---|---|

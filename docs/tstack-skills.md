@@ -22,11 +22,17 @@ are not required and non-GPT models are excluded. Sol-loop
 retains Theo's single-Sol review loop and round budgets. Do not substitute an
 unavailable model or add an extra gauntlet to these workflows.
 
-Pi defaults to `llamacpp / gpt-6.1-sol`, thinking `high`. The provider ID
-`llamacpp` belongs to the installed CLIProxyAPI extension, not to Pi's separate
-`llama.cpp` local-model provider. Preserve that existing connection. A no-tools,
-ephemeral live smoke selected the default and returned `PI_SOL_DEFAULT_OK` with
-assistant metadata reporting `llamacpp / gpt-6.1-sol`.
+Pi defaults to `cliproxyapi / gpt-6.1-sol`, thinking `high`, using the
+CLIProxyAPI extension's standard provider ID. The previous `llamacpp` alias
+has been retired; the proxy endpoint and credentials are unchanged. Pi's
+separate `llama.cpp` local-model provider is unrelated. A no-tools, ephemeral
+live smoke using the defaults returned `PI_CLIPROXYAPI_OK` with assistant
+metadata reporting `cliproxyapi / gpt-6.1-sol`.
+
+For an existing installation using the old alias, set `providerId` to
+`cliproxyapi` in the private `agent/cliproxyapi.json` as well. If
+`CLIPROXYAPI_PROVIDER_ID` is set in the launching environment, update that
+override too. Keep the existing connection details and credentials private.
 
 The separately advertised native `openai-codex` route failed its smoke with an
 invalid OAuth refresh token. It is not the selected default and was not repaired
