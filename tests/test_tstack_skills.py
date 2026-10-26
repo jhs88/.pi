@@ -1,24 +1,27 @@
-"""Offline packaging/behavior tests. No model or GitHub writes occur."""
+"""Pi integration and shared watcher tests. No model or GitHub writes occur."""
 import contextlib
-import hashlib
 import importlib.machinery
 import importlib.util
 import io
-import json
 import os
 from pathlib import Path
 import re
 import subprocess
+import sys
 import tempfile
 import unittest
 from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 SKILLS = ROOT / 'agent/skills'
+SHARED = Path.home() / '.agents/skills'
 NAMES = {'babysit-pr', 'council', 'file-pr', 'full-send', 'full-stop',
          'leaving-pr-comments', 'modernize', 'sol-loop', 'takeover'}
-REV = '7de017b3fc9d50c03cf3ecb98fb71e0ca65a78bd'
-SCRIPT = SKILLS / 'babysit-pr/scripts/pr-wait'
+ALIASES = NAMES | {'technical-writing', 'unslop'}
+LOCAL = {'agent-gauntlet', 'code-navigation', 'compare-prototypes', 'subagents', 'tilth'}
+SCRIPT = SHARED / 'babysit-pr/scripts/pr-wait'
+# The shared library is read-only input, even when the caller omits the env flag.
+sys.dont_write_bytecode = True
 loader = importlib.machinery.SourceFileLoader('tstack_pr_wait', str(SCRIPT))
 spec = importlib.util.spec_from_loader(loader.name, loader)
 assert spec is not None
@@ -26,52 +29,32 @@ watch = importlib.util.module_from_spec(spec)
 loader.exec_module(watch)
 
 
-class Packaging(unittest.TestCase):
-    def test_exact_inventory_and_provenance(self):
-        manifest = json.loads((ROOT / 'docs/tstack-manifest.json').read_text())
-        self.assertEqual(set(manifest['skills']), NAMES)
-        self.assertEqual(manifest['revision'], REV)
-        for name in NAMES:
-            text = (SKILLS / name / 'SKILL.md').read_text()
-            self.assertTrue(text.startswith('---\n'))
-            self.assertIn('name: ' + name + '\n', text)
-            frontmatter = text.split('---', 2)[1]
-            self.assertEqual(set(re.findall(r'^([a-z][a-z-]*):', frontmatter, re.M)),
-                             {'name', 'description'})
-            self.assertNotIn('## Provenance', text)
-            match = re.search(r'^description: (.+)$', text, re.M)
-            assert match is not None
-            desc = match.group(1)
-            self.assertLessEqual(len(desc), 60)
-            self.assertIn('## Local integration', text)
-            self.assertIn('Follow the requested workflow directly', text)
-            self.assertNotIn('## Local authority and verification', text)
+class PiIntegration(unittest.TestCase):
+    def test_shared_skills_need_no_pi_aliases(self):
+        for name in ALIASES:
+            with self.subTest(name=name):
+                self.assertFalse((SKILLS / name).exists())
+                self.assertFalse((SKILLS / name).is_symlink())
+                self.assertTrue((SHARED / name / 'SKILL.md').is_file())
 
-    def test_notices_centralized_in_docs(self):
-        notices = (ROOT / 'docs/third-party-notices.md').read_text()
-        for owner in ['Theo Browne', 'Lauren Tan']:
-            self.assertEqual(notices.count('Copyright (c) 2026 ' + owner), 1)
-        self.assertEqual(notices.count('Permission is hereby granted, free of charge'), 2)
-        self.assertEqual(notices.count('THE SOFTWARE IS PROVIDED "AS IS"'), 2)
-        self.assertEqual(notices.count('SOFTWARE.\n```'), 2)
-        for name in NAMES | {'technical-writing', 'unslop'}:
-            self.assertIn('`' + name + '`', notices)
-        tracked = subprocess.check_output(['git', 'ls-files'], cwd=ROOT, text=True)
-        for rel in tracked.splitlines():
-            if (ROOT / rel).is_file():
-                self.assertFalse(Path(rel).name.lower().startswith(('license', 'licence')), rel)
-        for name in NAMES:
-            self.assertNotIn('LICENSE-tstack.txt', (SKILLS / name / 'SKILL.md').read_text())
+    def test_only_owned_skills_are_local_directories(self):
+        actual = {p.name for p in SKILLS.iterdir()
+                  if p.is_dir() and not p.is_symlink() and not p.name.startswith('.')}
+        self.assertEqual(actual, LOCAL)
+        for name in LOCAL:
+            self.assertTrue((SKILLS / name / 'SKILL.md').is_file())
 
-    def test_support_hashes(self):
-        manifest = json.loads((ROOT / 'docs/tstack-manifest.json').read_text())
-        for rel, expected in manifest['unmodified_support_files'].items():
-            actual = hashlib.sha256((SKILLS / rel).read_bytes()).hexdigest()
-            self.assertEqual(actual, expected, rel)
+    def test_shared_paths_ignored_owned_skills_versionable(self):
+        for name in ALIASES | LOCAL:
+            path = SKILLS / name
+            result = subprocess.run(['git', 'check-ignore', '--no-index', str(path)],
+                                    cwd=ROOT, capture_output=True, text=True)
+            self.assertEqual(result.returncode, 0 if name in ALIASES else 1,
+                             (name, result.stdout, result.stderr))
 
-    def test_markdown_reference_targets(self):
+    def test_shared_markdown_reference_targets(self):
         for name in NAMES:
-            p = SKILLS / name / 'SKILL.md'
+            p = SHARED / name / 'SKILL.md'
             text = p.read_text()
             targets = re.findall(r'\]\(([^)#]+)(?:#[^)]*)?\)', text)
             targets += re.findall(r'`((?:\.\./|references/)[^`]+\.md)`', text)
@@ -79,64 +62,59 @@ class Packaging(unittest.TestCase):
                 if not target.startswith(('http:', 'https:')):
                     self.assertTrue((p.parent / target).exists(), (name, target))
 
-    def test_versionable_not_ignored(self):
-        for name in NAMES:
-            p = SKILLS / name / 'SKILL.md'
-            result = subprocess.run(['git', 'check-ignore', '--no-index', str(p)],
-                                    cwd=ROOT, capture_output=True, text=True)
-            self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
-
     def test_review_and_permission_negative_contracts(self):
-        send = (SKILLS / 'full-send/SKILL.md').read_text()
-        stop = (SKILLS / 'full-stop/SKILL.md').read_text()
-        council = (SKILLS / 'council/SKILL.md').read_text()
-        sol = (SKILLS / 'sol-loop/SKILL.md').read_text()
+        send = (SHARED / 'full-send/SKILL.md').read_text()
+        stop = (SHARED / 'full-stop/SKILL.md').read_text()
+        council = (SHARED / 'council/SKILL.md').read_text()
+        sol = (SHARED / 'sol-loop/SKILL.md').read_text()
         self.assertIn('this request replaces that rule', send)
         self.assertIn('- Merge the PR once the merge gate passes.', send)
         self.assertIn('Never merge', stop)
-        self.assertIn('Three\nproviders are not required', council)
+        self.assertRegex(council, r'Three\s+providers are not required')
         for model in ['gpt-6.1-sol', 'gpt-6-astra', 'gpt-6-luna']:
             self.assertIn(model, council)
         self.assertNotIn('claude', council.lower())
         self.assertNotIn('gemini', council.lower())
-        self.assertNotIn('Default to three rounds', council)
+        self.assertNotIn('llamacpp', council)
         self.assertIn('until all delegates are satisfied', council)
         self.assertIn('instead of substituting', council)
         self.assertIn('Budget end is not approval', sol)
         self.assertNotIn('orchestrator_capabilities', council + sol)
         self.assertNotIn('t3_thread_send', sol)
 
-
-    def test_pi_default_and_workflow_steering(self):
-        settings = json.loads((ROOT / 'agent/settings.json').read_text())
-        self.assertEqual(settings['defaultModel'], 'gpt-6.1-sol')
-        self.assertEqual(settings['defaultProvider'], 'cliproxyapi')
+    def test_pi_workflow_steering(self):
         steering = (ROOT / 'agent/APPEND_SYSTEM.md').read_text()
         self.assertNotIn('Spawn only when explicitly requested', steering)
         self.assertIn('Delegate when the active workflow calls for it', steering)
         self.assertFalse((SKILLS / 'design-loop').exists())
         self.assertFalse((ROOT / 'docs/history/retired-skills').exists())
-        self.assertTrue((SKILLS / 'agent-gauntlet/SKILL.md').is_file())
         subagents = (SKILLS / 'subagents/SKILL.md').read_text()
         self.assertIn('Use `subagent_workflow` for the upstream workflow engine', subagents)
         self.assertNotIn('use the Pi Tooling `workflow` tool', subagents)
 
-
-    def test_owned_skill_metadata_is_functional(self):
-        tracked = subprocess.check_output(['git', 'ls-files', 'agent/skills'],
-                                          cwd=ROOT, text=True).splitlines()
+    def test_owned_and_shared_manual_invocation_flags(self):
         manual = set()
-        for rel in tracked:
-            p = ROOT / rel
-            if p.name != 'SKILL.md' or not p.is_file():
-                continue
+        for name in LOCAL:
+            p = SKILLS / name / 'SKILL.md'
             frontmatter = p.read_text().split('---', 2)[1]
             keys = set(re.findall(r'^([a-z][a-z-]*):', frontmatter, re.M))
-            self.assertTrue({'name', 'description'} <= keys, rel)
-            self.assertTrue(keys <= {'name', 'description', 'disable-model-invocation'}, rel)
+            self.assertTrue({'name', 'description'} <= keys, name)
+            self.assertTrue(keys <= {'name', 'description', 'disable-model-invocation'}, name)
             if 'disable-model-invocation: true' in frontmatter:
-                manual.add(p.parent.name)
-        self.assertEqual(manual, {'agent-gauntlet', 'compare-prototypes', 'technical-writing'})
+                manual.add(name)
+        self.assertEqual(manual, {'agent-gauntlet', 'compare-prototypes'})
+        technical = (SHARED / 'technical-writing/SKILL.md').read_text()
+        self.assertIn('disable-model-invocation: true', technical.split('---', 2)[1])
+
+    def test_shared_install_documented_without_local_updater(self):
+        for rel in ['README.md', 'docs/matt-pocock-skills.md', 'docs/tstack-skills.md']:
+            text = (ROOT / rel).read_text()
+            self.assertIn('npx skills add jhs88/skills -g -a pi', text)
+            self.assertIn('automatically', text)
+        for rel in ['docs/tstack-manifest.json', 'scripts/check_tstack_updates.py',
+                    'tests/test_tstack_updates.py']:
+            self.assertFalse((ROOT / rel).exists())
+        self.assertTrue((ROOT / 'docs/third-party-notices.md').is_file())
 
 
 class Watcher(unittest.TestCase):

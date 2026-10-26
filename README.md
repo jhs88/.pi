@@ -8,10 +8,10 @@ Use Pi 1.1.0 or newer. Native llama.cpp decision models also require a llama.cpp
 
 ```bash
 pi install git:github.com/jhs88/pi-tooling
-npx skills@latest add mattpocock/skills -g
+npx skills add jhs88/skills -g -a pi
 ```
 
-Review upstream skill revisions and changes before accepting updates. Shared Matt Pocock skills live in `~/.agents/skills`; this repository does not fork them. Run `/skill:setup-matt-pocock-skills` in projects that need tracker and documentation setup.
+Review shared library revisions and changes before accepting updates. Pi discovers `~/.agents/skills` automatically; no skill entries in `settings.json` are needed. This repository does not fork the shared procedures. Run `/skill:setup-matt-pocock-skills` in projects that need tracker and documentation setup.
 
 Update managed extensions with `pi update --extensions`. Repository-local extensions in `agent/extensions/` update through this repository.
 
@@ -22,12 +22,6 @@ Subagents 0.22.0 includes native MCP child support upstream. No compatibility so
 Pi Tooling enables the compatibility adapter by default on supported hosts. No opt-in environment variable is needed for Pi or T3. Set `PI_TOOLING_SUBAGENTS_COMPAT=0` only to disable it. The adapter supports the exact 0.22.0 dependency pin; unreviewed versions retain their original tools instead of aliases.
 
 Delegation uses `subagent`, `subagent_result`, and `subagent_steer`. `subagent_workflow` uses the upstream workflow engine. Pi Tooling no longer supplies a separate `workflow` tool. Inspect runs in `/agents` → Workflows. T3 tool visibility was confirmed on the earlier baseline; the 0.22.0 upgrade has SDK/RPC verification, not a new UI check. See [adapter setup and limitations](https://github.com/jhs88/pi-tooling/blob/main/subagents/README.md).
-
-### User questions in T3
-
-Pi Tooling provides `ask_user`. Its terminal-only implementation returns `no-ui` in RPC mode, which T3 uses. The local `agent/extensions/ask-user-rpc.ts` adapter handles that fallback through Pi's standard `select` and `input` dialogs, which T3 displays as question cards. Selections, typed answers, dismissal, and interruption return to the existing tool call. The adapter leaves terminal sessions and upstream implementations that already return an answer alone.
-
-Restart T3 after pulling this configuration so existing Pi sessions load the adapter. Verify with `node --test tests/ask-user-rpc.test.mjs`; the tests use the managed Pi installation and installed Pi Tooling, including a local model fixture for real RPC round trips. Set `PI_TEST_PACKAGE` to a Pi coding-agent package directory when using a different host installation. The older `pi-acp@0.0.34` adapter supports fixed-choice dialogs but cancels text input; use T3's native Pi provider for typed answers.
 
 ### MCP and Firecrawl
 
@@ -76,12 +70,12 @@ The flexible profiles are `scout` for read-only navigation, `build` for bounded 
 - Handoffs include scope, changed files, exact commands and outcomes, unresolved risks, and the next owner. A prior `PASS` is a claim to verify.
 - Full-send authorizes its end-to-end PR work, including commit, push, rebase, review replies, and merge after its gate passes. Full-stop includes preparation but never merging. Unrelated releases, deployments, and provider changes remain separate.
 
-Local skill procedures live in `agent/skills/`. Pstack `technical-writing` and `unslop` retain their pinned provenance and licenses. Selected extensions originate from [davis7dotsh/my-pi-setup@797eaf6](https://github.com/davis7dotsh/my-pi-setup/tree/797eaf6d6f178759cf7aabde927ef15c91346e7e).
+Local procedures in `agent/skills/` are `agent-gauntlet`, `code-navigation`, `compare-prototypes`, `subagents`, and `tilth`. Shared PR and writing skills load directly from the global library. Repository attribution remains in [third-party notices](docs/third-party-notices.md). Selected extensions originate from [davis7dotsh/my-pi-setup@797eaf6](https://github.com/davis7dotsh/my-pi-setup/tree/797eaf6d6f178759cf7aabde927ef15c91346e7e).
 
 ## Guides
 
 - [Workflow selection](docs/matt-pocock-skills.md)
-- [Tstack skills, local adaptations, and verification](docs/tstack-skills.md)
+- [Shared PR workflows and verification](docs/tstack-skills.md)
 - [Gauntlet rationale](docs/uncle-bob-agent-gauntlet.md)
 - [Code navigation](docs/code-navigation.md)
 - [Local decision models: install, configure, and choose](docs/local-decision-models.md)

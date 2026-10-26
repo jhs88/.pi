@@ -8,30 +8,8 @@
 !subagents/**
 !agent-gauntlet
 !agent-gauntlet/**
-!unslop
-!unslop/**
-!technical-writing
-!technical-writing/**
 !compare-prototypes
 !compare-prototypes/**
-!babysit-pr
-!babysit-pr/**
-!council
-!council/**
-!file-pr
-!file-pr/**
-!full-send
-!full-send/**
-!full-stop
-!full-stop/**
-!leaving-pr-comments
-!leaving-pr-comments/**
-!modernize
-!modernize/**
-!sol-loop
-!sol-loop/**
-!takeover
-!takeover/**
 
 # Generated Python bytecode is not skill source.
 **/__pycache__/

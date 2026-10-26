@@ -1,6 +1,6 @@
 # Workflow selection
 
-Shared Matt Pocock skills are canonical in `~/.agents/skills/<skill>/SKILL.md`. Load the installed skill for its procedure; this guide only helps choose one. Upstream: [mattpocock/skills](https://github.com/mattpocock/skills).
+Shared skills come from [jhs88/skills](https://github.com/jhs88/skills) and live in `~/.agents/skills/<skill>/SKILL.md`. Pi discovers them automatically, without a `settings.json` entry or local skill links. Install with `npx skills add jhs88/skills -g -a pi`. Load the installed skill for its procedure; this guide only helps choose one.
 
 | Situation | Start with | Next boundary |
 |---|---|---|
