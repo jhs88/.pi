@@ -24,7 +24,7 @@ Omit `model` and `thinking` to inherit the parent unless the active workflow or 
 
 ## Parallel and background work
 
-- Run no more than three children concurrently in this configuration.
+- Respect the plugin's concurrency settings. Workflows use their own scheduler. Pause if local resources are contended.
 - Issue independent calls together only when the host supports concurrent execution; otherwise run children serially.
 - Foreground calls wait for completion. Continue parent work after spawning only when supported background execution returns a live child ID; do not poll immediately.
 - Use `subagent_result` with `wait: true` only when a child's result is required for the next step. Cancelling the wait does not cancel the child.
@@ -43,7 +43,3 @@ Omit `model` and `thinking` to inherit the parent unless the active workflow or 
 - Do not delegate tasks that require user interaction; the parent owns questions and approvals.
 - Use `subagent_workflow` when the active task calls for workflow orchestration. Do not call the removed `workflow` tool.
 - Verify child claims before reporting external writes, commits, uploads, or other side effects as complete.
-
-## Provenance
-
-Selectively adapted at the repository owner's direction from `davis7dotsh/my-pi-setup@797eaf6d6f178759cf7aabde927ef15c91346e7e`, `skills/subagents/SKILL.md`. The upstream repository had no detected license. This local adaptation replaces Ben's incompatible `subagent_*` and external-harness guidance with the installed MIT-licensed `@tintinweb/pi-subagents` contract and this configuration's three-child policy.
