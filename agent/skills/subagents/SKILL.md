@@ -5,7 +5,7 @@ description: Use Pi subagents for isolated delegation when the user explicitly r
 
 # Subagents
 
-Use `subagent` for delegation, `subagent_result` to retrieve results, and `subagent_steer` to redirect a child. Inspect each tool's advertised schema before calling it. Keep `subagent_workflow` separate from Pi Tooling's explicitly requested `workflow` tool.
+Use `subagent` for delegation, `subagent_result` to retrieve results, and `subagent_steer` to redirect a child. Inspect each tool's advertised schema before calling it. Use `subagent_workflow` for the upstream workflow engine. There is no separate Pi Tooling `workflow` tool.
 
 Each child is headless, has its own context window, and cannot infer the parent conversation. Give every child a self-contained prompt with relevant paths, constraints, known evidence, forbidden actions, and the expected report or artifact.
 
@@ -20,7 +20,7 @@ Call `subagent` with:
 - `description`: a short three-to-five-word UI label;
 - `run_in_background: false` for visible foreground delegation. Use background execution only when the advertised tool explicitly supports it.
 
-Omit `model` and `thinking` to inherit the parent unless the user requests an override. When overriding, use a model currently reported by `pi --list-models`; do not invent aliases or modify provider configuration.
+Omit `model` and `thinking` to inherit the parent unless the active workflow or selected reviewer roster calls for an override. When overriding, use a model currently reported by `pi --list-models`; do not invent aliases or modify provider configuration.
 
 ## Parallel and background work
 
@@ -41,7 +41,7 @@ Omit `model` and `thinking` to inherit the parent unless the user requests an ov
 
 - Do not ask children to spawn subagents or workflows.
 - Do not delegate tasks that require user interaction; the parent owns questions and approvals.
-- Keep workflow orchestration separate: use the Pi Tooling `workflow` tool only when the user explicitly requests a workflow run.
+- Use `subagent_workflow` when the active task calls for workflow orchestration. Do not call the removed `workflow` tool.
 - Verify child claims before reporting external writes, commits, uploads, or other side effects as complete.
 
 ## Provenance

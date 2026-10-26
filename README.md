@@ -37,10 +37,12 @@ Set `FIRECRAWL_API_URL` in the environment that launches Pi, using your self-hos
 
 ## Workflows
 
+Pi defaults to `llamacpp / gpt-6.1-sol`, thinking `high`, through the existing CLIProxyAPI connection. Children inherit that model unless a review workflow selects another. `design-loop` has been removed.
+
 | Need | Use |
 |---|---|
-| Bounded design and implementation | `/skill:design-loop` |
-| Consequential implementation | `/skill:agent-gauntlet` |
+| End-to-end change delivery | `/skill:full-send` or `/skill:full-stop` |
+| Uncle Bob-related engineering role/skill pipeline, when requested | `/skill:agent-gauntlet` |
 | Large or unclear destination | `/skill:wayfinder` → `/skill:to-spec` → approval → `/skill:to-tickets` |
 | Research with a written artifact | `/skill:research` with `build` |
 | Read-only reconnaissance | `scout` |
@@ -49,6 +51,10 @@ Set `FIRECRAWL_API_URL` in the environment that launches Pi, using your self-hos
 | Documentation | `/skill:technical-writing` with `docs` |
 | Independent diff review | `/skill:code-review` |
 | Existing PR fixes | `/skill:babysit-pr <PR URL>` |
+| Finish through a merged PR | `/skill:full-send` |
+| Prepare a PR without merging | `/skill:full-stop` |
+| GPT-only council review or a Sol review loop | `/skill:council` or `/skill:sol-loop` |
+| File a PR, inherit work, or refresh an old PR | `/skill:file-pr`, `/skill:takeover`, `/skill:modernize` |
 
 Load the current skill for its procedure. Some skills write tracker records, ADRs, or domain documents; confirm those targets before execution.
 
@@ -68,13 +74,14 @@ The flexible profiles are `scout` for read-only navigation, `build` for bounded 
 - `scout` exposes only six read-only navigation tools. `build` and `docs` share that navigation allowlist; `docs` has no shell. Gauntlet roles disable extensions.
 - Native child tools require `ext:builtin:mcp/<native-tool-name>` selectors and the extension loaded. Parent codemode discovery does not grant child capabilities.
 - Handoffs include scope, changed files, exact commands and outcomes, unresolved risks, and the next owner. A prior `PASS` is a claim to verify.
-- Commit, push, merge, release, deployment, and provider changes require explicit approval.
+- Full-send authorizes its end-to-end PR work, including commit, push, rebase, review replies, and merge after its gate passes. Full-stop includes preparation but never merging. Unrelated releases, deployments, and provider changes remain separate.
 
 Local skill procedures live in `agent/skills/`. Pstack `technical-writing` and `unslop` retain their pinned provenance and licenses. Selected extensions originate from [davis7dotsh/my-pi-setup@797eaf6](https://github.com/davis7dotsh/my-pi-setup/tree/797eaf6d6f178759cf7aabde927ef15c91346e7e).
 
 ## Guides
 
 - [Workflow selection](docs/matt-pocock-skills.md)
+- [Tstack skills, local adaptations, and verification](docs/tstack-skills.md)
 - [Gauntlet rationale](docs/uncle-bob-agent-gauntlet.md)
 - [Code navigation](docs/code-navigation.md)
 - [Local decision models: install, configure, and choose](docs/local-decision-models.md)
