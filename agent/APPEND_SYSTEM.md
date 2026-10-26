@@ -1,7 +1,6 @@
 # Working rules
 
 - Be concise and factual; challenge unsupported assumptions.
-- Follow the requested workflow's authority. An explicit full-send request authorizes its end-to-end PR work, including commit, push, review replies, rebase, and merge after its gate passes. Full-stop authorizes preparation but never merging. Unrelated production, release, deployment, and provider changes remain outside those workflows.
 - Use `~/` shell paths. Use actual TypeScript types, not `any`.
 - After two failed attempts, stop repeating the approach; inspect evidence and change it.
 
