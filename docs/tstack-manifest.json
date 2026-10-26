@@ -30,10 +30,6 @@
     "takeover/SKILL.md": "9f00a7c67bf82603af2e80f56e9ce63f1516a1b4339365b79cf786d9d9055465"
   },
   "unmodified_support_files": {
-    "babysit-pr/scripts/pr-wait": "90393f85b95b78bff1b039744bdfb09dc88ff2b430e1c3df687ee6f449c97214",
-    "full-send/agents/openai.yaml": "8a1e8ce04a774a8a2e469cecf5e45a9cec4d3438b4c587cf166c2f78206390d2",
-    "full-stop/agents/openai.yaml": "6029e872a883aa06aad3426ab58289df016e4b0d23485719c71152603fec7d35",
-    "leaving-pr-comments/agents/openai.yaml": "f89fa0d9ae1c3e973b3e9ecb50549faee62fd1a0e59973bade68802c74183fdb",
-    "modernize/agents/openai.yaml": "6675e91e10f2b264fe1a027072f6d9f46299f781011e248a5ba075fc1f764e09"
+    "babysit-pr/scripts/pr-wait": "90393f85b95b78bff1b039744bdfb09dc88ff2b430e1c3df687ee6f449c97214"
   }
 }

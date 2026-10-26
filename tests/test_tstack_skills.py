@@ -35,7 +35,10 @@ class Packaging(unittest.TestCase):
             text = (SKILLS / name / 'SKILL.md').read_text()
             self.assertTrue(text.startswith('---\n'))
             self.assertIn('name: ' + name + '\n', text)
-            self.assertIn(REV, text)
+            frontmatter = text.split('---', 2)[1]
+            self.assertEqual(set(re.findall(r'^([a-z][a-z-]*):', frontmatter, re.M)),
+                             {'name', 'description'})
+            self.assertNotIn('## Provenance', text)
             match = re.search(r'^description: (.+)$', text, re.M)
             assert match is not None
             desc = match.group(1)
@@ -117,6 +120,23 @@ class Packaging(unittest.TestCase):
         subagents = (SKILLS / 'subagents/SKILL.md').read_text()
         self.assertIn('Use `subagent_workflow` for the upstream workflow engine', subagents)
         self.assertNotIn('use the Pi Tooling `workflow` tool', subagents)
+
+
+    def test_owned_skill_metadata_is_functional(self):
+        tracked = subprocess.check_output(['git', 'ls-files', 'agent/skills'],
+                                          cwd=ROOT, text=True).splitlines()
+        manual = set()
+        for rel in tracked:
+            p = ROOT / rel
+            if p.name != 'SKILL.md' or not p.is_file():
+                continue
+            frontmatter = p.read_text().split('---', 2)[1]
+            keys = set(re.findall(r'^([a-z][a-z-]*):', frontmatter, re.M))
+            self.assertTrue({'name', 'description'} <= keys, rel)
+            self.assertTrue(keys <= {'name', 'description', 'disable-model-invocation'}, rel)
+            if 'disable-model-invocation: true' in frontmatter:
+                manual.add(p.parent.name)
+        self.assertEqual(manual, {'agent-gauntlet', 'compare-prototypes', 'technical-writing'})
 
 
 class Watcher(unittest.TestCase):

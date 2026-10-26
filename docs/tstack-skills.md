@@ -70,6 +70,19 @@ Hermes approval settings do not configure Pi. Default Hermes currently has
 prompts; this does not disable other tool controls, repository checks, or branch
 protection. No Hermes approval settings were changed.
 
+## Skill metadata
+
+Skill frontmatter keeps only `name`, `description`, and runtime behavior flags
+such as `disable-model-invocation`. Author/version/license/provenance fields and
+repeated provenance footers are omitted. Upstream revisions and hashes stay in
+the manifest; attribution stays in [third-party notices](third-party-notices.md).
+Codex-only `agents/openai.yaml` descriptors are not installed for Pi or Hermes.
+The upstream inventory still tracks those files so future changes are detected.
+
+Existing repository-owned skills already use minimal frontmatter. Their invocation
+flags are preserved. Shared Matt Pocock skills were inspected but not edited;
+their shared-runtime invocation controls and argument hints remain intact.
+
 ## Watcher
 
 The upstream Python `pr-wait` helper is included unchanged and can be invoked
@@ -106,7 +119,7 @@ Network and Git failures are errors, never a clean/current result. Requires
 This command does not execute upstream files, overwrite local adaptations,
 advance the manifest pin, commit, or push. Normal tests remain offline.
 No scheduled check or notifications are installed. After an update is reviewed
-and adapted, update the manifest hashes/inventory, skill provenance, and tests
+and adapted, update the manifest hashes/inventory, documentation, and tests
 together; never advance the pin merely to silence the report.
 
 ## Verification and limits

@@ -1,14 +1,6 @@
 ---
 name: modernize
 description: Use when asked to rebase or modernize an old PR.
-version: 2.1.0
-author: Theo Browne; adapted locally for Pi and Hermes
-license: MIT
-metadata:
-  provenance:
-    upstream: https://github.com/t3dotgg/tstack
-    upstream_revision: 7de017b3fc9d50c03cf3ecb98fb71e0ca65a78bd
-    upstream_path: skills/modernize
 ---
 
 # Modernize
@@ -114,9 +106,3 @@ for this task, not a reason to request approval again at every child skill.
 Full-stop includes the same preparation but never merging. Runtime/system
 approval prompts still apply. Use native tools that actually exist and verify
 remote writes by reading back their exact targets. Main is the default branch.
-
-## Provenance
-
-Adapted from Theo Browne's MIT-licensed tstack at the revision in frontmatter.
-The original workflow, review style, and sibling names are retained. Local
-changes are limited to native tool integration and verified remote readback.
